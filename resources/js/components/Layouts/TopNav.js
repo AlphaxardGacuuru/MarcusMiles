@@ -114,52 +114,12 @@ const TopNav = (props) => {
 									<div className="logo-area">
 										<Link
 											to="/"
-											style={{ color: "#007BFF" }}>
-											<LogoSVG />
+											className="text-white">
+											<Img
+												src="/storage/img/logo.svg"
+												style={{ width: "8em", height: "auto" }}
+											/>
 										</Link>
-									</div>
-
-									<div className="menu-content-area d-flex align-items-center">
-										{/* <!-- Header Social Area --> */}
-										<div className="header-social-area d-flex align-items-center">
-											{props.auth.name == "Guest" ? (
-												<Link
-													to="#"
-													className="display-4"
-													onClick={() => props.setLogin(true)}>
-													Login
-												</Link>
-											) : (
-												<div></div>
-												// <TopNavLinks
-												// 	{...props}
-												// 	bottomMenu={bottomMenu}
-												// 	setBottomMenu={setBottomMenu}
-												// 	setNotificationMenu={setNotificationMenu}
-												// 	avatarVisibility={avatarVisibility}
-												// 	setAvatarVisibility={setAvatarVisibility}
-												// 	notifications={notifications}
-												// 	setNotifications={setNotifications}
-												// 	vidCartItems={vidCartItems}
-												// 	audCartItems={audCartItems}
-												// 	cartItems={cartItems}
-												// 	logout={logout}
-												// 	onNotification={onNotification}
-												// 	onDeleteNotifications={onDeleteNotifications}
-												// />
-											)}
-										</div>
-										{/* <!-- Menu Icon --> */}
-										<a
-											href="#"
-											id="menuIcon"
-											className="hidden"
-											onClick={(e) => {
-												e.preventDefault()
-												setMenu("menu-open")
-											}}>
-											<MenuSVG />
-										</a>
 									</div>
 								</div>
 							</div>
@@ -177,75 +137,6 @@ const TopNav = (props) => {
 						<br className="hidden" />
 					</span>
 				)}
-
-				{/* <!-- ***** Side Menu Area Start ***** --> */}
-				<div className="mainMenu d-flex align-items-center justify-content-between">
-					{/* <!-- Close Icon --> */}
-					<div
-						className="closeIcon"
-						onClick={() => setMenu("")}>
-						<CloseSVG />
-					</div>
-					{/* <!-- Logo Area --> */}
-					<div className="logo-area">
-						<Link to="/">Black Property</Link>
-					</div>
-					{/* <!-- Nav --> */}
-					<div
-						className="sonarNav wow fadeInUp"
-						data-wow-delay="1s">
-						<nav>
-							<ul>
-								<li className="nav-item active">
-									<Link
-										to="/"
-										style={{
-											color: location.pathname == "/" ? "#007BFF" : "white",
-											opacity: location.pathname == "/" ? 1 : 0.4,
-										}}
-										className="nav-link"
-										onClick={() => setMenu("")}>
-										<span
-											style={{
-												float: "left",
-												paddingRight: "20px",
-												color: location.pathname == "/" ? "#007BFF" : "white",
-												opacity: location.pathname == "/" ? 1 : 0.4,
-											}}>
-											<HomeSVG />
-										</span>
-										Home
-									</Link>
-								</li>
-								<li className="nav-item active">
-									<Link
-										to="/library"
-										style={{
-											color:
-												location.pathname == "/library" ? "#007BFF" : "white",
-											opacity: location.pathname == "/library" ? 1 : 0.4,
-										}}
-										className="nav-link"
-										onClick={() => setMenu("")}>
-										<span
-											style={{
-												float: "left",
-												paddingRight: "20px",
-												color:
-													location.pathname == "/library" ? "#007BFF" : "white",
-												opacity: location.pathname == "/library" ? 1 : 0.4,
-											}}>
-											<PersonSVG />
-										</span>
-										Library
-									</Link>
-								</li>
-							</ul>
-						</nav>
-					</div>
-					<br />
-				</div>
-				{/* <!-- ***** Side Menu Area End ***** --> */}
 			</div>
 
 			{/* Sliding Bottom Nav */}
