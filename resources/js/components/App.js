@@ -8,7 +8,7 @@ import Footer from "@/components/Layouts/Footer"
 import Messages from "@/components/Core/Messages"
 import PaymentMenu from "@/components/Payments/PaymentMenu"
 
-import RouteList from "./Core/RouteList"
+import RouteList from "@/components/Core/RouteList"
 import { random } from "lodash"
 
 function App() {

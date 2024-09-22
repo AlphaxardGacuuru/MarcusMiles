@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom/cjs/react-router-dom.min"
 
-import PropertyHeroArea from "@/components/Properties/PropertyHeroArea"
+import ProjectHeroArea from "@/components/Projects/ProjectHeroArea"
 
 const index = (props) => {
 	var { id } = useParams()
@@ -19,7 +19,7 @@ const index = (props) => {
 	return (
 		<div className="row">
 			<div className="col-sm-4">
-				<PropertyHeroArea
+				<ProjectHeroArea
 					{...props}
 					id={id}
 				/>

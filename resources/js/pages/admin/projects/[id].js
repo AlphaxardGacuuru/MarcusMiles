@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom/cjs/react-router-dom.min"
 
-import PropertyHeroArea from "@/components/Properties/PropertyHeroArea"
+import ProjectHeroArea from "@/components/Projects/ProjectHeroArea"
 import TenantList from "@/components/Tenants/TenantList"
 import StaffList from "@/components/Staff/StaffList"
 import UnitList from "@/components/Units/UnitList"
@@ -9,7 +9,7 @@ import UnitList from "@/components/Units/UnitList"
 const show = (props) => {
 	var { id } = useParams()
 
-	const [property, setProperty] = useState({})
+	const [project, setProject] = useState({})
 	const [units, setUnits] = useState([])
 	const [tenants, setTenants] = useState([])
 	const [staff, setStaff] = useState([])
@@ -25,17 +25,17 @@ const show = (props) => {
 		setTenants([])
 		setStaff([])
 		// Set page
-		props.setPage({ name: "View Property", path: ["properties", "view"] })
-		props.get(`properties/${id}`, setProperty)
-		props.getPaginated(`units/by-property-id/${id}`, setUnits)
-		props.getPaginated(`tenants/by-property-id/${id}`, setTenants)
-		props.getPaginated(`staff/by-property-id/${id}`, setStaff)
+		props.setPage({ name: "View Project", path: ["projects", "view"] })
+		props.get(`projects/${id}`, setProject)
+		props.getPaginated(`units/by-project-id/${id}`, setUnits)
+		props.getPaginated(`tenants/by-project-id/${id}`, setTenants)
+		props.getPaginated(`staff/by-project-id/${id}`, setStaff)
 		props.get(`roles?idAndName=true`, setRoles)
 	}, [id])
 
 	useEffect(() => {
 		props.getPaginated(
-			`tenants/by-property-id/${id}?
+			`tenants/by-project-id/${id}?
 				name=${nameQuery}`,
 			setTenants
 		)
@@ -54,7 +54,7 @@ const show = (props) => {
 	return (
 		<div className="row">
 			<div className="col-sm-4">
-				<PropertyHeroArea
+				<ProjectHeroArea
 					{...props}
 					id={id}
 				/>
@@ -95,9 +95,9 @@ const show = (props) => {
 					activeTab={activeTab("units")}
 					units={units}
 					setUnits={setUnits}
-					totalUnits={property.unitCount}
-					propertyId={id}
-					setProperty={setProperty}
+					totalUnits={project.unitCount}
+					projectId={id}
+					setProject={setProject}
 				/>
 				{/* Units Tab End */}
 
@@ -118,7 +118,7 @@ const show = (props) => {
 					setStaff={setStaff}
 					roles={roles}
 					activeTab={activeTab("staff")}
-					propertyId={id}
+					projectId={id}
 				/>
 				{/* Staff Tab End */}
 			</div>

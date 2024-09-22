@@ -7,11 +7,12 @@ import Index from "@/pages/index"
 import AdminNav from "@/components/Layouts/AdminNav"
 
 import AdminDashboard from "@/pages/admin/index"
+import AdminProjectDashboard from "@/pages/admin/erp-dashboard"
 
-import AdminProperties from "@/pages/admin/properties/index"
-import AdminPropertyCreate from "@/pages/admin/properties/create"
-import AdminPropertyShow from "@/pages/admin/properties/[id]"
-import AdminPropertyEdit from "@/pages/admin/properties/edit/[id]"
+import AdminProjects from "@/pages/admin/projects/index"
+import AdminProjectCreate from "@/pages/admin/projects/create"
+import AdminProjectShow from "@/pages/admin/projects/[id]"
+import AdminProjectEdit from "@/pages/admin/projects/edit/[id]"
 
 import AdminUnits from "@/pages/admin/units/index"
 import AdminUnitCreate from "@/pages/admin/units/create"
@@ -65,22 +66,6 @@ const RouteList = ({ GLOBAL_STATE }) => {
 			component: <AdminDashboard {...GLOBAL_STATE} />,
 		},
 		{
-			path: "/admin/properties",
-			component: <AdminProperties {...GLOBAL_STATE} />,
-		},
-		{
-			path: "/admin/properties/create",
-			component: <AdminPropertyCreate {...GLOBAL_STATE} />,
-		},
-		{
-			path: "/admin/properties/:id/show",
-			component: <AdminPropertyShow {...GLOBAL_STATE} />,
-		},
-		{
-			path: "/admin/properties/:id/edit",
-			component: <AdminPropertyEdit {...GLOBAL_STATE} />,
-		},
-		{
 			path: "/admin/units",
 			component: <AdminUnits {...GLOBAL_STATE} />,
 		},
@@ -109,6 +94,26 @@ const RouteList = ({ GLOBAL_STATE }) => {
 			component: <AdminTenantEdit {...GLOBAL_STATE} />,
 		},
 		{
+			path: "/admin/erp/dashboard",
+			component: <AdminProjectDashboard {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/projects",
+			component: <AdminProjects {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/projects/create",
+			component: <AdminProjectCreate {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/projects/:id/show",
+			component: <AdminProjectShow {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/projects/:id/edit",
+			component: <AdminProjectEdit {...GLOBAL_STATE} />,
+		},
+		{
 			path: "/admin/invoices",
 			component: <AdminInvoices {...GLOBAL_STATE} />,
 		},
@@ -123,18 +128,6 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		{
 			path: "/admin/invoices/:id/edit",
 			component: <AdminInvoiceEdit {...GLOBAL_STATE} />,
-		},
-		{
-			path: "/admin/water-readings",
-			component: <AdminWaterReadings {...GLOBAL_STATE} />,
-		},
-		{
-			path: "/admin/water-readings/create",
-			component: <AdminWaterReadingCreate {...GLOBAL_STATE} />,
-		},
-		{
-			path: "/admin/water-readings/:id/edit",
-			component: <AdminWaterReadingEdit {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/payments",

@@ -16,6 +16,8 @@ import PaymentSVG from "@/svgs/PaymentSVG"
 import InvoiceSVG from "@/svgs/InvoiceSVG"
 import WaterReadingSVG from "@/svgs/WaterReadingSVG"
 import CreditNoteSVG from "@/svgs/CreditNoteSVG"
+import ProjectSVG from "@/svgs/ProjectSVG"
+import ERPSVG from "@/svgs/ERPSVG"
 
 const AdminNavLinks = (props) => {
 	const location = useLocation()
@@ -43,7 +45,7 @@ const AdminNavLinks = (props) => {
 			<li className="nav-item">
 				<Link
 					to={`/admin/dashboard`}
-					className={`nav-link ${active("/admin/dashboard")}`}>
+					className={`nav-link my-1 ${active("/admin/dashboard")}`}>
 					<div className="nav-link-icon">
 						<HomeSVG />
 					</div>
@@ -51,66 +53,55 @@ const AdminNavLinks = (props) => {
 				</Link>
 			</li>
 			{/* Dashboard Link End */}
-			{/* Invoices Link */}
-			{/* <li className="nav-item">
-				<Link
-					to={`/admin/invoices`}
-					className={`nav-link ${active("/admin/invoices")}`}>
+			{/* ERP Links */}
+			<li className="nav-item">
+				<a
+					href="#"
+					className={`nav-link accordion-button my-1 ${active("/admin/erp/")}`}
+					data-bs-toggle="collapse"
+					data-bs-target="#collapseERP"
+					aria-expanded="false"
+					aria-controls="collapseERP">
 					<div className="nav-link-icon">
-						<InvoiceSVG />
+						<ERPSVG />
 					</div>
-					<div className="nav-link-text">Invoices</div>
-				</Link>
-			</li> */}
-			{/* Invoices Link End */}
-			{/* Payments Link */}
-			{/* <li className="nav-item">
-				<Link
-					to={`/admin/payments`}
-					className={`nav-link ${active("/admin/payments")}`}>
-					<div className="nav-link-icon">
-						<PaymentSVG />
-					</div>
-					<div className="nav-link-text">Payments</div>
-				</Link>
-			</li> */}
-			{/* Payments Link End */}
-			{/* Credit Notes Link */}
-			{/* <li className="nav-item">
-				<Link
-					to={`/admin/credit-notes`}
-					className={`nav-link ${active("/admin/credit-notes")}`}>
-					<div className="nav-link-icon">
-						<CreditNoteSVG />
-					</div>
-					<div className="nav-link-text">Credit Notes</div>
-				</Link>
-			</li> */}
-			{/* Credit Notes Link End */}
-			{/* Wallet */}
-			{/* <li className="nav-item">
-				<Link
-					to={`/admin/wallet`}
-					className={`nav-link ${active("/admin/wallet")}`}>
-					<div className="nav-link-icon">
-						<WalletSVG />
-					</div>
-					<div className="nav-link-text">Wallet</div>
-				</Link>
-			</li> */}
-			{/* Wallet End */}
-			{/* Roles Links */}
-			{/* <li className="nav-item">
-				<Link
-					to={`/admin/roles`}
-					className={`nav-link ${active("/admin/roles")}`}>
-					<div className="nav-link-icon">
-						<PersonGearSVG />
-					</div>
-					<div className="nav-link-text">Roles</div>
-				</Link>
-			</li> */}
-			{/* Roles Link End */}
+					<div className="nav-link-text">ERP</div>
+				</a>
+
+				{/* Collapse */}
+				<div
+					className={!location.pathname.match("/erp/") ? "collapse" : ""}
+					id="collapseERP">
+					<ol className="ms-4">
+						{/* Dashboard */}
+						<li className="nav-item">
+							<Link
+								to={`/admin/erp/dashboard`}
+								className={`nav-link ${activeStrict("/admin/erp/dashboard")}`}>
+								<div className="nav-link-icon">
+									<HomeSVG />
+								</div>
+								<div className="nav-link-text">Dashboard</div>
+							</Link>
+						</li>
+						{/* Dashboard End */}
+						{/* Projects */}
+						<li className="nav-item">
+							<Link
+								to={`/admin/erp/projects`}
+								className={`nav-link ${activeStrict("/admin/erp/projects")}`}>
+								<div className="nav-link-icon">
+									<ProjectSVG />
+								</div>
+								<div className="nav-link-text">Projects</div>
+							</Link>
+						</li>
+						{/* Projects End */}
+					</ol>
+				</div>
+				{/* Collapse End */}
+			</li>
+			{/* ERP Links End */}
 		</React.Fragment>
 	)
 }
