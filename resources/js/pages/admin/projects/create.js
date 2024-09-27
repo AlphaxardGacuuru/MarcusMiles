@@ -3,23 +3,25 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
 import Btn from "@/components/Core/Btn"
 import MyLink from "@/components/Core/MyLink"
+
 import BackSVG from "@/svgs/BackSVG"
+import CloseSVG from "@/svgs/CloseSVG"
 
 const create = (props) => {
 	var history = useHistory()
 
 	const [name, setName] = useState()
-	const [location, setLocation] = useState()
-	const [rentMultiple, setRentMultiple] = useState(0)
-	const [additionalCharges, setAdditionalCharges] = useState(0)
-	const [serviceCharge, setServiceCharge] = useState(0)
-	const [waterBillRate, setWaterBillRate] = useState(0)
+	const [type, setType] = useState()
+	const [description, setDescription] = useState()
 	const [loading, setLoading] = useState()
 
-	// Get Properties
+	// Get Projects
 	useEffect(() => {
 		// Set page
-		props.setPage({ name: "Add Property", path: ["properties", "create"] })
+		props.setPage({
+			name: "Add Project",
+			path: ["projects", "create"],
+		})
 	}, [])
 
 	/*
@@ -29,21 +31,18 @@ const create = (props) => {
 		e.preventDefault()
 
 		setLoading(true)
-		Axios.post("/api/properties", {
+		Axios.post("/api/projects", {
 			name: name,
-			location: location,
-			depositFormula: `r*${rentMultiple}+${additionalCharges}`,
-			serviceCharge: serviceCharge,
-			waterBillRate: waterBillRate,
+			type: type,
+			description: description,
 		})
 			.then((res) => {
 				setLoading(false)
 				// Show messages
 				props.setMessages([res.data.message])
-				// Redirect to Properties
-				setTimeout(() => history.push("/admin/properties"), 500)
-				// Fetch Auth
-				props.get("auth", props.setAuth, "auth")
+
+				// Redirect to Projects
+				setTimeout(() => history.push(`/admin/erp/projects`), 500)
 			})
 			.catch((err) => {
 				setLoading(false)
@@ -54,90 +53,59 @@ const create = (props) => {
 
 	return (
 		<div className="row">
-			<div className="col-sm-4"></div>
-			<div className="col-sm-4">
-				<form
-					onSubmit={onSubmit}
-					className="mb-5">
-					<label htmlFor="">Name</label>
+			<div className="col-sm-2"></div>
+			<div className="col-sm-8">
+				<form onSubmit={onSubmit}>
+					{/* Name */}
+					<label htmlFor="name">Name</label>
 					<input
-						type="text"
-						placeholder="Zuko Apartments"
-						className="form-control mb-2 me-2"
+						name="name"
+						placeholder="Name"
+						className="form-control text-capitalize mb-2 me-2"
 						onChange={(e) => setName(e.target.value)}
 						required={true}
 					/>
+					{/* Name End */}
 
-					<label htmlFor="">Location</label>
+					{/* Type */}
+					<label htmlFor="name">Type</label>
+					<select
+						name="type"
+						placeholder="Type"
+						className="form-control text-capitalize mb-2 me-2"
+						onChange={(e) => setType(e.target.value)}
+						required={true}
+					>
+						<option value="design">Design</option>
+					</select>
+					{/* Type End */}
+
+					{/* Description */}
+					<label htmlFor="name">Description</label>
 					<input
-						type="text"
-						placeholder="Roysambu"
-						className="form-control mb-2 me-2"
-						onChange={(e) => setLocation(e.target.value)}
+						name="description"
+						placeholder="Description"
+						className="form-control text-capitalize mb-2 me-2"
+						onChange={(e) => setDescription(e.target.value)}
 						required={true}
 					/>
-
-					<label
-						htmlFor=""
-						className="text-primary mt-2">
-						Deposit Calculation
-					</label>
-
-					<br />
-
-					<label htmlFor="">Rent Multiple</label>
-					<input
-						type="number"
-						placeholder="2"
-						min="0"
-						className="form-control mb-2 me-2"
-						onChange={(e) => setRentMultiple(e.target.value)}
-						required={true}
-					/>
-
-					<label htmlFor="">Additional Charges to Deposit</label>
-					<input
-						type="number"
-						placeholder="2000"
-						min="0"
-						className="form-control mb-2 me-2"
-						onChange={(e) => setAdditionalCharges(e.target.value)}
-					/>
-
-					<label htmlFor="">Service Charge</label>
-					<input
-						type="number"
-						placeholder="5000"
-						min="0"
-						className="form-control mb-2 me-2"
-						onChange={(e) => setServiceCharge(e.target.value)}
-					/>
-
-					<label htmlFor="">Water Bill Rate</label>
-					<input
-						type="number"
-						placeholder="1.5"
-						min="0"
-						className="form-control mb-2 me-2"
-						onChange={(e) => setWaterBillRate(e.target.value)}
-						required={true}
-					/>
+					{/* Description End */}
 
 					<div className="d-flex justify-content-end mb-2">
 						<Btn
-							text="add property"
+							text="add project"
 							loading={loading}
 						/>
 					</div>
 
-					<div className="d-flex justify-content-center">
+					<div className="d-flex justify-content-center mb-5">
 						<MyLink
-							linkTo="/properties"
+							linkTo={`/erp/projects`}
 							icon={<BackSVG />}
-							text="back to properties"
+							text="back to projects"
 						/>
 					</div>
-					<div className="col-sm-4"></div>
+					<div className="col-sm-2"></div>
 				</form>
 			</div>
 		</div>

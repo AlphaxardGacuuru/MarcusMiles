@@ -1,30 +1,45 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom/cjs/react-router-dom.min"
 
-import ProjectHeroArea from "@/components/Projects/ProjectHeroArea"
+import ProjectList from "@/components/Projects/ProjectList"
 
 const index = (props) => {
-	var { id } = useParams()
+	const [projects, setProjects] = useState([])
+
+	const [name, setName] = useState("")
+	const [startMonth, setStartMonth] = useState("")
+	const [startYear, setStartYear] = useState("")
+	const [endMonth, setEndMonth] = useState("")
+	const [endYear, setEndYear] = useState("")
 
 	useEffect(() => {
 		// Set page
-		props.setPage({ name: "Properties", path: ["properties"] })
-		props.get(
-			`properties/by-user-id/${props.auth.id}`,
-			props.setProperties,
-			"properties"
+		props.setPage({ name: "Projects", path: ["projects"] })
+	}, [])
+
+	useEffect(() => {
+		// Fetch Projects
+		props.getPaginated(
+			`projects?
+			name=${name}&
+			startMonth=${startMonth}&
+			endMonth=${endMonth}&
+			startYear=${startYear}&
+			endYear=${endYear}`,
+			setProjects
 		)
-	}, [id])
+	}, [name, startMonth, endMonth, startYear, endYear])
 
 	return (
-		<div className="row">
-			<div className="col-sm-4">
-				<ProjectHeroArea
-					{...props}
-					id={id}
-				/>
-			</div>
-		</div>
+		<ProjectList
+			{...props}
+			projects={projects}
+			setProjects={setProjects}
+			setName={setName}
+			setStartMonth={setStartMonth}
+			setEndMonth={setEndMonth}
+			setStartYear={setStartYear}
+			setEndYear={setEndYear}
+		/>
 	)
 }
 

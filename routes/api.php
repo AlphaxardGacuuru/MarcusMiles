@@ -10,6 +10,7 @@ use App\Http\Controllers\KopokopoTransferController;
 use App\Http\Controllers\MPESATransactionController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StaffController;
@@ -38,6 +39,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('auth', [UserController::class, 'auth']);
 
 Route::apiResources([
+	"projects" => ProjectController::class,
     "properties" => PropertyController::class,
     "units" => UnitController::class,
     "tenants" => TenantController::class,

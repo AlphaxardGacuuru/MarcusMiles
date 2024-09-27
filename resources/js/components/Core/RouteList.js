@@ -98,19 +98,19 @@ const RouteList = ({ GLOBAL_STATE }) => {
 			component: <AdminProjectDashboard {...GLOBAL_STATE} />,
 		},
 		{
-			path: "/admin/projects",
+			path: "/admin/erp/projects",
 			component: <AdminProjects {...GLOBAL_STATE} />,
 		},
 		{
-			path: "/admin/projects/create",
+			path: "/admin/erp/projects/create",
 			component: <AdminProjectCreate {...GLOBAL_STATE} />,
 		},
 		{
-			path: "/admin/projects/:id/show",
+			path: "/admin/erp/projects/:id/show",
 			component: <AdminProjectShow {...GLOBAL_STATE} />,
 		},
 		{
-			path: "/admin/projects/:id/edit",
+			path: "/admin/erp/projects/:id/edit",
 			component: <AdminProjectEdit {...GLOBAL_STATE} />,
 		},
 		{
