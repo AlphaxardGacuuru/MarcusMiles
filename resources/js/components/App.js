@@ -102,10 +102,6 @@ function App() {
 	// Fetch data on page load
 	useEffect(() => get("auth", setAuth, "auth", false), [])
 
-	useEffect(() => {
-		get(`properties/by-user-id/${auth.id}`, setProperties, "properties")
-	}, [auth])
-
 	/*
 	 * Genereate Month and Year Arrays
 	 */

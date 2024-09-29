@@ -25,6 +25,8 @@ import AdminSupplierCreate from "@/pages/admin/suppliers/create"
 import AdminSupplierView from "@/pages/admin/suppliers/[id]"
 import AdminSupplierEdit from "@/pages/admin/suppliers/edit/[id]"
 
+import AdminIssues from "@/pages/admin/issues/index"
+
 import AdminInvoices from "@/pages/admin/invoices/index"
 import AdminInvoiceCreate from "@/pages/admin/invoices/create"
 import AdminInvoiceView from "@/pages/admin/invoices/[id]"
@@ -111,6 +113,10 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		{
 			path: "/admin/erp/suppliers/:id/edit",
 			component: <AdminSupplierEdit {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/issues",
+			component: <AdminIssues {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/invoices",
