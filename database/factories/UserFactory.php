@@ -32,6 +32,7 @@ class UserFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'avatar' => 'avatars/male-avatar.png',
             'gender' => $gender[rand(0, 1)],
+			'account_type' => 'staff',
             'created_at' => Carbon::now()->subDay(rand(3, 12)),
         ];
     }

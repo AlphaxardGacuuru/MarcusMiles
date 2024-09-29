@@ -89,7 +89,11 @@ const AdminNavLinks = (props) => {
 						<li className="nav-item">
 							<Link
 								to={`/admin/erp/projects`}
-								className={`nav-link ${activeStrict("/admin/erp/projects")}`}>
+								className={`nav-link ${
+									active("/admin/erp/projects") ||
+									active("/admin/erp/work-plan") ||
+									active("/admin/erp/inventory")
+								}`}>
 								<div className="nav-link-icon">
 									<ProjectSVG />
 								</div>

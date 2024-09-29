@@ -262,6 +262,12 @@ const ProjectList = (props) => {
 								<td>
 									<div className="d-flex justify-content-end">
 										<MyLink
+											linkTo={`/erp/projects/${project.id}/view`}
+											className="me-1"
+											icon={<ViewSVG />}
+										/>
+
+										<MyLink
 											linkTo={`/erp/projects/${project.id}/edit`}
 											icon={<EditSVG />}
 										/>

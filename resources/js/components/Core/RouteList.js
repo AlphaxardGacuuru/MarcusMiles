@@ -14,23 +14,16 @@ import AdminProjectCreate from "@/pages/admin/projects/create"
 import AdminProjectShow from "@/pages/admin/projects/[id]"
 import AdminProjectEdit from "@/pages/admin/projects/edit/[id]"
 
-import AdminUnits from "@/pages/admin/units/index"
-import AdminUnitCreate from "@/pages/admin/units/create"
-import AdminUnitShow from "@/pages/admin/units/[id]"
-import AdminUnitEdit from "@/pages/admin/units/edit/[id]"
+import AdminWorkPlanCreate from "@/pages/admin/work-plan/create"
+import AdminWorkPlanEdit from "@/pages/admin/work-plan/edit/[id]"
 
-import AdminTenants from "@/pages/admin/tenants/index"
-import AdminTenantCreate from "@/pages/admin/tenants/create"
-import AdminTenantEdit from "@/pages/admin/tenants/edit/[id]"
+import AdminInventoryCreate from "@/pages/admin/inventory/create"
+import AdminInventoryEdit from "@/pages/admin/inventory/edit/[id]"
 
 import AdminInvoices from "@/pages/admin/invoices/index"
 import AdminInvoiceCreate from "@/pages/admin/invoices/create"
 import AdminInvoiceShow from "@/pages/admin/invoices/[id]"
 import AdminInvoiceEdit from "@/pages/admin/invoices/edit/[id]"
-
-import AdminWaterReadings from "@/pages/admin/water-readings/index"
-import AdminWaterReadingCreate from "@/pages/admin/water-readings/create"
-import AdminWaterReadingEdit from "@/pages/admin/water-readings/edit/[id]"
 
 import AdminPayments from "@/pages/admin/payments/index"
 import AdminPaymentCreate from "@/pages/admin/payments/create"
@@ -39,9 +32,6 @@ import AdminPaymentEdit from "@/pages/admin/payments/edit/[id]"
 import AdminCreditNotes from "@/pages/admin/credit-notes/index"
 import AdminCreditNoteCreate from "@/pages/admin/credit-notes/create"
 import AdminCreditNoteEdit from "@/pages/admin/credit-notes/edit/[id]"
-
-import AdminWallet from "@/pages/admin/wallet/index"
-import AdminWalletCreate from "@/pages/admin/wallet/create"
 
 import AdminStaff from "@/pages/admin/staff/index"
 import AdminStaffCreate from "@/pages/admin/staff/create"
@@ -66,34 +56,6 @@ const RouteList = ({ GLOBAL_STATE }) => {
 			component: <AdminDashboard {...GLOBAL_STATE} />,
 		},
 		{
-			path: "/admin/units",
-			component: <AdminUnits {...GLOBAL_STATE} />,
-		},
-		{
-			path: "/admin/units/:id/create",
-			component: <AdminUnitCreate {...GLOBAL_STATE} />,
-		},
-		{
-			path: "/admin/units/:id/show",
-			component: <AdminUnitShow {...GLOBAL_STATE} />,
-		},
-		{
-			path: "/admin/units/:id/edit",
-			component: <AdminUnitEdit {...GLOBAL_STATE} />,
-		},
-		{
-			path: "/admin/tenants",
-			component: <AdminTenants {...GLOBAL_STATE} />,
-		},
-		{
-			path: "/admin/tenants/:id/create",
-			component: <AdminTenantCreate {...GLOBAL_STATE} />,
-		},
-		{
-			path: "/admin/tenants/:id/edit",
-			component: <AdminTenantEdit {...GLOBAL_STATE} />,
-		},
-		{
 			path: "/admin/erp/dashboard",
 			component: <AdminProjectDashboard {...GLOBAL_STATE} />,
 		},
@@ -106,12 +68,28 @@ const RouteList = ({ GLOBAL_STATE }) => {
 			component: <AdminProjectCreate {...GLOBAL_STATE} />,
 		},
 		{
-			path: "/admin/erp/projects/:id/show",
+			path: "/admin/erp/projects/:id/view",
 			component: <AdminProjectShow {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/erp/projects/:id/edit",
 			component: <AdminProjectEdit {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/work-plan/:id/create",
+			component: <AdminWorkPlanCreate {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/work-plan/:id/edit",
+			component: <AdminWorkPlanEdit {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/inventory/:id/create",
+			component: <AdminInventoryCreate {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/inventory/:id/edit",
+			component: <AdminInventoryEdit {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/invoices",
@@ -122,7 +100,7 @@ const RouteList = ({ GLOBAL_STATE }) => {
 			component: <AdminInvoiceCreate {...GLOBAL_STATE} />,
 		},
 		{
-			path: "/admin/invoices/:id/show",
+			path: "/admin/invoices/:id/view",
 			component: <AdminInvoiceShow {...GLOBAL_STATE} />,
 		},
 		{
@@ -152,14 +130,6 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		{
 			path: "/admin/credit-notes/:id/edit",
 			component: <AdminCreditNoteEdit {...GLOBAL_STATE} />,
-		},
-		{
-			path: "/admin/wallet",
-			component: <AdminWallet {...GLOBAL_STATE} />,
-		},
-		{
-			path: "/admin/wallet/create",
-			component: <AdminWalletCreate {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/staff",

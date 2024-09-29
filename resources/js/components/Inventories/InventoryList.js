@@ -11,21 +11,29 @@ import PaginationLinks from "@/components/Core/PaginationLinks"
 import HeroHeading from "@/components/Core/HeroHeading"
 import HeroIcon from "@/components/Core/HeroIcon"
 
-import TenantSVG from "@/svgs/TenantSVG"
+import InventorySVG from "@/svgs/InventorySVG"
 import ViewSVG from "@/svgs/ViewSVG"
 import EditSVG from "@/svgs/EditSVG"
 import PlusSVG from "@/svgs/PlusSVG"
 
-const TenantList = (props) => {
-	const location = useLocation()
-
+const InventoryList = (props) => {
 	/*
-	 * Delete Tenant
+	 * Delete Inventory
 	 */
-	const onDeleteTenant = (tenantId) => {
-		Axios.delete(`/api/tenants/${tenantId}`)
+	const onDeleteInventory = (inventoryId) => {
+		Axios.delete(`/api/inventories/${inventoryId}`)
 			.then((res) => {
 				props.setMessages([res.data.message])
+				// Remove row
+				props.setInventories({
+					meta: props.inventories.meta,
+					links: props.inventories.links,
+					data: props.inventories.data.filter(
+						(inventory) => inventory.id != inventoryId
+					),
+				})
+				// Update Project
+				props.get(`projects/${props.projectId}`, props.setProject)
 			})
 			.catch((err) => props.getErrors(err))
 	}
@@ -38,11 +46,11 @@ const TenantList = (props) => {
 					{/* Total */}
 					<div className="d-flex justify-content-between w-100 align-items-center mx-4">
 						<HeroHeading
-							heading="Total Tenants"
-							data={props.tenants.data?.length}
+							heading="Total Inventory"
+							data={props.inventories.data?.length}
 						/>
 						<HeroIcon>
-							<TenantSVG />
+							<InventorySVG />
 						</HeroIcon>
 					</div>
 					{/* Total End */}
@@ -76,57 +84,46 @@ const TenantList = (props) => {
 			<div className="table-responsive mb-5">
 				<table className="table table-hover">
 					<thead>
-						{location.pathname.match("/units/") && (
-							<tr>
-								<th colSpan="6"></th>
-								<th className="text-end">
-									<MyLink
-										linkTo={`/tenants/${props.unitId}/create`}
-										icon={<PlusSVG />}
-										text="add tenant"
-									/>
-								</th>
-							</tr>
-						)}
+						<tr>
+							<th colSpan="4"></th>
+							<th className="text-end">
+								<MyLink
+									linkTo={`/erp/inventory/${props.projectId}/create`}
+									icon={<PlusSVG />}
+									text="add inventory"
+								/>
+							</th>
+						</tr>
 						<tr>
 							<th>#</th>
-							<th></th>
 							<th>Name</th>
-							<th>Phone</th>
-							<th>Move In Date</th>
+							<th>Quantity</th>
+							<th>Supplier</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
-						{props.tenants.data?.map((tenant, key) => (
+						{props.inventories.data?.map((inventory, key) => (
 							<tr key={key}>
-								<td>{props.iterator(key, props.tenants)}</td>
-								<td>
-									<Img
-										src={tenant.avatar}
-										className="rounded-circle"
-										style={{ minWidth: "3em", height: "3em" }}
-										alt="Avatar"
-									/>
-								</td>
-								<td>{tenant.name}</td>
-								<td>{tenant.phone}</td>
-								<td>{tenant.occupiedAt}</td>
+								<td>{props.iterator(key, props.inventories)}</td>
+								<td>{inventory.name}</td>
+								<td>{inventory.quantity}</td>
+								<td>{inventory.supplierName}</td>
 								<td>
 									<div className="d-flex justify-content-end">
 										<React.Fragment>
 											<MyLink
-												linkTo={`/tenants/${tenant.id}/edit`}
+												linkTo={`/erp/inventory/${inventory.id}/edit`}
 												icon={<EditSVG />}
 												className="btn-sm"
 											/>
 
 											<div className="mx-1">
 												<DeleteModal
-													index={`tenant${key}`}
-													model={tenant}
-													modelName="Tenant"
-													onDelete={onDeleteTenant}
+													index={`inventory${key}`}
+													model={inventory}
+													modelName="Inventory"
+													onDelete={onDeleteInventory}
 												/>
 											</div>
 										</React.Fragment>
@@ -138,9 +135,9 @@ const TenantList = (props) => {
 				</table>
 				{/* Pagination Links */}
 				<PaginationLinks
-					list={props.tenants}
+					list={props.inventories}
 					getPaginated={props.getPaginated}
-					setState={props.setTenants}
+					setState={props.setInventories}
 				/>
 				{/* Pagination Links End */}
 			</div>
@@ -148,4 +145,4 @@ const TenantList = (props) => {
 	)
 }
 
-export default TenantList
+export default InventoryList

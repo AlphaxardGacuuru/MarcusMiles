@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class WorkPlan extends Model
 {
     use HasFactory;
 
@@ -26,6 +26,20 @@ class Project extends Model
      *
      * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */
+    protected function startsAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => Carbon::parse($value)->format('d M Y'),
+        );
+    }
+
+    protected function endsAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => Carbon::parse($value)->format('d M Y'),
+        );
+    }
+
     protected function updatedAt(): Attribute
     {
         return Attribute::make(
@@ -44,18 +58,8 @@ class Project extends Model
      * Relationships
      */
 
-    public function createdBy()
+    public function project()
     {
-        return $this->belongsTo(User::class, "created_by");
+        return $this->belongsTo(Project::class);
     }
-
-	public function workPlans()
-	{
-		return $this->hasMany(WorkPlan::class);
-	}
-
-	public function inventories()
-	{
-		return $this->hasMany(Inventory::class);
-	}
 }

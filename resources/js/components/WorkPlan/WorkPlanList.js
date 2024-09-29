@@ -8,29 +8,29 @@ import HeroHeading from "@/components/Core/HeroHeading"
 
 import PaginationLinks from "@/components/Core/PaginationLinks"
 
-import UnitSVG from "@/svgs/UnitSVG"
+import WorkPlanSVG from "@/svgs/WorkPlanSVG"
 import ViewSVG from "@/svgs/ViewSVG"
 import EditSVG from "@/svgs/EditSVG"
 import PlusSVG from "@/svgs/PlusSVG"
 
-const UnitList = (props) => {
+const WorkPlanList = (props) => {
 	const location = useLocation()
 
 	/*
-	 * Delete Unit
+	 * Delete Work Plan
 	 */
-	const onDeleteUnit = (unitId) => {
-		Axios.delete(`/api/units/${unitId}`)
+	const onDeleteWorkPlan = (workPlanId) => {
+		Axios.delete(`/api/work-plans/${workPlanId}`)
 			.then((res) => {
 				props.setMessages([res.data.message])
 				// Remove row
-				props.setUnits({
-					meta: props.units.meta,
-					links: props.units.links,
-					data: props.units.data.filter((unit) => unit.id != unitId),
+				props.setWorkPlans({
+					meta: props.workPlans.meta,
+					links: props.workPlans.links,
+					data: props.workPlans.data.filter((workPlan) => workPlan.id != workPlanId),
 				})
-				// Update Property
-				props.get(`properties/${props.propertyId}`, props.setProperty)
+				// Update Project
+				props.get(`projects/${props.projectId}`, props.setProject)
 			})
 			.catch((err) => props.getErrors(err))
 	}
@@ -43,11 +43,11 @@ const UnitList = (props) => {
 					{/* Total */}
 					<div className="d-flex justify-content-between w-100 align-items-center mx-4">
 						<HeroHeading
-							heading="Total Units"
-							data={props.totalUnits}
+							heading="Total Work Plan Items"
+							data={props.totalWorkPlans}
 						/>
 						<HeroIcon>
-							<UnitSVG />
+							<WorkPlanSVG />
 						</HeroIcon>
 					</div>
 					{/* Total End */}
@@ -62,67 +62,41 @@ const UnitList = (props) => {
 				<table className="table table-hover">
 					<thead>
 						<tr>
-							<th colSpan="6"></th>
+							<th colSpan="4"></th>
 							<th className="text-end">
 								<MyLink
-									linkTo={`/units/${props.propertyId}/create`}
+									linkTo={`/erp/work-plan/${props.projectId}/create`}
 									icon={<PlusSVG />}
-									text="add unit"
+									text="add work plan item"
 								/>
 							</th>
 						</tr>
 						<tr>
 							<th>#</th>
 							<th>Name</th>
-							<th>Rent</th>
-							<th>Deposit</th>
-							<th>Type</th>
-							<th>Current Tenant</th>
+							<th>Starts At</th>
+							<th>Ends At</th>
 							<th className="text-center">Action</th>
 						</tr>
-						{props.units.data?.map((unit, key) => (
+						{props.workPlans.data?.map((workPlan, key) => (
 							<tr key={key}>
-								<td>{props.iterator(key, props.units)}</td>
-								<td>{unit.name}</td>
-								<td className="text-success">
-									<small>KES</small> {unit.rent}
-								</td>
-								<td className="text-success">
-									<small>KES</small> {unit.deposit}
-								</td>
-								<td className="text-capitalize">{unit.type}</td>
-								<td>
-									{unit.tenantId ? (
-										<span className="bg-success-subtle p-1">
-											{unit.tenantName}
-										</span>
-									) : (
-										<span className="bg-warning-subtle p-1">Vacant</span>
-									)}
-								</td>
+								<td>{props.iterator(key, props.workPlans)}</td>
+								<td>{workPlan.name}</td>
+								<td className="text-capitalize">{workPlan.startsAt}</td>
+								<td className="text-capitalize">{workPlan.endsAt}</td>
 								<td>
 									<div className="d-flex justify-content-end">
-										<div className="d-flex justify-content-end">
-											<MyLink
-												linkTo={`/units/${unit.id}/show`}
-												icon={<ViewSVG />}
-												// text="view"
-												className="me-1"
-											/>
-										</div>
-
 										<MyLink
-											linkTo={`/units/${unit.id}/edit`}
+											linkTo={`/erp/work-plan/${workPlan.id}/edit`}
 											icon={<EditSVG />}
-											// text="edit"
 										/>
 
 										<div className="mx-1">
 											<DeleteModal
-												index={`unit${key}`}
-												model={unit}
-												modelName="Unit"
-												onDelete={onDeleteUnit}
+												index={`workPlan${key}`}
+												model={workPlan}
+												modelName="Work Plan"
+												onDelete={onDeleteWorkPlan}
 											/>
 										</div>
 									</div>
@@ -133,9 +107,9 @@ const UnitList = (props) => {
 				</table>
 				{/* Pagination Links */}
 				<PaginationLinks
-					list={props.units}
+					list={props.workPlans}
 					getPaginated={props.getPaginated}
-					setState={props.setUnits}
+					setState={props.setWorkPlans}
 				/>
 				{/* Pagination Links End */}
 			</div>
@@ -144,4 +118,4 @@ const UnitList = (props) => {
 	)
 }
 
-export default UnitList
+export default WorkPlanList

@@ -4,6 +4,7 @@ use App\Http\Controllers\CardTransactionController;
 use App\Http\Controllers\CreditNoteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FilePondController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\KopokopoRecipientController;
 use App\Http\Controllers\KopokopoTransferController;
@@ -14,10 +15,12 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WaterReadingController;
+use App\Http\Controllers\WorkPlanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +43,9 @@ Route::get('auth', [UserController::class, 'auth']);
 
 Route::apiResources([
 	"projects" => ProjectController::class,
+	"work-plans" => WorkPlanController::class,
+	"inventories" => InventoryController::class,
+	"suppliers" => SupplierController::class,
     "properties" => PropertyController::class,
     "units" => UnitController::class,
     "tenants" => TenantController::class,
@@ -62,48 +68,6 @@ Route::apiResources([
  */
 Route::get("dashboard/{id}", [DashboardController::class, "index"]);
 Route::get("dashboard/properties/{id}", [DashboardController::class, "properties"]);
-
-/*
- * Properties
- */
-Route::get("properties/by-user-id/{id}", [PropertyController::class, "byUserId"]);
-
-/*
- * Units
- */
-Route::get("units/by-property-id/{id}", [UnitController::class, "byPropertyId"]);
-Route::get("units/statements/{id}", [UnitController::class, "statements"]);
-
-/*
- * Tenants
- */
-Route::get("tenants/by-property-id/{id}", [TenantController::class, "byPropertyId"]);
-Route::get("tenants/by-unit-id/{id}", [TenantController::class, "byUnitId"]);
-
-/*
- * Staff
- */
-Route::get("staff/by-property-id/{id}", [StaffController::class, "byPropertyId"]);
-
-/*
- * Invoices
- */
-Route::get("invoices/by-property-id/{id}", [InvoiceController::class, "byPropertyId"]);
-
-/*
- * WaterReadings
- */
-Route::get("water-readings/by-property-id/{id}", [WaterReadingController::class, "byPropertyId"]);
-
-/*
- * Payments
- */
-Route::get("payments/by-property-id/{id}", [PaymentController::class, "byPropertyId"]);
-
-/*
- * CreditNotes
- */
-Route::get("credit-notes/by-property-id/{id}", [CreditNoteController::class, "byPropertyId"]);
 
 // Kopokopo STK Push
 Route::post("stk-push", [MPESATransactionController::class, 'stkPush']);

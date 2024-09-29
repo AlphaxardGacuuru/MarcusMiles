@@ -6,25 +6,23 @@ import {
 
 import Btn from "@/components/Core/Btn"
 import MyLink from "@/components/Core/MyLink"
-
 import BackSVG from "@/svgs/BackSVG"
 
 const create = (props) => {
-	var { id } = useParams()
 	var history = useHistory()
+	var { id } = useParams()
 
 	const [name, setName] = useState()
-	const [email, setEmail] = useState()
-	const [phone, setPhone] = useState()
-	const [occupiedAt, setOccupiedAt] = useState()
+	const [startsAt, setStartAt] = useState()
+	const [endsAt, setEndsAt] = useState()
 	const [loading, setLoading] = useState()
 
-	// Get Faculties and Departments
+	// Get Work Plans
 	useEffect(() => {
 		// Set page
 		props.setPage({
-			name: "Add Tenant",
-			path: ["units", `units/${id}/show`, "create"],
+			name: "Add Work Plan Item",
+			path: ["projects", `projects/${id}/view`, "create"],
 		})
 	}, [])
 
@@ -35,21 +33,18 @@ const create = (props) => {
 		e.preventDefault()
 
 		setLoading(true)
-		Axios.post("/api/tenants", {
-			unitId: id,
+		Axios.post("/api/work-plans", {
+			projectId: id,
 			name: name,
-			email: email,
-			phone: phone,
-			occupiedAt: occupiedAt,
+			startsAt: startsAt,
+			endsAt: endsAt,
 		})
 			.then((res) => {
 				setLoading(false)
 				// Show messages
 				props.setMessages([res.data.message])
-				// Fetch Auth
-				props.get("auth", props.setAuth, "auth")
-				// Redirect to Property
-				setTimeout(() => history.push(`/admin/units/${id}/show`), 500)
+				// Redirect to Work Plans
+				setTimeout(() => history.push(`/admin/erp/projects/${id}/view`), 500)
 			})
 			.catch((err) => {
 				setLoading(false)
@@ -62,59 +57,59 @@ const create = (props) => {
 		<div className="row">
 			<div className="col-sm-4"></div>
 			<div className="col-sm-4">
-				<form onSubmit={onSubmit}>
+				<form
+					onSubmit={onSubmit}
+					className="mb-5">
+					{/* Name */}
+					<label htmlFor="">Name</label>
 					<input
 						type="text"
-						name="name"
-						placeholder="Name"
+						placeholder="A1"
 						className="form-control mb-2 me-2"
 						onChange={(e) => setName(e.target.value)}
 						required={true}
 					/>
+					{/* Name */}
 
+					{/* Starts At */}
+					<label htmlFor="">Starts At</label>
 					<input
-						type="text"
-						name="email"
-						placeholder="Email"
-						className="form-control mb-2 me-2"
-						onChange={(e) => setEmail(e.target.value)}
-						required={true}
-					/>
-
-					<input
-						type="tel"
-						name="phone"
-						placeholder="Phone"
-						className="form-control mb-2 me-2"
-						onChange={(e) => setPhone(e.target.value)}
-						required={true}
-					/>
-
-					<input
-						name="occupiedAt"
 						type="date"
-						className="form-control mb-3 me-2"
-						onChange={(e) => setOccupiedAt(e.target.value)}
+						placeholder="A1"
+						className="form-control mb-2 me-2"
+						onChange={(e) => setStartAt(e.target.value)}
 						required={true}
 					/>
+					{/* Starts At */}
+
+					{/* Ends At */}
+					<label htmlFor="">Ends At</label>
+					<input
+						type="date"
+						placeholder="A1"
+						className="form-control mb-2 me-2"
+						onChange={(e) => setEndsAt(e.target.value)}
+						required={true}
+					/>
+					{/* Ends At */}
 
 					<div className="d-flex justify-content-end mb-2">
 						<Btn
-							text="add tenant"
+							text="add work plan item"
 							loading={loading}
 						/>
 					</div>
 
 					<div className="d-flex justify-content-center">
 						<MyLink
-							linkTo={`/units/${id}/show`}
+							linkTo={`/erp/projects/${id}/view`}
 							icon={<BackSVG />}
-							text="back to unit"
+							text="back to projects"
 						/>
 					</div>
+					<div className="col-sm-4"></div>
 				</form>
 			</div>
-			<div className="col-sm-4"></div>
 		</div>
 	)
 }
