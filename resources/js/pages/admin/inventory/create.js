@@ -95,13 +95,20 @@ const create = (props) => {
 						placeholder="Supplier"
 						className="form-control text-capitalize mb-2 me-2"
 						onChange={(e) => setSupplierId(e.target.value)}>
-						{suppliers.map((supplier, key) => (
-							<option
-								key={key}
-								value={supplier.id}>
-								{supplier.name}
-							</option>
-						))}
+						{[
+							{
+								id: "",
+								name: "Select Supplier",
+							},
+						]
+							.concat(suppliers)
+							.map((supplier, key) => (
+								<option
+									key={key}
+									value={supplier.id}>
+									{supplier.name}
+								</option>
+							))}
 					</select>
 					{/* Supplier End */}
 

@@ -99,6 +99,11 @@ class WorkPlanService extends Service
                 ->where("name", "LIKE", "%" . $request->name . "%");
         }
 
+        if ($request->filled("projectId")) {
+            $query = $query
+                ->where("project_id", $request->projectId);
+        }
+
         return $query;
     }
 }

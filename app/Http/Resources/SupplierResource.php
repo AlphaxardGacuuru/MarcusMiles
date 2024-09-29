@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class InventoryResource extends JsonResource
+class SupplierResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,13 +14,6 @@ class InventoryResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-			"id" => $this->id,
-			"projectId" => $this->project_id,
-			"name" => $this->name,
-			"quantity" => $this->quantity,
-			"supplierId" => $this->supplier_id,
-			"supplierName" => $this->supplier?->name,
-		];
+        return parent::toArray($request);
     }
 }

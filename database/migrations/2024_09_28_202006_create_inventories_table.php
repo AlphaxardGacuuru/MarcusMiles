@@ -20,7 +20,7 @@ return new class extends Migration
                 ->onUpdate("cascade")
                 ->onDelete("cascade");
             $table->string('name');
-            $table->string('quantity');
+            $table->integer('quantity');
             $table->unsignedBigInteger('supplier_id')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->timestamps();

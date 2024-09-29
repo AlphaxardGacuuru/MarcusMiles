@@ -65,9 +65,7 @@ class InventoryService extends Service
             $inventory->quantity = $request->quantity;
         }
 
-        if ($request->filled("supplierId")) {
-            $inventory->supplier_id = $request->supplierId;
-        }
+        $inventory->supplier_id = $request->supplierId;
 
         $saved = $inventory->save();
 
@@ -98,6 +96,11 @@ class InventoryService extends Service
         if ($request->filled("name")) {
             $query = $query
                 ->where("name", "LIKE", "%" . $request->name . "%");
+        }
+
+        if ($request->filled("projectId")) {
+            $query = $query
+                ->where("project_id", $request->projectId);
         }
 
         return $query;

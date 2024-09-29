@@ -85,7 +85,7 @@ const AdminNavLinks = (props) => {
 							</Link>
 						</li>
 						{/* Dashboard End */}
-						{/* Projects */}
+						{/* Projects Start */}
 						<li className="nav-item">
 							<Link
 								to={`/admin/erp/projects`}
@@ -101,6 +101,18 @@ const AdminNavLinks = (props) => {
 							</Link>
 						</li>
 						{/* Projects End */}
+						{/* Suppliers Start */}
+						<li className="nav-item">
+							<Link
+								to={`/admin/erp/suppliers`}
+								className={`nav-link ${active("/admin/erp/suppliers")}`}>
+								<div className="nav-link-icon">
+									<ProjectSVG />
+								</div>
+								<div className="nav-link-text">Suppliers</div>
+							</Link>
+						</li>
+						{/* Suppliers End */}
 					</ol>
 				</div>
 				{/* Collapse End */}

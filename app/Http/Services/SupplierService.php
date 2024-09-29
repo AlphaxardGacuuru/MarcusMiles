@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Http\Resources\SupplierResource;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class SupplierService extends Service
 {
@@ -23,7 +24,7 @@ class SupplierService extends Service
             ], 200);
         }
 
-        $suppliersQuery = new User;
+        $suppliersQuery = User::where("account_type", "supplier");
 
         $suppliersQuery = $this->search($suppliersQuery, $request);
 
@@ -50,9 +51,11 @@ class SupplierService extends Service
     {
         $supplier = new User;
         $supplier->name = $request->name;
-        $supplier->type = $request->type;
-        $supplier->description = $request->description;
-        $supplier->created_by = $this->id;
+        $supplier->email = $request->email;
+        $supplier->password = Hash::make($request->email);
+        $supplier->phone = $request->phone;
+        $supplier->location = $request->location;
+        $supplier->account_type = "supplier";
         $saved = $supplier->save();
 
         $message = $supplier->name . " created successfully";
@@ -71,12 +74,16 @@ class SupplierService extends Service
             $supplier->name = $request->name;
         }
 
-        if ($request->filled("type")) {
-            $supplier->type = $request->type;
+        if ($request->filled("email")) {
+            $supplier->email = $request->email;
         }
 
-        if ($request->filled("description")) {
-            $supplier->description = $request->description;
+        if ($request->filled("phone")) {
+            $supplier->phone = $request->phone;
+        }
+
+        if ($request->filled("location")) {
+            $supplier->location = $request->location;
         }
 
         $saved = $supplier->save();
@@ -107,7 +114,8 @@ class SupplierService extends Service
     {
         if ($request->filled("name")) {
             $query = $query
-                ->where("name", "LIKE", "%" . $request->name . "%");
+                ->where("name", "LIKE", "%" . $request->input("name") . "%")
+                ->orWhere("email", "LIKE", "%" . $request->input("name") . "%");
         }
 
         return $query;

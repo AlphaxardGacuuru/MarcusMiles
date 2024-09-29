@@ -11,7 +11,7 @@ import AdminProjectDashboard from "@/pages/admin/erp-dashboard"
 
 import AdminProjects from "@/pages/admin/projects/index"
 import AdminProjectCreate from "@/pages/admin/projects/create"
-import AdminProjectShow from "@/pages/admin/projects/[id]"
+import AdminProjectView from "@/pages/admin/projects/[id]"
 import AdminProjectEdit from "@/pages/admin/projects/edit/[id]"
 
 import AdminWorkPlanCreate from "@/pages/admin/work-plan/create"
@@ -20,9 +20,14 @@ import AdminWorkPlanEdit from "@/pages/admin/work-plan/edit/[id]"
 import AdminInventoryCreate from "@/pages/admin/inventory/create"
 import AdminInventoryEdit from "@/pages/admin/inventory/edit/[id]"
 
+import AdminSuppliers from "@/pages/admin/suppliers/index"
+import AdminSupplierCreate from "@/pages/admin/suppliers/create"
+import AdminSupplierView from "@/pages/admin/suppliers/[id]"
+import AdminSupplierEdit from "@/pages/admin/suppliers/edit/[id]"
+
 import AdminInvoices from "@/pages/admin/invoices/index"
 import AdminInvoiceCreate from "@/pages/admin/invoices/create"
-import AdminInvoiceShow from "@/pages/admin/invoices/[id]"
+import AdminInvoiceView from "@/pages/admin/invoices/[id]"
 import AdminInvoiceEdit from "@/pages/admin/invoices/edit/[id]"
 
 import AdminPayments from "@/pages/admin/payments/index"
@@ -69,7 +74,7 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		},
 		{
 			path: "/admin/erp/projects/:id/view",
-			component: <AdminProjectShow {...GLOBAL_STATE} />,
+			component: <AdminProjectView {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/erp/projects/:id/edit",
@@ -92,6 +97,22 @@ const RouteList = ({ GLOBAL_STATE }) => {
 			component: <AdminInventoryEdit {...GLOBAL_STATE} />,
 		},
 		{
+			path: "/admin/erp/suppliers",
+			component: <AdminSuppliers {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/suppliers/create",
+			component: <AdminSupplierCreate {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/suppliers/:id/view",
+			component: <AdminSupplierView {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/suppliers/:id/edit",
+			component: <AdminSupplierEdit {...GLOBAL_STATE} />,
+		},
+		{
 			path: "/admin/invoices",
 			component: <AdminInvoices {...GLOBAL_STATE} />,
 		},
@@ -101,7 +122,7 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		},
 		{
 			path: "/admin/invoices/:id/view",
-			component: <AdminInvoiceShow {...GLOBAL_STATE} />,
+			component: <AdminInvoiceView {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/invoices/:id/edit",

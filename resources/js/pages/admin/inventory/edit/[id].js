@@ -34,6 +34,7 @@ const edit = (props) => {
 			})
 
 			setInventory(res.data.data)
+			setSupplierId(res.data.data.supplierId.toString())
 		})
 
 		// Fetch Suppliers
@@ -101,14 +102,21 @@ const edit = (props) => {
 						placeholder="Supplier"
 						className="form-control text-capitalize mb-2 me-2"
 						onChange={(e) => setSupplierId(e.target.value)}>
-						{suppliers.map((supplier, key) => (
-							<option
-								key={key}
-								value={supplier.id}
-								selected={supplier.id == inventory.supplierId}>
-								{supplier.name}
-							</option>
-						))}
+						{[
+							{
+								id: "",
+								name: "Select Supplier",
+							},
+						]
+							.concat(suppliers)
+							.map((supplier, key) => (
+								<option
+									key={key}
+									value={supplier.id}
+									selected={supplier.id == inventory.supplierId}>
+									{supplier.name}
+								</option>
+							))}
 					</select>
 					{/* Supplier End */}
 

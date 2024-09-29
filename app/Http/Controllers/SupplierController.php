@@ -33,8 +33,9 @@ class SupplierController extends Controller
     {
         $this->validate($request, [
             "name" => "required|string",
-            "type" => "required|string",
-            "description" => "nullable|string|max:255",
+            "email" => "required|string",
+            "phone" => "nullable|string",
+            "location" => "nullable|string",
         ]);
 
         [$saved, $message, $supplier] = $this->service->store($request);
@@ -68,8 +69,9 @@ class SupplierController extends Controller
     {
         $this->validate($request, [
             "name" => "nullable|string",
-            "type" => "nullable|string",
-            "description" => "nullable|string|max:255",
+            "email" => "nullable|string",
+            "phone" => "nullable|string",
+            "location" => "nullable|string",
         ]);
 
         [$saved, $message, $supplier] = $this->service->update($request, $id);
