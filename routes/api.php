@@ -6,6 +6,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FilePondController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\IssueCommentController;
+use App\Http\Controllers\IssueController;
+use App\Http\Controllers\IssueStageController;
 use App\Http\Controllers\KopokopoRecipientController;
 use App\Http\Controllers\KopokopoTransferController;
 use App\Http\Controllers\MPESATransactionController;
@@ -15,6 +18,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\StageController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\UnitController;
@@ -46,6 +50,11 @@ Route::apiResources([
 	"work-plans" => WorkPlanController::class,
 	"inventories" => InventoryController::class,
 	"suppliers" => SupplierController::class,
+	"stages" => StageController::class,
+	"issues" => IssueController::class,
+	"issue-comments" => IssueCommentController::class,
+	"issue-stages" => IssueStageController::class,
+
     "properties" => PropertyController::class,
     "units" => UnitController::class,
     "tenants" => TenantController::class,
@@ -68,6 +77,11 @@ Route::apiResources([
  */
 Route::get("dashboard/{id}", [DashboardController::class, "index"]);
 Route::get("dashboard/properties/{id}", [DashboardController::class, "properties"]);
+
+/*
+* Issues
+*/ 
+Route::put("issues/reorder/{id}", [IssueController::class, "reorder"]);
 
 // Kopokopo STK Push
 Route::post("stk-push", [MPESATransactionController::class, 'stkPush']);

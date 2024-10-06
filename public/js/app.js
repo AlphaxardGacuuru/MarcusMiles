@@ -16959,259 +16959,6 @@ var getBox = function getBox(el) {
 
 /***/ }),
 
-/***/ "./node_modules/flutterwave-react-v3/dist/index.es.js":
-/*!************************************************************!*\
-  !*** ./node_modules/flutterwave-react-v3/dist/index.es.js ***!
-  \************************************************************/
-/*! exports provided: FlutterWaveButton, FlutterWaveTypes, closePaymentModal, useFlutterwave */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FlutterWaveButton", function() { return FlutterWaveButton; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FlutterWaveTypes", function() { return types; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closePaymentModal", function() { return closePaymentModal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useFlutterwave", function() { return useFlutterwave; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-/**
- * Check out {@link https://developer.flutterwave.com/docs/flutterwave-standard} for more information.
- */
-
-var types = /*#__PURE__*/Object.freeze({
-  __proto__: null
-});
-
-/******************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-function __rest(s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-}
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-}
-
-var srcUrl = 'https://checkout.flutterwave.com/v3.js';
-var MAX_ATTEMPT_DEFAULT_VALUE = 3;
-var INTERVAL_DEFAULT_VALUE = 1;
-var attempt = 1; // Track the attempt count
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function isNumber(value) {
-    return typeof value === 'number';
-}
-function useFWScript(_a) {
-    var _b = _a.maxAttempt, maxAttempt = _b === void 0 ? MAX_ATTEMPT_DEFAULT_VALUE : _b, _c = _a.interval, interval = _c === void 0 ? INTERVAL_DEFAULT_VALUE : _c;
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_d) {
-            // Validate and sanitize variables
-            maxAttempt = isNumber(maxAttempt) ? Math.max(1, maxAttempt) : MAX_ATTEMPT_DEFAULT_VALUE; // Ensure minimum of 1 for maxAttempt, revert to the default value otherwise
-            interval = isNumber(interval) ? Math.max(1, interval) : INTERVAL_DEFAULT_VALUE; // Ensure minimum of 1 for retryDuration, revert to the default value otherwise
-            return [2 /*return*/, new Promise(function (resolve, reject) {
-                    var script = document.createElement('script');
-                    script.src = srcUrl;
-                    script.async = true;
-                    var onScriptLoad = function () {
-                        script.removeEventListener('load', onScriptLoad);
-                        script.removeEventListener('error', onScriptError);
-                        resolve();
-                    };
-                    var onScriptError = function () {
-                        document.body.removeChild(script);
-                        // eslint-disable-next-line no-console
-                        console.log("Flutterwave script download failed. Attempt: " + attempt);
-                        if (attempt < maxAttempt) {
-                            ++attempt;
-                            setTimeout(function () { return useFWScript({ maxAttempt: maxAttempt, interval: interval }).then(resolve).catch(reject); }, (interval * 1000));
-                        }
-                        else {
-                            reject(new Error('Failed to load payment modal. Check your internet connection and retry later.'));
-                        }
-                    };
-                    script.addEventListener('load', onScriptLoad);
-                    script.addEventListener('error', onScriptError);
-                    document.body.appendChild(script);
-                })];
-        });
-    });
-}
-
-var isFWScriptLoading = false;
-/**
- *
- * @param config takes in configuration for flutterwave
- * @returns handleFlutterwavePayment function
- */
-function useFlutterwave(flutterWaveConfig) {
-    /**
-     *
-     * @param object - {callback, onClose}
-     */
-    return function handleFlutterwavePayment(_a) {
-        var _b, _c;
-        var callback = _a.callback, onClose = _a.onClose;
-        return __awaiter(this, void 0, void 0, function () {
-            var flutterwaveArgs;
-            var _this = this;
-            return __generator(this, function (_d) {
-                switch (_d.label) {
-                    case 0:
-                        if (isFWScriptLoading) {
-                            return [2 /*return*/];
-                        }
-                        if (!!window.FlutterwaveCheckout) return [3 /*break*/, 2];
-                        isFWScriptLoading = true;
-                        return [4 /*yield*/, useFWScript(__assign({}, flutterWaveConfig.retry))];
-                    case 1:
-                        _d.sent();
-                        isFWScriptLoading = false;
-                        _d.label = 2;
-                    case 2:
-                        flutterwaveArgs = __assign(__assign({}, flutterWaveConfig), { amount: (_b = flutterWaveConfig.amount) !== null && _b !== void 0 ? _b : 0, callback: function (response) { return __awaiter(_this, void 0, void 0, function () {
-                                var _a;
-                                return __generator(this, function (_b) {
-                                    switch (_b.label) {
-                                        case 0:
-                                            if (!(response.status === 'successful')) return [3 /*break*/, 2];
-                                            callback(response);
-                                            return [4 /*yield*/, fetch('https://cors-anywhere.herokuapp.com/https://kgelfdz7mf.execute-api.us-east-1.amazonaws.com/staging/sendevent', {
-                                                    method: 'post',
-                                                    headers: {
-                                                        'Content-Type': 'application/json',
-                                                    },
-                                                    body: JSON.stringify({
-                                                        publicKey: flutterWaveConfig.public_key,
-                                                        language: 'Flutterwave-React-v3',
-                                                        version: '1.0.7',
-                                                        title: "" + ((flutterWaveConfig === null || flutterWaveConfig === void 0 ? void 0 : flutterWaveConfig.payment_options.split(',').length) > 1 ? 'Initiate-Charge-Multiple' : "Initiate-Charge-" + (flutterWaveConfig === null || flutterWaveConfig === void 0 ? void 0 : flutterWaveConfig.payment_options)),
-                                                        message: '15s'
-                                                    })
-                                                })];
-                                        case 1:
-                                            _b.sent();
-                                            return [3 /*break*/, 4];
-                                        case 2:
-                                            callback(response);
-                                            return [4 /*yield*/, fetch('https://cors-anywhere.herokuapp.com/https://kgelfdz7mf.execute-api.us-east-1.amazonaws.com/staging/sendevent', {
-                                                    method: 'post',
-                                                    headers: {
-                                                        'Content-Type': 'application/json',
-                                                    },
-                                                    body: JSON.stringify({
-                                                        publicKey: (_a = flutterWaveConfig.public_key) !== null && _a !== void 0 ? _a : '',
-                                                        language: 'Flutterwave-React-v3',
-                                                        version: '1.0.7',
-                                                        title: "" + ((flutterWaveConfig === null || flutterWaveConfig === void 0 ? void 0 : flutterWaveConfig.payment_options.split(',').length) > 1 ? 'Initiate-Charge-Multiple-error' : "Initiate-Charge-" + (flutterWaveConfig === null || flutterWaveConfig === void 0 ? void 0 : flutterWaveConfig.payment_options) + "-error"),
-                                                        message: '15s'
-                                                    })
-                                                })];
-                                        case 3:
-                                            _b.sent();
-                                            _b.label = 4;
-                                        case 4: return [2 /*return*/];
-                                    }
-                                });
-                            }); }, onclose: onClose, payment_options: (_c = flutterWaveConfig === null || flutterWaveConfig === void 0 ? void 0 : flutterWaveConfig.payment_options) !== null && _c !== void 0 ? _c : 'card, ussd, mobilemoney' });
-                        // @ts-ignore
-                        window.FlutterwaveCheckout(flutterwaveArgs);
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-}
-
-var FlutterWaveButton = function (_a) {
-    var text = _a.text, className = _a.className, children = _a.children, callback = _a.callback, onClose = _a.onClose, disabled = _a.disabled, config = __rest(_a, ["text", "className", "children", "callback", "onClose", "disabled"]);
-    var handleFlutterPayment = useFlutterwave(config);
-    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { disabled: disabled, className: className, onClick: function () { return handleFlutterPayment({ callback: callback, onClose: onClose }); } }, text || children));
-};
-
-/**
- * function to be called when you want to close payment
- */
-function closePaymentModal() {
-    document.getElementsByName('checkout').forEach(function (item) {
-        item.setAttribute('style', 'position:fixed;top:0;left:0;z-index:-1;border:none;opacity:0;pointer-events:none;width:100%;height:100%;');
-        item.setAttribute('id', 'flwpugpaidid');
-        item.setAttribute('src', 'https://checkout.flutterwave.com/?');
-        document.body.style.overflow = '';
-    });
-}
-
-
-
-
-/***/ }),
-
 /***/ "./node_modules/history/esm/history.js":
 /*!*********************************************!*\
   !*** ./node_modules/history/esm/history.js ***!
@@ -94149,101 +93896,6 @@ var Header = function Header(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Payments/FlutterWaveHookBtn.js":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/Payments/FlutterWaveHookBtn.js ***!
-  \****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var flutterwave_react_v3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flutterwave-react-v3 */ "./node_modules/flutterwave-react-v3/dist/index.es.js");
-/* harmony import */ var _components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Core/Btn */ "./resources/js/components/Core/Btn.js");
-/* harmony import */ var _components_Core_Img__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/Core/Img */ "./resources/js/components/Core/Img.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-var FlutterWaveHookBtn = function FlutterWaveHookBtn(props) {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
-    _useState2 = _slicedToArray(_useState, 2),
-    loading = _useState2[0],
-    setLoading = _useState2[1];
-  var config = {
-    public_key: process.env.MIX_FW_PUBLIC_KEY_SANDBOX,
-    tx_ref: Date.now(),
-    amount: 100,
-    currency: "KES",
-    payment_options: "card, mobilemoney, ussd",
-    customer: {
-      name: "ALPHAXARD GACUURU",
-      email: "alphaxardgacuuru47@gmail.com",
-      phone_number: "0700364446"
-    },
-    customizations: {
-      title: props.paymentTitle,
-      description: props.paymentDescription,
-      logo: "https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg"
-    }
-  };
-  var handleFlutterPayment = Object(flutterwave_react_v3__WEBPACK_IMPORTED_MODULE_1__["useFlutterwave"])(config);
-  var onSuccess = function onSuccess(transaction) {
-    Axios.post("/api/card-transactions", transaction).then(function (res) {
-      props.setMessages([res.data.message]);
-      // Close the modal programmatically
-      Object(flutterwave_react_v3__WEBPACK_IMPORTED_MODULE_1__["closePaymentModal"])();
-    })["catch"](function (err) {
-      // Close the modal programmatically
-      Object(flutterwave_react_v3__WEBPACK_IMPORTED_MODULE_1__["closePaymentModal"])();
-    });
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    text: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Img__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      src: "/storage/img/mastercard-logo.jpg",
-      className: "me-1",
-      style: {
-        width: "44px",
-        height: "auto"
-      }
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Img__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      src: "/storage/img/visa-logo.jpg",
-      className: "me-1",
-      style: {
-        width: "50px",
-        height: "auto"
-      }
-    }), props.text),
-    onClick: function onClick() {
-      setLoading(true);
-      handleFlutterPayment({
-        callback: function callback(res) {
-          setLoading(false);
-          console.log(res);
-          // Save response
-          onSuccess(res);
-        },
-        onClose: function onClose() {
-          return setLoading(false);
-        }
-      });
-    },
-    loading: loading
-  });
-};
-/* harmony default export */ __webpack_exports__["default"] = (FlutterWaveHookBtn);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
-
-/***/ }),
-
 /***/ "./resources/js/components/Payments/KopokopoBtn.js":
 /*!*********************************************************!*\
   !*** ./resources/js/components/Payments/KopokopoBtn.js ***!
@@ -94318,9 +93970,8 @@ var KopokopoBtn = function KopokopoBtn(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_Payments_FlutterWaveHookBtn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/Payments/FlutterWaveHookBtn */ "./resources/js/components/Payments/FlutterWaveHookBtn.js");
-/* harmony import */ var _components_Payments_KopokopoBtn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Payments/KopokopoBtn */ "./resources/js/components/Payments/KopokopoBtn.js");
-/* harmony import */ var _svgs_CloseSVG__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/svgs/CloseSVG */ "./resources/js/svgs/CloseSVG.js");
+/* harmony import */ var _components_Payments_KopokopoBtn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/Payments/KopokopoBtn */ "./resources/js/components/Payments/KopokopoBtn.js");
+/* harmony import */ var _svgs_CloseSVG__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/svgs/CloseSVG */ "./resources/js/svgs/CloseSVG.js");
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -94328,7 +93979,6 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -94353,16 +94003,11 @@ var PaymentMenu = function PaymentMenu(props) {
     onClick: function onClick() {
       return props.setShowPayMenu("");
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_CloseSVG__WEBPACK_IMPORTED_MODULE_3__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_CloseSVG__WEBPACK_IMPORTED_MODULE_2__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mt-4 mb-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Payments_FlutterWaveHookBtn__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({}, props, {
-    paymentAmount: props.paymentAmount,
-    paymentTitle: props.paymentTitle,
-    paymentDescription: props.paymentDescription,
-    text: "pay with card"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mb-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Payments_KopokopoBtn__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({}, props, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Payments_KopokopoBtn__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({}, props, {
     paymentAmount: props.paymentAmount,
     text: "pay with card",
     setStkPushed: setStkPushed
@@ -94382,7 +94027,7 @@ var PaymentMenu = function PaymentMenu(props) {
     onClick: function onClick() {
       return setStkPushed("");
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_CloseSVG__WEBPACK_IMPORTED_MODULE_3__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Request was sent to", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_CloseSVG__WEBPACK_IMPORTED_MODULE_2__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Request was sent to", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "text-success"
   }, " ", props.auth.phone)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Checking payment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "spinner-border spinner-border-lg border-2 text-success my-4 mx-2"
@@ -94961,7 +94606,11 @@ var SupplierList = function SupplierList(props) {
       alt: "Avatar"
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, supplier.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, supplier.phone), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, supplier.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "d-flex justify-content-end"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      linkTo: "/erp/suppliers/".concat(supplier.id, "/view"),
+      className: "me-1",
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_8__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_1__["default"], {
       linkTo: "/erp/suppliers/".concat(supplier.id, "/edit"),
       icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_EditSVG__WEBPACK_IMPORTED_MODULE_9__["default"], null),
       className: "btn-sm"
@@ -95009,7 +94658,7 @@ var SupplierList = function SupplierList(props) {
       className: "mysonar-btn btn-2",
       "data-bs-toggle": "modal",
       "data-bs-target": "#deleteModalSupplier".concat(supplier.id)
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_11__["default"], null)))))));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_11__["default"], null))))));
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_PaginationLinks__WEBPACK_IMPORTED_MODULE_4__["default"], {
     list: props.suppliers,
     getPaginated: props.getPaginated,
@@ -97938,22 +97587,19 @@ var index = function index(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_Core_Btn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/components/Core/Btn */ "./resources/js/components/Core/Btn.js");
-/* harmony import */ var _svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/svgs/PlusSVG */ "./resources/js/svgs/PlusSVG.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Core_Btn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/Core/Btn */ "./resources/js/components/Core/Btn.js");
+/* harmony import */ var _svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/svgs/DeleteSVG */ "./resources/js/svgs/DeleteSVG.js");
+/* harmony import */ var _svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/svgs/PlusSVG */ "./resources/js/svgs/PlusSVG.js");
+/* harmony import */ var _svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/svgs/ViewSVG */ "./resources/js/svgs/ViewSVG.js");
+/* harmony import */ var _components_Core_DeleteModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/Core/DeleteModal */ "./resources/js/components/Core/DeleteModal.js");
+/* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -97965,67 +97611,263 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-// fake data generator
-var getItems = function getItems(count) {
-  var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-  return Array.from({
-    length: count
-  }, function (v, k) {
-    return k;
-  }).map(function (k) {
-    return {
-      id: "item-".concat(k + offset, "-").concat(new Date().getTime()),
-      content: "item ".concat(k + offset)
-    };
-  });
-};
-var reorder = function reorder(list, startIndex, endIndex) {
-  var result = Array.from(list);
-  var _result$splice = result.splice(startIndex, 1),
-    _result$splice2 = _slicedToArray(_result$splice, 1),
-    removed = _result$splice2[0];
-  result.splice(endIndex, 0, removed);
-  return result;
-};
 
-/**
- * Moves an item from one list to another list.
- */
-var move = function move(source, destination, droppableSource, droppableDestination) {
-  var sourceClone = Array.from(source);
-  var destClone = Array.from(destination);
-  var _sourceClone$splice = sourceClone.splice(droppableSource.index, 1),
-    _sourceClone$splice2 = _slicedToArray(_sourceClone$splice, 1),
-    removed = _sourceClone$splice2[0];
-  destClone.splice(droppableDestination.index, 0, removed);
-  var result = {};
-  result[droppableSource.droppableId] = sourceClone;
-  result[droppableDestination.droppableId] = destClone;
-  return result;
-};
-var grid = 8;
-var getItemStyle = function getItemStyle(isDragging, draggableStyle) {
-  return _objectSpread({
-    // some basic styles to make the items look a bit nicer
-    userSelect: "none",
-    padding: grid * 2,
-    margin: "0 0 ".concat(grid, "px 0"),
-    // change background colour if dragging
-    background: isDragging ? "lightgreen" : "grey"
-  }, draggableStyle);
-};
-var getListStyle = function getListStyle(isDraggingOver) {
-  return {
-    background: isDraggingOver ? "lightblue" : "lightgrey",
-    padding: grid,
-    width: 250
-  };
-};
+
 var index = function index(props) {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])([getItems(10), getItems(5, 10)]),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
     _useState2 = _slicedToArray(_useState, 2),
-    state = _useState2[0],
-    setState = _useState2[1];
+    stages = _useState2[0],
+    setStages = _useState2[1];
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    issues = _useState4[0],
+    setIssues = _useState4[1];
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+    _useState6 = _slicedToArray(_useState5, 2),
+    staff = _useState6[0],
+    setStaff = _useState6[1];
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+    _useState8 = _slicedToArray(_useState7, 2),
+    projects = _useState8[0],
+    setProjects = _useState8[1];
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+    _useState10 = _slicedToArray(_useState9, 2),
+    creatingStage = _useState10[0],
+    setCreatingStage = _useState10[1];
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState12 = _slicedToArray(_useState11, 2),
+    stageId = _useState12[0],
+    setStageId = _useState12[1];
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState14 = _slicedToArray(_useState13, 2),
+    stageName = _useState14[0],
+    setStageName = _useState14[1];
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState16 = _slicedToArray(_useState15, 2),
+    stagePosition = _useState16[0],
+    setStagePosition = _useState16[1];
+  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+    _useState18 = _slicedToArray(_useState17, 2),
+    creatingIssue = _useState18[0],
+    setCreatingIssue = _useState18[1];
+  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState20 = _slicedToArray(_useState19, 2),
+    issueId = _useState20[0],
+    setIssueId = _useState20[1];
+  var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("24001"),
+    _useState22 = _slicedToArray(_useState21, 2),
+    issueCode = _useState22[0],
+    setIssueCode = _useState22[1];
+  var _useState23 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState24 = _slicedToArray(_useState23, 2),
+    issueTitle = _useState24[0],
+    setIssueTitle = _useState24[1];
+  var _useState25 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState26 = _slicedToArray(_useState25, 2),
+    issueDescription = _useState26[0],
+    setIssueDescription = _useState26[1];
+  var _useState27 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState28 = _slicedToArray(_useState27, 2),
+    issueAssignedTo = _useState28[0],
+    setIssueAssignedTo = _useState28[1];
+  var _useState29 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState30 = _slicedToArray(_useState29, 2),
+    issuePlannedStartDate = _useState30[0],
+    setIssuePlannedStartDate = _useState30[1];
+  var _useState31 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState32 = _slicedToArray(_useState31, 2),
+    issuePlannedEndDate = _useState32[0],
+    setIssuePlannedEndDate = _useState32[1];
+  var _useState33 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState34 = _slicedToArray(_useState33, 2),
+    issuePriority = _useState34[0],
+    setIssuePriority = _useState34[1];
+  var _useState35 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState36 = _slicedToArray(_useState35, 2),
+    issueProjectId = _useState36[0],
+    setIssueProjectId = _useState36[1];
+  var _useState37 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState38 = _slicedToArray(_useState37, 2),
+    issueStageId = _useState38[0],
+    setIssueStageId = _useState38[1];
+  var _useState39 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState40 = _slicedToArray(_useState39, 2),
+    loading = _useState40[0],
+    setLoading = _useState40[1];
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // Set page
+    props.setPage({
+      name: "Issues",
+      path: ["issues"]
+    });
+    // Fetch Stages
+    props.get("stages", setStages);
+    // Fetch Issues
+    props.get("issues", setIssues);
+    // Fetch Staff
+    props.get("staff?idAndName=true", setStaff);
+    // Fetch Projects
+    props.get("projects", setProjects);
+  }, []);
+  var closeStageModalBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  var closeIssueModalBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  var openDeleteStageModalBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  var closeDeleteStageModalBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+
+  /*
+   * Create Stage
+   */
+  var onCreateStage = function onCreateStage(e) {
+    e.preventDefault();
+    setLoading(true);
+    Axios.post("api/stages", {
+      name: stageName,
+      position: stagePosition
+    }).then(function (res) {
+      setLoading(false);
+      // Fetch Stages
+      props.get("stages", setStages);
+      // Close Stage Create Modal
+      closeStageModalBtn.current.click();
+      props.setMessages([res.data.message]);
+    })["catch"](function (err) {
+      setLoading(false);
+      props.getErrors(err);
+    });
+  };
+
+  /*
+   * Update Stage
+   */
+  var onUpdateStage = function onUpdateStage(e) {
+    e.preventDefault();
+    setLoading(true);
+    Axios.put("api/stages/".concat(stageId), {
+      name: stageName,
+      position: stagePosition
+    }).then(function (res) {
+      setLoading(false);
+      // Fetch Stages
+      props.get("stages", setStages);
+      // Close Stage Create Modal
+      closeStageModalBtn.current.click();
+      props.setMessages([res.data.message]);
+    })["catch"](function (err) {
+      setLoading(false);
+      props.getErrors(err);
+    });
+  };
+
+  /*
+   * Delete Stage
+   */
+  var onDeleteStage = function onDeleteStage() {
+    Axios["delete"]("api/stages/".concat(stageId)).then(function (res) {
+      props.setMessages([res.data.message]);
+      // Fetch Stages
+      props.get("stages", setStages);
+    })["catch"](function (err) {
+      return props.getErrros(err);
+    });
+  };
+
+  /*
+   * Create Issue
+   */
+  var onCreateIssue = function onCreateIssue(e) {
+    e.preventDefault();
+    setLoading(true);
+    Axios.post("api/issues", {
+      code: issueCode,
+      title: issueTitle,
+      description: issueDescription,
+      assignedTo: issueAssignedTo,
+      plannedStartDate: issuePlannedStartDate,
+      plannedEndDate: issuePlannedEndDate,
+      priority: issuePriority,
+      projectId: issueProjectId,
+      stageId: issueStageId
+    }).then(function (res) {
+      setLoading(false);
+      // Fetch Stages
+      props.get("stages", setStages);
+      // Fetch Issues
+      props.get("issues", setIssues);
+      // Close Issue Create Modal
+      closeIssueModalBtn.current.click();
+      props.setMessages([res.data.message]);
+    })["catch"](function (err) {
+      setLoading(false);
+      props.getErrors(err);
+    });
+  };
+
+  /*
+   * Reorder Issues
+   */
+  var onIssueReorder = function onIssueReorder(idsAndPositions) {
+    Axios.put("api/issues/reorder/1", {
+      idsAndPositions: idsAndPositions
+    }).then(function (res) {
+      props.setMessages([res.data.message]);
+      // Fetch Stages
+      props.get("stages", setStages);
+    })["catch"](function (err) {
+      return props.gerErrors(err);
+    });
+  };
+
+  /*
+   * Update Issue
+   */
+  var onUpdateIssue = function onUpdateIssue(id) {
+    var stageId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+    Axios.put("api/issues/".concat(id), {
+      code: issueCode,
+      title: issueTitle,
+      description: issueDescription,
+      assignedTo: issueAssignedTo,
+      plannedStartDate: issuePlannedStartDate,
+      plannedEndDate: issuePlannedEndDate,
+      priority: issuePriority,
+      projectId: issueProjectId,
+      stageId: stageId
+    }).then(function (res) {
+      setLoading(false);
+      props.setMessages([res.data.message]);
+      // Fetch Stages
+      props.get("stages", setStages);
+      // Fetch Issues
+      props.get("issues", setIssues);
+    })["catch"](function (err) {
+      setLoading(false);
+      props.getErrors(err);
+    });
+  };
+  var reorder = function reorder(list, startIndex, endIndex) {
+    var result = Array.from(list);
+    var _result$splice = result.splice(startIndex, 1),
+      _result$splice2 = _slicedToArray(_result$splice, 1),
+      removed = _result$splice2[0];
+    result.splice(endIndex, 0, removed);
+    return result;
+  };
+
+  /**
+   * Moves an item from one list to another list.
+   */
+  var move = function move(source, destination, droppableSource, droppableDestination) {
+    var sourceClone = Array.from(source);
+    var destClone = Array.from(destination);
+    var _sourceClone$splice = sourceClone.splice(droppableSource.index, 1),
+      _sourceClone$splice2 = _slicedToArray(_sourceClone$splice, 1),
+      removed = _sourceClone$splice2[0];
+    destClone.splice(droppableDestination.index, 0, removed);
+    var result = {};
+    result[droppableSource.droppableId] = sourceClone;
+    result[droppableDestination.droppableId] = destClone;
+    return result;
+  };
   function onDragEnd(result) {
     var source = result.source,
       destination = result.destination;
@@ -98034,78 +97876,384 @@ var index = function index(props) {
     if (!destination) {
       return;
     }
-    var sInd = +source.droppableId;
-    var dInd = +destination.droppableId;
-    if (sInd === dInd) {
-      var items = reorder(state[sInd], source.index, destination.index);
-      var newState = _toConsumableArray(state);
-      newState[sInd] = items;
-      setState(newState);
+    var soureId = +source.droppableId;
+    var destinationId = +destination.droppableId;
+
+    // Check if issue has changed stages
+    if (soureId === destinationId) {
+      var items = reorder(layout[soureId], source.index, destination.index);
+      var newState = _toConsumableArray(layout);
+      newState[soureId] = items;
+      var issueIdsAndPositions = items.map(function (issue, key) {
+        return {
+          id: issue.id,
+          position: key
+        };
+      });
+      onIssueReorder(issueIdsAndPositions);
+      setLayout(newState);
     } else {
-      var _result = move(state[sInd], state[dInd], source, destination);
-      var _newState = _toConsumableArray(state);
-      _newState[sInd] = _result[sInd];
-      _newState[dInd] = _result[dInd];
-      setState(_newState.filter(function (group) {
-        return group.length;
-      }));
+      var _result = move(layout[soureId], layout[destinationId], source, destination);
+      var _newState = _toConsumableArray(layout);
+      _newState[soureId] = _result[soureId];
+      _newState[destinationId] = _result[destinationId];
+      var _stageId = stages[destinationId].id;
+      var _issueId = _result[destinationId][destination.index].id;
+      onUpdateIssue(_issueId, _stageId);
+      setLayout(_newState);
     }
   }
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_1__["default"], null),
-    text: "add new group",
+  var _useState41 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+    _useState42 = _slicedToArray(_useState41, 2),
+    layout = _useState42[0],
+    setLayout = _useState42[1];
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var newLayout = [];
+    stages.forEach(function (stage) {
+      return newLayout.push(stage.issues);
+    });
+    setLayout(newLayout);
+  }, [stages]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal fade",
+    id: "createStageModal",
+    tabIndex: "-1",
+    "aria-labelledby": "createModalLabel",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-dialog"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: function onSubmit(e) {
+      return creatingStage ? onCreateStage(e) : onUpdateStage(e);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-content rounded-0"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    id: "createModalLabel",
+    className: "modal-title fs-5"
+  }, creatingStage ? "Create" : "Edit", " Stage"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn-close",
+    "data-bs-dismiss": "modal",
+    "aria-label": "Close"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-body text-start text-wrap"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Stage 1",
+    className: "form-control",
+    defaultValue: stageName,
+    onChange: function onChange(e) {
+      return setStageName(e.target.value);
+    },
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    placeholder: "1",
+    defaultValue: stagePosition,
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setStagePosition(e.target.value);
+    },
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-footer justify-content-between"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    ref: closeStageModalBtn,
+    type: "button",
+    className: "mysonar-btn btn-2",
+    "data-bs-dismiss": "modal"
+  }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex"
+  }, !creatingStage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mx-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_2__["default"], null),
+    text: "delete stage",
+    className: "me-1",
+    onClick: function onClick(e) {
+      e.preventDefault();
+      // Close Stage Create Modal
+      closeStageModalBtn.current.click();
+      // Open Stage Delete Modal
+      openDeleteStageModalBtn.current.click();
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    text: "".concat(creatingStage ? "create" : "edit", " stage"),
+    loading: loading
+  }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal fade",
+    id: "deleteModalStage",
+    tabIndex: "-1",
+    "aria-labelledby": "deleteModalLabel",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-dialog"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-content rounded-0"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    id: "deleteModalLabel",
+    className: "modal-title fs-5"
+  }, "Delete Stage"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn-close",
+    "data-bs-dismiss": "modal",
+    "aria-label": "Close"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-body text-start text-wrap"
+  }, "Are you sure you want to delete the stage ", stageName, ". All associated Issue tracking will be lost."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-footer justify-content-between"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    ref: closeDeleteStageModalBtn,
+    type: "button",
+    className: "mysonar-btn btn-2",
+    "data-bs-dismiss": "modal"
+  }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-danger rounded-0",
+    "data-bs-dismiss": "modal",
+    onClick: onDeleteStage
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "me-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_2__["default"], null)), "Delete"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    ref: openDeleteStageModalBtn,
+    className: "d-none",
+    "data-bs-toggle": "modal",
+    "data-bs-target": "#deleteModalStage"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal fade",
+    id: "createIssueModal",
+    tabIndex: "-1",
+    "aria-labelledby": "createModalLabel",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-dialog"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: onCreateIssue
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-content rounded-0"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    id: "createModalLabel",
+    className: "modal-title fs-5"
+  }, "Create Issue"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn-close",
+    "data-bs-dismiss": "modal",
+    "aria-label": "Close"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-body text-start text-wrap"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Project Code",
+    className: "form-control mb-2",
+    onChange: function onChange(e) {
+      return setIssueCode(e.target.value);
+    },
+    disabled: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Issue 1",
+    className: "form-control mb-2",
+    onChange: function onChange(e) {
+      return setIssueTitle(e.target.value);
+    },
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    type: "text",
+    rows: "5",
+    className: "form-control mb-2",
+    onChange: function onChange(e) {
+      return setIssueDescription(e.target.value);
+    },
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Assigned To"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    type: "text",
+    className: "form-control mb-2",
+    onChange: function onChange(e) {
+      return setIssueAssignedTo(e.target.value);
+    },
+    required: true
+  }, [{
+    id: "",
+    name: "Select Assignee"
+  }].concat(staff).map(function (staff, key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: key,
+      value: staff.id
+    }, staff.name);
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-between"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Planned Start Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    className: "form-control me-1 mb-2",
+    defaultValue: new Date().toISOString().split("T")[0],
+    onChange: function onChange(e) {
+      return setIssuePlannedStartDate(e.target.value);
+    },
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Planned End Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    placeholder: "Issue 1",
+    className: "form-control ms-1 mb-2",
+    defaultValue: new Date().toISOString().split("T")[0],
+    onChange: function onChange(e) {
+      return setIssuePlannedEndDate(e.target.value);
+    },
+    required: true
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Priority"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    type: "text",
+    className: "form-control mb-2",
+    onChange: function onChange(e) {
+      return setIssuePriority(e.target.value);
+    },
+    required: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "low"
+  }, "Low"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "medium"
+  }, "Medium"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "high"
+  }, "High")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Project ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    type: "text",
+    className: "form-control mb-2",
+    onChange: function onChange(e) {
+      return setIssueProjectId(e.target.value);
+    },
+    required: true
+  }, [{
+    id: "",
+    name: "Select Project"
+  }].concat(projects).map(function (project, key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: key,
+      value: project.id
+    }, project.name);
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-footer justify-content-between"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    ref: closeIssueModalBtn,
+    type: "button",
+    className: "mysonar-btn btn-2",
+    "data-bs-dismiss": "modal"
+  }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    text: "create issue",
+    loading: loading
+  })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex m-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_3__["default"], null),
+    text: "create stage",
+    dataBsToggle: "modal",
+    dataBsTarget: "#createStageModal",
+    className: "me-1",
     onClick: function onClick() {
-      return setState([].concat(_toConsumableArray(state), [[]]));
+      setCreatingStage(true);
+      setStageId("");
+      setStageName("");
+      setStagePosition("");
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_1__["default"], null),
-    text: "add new group",
-    onClick: function onClick() {
-      return setState([].concat(_toConsumableArray(state), [getItems(1)]));
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    style: {
-      display: "flex"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_3__["DragDropContext"], {
+  }), stages.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_3__["default"], null),
+    text: "create issue",
+    dataBsToggle: "modal",
+    dataBsTarget: "#createIssueModal",
+    className: "me-1"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "hidden-scroll"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex mt-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_6__["DragDropContext"], {
     onDragEnd: onDragEnd
-  }, state.map(function (el, ind) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_3__["Droppable"], {
-      key: ind,
-      droppableId: "".concat(ind)
+  }, layout.map(function (stage, stageKey) {
+    var _stages$stageKey;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: stageKey,
+      className: "d-flex flex-column bg-secondary-subtle mx-1"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+      className: "p-2 text-center"
+    }, (_stages$stageKey = stages[stageKey]) === null || _stages$stageKey === void 0 ? void 0 : _stages$stageKey.name, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_4__["default"], null),
+      text: "view",
+      dataBsToggle: "modal",
+      dataBsTarget: "#createStageModal",
+      className: "btn-sm mt-1 ms-1",
+      onClick: function onClick() {
+        setCreatingStage(false);
+        setStageId(stages[stageKey].id);
+        setStageName(stages[stageKey].name);
+        setStagePosition(stages[stageKey].position);
+      }
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_6__["Droppable"], {
+      key: stageKey,
+      droppableId: "".concat(stageKey)
     }, function (provided, snapshot) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", _extends({
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", _extends({
         ref: provided.innerRef,
-        style: getListStyle(snapshot.isDraggingOver)
-      }, provided.droppableProps), el.map(function (item, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_3__["Draggable"], {
-          key: item.id,
-          draggableId: item.id,
+        className: "".concat(snapshot.isDraggingOver ? "bg-warning-subtle" : ""),
+        style: {
+          width: "250px",
+          minHeight: "200px"
+        }
+      }, provided.droppableProps), stage.map(function (issue, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_6__["Draggable"], {
+          key: issue.id,
+          draggableId: issue.id.toString(),
           index: index
         }, function (provided, snapshot) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", _extends({
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", _extends({
             ref: provided.innerRef
           }, provided.draggableProps, provided.dragHandleProps, {
-            style: getItemStyle(snapshot.isDragging, provided.draggableProps.style)
-          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-            style: {
-              display: "flex",
-              justifyContent: "space-around"
-            }
-          }, item.content, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("button", {
-            type: "button",
+            className: "d-flex justify-content-between shadow-sm m-2 p-2 ".concat(snapshot.isDragging ? "bg-secondary-subtle shadow-lg" : "bg-light")
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, issue.code), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, issue.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+            className: "text-primary"
+          }, "ID: ", issue.id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+            className: "text-primary"
+          }, "Stage ID: ", issue.currentStageId)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+            className: "text-secondary"
+          }, "New:", " ", issue["new"] ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: "text-success"
+          }, "True") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: "text-danger"
+          }, "False")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_2__["default"], null),
             onClick: function onClick() {
-              var newState = _toConsumableArray(state);
-              newState[ind].splice(index, 1);
-              setState(newState.filter(function (group) {
+              var newState = _toConsumableArray(layout);
+              newState[stageKey].splice(index, 1);
+              setLayout(newState.filter(function (group) {
                 return group.length;
               }));
             }
-          }, "delete")));
+          }));
         });
       }), provided.placeholder);
-    });
-  }))));
+    }));
+  })))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (index);
 
@@ -100152,7 +100300,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom/cjs/react-router-dom.min */ "./node_modules/react-router-dom/cjs/react-router-dom.min.js");
 /* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_Inventories_InventoryList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Inventories/InventoryList */ "./resources/js/components/Inventories/InventoryList.js");
-/* harmony import */ var _components_WorkPlan_WorkPlanList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/WorkPlan/WorkPlanList */ "./resources/js/components/WorkPlan/WorkPlanList.js");
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -100163,42 +100310,36 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var show = function show(props) {
   var _useParams = Object(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
     id = _useParams.id;
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
     _useState2 = _slicedToArray(_useState, 2),
-    project = _useState2[0],
-    setProject = _useState2[1];
+    supplier = _useState2[0],
+    setSupplier = _useState2[1];
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
     _useState4 = _slicedToArray(_useState3, 2),
-    workPlans = _useState4[0],
-    setWorkPlans = _useState4[1];
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+    inventories = _useState4[0],
+    setInventories = _useState4[1];
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
     _useState6 = _slicedToArray(_useState5, 2),
-    inventories = _useState6[0],
-    setInventories = _useState6[1];
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    nameQuery = _useState6[0],
+    setNameQuery = _useState6[1];
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("work-plan"),
     _useState8 = _slicedToArray(_useState7, 2),
-    nameQuery = _useState8[0],
-    setNameQuery = _useState8[1];
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("work-plan"),
-    _useState10 = _slicedToArray(_useState9, 2),
-    tab = _useState10[0],
-    setTab = _useState10[1];
+    tab = _useState8[0],
+    setTab = _useState8[1];
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // Set page
     props.setPage({
-      name: "View Project",
-      path: ["projects", "view"]
+      name: "View Supplier",
+      path: ["suppliers", "view"]
     });
-    props.get("projects/".concat(id), setProject);
-    props.getPaginated("work-plans?projectId=".concat(id), setWorkPlans);
-    props.getPaginated("inventories?projectId=".concat(id), setInventories);
+    props.get("suppliers/".concat(id), setSupplier);
+    props.getPaginated("inventories?supplierId=".concat(id), setInventories);
   }, [id]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    props.getPaginated("inventories?projectId=".concat(id, "&\n\t\t\t\tname=").concat(nameQuery), setInventories);
+    props.getPaginated("inventories?supplierId=".concat(id, "&\n\t\t\t\tname=").concat(nameQuery), setInventories);
   }, [nameQuery]);
   var active = function active(activeTab) {
     return activeTab == tab ? "bg-secondary text-white shadow-sm" : "bg-secondary-subtle";
@@ -100212,40 +100353,25 @@ var show = function show(props) {
     className: "col-sm-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card shadow mb-2 p-4 text-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, project.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, project.type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, project.description))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, supplier.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, supplier.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, supplier.phone), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, supplier.location))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-sm-8"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-between flex-wrap mb-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card shadow-sm flex-grow-1 text-center me-1 mb-2 py-2 px-4 ".concat(active("work-plan")),
+    className: "card shadow-sm flex-grow-1 text-center me-1 mb-2 py-2 px-4 ".concat(active("goods")),
     style: {
       cursor: "pointer"
     },
     onClick: function onClick() {
-      return setTab("work-plan");
+      return setTab("goods");
     }
-  }, "Work Plan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card shadow-sm flex-grow-1 text-center me-1 mb-2 py-2 px-4 ".concat(active("inventories")),
-    style: {
-      cursor: "pointer"
-    },
-    onClick: function onClick() {
-      return setTab("inventories");
-    }
-  }, "Inventory")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_WorkPlan_WorkPlanList__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
-    activeTab: activeTab("work-plan"),
-    workPlans: workPlans,
-    setWorkPlans: setWorkPlans,
-    totalWorkPlans: project.workPlanCount,
-    projectId: id,
-    setProject: setProject
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Inventories_InventoryList__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({}, props, {
+  }, "Goods")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Inventories_InventoryList__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({}, props, {
     activeTab: activeTab("inventories"),
     inventories: inventories,
     setInventories: setInventories,
-    totalInventory: project.inventoryCount,
-    projectId: id,
-    setProject: setProject,
+    totalInventory: supplier.inventoryCount,
+    supplierId: id,
+    setSupplier: setSupplier,
     setNameQuery: setNameQuery
   }))));
 };

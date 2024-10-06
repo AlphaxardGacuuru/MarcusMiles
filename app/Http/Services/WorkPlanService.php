@@ -42,6 +42,7 @@ class WorkPlanService extends Service
         $workPlan->name = $request->name;
         $workPlan->starts_at = $request->startsAt;
         $workPlan->ends_at = $request->endsAt;
+        $workPlan->created_by = $this->id;
         $saved = $workPlan->save();
 
         $message = $workPlan->name . " created successfully";

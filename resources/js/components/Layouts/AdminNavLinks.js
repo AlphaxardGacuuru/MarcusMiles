@@ -116,7 +116,7 @@ const AdminNavLinks = (props) => {
 						</li>
 						{/* Suppliers End */}
 						{/* Issues Start */}
-						{/* <li className="nav-item">
+						<li className="nav-item">
 							<Link
 								to={`/admin/erp/issues`}
 								className={`nav-link ${active("/admin/erp/issues")}`}>
@@ -125,7 +125,7 @@ const AdminNavLinks = (props) => {
 								</div>
 								<div className="nav-link-text">Issues</div>
 							</Link>
-						</li> */}
+						</li>
 						{/* Issues End */}
 					</ol>
 				</div>

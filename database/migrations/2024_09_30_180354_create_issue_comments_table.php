@@ -13,19 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('issue_comments', function (Blueprint $table) {
             $table->id();
-			$table->string('name');
-			$table->string('description');
-			$table->jsonb('permissions');
-			$table->unsignedBigInteger('created_by');
             $table->timestamps();
-
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
         });
     }
 
@@ -36,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('issue_comments');
     }
 };

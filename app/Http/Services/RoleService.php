@@ -46,6 +46,7 @@ class RoleService extends Service
         $role->name = $request->input("name");
         $role->description = $request->input("description");
         $role->permissions = $request->input("permissions");
+        $role->created_by = $this->id;
         $saved = $role->save();
 
         $message = $role->name . ' created successfully!';

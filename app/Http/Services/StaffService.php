@@ -15,9 +15,24 @@ class StaffService extends Service
     /*
      * Get All Staff
      */
-    public function index()
+    public function index($request)
     {
-        $staff = User::where("account_type", "staff")
+        if ($request->filled("idAndName")) {
+            $staff = User::select("id", "name")
+                ->where("account_type", "staff")
+                ->orderBy("id", "DESC")
+                ->get();
+
+            return response([
+                "data" => $staff,
+            ], 200);
+        }
+
+        $staffQuery = User::where("account_type", "staff");
+
+        $staffQuery = $this->search($staffQuery, $request);
+
+        $staff = $staffQuery
             ->orderBy("id", "DESC")
             ->paginate(20);
 
@@ -174,5 +189,18 @@ class StaffService extends Service
             ->paginate(20);
 
         return StaffResource::collection($staff);
+    }
+
+    /*
+     * Handle Search
+     */
+    public function search($query, $request)
+    {
+        if ($request->filled("name")) {
+            $query = $query
+                ->where("name", "LIKE", "%" . $request->name . "%");
+        }
+
+        return $query;
     }
 }

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\StaffService;
+use App\Http\Services\StageService;
+use App\Models\Stage;
 use Illuminate\Http\Request;
 
-class StaffController extends Controller
+class StageController extends Controller
 {
-    public function __construct(protected StaffService $service)
+    public function __construct(protected StageService $service)
     {
         //
     }
@@ -32,27 +33,21 @@ class StaffController extends Controller
     {
         $this->validate($request, [
             "name" => "required|string",
-            "email" => "required|email",
-            "phone" => "string",
-            "gender" => "required|string",
         ]);
 
-        [$saved, $message, $staff, $code] = $this->service->store($request);
-
-        $title = $saved ? "message" : "errors";
-        $message = $saved ? $message : [$message];
+        [$saved, $message, $stage] = $this->service->store($request);
 
         return response([
             "status" => $saved,
-            $title => $message,
-            "data" => $staff,
-        ], $code);
+            "message" => $message,
+            "data" => $stage,
+        ], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Staff  $staff
+     * @param  \App\Models\Stage  $stage
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -64,49 +59,38 @@ class StaffController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Staff  $staff
+     * @param  \App\Models\Stage  $stage
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
             "name" => "nullable|string",
-            "email" => "nullable|email|unique:users",
-            "phone" => "string|unique:users",
-            "gender" => "nullable|string",
         ]);
 
-        [$saved, $message, $staff] = $this->service->update($request, $id);
+        [$saved, $message, $stage] = $this->service->update($request, $id);
 
         return response([
             "status" => $saved,
             "message" => $message,
-            "data" => $staff,
+            "data" => $stage,
         ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Staff  $staff
+     * @param  \App\Models\Stage  $stage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        [$deleted, $message, $staff] = $this->service->destroy($request, $id);
+        [$deleted, $message, $stage] = $this->service->destroy($id);
 
         return response([
             "status" => $deleted,
             "message" => $message,
-            "data" => $staff,
+            "data" => $stage,
         ], 200);
-    }
-
-    /*
-     * Get Units by Property ID
-     */
-    public function byPropertyId($id)
-    {
-        return $this->service->byPropertyId($id);
     }
 }

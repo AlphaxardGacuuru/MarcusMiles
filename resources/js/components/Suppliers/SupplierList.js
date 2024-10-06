@@ -116,69 +116,73 @@ const SupplierList = (props) => {
 								<td>{supplier.location}</td>
 								<td>
 									<div className="d-flex justify-content-end">
-										<React.Fragment>
-											<MyLink
-												linkTo={`/erp/suppliers/${supplier.id}/edit`}
-												icon={<EditSVG />}
-												className="btn-sm"
-											/>
+										<MyLink
+											linkTo={`/erp/suppliers/${supplier.id}/view`}
+											className="me-1"
+											icon={<ViewSVG />}
+										/>
 
-											<div className="mx-1">
-												{/* Confirm Delete Modal End */}
-												<div
-													className="modal fade"
-													id={`deleteModalSupplier${supplier.id}`}
-													tabIndex="-1"
-													aria-labelledby="deleteModalLabel"
-													aria-hidden="true">
-													<div className="modal-dialog">
-														<div className="modal-content rounded-0">
-															<div className="modal-header">
-																<h1
-																	id="deleteModalLabel"
-																	className="modal-title fs-5">
-																	Delete {supplier.name}
-																</h1>
-																<button
-																	type="button"
-																	className="btn-close"
-																	data-bs-dismiss="modal"
-																	aria-label="Close"></button>
-															</div>
-															<div className="modal-body text-start text-wrap">
-																Are you sure you want to delete {supplier.name}.
-															</div>
-															<div className="modal-footer justify-content-between">
-																<button
-																	type="button"
-																	className="mysonar-btn btn-2"
-																	data-bs-dismiss="modal">
-																	Close
-																</button>
-																<button
-																	type="button"
-																	className="btn btn-danger rounded-0"
-																	data-bs-dismiss="modal"
-																	onClick={() => onDeleteSupplier(supplier)}>
-																	<span className="me-1">{<DeleteSVG />}</span>
-																	Delete
-																</button>
-															</div>
+										<MyLink
+											linkTo={`/erp/suppliers/${supplier.id}/edit`}
+											icon={<EditSVG />}
+											className="btn-sm"
+										/>
+
+										<div className="mx-1">
+											{/* Confirm Delete Modal End */}
+											<div
+												className="modal fade"
+												id={`deleteModalSupplier${supplier.id}`}
+												tabIndex="-1"
+												aria-labelledby="deleteModalLabel"
+												aria-hidden="true">
+												<div className="modal-dialog">
+													<div className="modal-content rounded-0">
+														<div className="modal-header">
+															<h1
+																id="deleteModalLabel"
+																className="modal-title fs-5">
+																Delete {supplier.name}
+															</h1>
+															<button
+																type="button"
+																className="btn-close"
+																data-bs-dismiss="modal"
+																aria-label="Close"></button>
+														</div>
+														<div className="modal-body text-start text-wrap">
+															Are you sure you want to delete {supplier.name}.
+														</div>
+														<div className="modal-footer justify-content-between">
+															<button
+																type="button"
+																className="mysonar-btn btn-2"
+																data-bs-dismiss="modal">
+																Close
+															</button>
+															<button
+																type="button"
+																className="btn btn-danger rounded-0"
+																data-bs-dismiss="modal"
+																onClick={() => onDeleteSupplier(supplier)}>
+																<span className="me-1">{<DeleteSVG />}</span>
+																Delete
+															</button>
 														</div>
 													</div>
 												</div>
-												{/* Confirm Delete Modal End */}
-
-												{/* Button trigger modal */}
-												<button
-													type="button"
-													className="mysonar-btn btn-2"
-													data-bs-toggle="modal"
-													data-bs-target={`#deleteModalSupplier${supplier.id}`}>
-													<DeleteSVG />
-												</button>
 											</div>
-										</React.Fragment>
+											{/* Confirm Delete Modal End */}
+
+											{/* Button trigger modal */}
+											<button
+												type="button"
+												className="mysonar-btn btn-2"
+												data-bs-toggle="modal"
+												data-bs-target={`#deleteModalSupplier${supplier.id}`}>
+												<DeleteSVG />
+											</button>
+										</div>
 									</div>
 								</td>
 							</tr>
