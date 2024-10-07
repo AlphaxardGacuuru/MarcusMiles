@@ -37,5 +37,6 @@ class UserSeeder extends Seeder
 
         User::factory()->count(10)->create();
         User::factory()->count(10)->create(["account_type" => "supplier"]);
+        User::factory()->count(10)->create(["account_type" => "client"]);
     }
 }

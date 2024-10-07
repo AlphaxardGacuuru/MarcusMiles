@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
+use Carbon\Carbon;
 
 class ProjectService extends Service
 {
@@ -37,10 +38,17 @@ class ProjectService extends Service
      */
     public function store($request)
     {
+		$currentYear = Carbon::now()->format('y');
+		$newProjectNumber = Project::count() + 1;
+		$code = str_pad($newProjectNumber, 3, '0', STR_PAD_LEFT);
+
         $project = new Project;
+        $project->code = $currentYear . $code;
         $project->name = $request->name;
         $project->type = $request->type;
         $project->description = $request->description;
+        $project->location = $request->location;
+        $project->client_id = $request->clientId;
         $project->created_by = $this->id;
         $saved = $project->save();
 
@@ -66,6 +74,10 @@ class ProjectService extends Service
 
         if ($request->filled("description")) {
             $project->description = $request->description;
+        }
+
+        if ($request->filled("location")) {
+            $project->location = $request->location;
         }
 
         $saved = $project->save();

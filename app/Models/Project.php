@@ -49,6 +49,11 @@ class Project extends Model
         return $this->belongsTo(User::class, "created_by");
     }
 
+    public function client()
+    {
+        return $this->belongsTo(User::class, "client_id");
+    }
+
 	public function workPlans()
 	{
 		return $this->hasMany(WorkPlan::class);

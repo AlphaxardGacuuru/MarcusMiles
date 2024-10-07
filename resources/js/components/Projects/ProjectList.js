@@ -201,7 +201,7 @@ const ProjectList = (props) => {
 				<table className="table table-hover">
 					<thead>
 						<tr>
-							<th colSpan="6"></th>
+							<th colSpan="9"></th>
 							<th className="text-end">
 								<div className="d-flex justify-content-end">
 									{deleteIds.length > 0 && (
@@ -216,7 +216,7 @@ const ProjectList = (props) => {
 									<MyLink
 										linkTo={`/erp/projects/create`}
 										icon={<PlusSVG />}
-										text="add project"
+										text="create project"
 									/>
 								</div>
 							</th>
@@ -238,9 +238,12 @@ const ProjectList = (props) => {
 									}
 								/>
 							</th>
+							<th>Code</th>
 							<th>Name</th>
 							<th>Type</th>
 							<th>Description</th>
+							<th>Location</th>
+							<th>Client Initials</th>
 							<th>Created By</th>
 							<th>Created At</th>
 							<th className="text-center">Action</th>
@@ -254,9 +257,12 @@ const ProjectList = (props) => {
 										onClick={() => handleSetDeleteIds(project.id)}
 									/>
 								</td>
+								<td>{project.code}</td>
 								<td>{project.name}</td>
-								<td>{project.type}</td>
+								<td className="text-capitalize">{project.type}</td>
 								<td>{project.description}</td>
+								<td>{project.location}</td>
+								<td>{project.clientInitials}</td>
 								<td>{project.createdBy}</td>
 								<td>{project.createdAt}</td>
 								<td>

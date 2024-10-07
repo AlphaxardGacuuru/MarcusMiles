@@ -17,6 +17,7 @@ const edit = (props) => {
 	const [name, setName] = useState()
 	const [type, setType] = useState()
 	const [description, setDescription] = useState()
+	const [location, setLocation] = useState()
 
 	const [loading, setLoading] = useState()
 
@@ -43,6 +44,7 @@ const edit = (props) => {
 			name: name,
 			type: type,
 			description: description,
+			location: location,
 		})
 			.then((res) => {
 				setLoading(false)
@@ -90,15 +92,25 @@ const edit = (props) => {
 
 					{/* Description */}
 					<label htmlFor="name">Description</label>
-					<input
+					<textarea
 						name="description"
+						rows="5"
 						defaultValue={project.description}
-						placeholder="Description"
 						className="form-control text-capitalize mb-2 me-2"
 						onChange={(e) => setDescription(e.target.value)}
+						required={true}></textarea>
+					{/* Description End */}
+
+					{/* Location Start */}
+					<label htmlFor="">Location</label>
+					<input
+						type="text"
+						defaultValue={project.location}
+						className="form-control me-2 mb-2"
+						onChange={(e) => setLocation(e.target.value)}
 						required={true}
 					/>
-					{/* Description End */}
+					{/* Location End */}
 
 					<div className="d-flex justify-content-end mb-2">
 						<Btn

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,6 +21,7 @@ class RoleFactory extends Factory
             "name" => "Super Admin",
             "description" => "Has Super Access",
             "permissions" => ["*"],
+			"created_by" => User::all()->random()->id
         ];
     }
 }

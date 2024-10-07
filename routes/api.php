@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CardTransactionController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CreditNoteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FilePondController;
@@ -46,6 +47,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('auth', [UserController::class, 'auth']);
 
 Route::apiResources([
+	"clients" => ClientController::class,
 	"projects" => ProjectController::class,
 	"work-plans" => WorkPlanController::class,
 	"inventories" => InventoryController::class,

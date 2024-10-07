@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\ProjectService;
-use App\Models\Project;
+use App\Http\Services\ClientService;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class ClientController extends Controller
 {
-    public function __construct(protected ProjectService $service)
+    public function __construct(protected ClientService $service)
     {
         //
     }
@@ -33,25 +33,24 @@ class ProjectController extends Controller
     {
         $this->validate($request, [
             "name" => "required|string",
-            "type" => "required|string",
-            "description" => "nullable|string|max:255",
-            "location" => "required|string",
-            "clientId" => "required|string",
+            "email" => "required|string",
+            "phone" => "nullable|string",
+            "location" => "nullable|string",
         ]);
 
-        [$saved, $message, $project] = $this->service->store($request);
+        [$saved, $message, $client] = $this->service->store($request);
 
         return response([
             "status" => $saved,
             "message" => $message,
-            "data" => $project,
+            "data" => $client,
         ], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\User  $client
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -63,42 +62,41 @@ class ProjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\User  $client
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
             "name" => "nullable|string",
-            "type" => "nullable|string",
-            "description" => "nullable|string|max:255",
+            "email" => "nullable|string",
+            "phone" => "nullable|string",
             "location" => "nullable|string",
-            "clientId" => "nullable|string",
         ]);
 
-        [$saved, $message, $project] = $this->service->update($request, $id);
+        [$saved, $message, $client] = $this->service->update($request, $id);
 
         return response([
             "status" => $saved,
             "message" => $message,
-            "data" => $project,
+            "data" => $client,
         ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\User  $client
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        [$deleted, $message, $project] = $this->service->destroy($id);
+        [$deleted, $message, $client] = $this->service->destroy($id);
 
         return response([
             "status" => $deleted,
             "message" => $message,
-            "data" => $project,
+            "data" => $client,
         ], 200);
     }
 }

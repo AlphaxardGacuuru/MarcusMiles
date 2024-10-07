@@ -9,6 +9,11 @@ import AdminNav from "@/components/Layouts/AdminNav"
 import AdminDashboard from "@/pages/admin/index"
 import AdminProjectDashboard from "@/pages/admin/erp-dashboard"
 
+import AdminClients from "@/pages/admin/clients/index"
+import AdminClientCreate from "@/pages/admin/clients/create"
+import AdminClientView from "@/pages/admin/clients/[id]"
+import AdminClientEdit from "@/pages/admin/clients/edit/[id]"
+
 import AdminProjects from "@/pages/admin/projects/index"
 import AdminProjectCreate from "@/pages/admin/projects/create"
 import AdminProjectView from "@/pages/admin/projects/[id]"
@@ -65,6 +70,22 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		{
 			path: "/admin/erp/dashboard",
 			component: <AdminProjectDashboard {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/clients",
+			component: <AdminClients {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/clients/create",
+			component: <AdminClientCreate {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/clients/:id/view",
+			component: <AdminClientView {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/clients/:id/edit",
+			component: <AdminClientEdit {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/erp/projects",
