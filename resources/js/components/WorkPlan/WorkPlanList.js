@@ -163,6 +163,14 @@ const WorkPlanList = (props) => {
 													data-bs-parent="#accordionExample">
 													<div className="accordion-body p-0">
 														<table className="table table-hover table-primary table-borderless mb-0">
+															<thead>
+																<th colSpan={3}></th>
+																<th>#</th>
+																<th>Name</th>
+																<th>Starts At</th>
+																<th>Ends At</th>
+																<th></th>
+															</thead>
 															<tbody>
 																{workPlanSteps
 																	.filter(
@@ -171,17 +179,16 @@ const WorkPlanList = (props) => {
 																	)
 																	.map((workPlanStep, workPlanStepKey) => (
 																		<tr key={workPlanStepKey}>
-																			<td></td>
-																			<td>{workPlanStepKey + 1}</td>
-																			<td>{workPlanStep.projectCode}</td>
-																			<td>{workPlanStep.name}</td>
-																			<td className="text-capitalize">
+																			<td colSpan={3} className="pt-2"></td>
+																			<td className="pt-2">{workPlanStepKey + 1}</td>
+																			<td className="pt-2">{workPlanStep.name}</td>
+																			<td className="pt-2 text-capitalize">
 																				{workPlanStep.startsAt}
 																			</td>
-																			<td className="text-capitalize">
+																			<td className="pt-2 text-capitalize">
 																				{workPlanStep.endsAt}
 																			</td>
-																			<td>
+																			<td className="pt-2">
 																				<div className="d-flex justify-content-end">
 																					<MyLink
 																						linkTo={`/erp/work-plan-step/${workPlanStep.id}/edit`}
