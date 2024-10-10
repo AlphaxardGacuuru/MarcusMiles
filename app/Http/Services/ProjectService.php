@@ -38,9 +38,9 @@ class ProjectService extends Service
      */
     public function store($request)
     {
-		$currentYear = Carbon::now()->format('y');
-		$newProjectNumber = Project::count() + 1;
-		$code = str_pad($newProjectNumber, 3, '0', STR_PAD_LEFT);
+        $currentYear = Carbon::now()->format('y');
+        $newProjectNumber = Project::count() + 1;
+        $code = str_pad($newProjectNumber, 3, '0', STR_PAD_LEFT);
 
         $project = new Project;
         $project->code = $currentYear . $code;
@@ -108,7 +108,47 @@ class ProjectService extends Service
     {
         if ($request->filled("name")) {
             $query = $query
-                ->where("name", "LIKE", "%" . $request->name . "%");
+                ->where("name", "LIKE", "%" . $request->name . "%")
+                ->orWhere("code", "LIKE", "%" . $request->name . "%");
+        }
+
+        if ($request->filled("type")) {
+            $query = $query
+                ->where("type", $request->type);
+        }
+
+        if ($request->filled("location")) {
+            $query = $query
+                ->where("location", "LIKE", "%" . $request->location . "%");
+        }
+
+        $clientId = $request->clientId;
+
+        if ($request->filled("clientId")) {
+            $query = $query->whereHas("client", function ($query) use ($clientId) {
+                $query->where("id", $clientId);
+            });
+        }
+
+        $startMonth = $request->filled("startMonth") ? $request->input("startMonth") : Carbon::now()->month;
+        $endMonth = $request->filled("endMonth") ? $request->input("endMonth") : Carbon::now()->month;
+        $startYear = $request->filled("startYear") ? $request->input("startYear") : Carbon::now()->year;
+        $endYear = $request->filled("endYear") ? $request->input("endYear") : Carbon::now()->year;
+
+        $start = Carbon::createFromDate($startYear, $startMonth, 1)
+            ->startOfMonth()
+            ->toDateTimeString(); // Output: 2024-01-01 00:00:00 (or current year)
+
+        $end = Carbon::createFromDate($endYear, $endMonth, 1)
+            ->endOfMonth()
+            ->toDateTimeString(); // Output: 2024-01-01 00:00:00 (or current year)
+
+        if ($request->filled("startMonth") || $request->filled("startYear")) {
+            $query = $query->whereDate("created_at", ">=", $start);
+        }
+
+        if ($request->filled("endMonth") || $request->filled("endYear")) {
+            $query = $query->whereDate("created_at", "<=", $end);
         }
 
         return $query;

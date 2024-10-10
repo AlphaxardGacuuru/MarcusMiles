@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min"
 
 import MyLink from "@/components/Core/MyLink"
@@ -16,21 +16,13 @@ import PlusSVG from "@/svgs/PlusSVG"
 import ProjectSVG from "@/svgs/ProjectSVG"
 
 const ProjectList = (props) => {
-	const [deleteIds, setDeleteIds] = useState([])
+	const [clients, setClients] = useState([])
 	const [loading, setLoading] = useState()
 
-	/*
-	 * Handle DeleteId checkboxes
-	 */
-	const handleSetDeleteIds = (projectId) => {
-		var exists = deleteIds.includes(projectId)
-
-		var newDeleteIds = exists
-			? deleteIds.filter((item) => item != projectId)
-			: [...deleteIds, projectId]
-
-		setDeleteIds(newDeleteIds)
-	}
+	useEffect(() => {
+		// Fetch Clients
+		props.get("clients?idAndName=true", setClients)
+	}, [])
 
 	/*
 	 * Delete Project
@@ -47,13 +39,9 @@ const ProjectList = (props) => {
 				props.setProjects({
 					meta: props.projects.meta,
 					links: props.projects.links,
-					data: props.projects.data.filter((project) => {
-						if (Array.isArray(projectId)) {
-							return !projectIds.includes(project.id)
-						} else {
-							return project.id != projectId
-						}
-					}),
+					data: props.projects.data.filter(
+						(project) => project.id != projectId
+					),
 				})
 				// Clear DeleteIds
 				setDeleteIds([])
@@ -95,28 +83,79 @@ const ProjectList = (props) => {
 				<div className="d-flex justify-content-end flex-wrap">
 					{/* Name */}
 					<div className="flex-grow-1 me-2 mb-2">
-						<label htmlFor="">Name</label>
+						<label htmlFor="">Name / Code</label>
 						<input
 							type="text"
-							placeholder="Search by Name"
+							placeholder="Search by Name or Code"
 							className="form-control"
 							onChange={(e) => props.setName(e.target.value)}
 						/>
 					</div>
 					{/* Name End */}
+					{/* Type */}
+					<div className="flex-grow-1 me-2 mb-2">
+						<label htmlFor="">Type</label>
+						<select
+							className="form-control"
+							onChange={(e) => props.setType(e.target.value)}>
+							{props.projectTypes.map((type, key) => (
+								<option
+									key={key}
+									value={type.id}
+									selected={key == props.type}>
+									{type.name}
+								</option>
+							))}
+						</select>
+					</div>
+					{/* Type End */}
+					{/* Location */}
+					<div className="flex-grow-1 me-2 mb-2">
+						<label htmlFor="">Location</label>
+						<input
+							type="text"
+							placeholder="Search by Location"
+							className="form-control"
+							onChange={(e) => props.setLocation(e.target.value)}
+						/>
+					</div>
+					{/* Location End */}
+					{/* Client */}
+					<div className="flex-grow-1 me-2 mb-2">
+						<label htmlFor="">Client</label>
+						<select
+							className="form-control"
+							onChange={(e) => props.setClientId(e.target.value)}>
+							{[{ id: "", name: "Select Client" }]
+								.concat(clients)
+								.map((client, key) => (
+									<option
+										key={key}
+										value={client.id}
+										selected={key == props.client}>
+										{client.name}
+									</option>
+								))}
+						</select>
+					</div>
+					{/* Client End */}
+					{/* Start Date */}
 					<div className="d-flex flex-grow-1">
-						{/* Start Date */}
+						{/* Start Month */}
 						<div className="flex-grow-1 me-2 mb-2">
 							<label htmlFor="">Start At</label>
-							{/* Start Month */}
 							<select
 								className="form-control"
-								onChange={(e) => props.setStartMonth(e.target.value)}>
+								onChange={(e) =>
+									props.setStartMonth(
+										e.target.value == "0" ? "" : e.target.value
+									)
+								}>
 								{props.months.map((month, key) => (
 									<option
 										key={key}
 										value={key}
-										selected={key == props.previousMonth}>
+										selected={key == props.startMonth}>
 										{month}
 									</option>
 								))}
@@ -138,7 +177,7 @@ const ProjectList = (props) => {
 									<option
 										key={key}
 										value={year}
-										selected={key == props.currentYear}>
+										selected={year == props.startYear}>
 										{year}
 									</option>
 								))}
@@ -154,12 +193,14 @@ const ProjectList = (props) => {
 							<label htmlFor="">End At</label>
 							<select
 								className="form-control"
-								onChange={(e) => props.setEndMonth(e.target.value)}>
+								onChange={(e) =>
+									props.setEndMonth(e.target.value == "0" ? "" : e.target.value)
+								}>
 								{props.months.map((month, key) => (
 									<option
 										key={key}
 										value={key}
-										selected={key == props.previousMonth}>
+										selected={key == props.endMonth}>
 										{month}
 									</option>
 								))}
@@ -181,7 +222,7 @@ const ProjectList = (props) => {
 									<option
 										key={key}
 										value={year}
-										selected={key == props.currentYear}>
+										selected={year == props.endYear}>
 										{year}
 									</option>
 								))}
@@ -201,18 +242,9 @@ const ProjectList = (props) => {
 				<table className="table table-hover">
 					<thead>
 						<tr>
-							<th colSpan="9"></th>
+							<th colSpan="8"></th>
 							<th className="text-end">
 								<div className="d-flex justify-content-end">
-									{deleteIds.length > 0 && (
-										<Btn
-											text={`delete ${deleteIds.length}`}
-											className="me-2"
-											onClick={() => onDeleteProject(deleteIds)}
-											loading={loading}
-										/>
-									)}
-
 									<MyLink
 										linkTo={`/erp/projects/create`}
 										icon={<PlusSVG />}
@@ -222,23 +254,7 @@ const ProjectList = (props) => {
 							</th>
 						</tr>
 						<tr>
-							<th>
-								<input
-									type="checkbox"
-									checked={
-										deleteIds.length == props.projects.data?.length &&
-										deleteIds.length != 0
-									}
-									onClick={() =>
-										setDeleteIds(
-											deleteIds.length == props.projects.data.length
-												? []
-												: props.projects.data.map((project) => project.id)
-										)
-									}
-								/>
-							</th>
-							<th>Code</th>
+							<th>#</th>
 							<th>Name</th>
 							<th>Type</th>
 							<th>Description</th>
@@ -250,13 +266,6 @@ const ProjectList = (props) => {
 						</tr>
 						{props.projects.data?.map((project, key) => (
 							<tr key={key}>
-								<td>
-									<input
-										type="checkbox"
-										checked={deleteIds.includes(project.id)}
-										onClick={() => handleSetDeleteIds(project.id)}
-									/>
-								</td>
 								<td>{project.code}</td>
 								<td>{project.name}</td>
 								<td className="text-capitalize">{project.type}</td>

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('account_type')->nullable();
             $table->string('location')->nullable();
+            $table->string('kra_pin')->nullable();
 			$table->softDeletes();
             $table->timestamps();
         });

@@ -102,12 +102,18 @@ function App() {
 	// Fetch data on page load
 	useEffect(() => get("auth", setAuth, "auth", false), [])
 
+	// Project Types
+	var projectTypes = [
+		{ id: "bungalow", name: "Bungalow" },
+		{ id: "maisonette", name: "Maisonette" },
+	]
+
 	/*
 	 * Genereate Month and Year Arrays
 	 */
 	var currentDate = new Date()
 	var currentYear = currentDate.getFullYear()
-	var previousMonth = currentDate.getMonth()
+	var currentMonth = currentDate.getMonth() + 1
 
 	const months = [
 		"Select Month",
@@ -213,9 +219,10 @@ function App() {
 		// Date
 		currentDate,
 		currentYear,
-		previousMonth,
+		currentMonth,
 		months,
 		years,
+		projectTypes
 	}
 
 	return (

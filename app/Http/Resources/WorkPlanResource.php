@@ -18,6 +18,7 @@ class WorkPlanResource extends JsonResource
         return [
             "id" => $this->id,
 			"projectId" => $this->project_id,
+			"projectCode" => $this->project->code,
             "name" => $this->name,
             "startsAt" => $this->starts_at,
             "endsAt" => $this->ends_at,

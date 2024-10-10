@@ -83,7 +83,15 @@ const create = (props) => {
 						className="form-control text-capitalize mb-2 me-2"
 						onChange={(e) => setType(e.target.value)}
 						required={true}>
-						<option value="design">Design</option>
+						{[{ id: "", name: "Select Type" }]
+							.concat(props.projectTypes)
+							.map((projectType, key) => (
+								<option
+									key={key}
+									value={projectType.id}>
+									{projectType.name}
+								</option>
+							))}
 					</select>
 					{/* Type End */}
 

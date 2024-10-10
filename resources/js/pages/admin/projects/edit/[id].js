@@ -82,11 +82,16 @@ const edit = (props) => {
 						className="form-control text-capitalize mb-2 me-2"
 						onChange={(e) => setType(e.target.value)}
 						required={true}>
-						<option
-							value="design"
-							selected={project.type == "design"}>
-							Design
-						</option>
+						{[{ id: "", name: "Select Type" }]
+							.concat(props.projectTypes)
+							.map((projectType, key) => (
+								<option
+									key={key}
+									value={projectType.id}
+									selected={projectType.id == type.id}>
+									{projectType.name}
+								</option>
+							))}
 					</select>
 					{/* Type End */}
 
