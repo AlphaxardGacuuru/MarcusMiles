@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min"
 
 import MyLink from "@/components/Core/MyLink"
@@ -14,7 +14,12 @@ import EditSVG from "@/svgs/EditSVG"
 import PlusSVG from "@/svgs/PlusSVG"
 
 const WorkPlanList = (props) => {
-	const location = useLocation()
+	const [workPlanSteps, setWorkPlanSteps] = useState([])
+
+	useEffect(() => {
+		// Fetch Work Plan Steps
+		props.get("work-plan-steps", setWorkPlanSteps)
+	}, [])
 
 	/*
 	 * Delete Work Plan
@@ -33,6 +38,19 @@ const WorkPlanList = (props) => {
 				})
 				// Update Project
 				props.get(`projects/${props.projectId}`, props.setProject)
+			})
+			.catch((err) => props.getErrors(err))
+	}
+
+	/*
+	 * Delete Work Plan Step
+	 */
+	const onDeleteWorkPlanStep = (workPlanStepId) => {
+		Axios.delete(`api/work-plan-steps/${workPlanStepId}`)
+			.then((res) => {
+				props.setMessages([res.data.message])
+				// Fetch Work Plan Steps
+				props.get("work-plan-steps", setWorkPlanSteps)
 			})
 			.catch((err) => props.getErrors(err))
 	}
@@ -84,129 +102,115 @@ const WorkPlanList = (props) => {
 					</thead>
 					<tbody>
 						{props.workPlans.data?.map((workPlan, key) => (
-							<tr key={key}>
-								<td>{props.iterator(key, props.workPlans)}</td>
-								<td>{workPlan.projectCode}</td>
-								<td>{workPlan.name}</td>
-								<td className="text-capitalize">{workPlan.startsAt}</td>
-								<td className="text-capitalize">{workPlan.endsAt}</td>
-								<td>
-									<div className="d-flex justify-content-end">
-										<MyLink
-											linkTo={`/erp/work-plan/${props.projectId}/create`}
-											icon={<PlusSVG />}
-											text="add substep"
-										/>
-
-										<MyLink
-											linkTo={`/erp/work-plan/${workPlan.id}/edit`}
-											icon={<EditSVG />}
-											className="ms-1"
-										/>
-
-										<div className="mx-1">
-											<DeleteModal
-												index={`workPlan${key}`}
-												model={workPlan}
-												modelName="Work Plan"
-												onDelete={onDeleteWorkPlan}
+							<React.Fragment key={key}>
+								<tr key={key}>
+									<td>{props.iterator(key, props.workPlans)}</td>
+									<td>{workPlan.projectCode}</td>
+									<td>{workPlan.name}</td>
+									<td className="text-capitalize">{workPlan.startsAt}</td>
+									<td className="text-capitalize">{workPlan.endsAt}</td>
+									<td>
+										<div className="d-flex justify-content-end">
+											<MyLink
+												linkTo={`/erp/work-plan-step/${workPlan.id}/create`}
+												icon={<PlusSVG />}
+												text="add substep"
 											/>
+
+											<MyLink
+												linkTo={`/erp/work-plan/${workPlan.id}/edit`}
+												icon={<EditSVG />}
+												className="ms-1"
+											/>
+
+											<div className="mx-1">
+												<DeleteModal
+													index={`workPlan${key}`}
+													model={workPlan}
+													modelName="Work Plan"
+													onDelete={onDeleteWorkPlan}
+												/>
+											</div>
 										</div>
-									</div>
-								</td>
-							</tr>
+									</td>
+								</tr>
+								<tr>
+									<td
+										colSpan={6}
+										className="p-0">
+										<div
+											className="accordion rounded-0"
+											id="accordionExample">
+											<div className="accordion-item rounded-0">
+												<h2 className="accordion-header">
+													<button
+														className={`accordion-button rounded-0 ${
+															key != 0 && "collapsed"
+														}`}
+														type="button"
+														data-bs-toggle="collapse"
+														data-bs-target={`#collapse${key}`}
+														aria-expanded="true"
+														aria-controls={`collapse${key}`}>
+														Sub Steps
+													</button>
+												</h2>
+												<div
+													id={`collapse${key}`}
+													className={`accordion-collapse collapse ${
+														key == 0 && "show"
+													}`}
+													data-bs-parent="#accordionExample">
+													<div className="accordion-body p-0">
+														<table className="table table-hover table-primary table-borderless mb-0">
+															<tbody>
+																{workPlanSteps
+																	.filter(
+																		(workPlanStep) =>
+																			workPlanStep.workPlanId == workPlan.id
+																	)
+																	.map((workPlanStep, workPlanStepKey) => (
+																		<tr key={workPlanStepKey}>
+																			<td></td>
+																			<td>{workPlanStepKey + 1}</td>
+																			<td>{workPlanStep.projectCode}</td>
+																			<td>{workPlanStep.name}</td>
+																			<td className="text-capitalize">
+																				{workPlanStep.startsAt}
+																			</td>
+																			<td className="text-capitalize">
+																				{workPlanStep.endsAt}
+																			</td>
+																			<td>
+																				<div className="d-flex justify-content-end">
+																					<MyLink
+																						linkTo={`/erp/work-plan-step/${workPlanStep.id}/edit`}
+																						icon={<EditSVG />}
+																						className="ms-1"
+																					/>
+
+																					<div className="mx-1">
+																						<DeleteModal
+																							index={`workPlanStep${workPlanStepKey}`}
+																							model={workPlanStep}
+																							modelName="Work Plan Step"
+																							onDelete={onDeleteWorkPlanStep}
+																						/>
+																					</div>
+																				</div>
+																			</td>
+																		</tr>
+																	))}
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</React.Fragment>
 						))}
-						<div
-							class="accordion"
-							id="accordionExample">
-							<div class="accordion-item">
-								<h2 class="accordion-header">
-									<button
-										class="accordion-button"
-										type="button"
-										data-bs-toggle="collapse"
-										data-bs-target="#collapseOne"
-										aria-expanded="true"
-										aria-controls="collapseOne">
-										Accordion Item #1
-									</button>
-								</h2>
-								<div
-									id="collapseOne"
-									class="accordion-collapse collapse show"
-									data-bs-parent="#accordionExample">
-									<div class="accordion-body">
-										<strong>This is the first item's accordion body.</strong> It
-										is shown by default, until the collapse plugin adds the
-										appropriate classes that we use to style each element. These
-										classes control the overall appearance, as well as the
-										showing and hiding via CSS transitions. You can modify any
-										of this with custom CSS or overriding our default variables.
-										It's also worth noting that just about any HTML can go
-										within the <code>.accordion-body</code>, though the
-										transition does limit overflow.
-									</div>
-								</div>
-							</div>
-							<div class="accordion-item">
-								<h2 class="accordion-header">
-									<button
-										class="accordion-button collapsed"
-										type="button"
-										data-bs-toggle="collapse"
-										data-bs-target="#collapseTwo"
-										aria-expanded="false"
-										aria-controls="collapseTwo">
-										Accordion Item #2
-									</button>
-								</h2>
-								<div
-									id="collapseTwo"
-									class="accordion-collapse collapse"
-									data-bs-parent="#accordionExample">
-									<div class="accordion-body">
-										<strong>This is the second item's accordion body.</strong>{" "}
-										It is hidden by default, until the collapse plugin adds the
-										appropriate classes that we use to style each element. These
-										classes control the overall appearance, as well as the
-										showing and hiding via CSS transitions. You can modify any
-										of this with custom CSS or overriding our default variables.
-										It's also worth noting that just about any HTML can go
-										within the <code>.accordion-body</code>, though the
-										transition does limit overflow.
-									</div>
-								</div>
-							</div>
-							<div class="accordion-item">
-								<h2 class="accordion-header">
-									<button
-										class="accordion-button collapsed"
-										type="button"
-										data-bs-toggle="collapse"
-										data-bs-target="#collapseThree"
-										aria-expanded="false"
-										aria-controls="collapseThree">
-										Accordion Item #3
-									</button>
-								</h2>
-								<div
-									id="collapseThree"
-									class="accordion-collapse collapse"
-									data-bs-parent="#accordionExample">
-									<div class="accordion-body">
-										<strong>This is the third item's accordion body.</strong> It
-										is hidden by default, until the collapse plugin adds the
-										appropriate classes that we use to style each element. These
-										classes control the overall appearance, as well as the
-										showing and hiding via CSS transitions. You can modify any
-										of this with custom CSS or overriding our default variables.
-										It's also worth noting that just about any HTML can go
-										within the <code>.accordion-body</code>, though the
-										transition does limit overflow.
-									</div>
-								</div>
-							</div>
-						</div>
 					</tbody>
 				</table>
 				{/* Pagination Links */}

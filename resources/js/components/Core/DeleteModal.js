@@ -58,6 +58,7 @@ const DeleteModal = ({ index, model, modelName, onDelete }) => {
 				text="delete"
 				dataBsToggle="modal"
 				dataBsTarget={`#deleteModal${index}`}
+				onClick={(e) => e.preventDefault()}
 			/>
 			{/* Button trigger modal End */}
 		</React.Fragment>

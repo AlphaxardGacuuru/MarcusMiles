@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\WorkPlanStepService;
 use App\Models\WorkPlanStep;
 use Illuminate\Http\Request;
 
 class WorkPlanStepController extends Controller
 {
+    public function __construct(protected WorkPlanStepService $service)
+    {
+        //
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return $this->service->index($request);
     }
 
     /**
@@ -25,7 +31,20 @@ class WorkPlanStepController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            "workPlanId" => "required|string",
+            "name" => "required|string",
+            "startsAt" => "required|date",
+            "endsAt" => "required|date",
+        ]);
+
+        [$saved, $message, $workPlanStep] = $this->service->store($request);
+
+        return response([
+            "status" => $saved,
+            "message" => $message,
+            "data" => $workPlanStep,
+        ], 200);
     }
 
     /**
@@ -34,9 +53,9 @@ class WorkPlanStepController extends Controller
      * @param  \App\Models\WorkPlanStep  $workPlanStep
      * @return \Illuminate\Http\Response
      */
-    public function show(WorkPlanStep $workPlanStep)
+    public function show($id)
     {
-        //
+        return $this->service->show($id);
     }
 
     /**
@@ -46,9 +65,21 @@ class WorkPlanStepController extends Controller
      * @param  \App\Models\WorkPlanStep  $workPlanStep
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, WorkPlanStep $workPlanStep)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            "name" => "nullable|string",
+            "startsAt" => "nullable|date",
+            "endsAt" => "nullable|date",
+        ]);
+
+        [$saved, $message, $workPlanStep] = $this->service->update($request, $id);
+
+        return response([
+            "status" => $saved,
+            "message" => $message,
+            "data" => $workPlanStep,
+        ], 200);
     }
 
     /**
@@ -57,8 +88,14 @@ class WorkPlanStepController extends Controller
      * @param  \App\Models\WorkPlanStep  $workPlanStep
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WorkPlanStep $workPlanStep)
+    public function destroy($id)
     {
-        //
+        [$deleted, $message, $workPlanStep] = $this->service->destroy($id);
+
+        return response([
+            "status" => $deleted,
+            "message" => $message,
+            "data" => $workPlanStep,
+        ], 200);
     }
 }

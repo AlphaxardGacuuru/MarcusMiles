@@ -26,6 +26,7 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WaterReadingController;
 use App\Http\Controllers\WorkPlanController;
+use App\Http\Controllers\WorkPlanStepController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,7 @@ Route::apiResources([
 	"clients" => ClientController::class,
 	"projects" => ProjectController::class,
 	"work-plans" => WorkPlanController::class,
+	"work-plan-steps" => WorkPlanStepController::class,
 	"inventories" => InventoryController::class,
 	"suppliers" => SupplierController::class,
 	"stages" => StageController::class,

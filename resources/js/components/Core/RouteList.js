@@ -22,6 +22,9 @@ import AdminProjectEdit from "@/pages/admin/projects/edit/[id]"
 import AdminWorkPlanCreate from "@/pages/admin/work-plan/create"
 import AdminWorkPlanEdit from "@/pages/admin/work-plan/edit/[id]"
 
+import AdminWorkPlanStepCreate from "@/pages/admin/work-plan-step/create"
+import AdminWorkPlanStepEdit from "@/pages/admin/work-plan-step/edit/[id]"
+
 import AdminInventoryCreate from "@/pages/admin/inventory/create"
 import AdminInventoryEdit from "@/pages/admin/inventory/edit/[id]"
 
@@ -110,6 +113,14 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		{
 			path: "/admin/erp/work-plan/:id/edit",
 			component: <AdminWorkPlanEdit {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/work-plan-step/:id/create",
+			component: <AdminWorkPlanStepCreate {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/work-plan-step/:id/edit",
+			component: <AdminWorkPlanStepEdit {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/erp/inventory/:id/create",

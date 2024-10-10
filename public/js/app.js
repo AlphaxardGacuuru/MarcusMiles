@@ -92881,7 +92881,10 @@ var DeleteModal = function DeleteModal(_ref) {
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_2__["default"], null),
     text: "delete",
     dataBsToggle: "modal",
-    dataBsTarget: "#deleteModal".concat(index)
+    dataBsTarget: "#deleteModal".concat(index),
+    onClick: function onClick(e) {
+      return e.preventDefault();
+    }
   }));
 };
 /* harmony default export */ __webpack_exports__["default"] = (DeleteModal);
@@ -93138,29 +93141,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_admin_projects_edit_id___WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @/pages/admin/projects/edit/[id] */ "./resources/js/pages/admin/projects/edit/[id].js");
 /* harmony import */ var _pages_admin_work_plan_create__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @/pages/admin/work-plan/create */ "./resources/js/pages/admin/work-plan/create.js");
 /* harmony import */ var _pages_admin_work_plan_edit_id___WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @/pages/admin/work-plan/edit/[id] */ "./resources/js/pages/admin/work-plan/edit/[id].js");
-/* harmony import */ var _pages_admin_inventory_create__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @/pages/admin/inventory/create */ "./resources/js/pages/admin/inventory/create.js");
-/* harmony import */ var _pages_admin_inventory_edit_id___WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @/pages/admin/inventory/edit/[id] */ "./resources/js/pages/admin/inventory/edit/[id].js");
-/* harmony import */ var _pages_admin_suppliers_index__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @/pages/admin/suppliers/index */ "./resources/js/pages/admin/suppliers/index.js");
-/* harmony import */ var _pages_admin_suppliers_create__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @/pages/admin/suppliers/create */ "./resources/js/pages/admin/suppliers/create.js");
-/* harmony import */ var _pages_admin_suppliers_id___WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @/pages/admin/suppliers/[id] */ "./resources/js/pages/admin/suppliers/[id].js");
-/* harmony import */ var _pages_admin_suppliers_edit_id___WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @/pages/admin/suppliers/edit/[id] */ "./resources/js/pages/admin/suppliers/edit/[id].js");
-/* harmony import */ var _pages_admin_issues_index__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @/pages/admin/issues/index */ "./resources/js/pages/admin/issues/index.js");
-/* harmony import */ var _pages_admin_invoices_index__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @/pages/admin/invoices/index */ "./resources/js/pages/admin/invoices/index.js");
-/* harmony import */ var _pages_admin_invoices_create__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @/pages/admin/invoices/create */ "./resources/js/pages/admin/invoices/create.js");
-/* harmony import */ var _pages_admin_invoices_id___WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @/pages/admin/invoices/[id] */ "./resources/js/pages/admin/invoices/[id].js");
-/* harmony import */ var _pages_admin_invoices_edit_id___WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @/pages/admin/invoices/edit/[id] */ "./resources/js/pages/admin/invoices/edit/[id].js");
-/* harmony import */ var _pages_admin_payments_index__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @/pages/admin/payments/index */ "./resources/js/pages/admin/payments/index.js");
-/* harmony import */ var _pages_admin_payments_create__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @/pages/admin/payments/create */ "./resources/js/pages/admin/payments/create.js");
-/* harmony import */ var _pages_admin_payments_edit_id___WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @/pages/admin/payments/edit/[id] */ "./resources/js/pages/admin/payments/edit/[id].js");
-/* harmony import */ var _pages_admin_credit_notes_index__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @/pages/admin/credit-notes/index */ "./resources/js/pages/admin/credit-notes/index.js");
-/* harmony import */ var _pages_admin_credit_notes_create__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! @/pages/admin/credit-notes/create */ "./resources/js/pages/admin/credit-notes/create.js");
-/* harmony import */ var _pages_admin_credit_notes_edit_id___WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! @/pages/admin/credit-notes/edit/[id] */ "./resources/js/pages/admin/credit-notes/edit/[id].js");
-/* harmony import */ var _pages_admin_staff_index__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! @/pages/admin/staff/index */ "./resources/js/pages/admin/staff/index.js");
-/* harmony import */ var _pages_admin_staff_create__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! @/pages/admin/staff/create */ "./resources/js/pages/admin/staff/create.js");
-/* harmony import */ var _pages_admin_staff_edit_id___WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! @/pages/admin/staff/edit/[id] */ "./resources/js/pages/admin/staff/edit/[id].js");
-/* harmony import */ var _pages_admin_role__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! @/pages/admin/role */ "./resources/js/pages/admin/role/index.js");
-/* harmony import */ var _pages_admin_role_create__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! @/pages/admin/role/create */ "./resources/js/pages/admin/role/create.js");
-/* harmony import */ var _pages_admin_role_edit_id___WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! @/pages/admin/role/edit/[id] */ "./resources/js/pages/admin/role/edit/[id].js");
+/* harmony import */ var _pages_admin_work_plan_step_create__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @/pages/admin/work-plan-step/create */ "./resources/js/pages/admin/work-plan-step/create.js");
+/* harmony import */ var _pages_admin_work_plan_step_edit_id___WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @/pages/admin/work-plan-step/edit/[id] */ "./resources/js/pages/admin/work-plan-step/edit/[id].js");
+/* harmony import */ var _pages_admin_inventory_create__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @/pages/admin/inventory/create */ "./resources/js/pages/admin/inventory/create.js");
+/* harmony import */ var _pages_admin_inventory_edit_id___WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @/pages/admin/inventory/edit/[id] */ "./resources/js/pages/admin/inventory/edit/[id].js");
+/* harmony import */ var _pages_admin_suppliers_index__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @/pages/admin/suppliers/index */ "./resources/js/pages/admin/suppliers/index.js");
+/* harmony import */ var _pages_admin_suppliers_create__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @/pages/admin/suppliers/create */ "./resources/js/pages/admin/suppliers/create.js");
+/* harmony import */ var _pages_admin_suppliers_id___WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @/pages/admin/suppliers/[id] */ "./resources/js/pages/admin/suppliers/[id].js");
+/* harmony import */ var _pages_admin_suppliers_edit_id___WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @/pages/admin/suppliers/edit/[id] */ "./resources/js/pages/admin/suppliers/edit/[id].js");
+/* harmony import */ var _pages_admin_issues_index__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @/pages/admin/issues/index */ "./resources/js/pages/admin/issues/index.js");
+/* harmony import */ var _pages_admin_invoices_index__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @/pages/admin/invoices/index */ "./resources/js/pages/admin/invoices/index.js");
+/* harmony import */ var _pages_admin_invoices_create__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @/pages/admin/invoices/create */ "./resources/js/pages/admin/invoices/create.js");
+/* harmony import */ var _pages_admin_invoices_id___WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @/pages/admin/invoices/[id] */ "./resources/js/pages/admin/invoices/[id].js");
+/* harmony import */ var _pages_admin_invoices_edit_id___WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @/pages/admin/invoices/edit/[id] */ "./resources/js/pages/admin/invoices/edit/[id].js");
+/* harmony import */ var _pages_admin_payments_index__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @/pages/admin/payments/index */ "./resources/js/pages/admin/payments/index.js");
+/* harmony import */ var _pages_admin_payments_create__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @/pages/admin/payments/create */ "./resources/js/pages/admin/payments/create.js");
+/* harmony import */ var _pages_admin_payments_edit_id___WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! @/pages/admin/payments/edit/[id] */ "./resources/js/pages/admin/payments/edit/[id].js");
+/* harmony import */ var _pages_admin_credit_notes_index__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! @/pages/admin/credit-notes/index */ "./resources/js/pages/admin/credit-notes/index.js");
+/* harmony import */ var _pages_admin_credit_notes_create__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! @/pages/admin/credit-notes/create */ "./resources/js/pages/admin/credit-notes/create.js");
+/* harmony import */ var _pages_admin_credit_notes_edit_id___WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! @/pages/admin/credit-notes/edit/[id] */ "./resources/js/pages/admin/credit-notes/edit/[id].js");
+/* harmony import */ var _pages_admin_staff_index__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! @/pages/admin/staff/index */ "./resources/js/pages/admin/staff/index.js");
+/* harmony import */ var _pages_admin_staff_create__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! @/pages/admin/staff/create */ "./resources/js/pages/admin/staff/create.js");
+/* harmony import */ var _pages_admin_staff_edit_id___WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! @/pages/admin/staff/edit/[id] */ "./resources/js/pages/admin/staff/edit/[id].js");
+/* harmony import */ var _pages_admin_role__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! @/pages/admin/role */ "./resources/js/pages/admin/role/index.js");
+/* harmony import */ var _pages_admin_role_create__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! @/pages/admin/role/create */ "./resources/js/pages/admin/role/create.js");
+/* harmony import */ var _pages_admin_role_edit_id___WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! @/pages/admin/role/edit/[id] */ "./resources/js/pages/admin/role/edit/[id].js");
+
+
 
 
 
@@ -93246,74 +93253,80 @@ var RouteList = function RouteList(_ref) {
     path: "/admin/erp/work-plan/:id/edit",
     component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_work_plan_edit_id___WEBPACK_IMPORTED_MODULE_16__["default"], GLOBAL_STATE)
   }, {
+    path: "/admin/erp/work-plan-step/:id/create",
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_work_plan_step_create__WEBPACK_IMPORTED_MODULE_17__["default"], GLOBAL_STATE)
+  }, {
+    path: "/admin/erp/work-plan-step/:id/edit",
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_work_plan_step_edit_id___WEBPACK_IMPORTED_MODULE_18__["default"], GLOBAL_STATE)
+  }, {
     path: "/admin/erp/inventory/:id/create",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_inventory_create__WEBPACK_IMPORTED_MODULE_17__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_inventory_create__WEBPACK_IMPORTED_MODULE_19__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/erp/inventory/:id/edit",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_inventory_edit_id___WEBPACK_IMPORTED_MODULE_18__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_inventory_edit_id___WEBPACK_IMPORTED_MODULE_20__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/erp/suppliers",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_suppliers_index__WEBPACK_IMPORTED_MODULE_19__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_suppliers_index__WEBPACK_IMPORTED_MODULE_21__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/erp/suppliers/create",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_suppliers_create__WEBPACK_IMPORTED_MODULE_20__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_suppliers_create__WEBPACK_IMPORTED_MODULE_22__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/erp/suppliers/:id/view",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_suppliers_id___WEBPACK_IMPORTED_MODULE_21__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_suppliers_id___WEBPACK_IMPORTED_MODULE_23__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/erp/suppliers/:id/edit",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_suppliers_edit_id___WEBPACK_IMPORTED_MODULE_22__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_suppliers_edit_id___WEBPACK_IMPORTED_MODULE_24__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/erp/issues",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_issues_index__WEBPACK_IMPORTED_MODULE_23__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_issues_index__WEBPACK_IMPORTED_MODULE_25__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/invoices",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_invoices_index__WEBPACK_IMPORTED_MODULE_24__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_invoices_index__WEBPACK_IMPORTED_MODULE_26__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/invoices/create",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_invoices_create__WEBPACK_IMPORTED_MODULE_25__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_invoices_create__WEBPACK_IMPORTED_MODULE_27__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/invoices/:id/view",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_invoices_id___WEBPACK_IMPORTED_MODULE_26__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_invoices_id___WEBPACK_IMPORTED_MODULE_28__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/invoices/:id/edit",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_invoices_edit_id___WEBPACK_IMPORTED_MODULE_27__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_invoices_edit_id___WEBPACK_IMPORTED_MODULE_29__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/payments",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_payments_index__WEBPACK_IMPORTED_MODULE_28__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_payments_index__WEBPACK_IMPORTED_MODULE_30__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/payments/:id/create",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_payments_create__WEBPACK_IMPORTED_MODULE_29__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_payments_create__WEBPACK_IMPORTED_MODULE_31__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/payments/:id/edit",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_payments_edit_id___WEBPACK_IMPORTED_MODULE_30__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_payments_edit_id___WEBPACK_IMPORTED_MODULE_32__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/credit-notes",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_credit_notes_index__WEBPACK_IMPORTED_MODULE_31__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_credit_notes_index__WEBPACK_IMPORTED_MODULE_33__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/credit-notes/:id/create",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_credit_notes_create__WEBPACK_IMPORTED_MODULE_32__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_credit_notes_create__WEBPACK_IMPORTED_MODULE_34__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/credit-notes/:id/edit",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_credit_notes_edit_id___WEBPACK_IMPORTED_MODULE_33__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_credit_notes_edit_id___WEBPACK_IMPORTED_MODULE_35__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/staff",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_staff_index__WEBPACK_IMPORTED_MODULE_34__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_staff_index__WEBPACK_IMPORTED_MODULE_36__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/staff/:id/create",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_staff_create__WEBPACK_IMPORTED_MODULE_35__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_staff_create__WEBPACK_IMPORTED_MODULE_37__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/staff/:id/edit",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_staff_edit_id___WEBPACK_IMPORTED_MODULE_36__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_staff_edit_id___WEBPACK_IMPORTED_MODULE_38__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/roles",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_role__WEBPACK_IMPORTED_MODULE_37__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_role__WEBPACK_IMPORTED_MODULE_39__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/roles/create",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_role_create__WEBPACK_IMPORTED_MODULE_38__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_role_create__WEBPACK_IMPORTED_MODULE_40__["default"], GLOBAL_STATE)
   }, {
     path: "/admin/roles/:id/edit",
-    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_role_edit_id___WEBPACK_IMPORTED_MODULE_39__["default"], GLOBAL_STATE)
+    component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_admin_role_edit_id___WEBPACK_IMPORTED_MODULE_41__["default"], GLOBAL_STATE)
   }];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Layouts_Header__WEBPACK_IMPORTED_MODULE_2__["default"], GLOBAL_STATE, routes.map(function (route, key) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -94908,6 +94921,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/svgs/ViewSVG */ "./resources/js/svgs/ViewSVG.js");
 /* harmony import */ var _svgs_EditSVG__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/svgs/EditSVG */ "./resources/js/svgs/EditSVG.js");
 /* harmony import */ var _svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/svgs/PlusSVG */ "./resources/js/svgs/PlusSVG.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -94921,7 +94940,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var WorkPlanList = function WorkPlanList(props) {
   var _props$workPlans$data;
-  var location = Object(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__["useLocation"])();
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    workPlanSteps = _useState2[0],
+    setWorkPlanSteps = _useState2[1];
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // Fetch Work Plan Steps
+    props.get("work-plan-steps", setWorkPlanSteps);
+  }, []);
 
   /*
    * Delete Work Plan
@@ -94939,6 +94965,19 @@ var WorkPlanList = function WorkPlanList(props) {
       });
       // Update Project
       props.get("projects/".concat(props.projectId), props.setProject);
+    })["catch"](function (err) {
+      return props.getErrors(err);
+    });
+  };
+
+  /*
+   * Delete Work Plan Step
+   */
+  var onDeleteWorkPlanStep = function onDeleteWorkPlanStep(workPlanStepId) {
+    Axios["delete"]("api/work-plan-steps/".concat(workPlanStepId)).then(function (res) {
+      props.setMessages([res.data.message]);
+      // Fetch Work Plan Steps
+      props.get("work-plan-steps", setWorkPlanSteps);
     })["catch"](function (err) {
       return props.getErrors(err);
     });
@@ -94969,7 +95008,9 @@ var WorkPlanList = function WorkPlanList(props) {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Project Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Starts At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Ends At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     className: "text-center"
   }, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, (_props$workPlans$data = props.workPlans.data) === null || _props$workPlans$data === void 0 ? void 0 : _props$workPlans$data.map(function (workPlan, key) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
+      key: key
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: key
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.iterator(key, props.workPlans)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, workPlan.projectCode), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, workPlan.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       className: "text-capitalize"
@@ -94978,7 +95019,7 @@ var WorkPlanList = function WorkPlanList(props) {
     }, workPlan.endsAt), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "d-flex justify-content-end"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      linkTo: "/erp/work-plan/".concat(props.projectId, "/create"),
+      linkTo: "/erp/work-plan-step/".concat(workPlan.id, "/create"),
       icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_10__["default"], null),
       text: "add substep"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -94992,62 +95033,56 @@ var WorkPlanList = function WorkPlanList(props) {
       model: workPlan,
       modelName: "Work Plan",
       onDelete: onDeleteWorkPlan
-    })))));
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "accordion",
-    id: "accordionExample"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "accordion-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-    "class": "accordion-header"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    "class": "accordion-button",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseOne",
-    "aria-expanded": "true",
-    "aria-controls": "collapseOne"
-  }, "Accordion Item #1")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    id: "collapseOne",
-    "class": "accordion-collapse collapse show",
-    "data-bs-parent": "#accordionExample"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "accordion-body"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "This is the first item's accordion body."), " It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("code", null, ".accordion-body"), ", though the transition does limit overflow."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "accordion-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-    "class": "accordion-header"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    "class": "accordion-button collapsed",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseTwo",
-    "aria-expanded": "false",
-    "aria-controls": "collapseTwo"
-  }, "Accordion Item #2")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    id: "collapseTwo",
-    "class": "accordion-collapse collapse",
-    "data-bs-parent": "#accordionExample"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "accordion-body"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "This is the second item's accordion body."), " ", "It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("code", null, ".accordion-body"), ", though the transition does limit overflow."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "accordion-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-    "class": "accordion-header"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    "class": "accordion-button collapsed",
-    type: "button",
-    "data-bs-toggle": "collapse",
-    "data-bs-target": "#collapseThree",
-    "aria-expanded": "false",
-    "aria-controls": "collapseThree"
-  }, "Accordion Item #3")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    id: "collapseThree",
-    "class": "accordion-collapse collapse",
-    "data-bs-parent": "#accordionExample"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "accordion-body"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "This is the third item's accordion body."), " It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("code", null, ".accordion-body"), ", though the transition does limit overflow.")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_PaginationLinks__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      colSpan: 6,
+      className: "p-0"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "accordion rounded-0",
+      id: "accordionExample"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "accordion-item rounded-0"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      className: "accordion-header"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "accordion-button rounded-0 ".concat(key != 0 && "collapsed"),
+      type: "button",
+      "data-bs-toggle": "collapse",
+      "data-bs-target": "#collapse".concat(key),
+      "aria-expanded": "true",
+      "aria-controls": "collapse".concat(key)
+    }, "Sub Steps")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      id: "collapse".concat(key),
+      className: "accordion-collapse collapse ".concat(key == 0 && "show"),
+      "data-bs-parent": "#accordionExample"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "accordion-body p-0"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      className: "table table-hover table-primary table-borderless mb-0"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, workPlanSteps.filter(function (workPlanStep) {
+      return workPlanStep.workPlanId == workPlan.id;
+    }).map(function (workPlanStep, workPlanStepKey) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        key: workPlanStepKey
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, workPlanStepKey + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, workPlanStep.projectCode), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, workPlanStep.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "text-capitalize"
+      }, workPlanStep.startsAt), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "text-capitalize"
+      }, workPlanStep.endsAt), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex justify-content-end"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        linkTo: "/erp/work-plan-step/".concat(workPlanStep.id, "/edit"),
+        icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_EditSVG__WEBPACK_IMPORTED_MODULE_9__["default"], null),
+        className: "ms-1"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mx-1"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_DeleteModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        index: "workPlanStep".concat(workPlanStepKey),
+        model: workPlanStep,
+        modelName: "Work Plan Step",
+        onDelete: onDeleteWorkPlanStep
+      })))));
+    }))))))))));
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_PaginationLinks__WEBPACK_IMPORTED_MODULE_6__["default"], {
     list: props.workPlans,
     getPaginated: props.getPaginated,
     setState: props.setWorkPlans
@@ -101534,6 +101569,308 @@ var index = function index(props) {
   }))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (index);
+
+/***/ }),
+
+/***/ "./resources/js/pages/admin/work-plan-step/create.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/pages/admin/work-plan-step/create.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom/cjs/react-router-dom.min */ "./node_modules/react-router-dom/cjs/react-router-dom.min.js");
+/* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Core/Btn */ "./resources/js/components/Core/Btn.js");
+/* harmony import */ var _components_Core_MyLink__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/Core/MyLink */ "./resources/js/components/Core/MyLink.js");
+/* harmony import */ var _svgs_BackSVG__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/svgs/BackSVG */ "./resources/js/svgs/BackSVG.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var create = function create(props) {
+  var history = Object(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__["useHistory"])();
+  var _useParams = Object(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
+    id = _useParams.id;
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+    _useState2 = _slicedToArray(_useState, 2),
+    workPlan = _useState2[0],
+    setWorkPlan = _useState2[1];
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState4 = _slicedToArray(_useState3, 2),
+    name = _useState4[0],
+    setName = _useState4[1];
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState6 = _slicedToArray(_useState5, 2),
+    startsAt = _useState6[0],
+    setStartAt = _useState6[1];
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState8 = _slicedToArray(_useState7, 2),
+    endsAt = _useState8[0],
+    setEndsAt = _useState8[1];
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState10 = _slicedToArray(_useState9, 2),
+    loading = _useState10[0],
+    setLoading = _useState10[1];
+
+  // Get Work Plans
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // Set page
+    props.setPage({
+      name: "Add Work Plan Step Item",
+      path: ["projects"]
+    });
+
+    // Fetch Work Plan
+    Axios.get("api/work-plans/".concat(id)).then(function (res) {
+      setWorkPlan(res.data.data);
+      // Set page
+      props.setPage({
+        name: "Add Work Plan Step Item",
+        path: ["projects", "projects/".concat(res.data.data.projectId, "/view"), "create"]
+      });
+    })["catch"](function (err) {
+      return props.getErrors(err);
+    });
+  }, []);
+
+  /*
+   * Submit Form
+   */
+  var onSubmit = function onSubmit(e) {
+    e.preventDefault();
+    setLoading(true);
+    Axios.post("/api/work-plan-steps", {
+      workPlanId: id,
+      name: name,
+      startsAt: startsAt,
+      endsAt: endsAt
+    }).then(function (res) {
+      setLoading(false);
+      // Show messages
+      props.setMessages([res.data.message]);
+      // Redirect to Work Plans
+      setTimeout(function () {
+        return history.push("/admin/erp/projects/".concat(workPlan.projectId, "/view"));
+      }, 500);
+    })["catch"](function (err) {
+      setLoading(false);
+      // Get Errors
+      props.getErrors(err);
+    });
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-4"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: onSubmit,
+    className: "mb-5"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "A1",
+    className: "form-control mb-2 me-2",
+    onChange: function onChange(e) {
+      return setName(e.target.value);
+    },
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Starts At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    placeholder: "A1",
+    className: "form-control mb-2 me-2",
+    onChange: function onChange(e) {
+      return setStartAt(e.target.value);
+    },
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Ends At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    placeholder: "A1",
+    className: "form-control mb-2 me-2",
+    onChange: function onChange(e) {
+      return setEndsAt(e.target.value);
+    },
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-end mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    text: "add sub step item",
+    loading: loading
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    linkTo: "/erp/projects/".concat(workPlan.projectId, "/view"),
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_BackSVG__WEBPACK_IMPORTED_MODULE_4__["default"], null),
+    text: "back to projects"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-4"
+  }))));
+};
+/* harmony default export */ __webpack_exports__["default"] = (create);
+
+/***/ }),
+
+/***/ "./resources/js/pages/admin/work-plan-step/edit/[id].js":
+/*!**************************************************************!*\
+  !*** ./resources/js/pages/admin/work-plan-step/edit/[id].js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom/cjs/react-router-dom.min */ "./node_modules/react-router-dom/cjs/react-router-dom.min.js");
+/* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Core/Btn */ "./resources/js/components/Core/Btn.js");
+/* harmony import */ var _components_Core_MyLink__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/Core/MyLink */ "./resources/js/components/Core/MyLink.js");
+/* harmony import */ var _svgs_BackSVG__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/svgs/BackSVG */ "./resources/js/svgs/BackSVG.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var edit = function edit(props) {
+  var _useParams = Object(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
+    id = _useParams.id;
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+    _useState2 = _slicedToArray(_useState, 2),
+    workPlanStep = _useState2[0],
+    setWorkPlanStep = _useState2[1];
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState4 = _slicedToArray(_useState3, 2),
+    name = _useState4[0],
+    setName = _useState4[1];
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState6 = _slicedToArray(_useState5, 2),
+    startsAt = _useState6[0],
+    setStartAt = _useState6[1];
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState8 = _slicedToArray(_useState7, 2),
+    endsAt = _useState8[0],
+    setEndsAt = _useState8[1];
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState10 = _slicedToArray(_useState9, 2),
+    loading = _useState10[0],
+    setLoading = _useState10[1];
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // Set page
+    props.setPage({
+      name: "Edit Work Plan",
+      path: ["projects", "edit"]
+    });
+
+    // Fetch Work Plan
+    Axios.get("api/work-plan-steps/".concat(id)).then(function (res) {
+      // Set page
+      props.setPage({
+        name: "Edit Work Plan",
+        path: ["projects", "projects/".concat(res.data.data.projectId, "/show"), "edit"]
+      });
+      setWorkPlanStep(res.data.data);
+    });
+  }, []);
+
+  /*
+   * Submit Form
+   */
+  var onSubmit = function onSubmit(e) {
+    e.preventDefault();
+    setLoading(true);
+    Axios.put("/api/work-plan-steps/".concat(id), {
+      name: name,
+      startsAt: startsAt,
+      endsAt: endsAt
+    }).then(function (res) {
+      setLoading(false);
+      // Show messages
+      props.setMessages([res.data.message]);
+      // Fetch Work Plan
+      props.get("work-plan-steps/".concat(id), setWorkPlanStep);
+    })["catch"](function (err) {
+      setLoading(false);
+      // Get Errors
+      props.getErrors(err);
+    });
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-4"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: onSubmit,
+    className: "mb-5"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "A1",
+    defaultValue: workPlanStep.name,
+    className: "form-control mb-2 me-2",
+    onChange: function onChange(e) {
+      return setName(e.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Starts At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    placeholder: "A1",
+    defaultValue: workPlanStep.startsAtRaw,
+    className: "form-control mb-2 me-2",
+    onChange: function onChange(e) {
+      return setStartAt(e.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Ends At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    placeholder: "A1",
+    defaultValue: workPlanStep.endsAtRaw,
+    className: "form-control mb-2 me-2",
+    onChange: function onChange(e) {
+      return setEndsAt(e.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-end mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    text: "update",
+    loading: loading
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    linkTo: "/erp/projects/".concat(workPlanStep.projectId, "/view"),
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_BackSVG__WEBPACK_IMPORTED_MODULE_4__["default"], null),
+    text: "back to project"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-4"
+  }))));
+};
+/* harmony default export */ __webpack_exports__["default"] = (edit);
 
 /***/ }),
 
