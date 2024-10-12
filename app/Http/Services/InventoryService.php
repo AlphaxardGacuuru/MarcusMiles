@@ -39,13 +39,13 @@ class InventoryService extends Service
     {
         $inventory = new Inventory;
         $inventory->project_id = $request->projectId;
-        $inventory->name = $request->name;
+        $inventory->good_id = $request->goodId;
         $inventory->quantity = $request->quantity;
         $inventory->supplier_id = $request->supplierId;
         $inventory->created_by = $this->id;
         $saved = $inventory->save();
 
-        $message = $inventory->name . " created successfully";
+        $message = "Inventory created successfully";
 
         return [$saved, $message, $inventory];
     }

@@ -33,7 +33,7 @@ class InventoryController extends Controller
     {
         $this->validate($request, [
             "projectId" => "required|string",
-            "name" => "required|string",
+            "goodId" => "required|string",
             "quantity" => "required|string",
             "supplierId" => "nullable|string",
         ]);
@@ -68,7 +68,6 @@ class InventoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            "name" => "nullable|string",
             "quantity" => "nullable|string",
             "supplierId" => "nullable|string",
         ]);

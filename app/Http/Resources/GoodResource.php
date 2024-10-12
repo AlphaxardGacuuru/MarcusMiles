@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class InventoryResource extends JsonResource
+class GoodResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,11 @@ class InventoryResource extends JsonResource
     {
         return [
 			"id" => $this->id,
-			"projectId" => $this->project_id,
-			"projectName" => $this->project->name,
-			"goodName" => $this->good->name,
-			"quantity" => $this->quantity,
-			"supplierId" => $this->supplier_id,
-			"supplierName" => $this->supplier?->name,
+			"itemNo" => $this->item_no,
+			"name" => $this->name,
+			"createdBy" => $this->createdBy->name,
+			"updatedAt" => $this->updated_at,
+			"createdAt" => $this->created_at,
 		];
     }
 }

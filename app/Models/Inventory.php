@@ -49,6 +49,11 @@ class Inventory extends Model
         return $this->belongsTo(Project::class);
     }
 
+    public function good()
+    {
+        return $this->belongsTo(Good::class);
+    }
+
     public function supplier()
     {
         return $this->belongsTo(User::class);

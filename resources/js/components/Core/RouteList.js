@@ -14,6 +14,10 @@ import AdminClientCreate from "@/pages/admin/clients/create"
 import AdminClientView from "@/pages/admin/clients/[id]"
 import AdminClientEdit from "@/pages/admin/clients/edit/[id]"
 
+import AdminGoods from "@/pages/admin/goods/index"
+import AdminGoodCreate from "@/pages/admin/goods/create"
+import AdminGoodEdit from "@/pages/admin/goods/edit/[id]"
+
 import AdminProjects from "@/pages/admin/projects/index"
 import AdminProjectCreate from "@/pages/admin/projects/create"
 import AdminProjectView from "@/pages/admin/projects/[id]"
@@ -25,6 +29,7 @@ import AdminWorkPlanEdit from "@/pages/admin/work-plan/edit/[id]"
 import AdminWorkPlanStepCreate from "@/pages/admin/work-plan-step/create"
 import AdminWorkPlanStepEdit from "@/pages/admin/work-plan-step/edit/[id]"
 
+import AdminInventory from "@/pages/admin/inventory/index"
 import AdminInventoryCreate from "@/pages/admin/inventory/create"
 import AdminInventoryEdit from "@/pages/admin/inventory/edit/[id]"
 
@@ -91,6 +96,18 @@ const RouteList = ({ GLOBAL_STATE }) => {
 			component: <AdminClientEdit {...GLOBAL_STATE} />,
 		},
 		{
+			path: "/admin/erp/goods",
+			component: <AdminGoods {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/goods/create",
+			component: <AdminGoodCreate {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/goods/:id/edit",
+			component: <AdminGoodEdit {...GLOBAL_STATE} />,
+		},
+		{
 			path: "/admin/erp/projects",
 			component: <AdminProjects {...GLOBAL_STATE} />,
 		},
@@ -121,6 +138,10 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		{
 			path: "/admin/erp/work-plan-step/:id/edit",
 			component: <AdminWorkPlanStepEdit {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/inventories",
+			component: <AdminInventory {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/erp/inventory/:id/create",

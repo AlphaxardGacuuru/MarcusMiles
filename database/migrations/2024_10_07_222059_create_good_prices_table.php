@@ -20,8 +20,15 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('price');
+			$table->unsignedBigInteger('supplier_id');
 			$table->unsignedBigInteger('created_by');
             $table->timestamps();
+
+            $table->foreign('supplier_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->foreign('created_by')
                 ->references('id')

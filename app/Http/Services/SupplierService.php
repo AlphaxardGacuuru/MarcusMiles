@@ -3,7 +3,9 @@
 namespace App\Http\Services;
 
 use App\Http\Resources\SupplierResource;
+use App\Models\SupplierGood;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class SupplierService extends Service
@@ -56,7 +58,23 @@ class SupplierService extends Service
         $supplier->phone = $request->phone;
         $supplier->location = $request->location;
         $supplier->account_type = "supplier";
-        $saved = $supplier->save();
+
+        $saved = DB::transaction(function () use ($supplier, $request) {
+            $saved = $supplier->save();
+
+            // Add Supplier Good
+            if ($request->filled("goodIds")) {
+                foreach ($request->goodIds as $goodId) {
+                    $supplierGood = new SupplierGood;
+                    $supplierGood->supplier_id = $supplier->id;
+                    $supplierGood->good_id = $goodId;
+                    $supplierGood->created_by = $this->id;
+                    $supplierGood->save();
+                }
+            }
+
+            return $saved;
+        });
 
         $message = $supplier->name . " created successfully";
 
@@ -84,6 +102,33 @@ class SupplierService extends Service
 
         if ($request->filled("location")) {
             $supplier->location = $request->location;
+        }
+
+        // Add Supplier Good
+        if (count($request->goodIds) > 0) {
+            foreach ($request->goodIds as $goodId) {
+                // Check if good already exists
+                $supplierGoodDoesntExist = SupplierGood::where("good_id", $goodId)
+                    ->where("supplier_id", $id)
+                    ->doesntExist();
+
+                if ($supplierGoodDoesntExist) {
+                    $supplierGood = new SupplierGood;
+                    $supplierGood->supplier_id = $id;
+                    $supplierGood->good_id = $goodId;
+                    $supplierGood->created_by = $this->id;
+                    $supplierGood->save();
+                } else {
+                    // Remove goods not included
+                    SupplierGood::where("supplier_id", $id)
+                        ->whereNotIn("good_id", $request->goodIds)
+                        ->delete();
+                }
+            }
+        } else {
+            // Remove goods not included
+            SupplierGood::where("user_id", $id)
+                ->delete();
         }
 
         $saved = $supplier->save();

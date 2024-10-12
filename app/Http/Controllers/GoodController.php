@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\GoodService;
 use App\Models\Good;
 use Illuminate\Http\Request;
 
 class GoodController extends Controller
 {
+    public function __construct(protected GoodService $service)
+    {
+        //
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return $this->service->index($request);
     }
 
     /**
@@ -25,7 +31,17 @@ class GoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            "name" => "required|string",
+        ]);
+
+        [$saved, $message, $good] = $this->service->store($request);
+
+        return response([
+            "status" => $saved,
+            "message" => $message,
+            "data" => $good,
+        ], 200);
     }
 
     /**
@@ -34,9 +50,9 @@ class GoodController extends Controller
      * @param  \App\Models\Good  $good
      * @return \Illuminate\Http\Response
      */
-    public function show(Good $good)
+    public function show($id)
     {
-        //
+        return $this->service->show($id);
     }
 
     /**
@@ -46,9 +62,19 @@ class GoodController extends Controller
      * @param  \App\Models\Good  $good
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Good $good)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            "name" => "nullable|string",
+        ]);
+
+        [$saved, $message, $good] = $this->service->update($request, $id);
+
+        return response([
+            "status" => $saved,
+            "message" => $message,
+            "data" => $good,
+        ], 200);
     }
 
     /**
@@ -57,8 +83,14 @@ class GoodController extends Controller
      * @param  \App\Models\Good  $good
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Good $good)
+    public function destroy($id)
     {
-        //
+        [$deleted, $message, $good] = $this->service->destroy($id);
+
+        return response([
+            "status" => $deleted,
+            "message" => $message,
+            "data" => $good,
+        ], 200);
     }
 }

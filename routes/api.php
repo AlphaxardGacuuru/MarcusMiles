@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CreditNoteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FilePondController;
+use App\Http\Controllers\GoodController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\IssueCommentController;
@@ -49,6 +50,7 @@ Route::get('auth', [UserController::class, 'auth']);
 
 Route::apiResources([
 	"clients" => ClientController::class,
+	"goods" => GoodController::class,
 	"projects" => ProjectController::class,
 	"work-plans" => WorkPlanController::class,
 	"work-plan-steps" => WorkPlanStepController::class,

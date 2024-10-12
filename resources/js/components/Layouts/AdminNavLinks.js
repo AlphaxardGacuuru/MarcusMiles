@@ -20,6 +20,8 @@ import ProjectSVG from "@/svgs/ProjectSVG"
 import ERPSVG from "@/svgs/ERPSVG"
 import IssueSVG from "@/svgs/IssueSVG"
 import SupplierSVG from "@/svgs/SupplierSVG"
+import GoodSVG from "@/svgs/GoodSVG"
+import InventorySVG from "@/svgs/InventorySVG"
 
 const AdminNavLinks = (props) => {
 	const location = useLocation()
@@ -99,6 +101,18 @@ const AdminNavLinks = (props) => {
 							</Link>
 						</li>
 						{/* Clients End */}
+						{/* Goods Start */}
+						<li className="nav-item">
+							<Link
+								to={`/admin/erp/goods`}
+								className={`nav-link ${active("/admin/erp/goods")}`}>
+								<div className="nav-link-icon">
+									<GoodSVG />
+								</div>
+								<div className="nav-link-text">Goods</div>
+							</Link>
+						</li>
+						{/* Goods End */}
 						{/* Projects Start */}
 						<li className="nav-item">
 							<Link
@@ -127,6 +141,18 @@ const AdminNavLinks = (props) => {
 							</Link>
 						</li>
 						{/* Suppliers End */}
+						{/* Inventory Start */}
+						<li className="nav-item">
+							<Link
+								to={`/admin/erp/inventories`}
+								className={`nav-link ${active("/admin/erp/inventories")}`}>
+								<div className="nav-link-icon">
+									<InventorySVG />
+								</div>
+								<div className="nav-link-text">Inventory</div>
+							</Link>
+						</li>
+						{/* Inventory End */}
 						{/* Issues Start */}
 						<li className="nav-item">
 							<Link

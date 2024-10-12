@@ -13,19 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('inventories', function (Blueprint $table) {
+        Schema::create('supplier_goods', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("project_id")
+            $table->foreignId('good_id')
                 ->constrained()
-                ->onUpdate("cascade")
-                ->onDelete("cascade");
-            $table->foreignId("good_id")
-                ->constrained()
-                ->onUpdate("cascade")
-                ->onDelete("cascade");
-            $table->integer('quantity');
-            $table->unsignedBigInteger('supplier_id')->nullable();
-            $table->unsignedBigInteger('created_by');
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+			$table->unsignedBigInteger('supplier_id');
+			$table->unsignedBigInteger('created_by');
             $table->timestamps();
 
             $table->foreign('supplier_id')
@@ -49,6 +44,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventories');
+        Schema::dropIfExists('supplier_goods');
     }
 };

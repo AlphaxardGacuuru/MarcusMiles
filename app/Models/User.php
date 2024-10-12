@@ -108,6 +108,16 @@ class User extends Authenticatable
         return $this->hasMany(UserRole::class);
     }
 
+    public function goods()
+    {
+        return $this->belongsToMany(Good::class, 'supplier_goods', 'supplier_id', 'good_id');
+    }
+
+    public function supplierGoods()
+    {
+        return $this->hasMany(SupplierGood::class);
+    }
+
     /*
      * Custom functions
      */

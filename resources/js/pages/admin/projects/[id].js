@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min"
 
 import InventoryList from "@/components/Inventories/InventoryList"
 import WorkPlanList from "@/components/WorkPlan/WorkPlanList"
+import Overview from "@/components/Projects/Overview"
 
 const show = (props) => {
 	var { id } = useParams()
@@ -13,7 +14,7 @@ const show = (props) => {
 
 	const [nameQuery, setNameQuery] = useState("")
 
-	const [tab, setTab] = useState("work-plan")
+	const [tab, setTab] = useState("overview")
 
 	useEffect(() => {
 		// Set page
@@ -55,6 +56,14 @@ const show = (props) => {
 				<div className="d-flex justify-content-between flex-wrap mb-2">
 					<div
 						className={`card shadow-sm flex-grow-1 text-center me-1 mb-2 py-2 px-4 ${active(
+							"overview"
+						)}`}
+						style={{ cursor: "pointer" }}
+						onClick={() => setTab("overview")}>
+						Overview
+					</div>
+					<div
+						className={`card shadow-sm flex-grow-1 text-center me-1 mb-2 py-2 px-4 ${active(
 							"work-plan"
 						)}`}
 						style={{ cursor: "pointer" }}
@@ -71,6 +80,18 @@ const show = (props) => {
 					</div>
 				</div>
 				{/* Tabs End */}
+
+				{/* Overview Tab */}
+				<Overview
+					{...props}
+					activeTab={activeTab("overview")}
+					workPlans={workPlans}
+					setWorkPlans={setWorkPlans}
+					totalWorkPlans={project.workPlanCount}
+					projectId={id}
+					setProject={setProject}
+				/>
+				{/* Overview Tab End */}
 
 				{/* Work Plans Tab */}
 				<WorkPlanList

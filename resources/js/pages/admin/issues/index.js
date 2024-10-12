@@ -631,7 +631,7 @@ const index = (props) => {
 											text="view"
 											dataBsToggle="modal"
 											dataBsTarget={`#createStageModal`}
-											className="btn-sm mt-1 ms-1"
+											className="mysonar-sm mt-1 ms-1"
 											onClick={() => {
 												setCreatingStage(false)
 												setStageId(stages[stageKey].id)

@@ -10,12 +10,13 @@ const edit = (props) => {
 	var { id } = useParams()
 
 	const [inventory, setInventory] = useState({})
-	const [name, setName] = useState()
+	const [goodId, setGoodId] = useState()
 	const [quantity, setQuantity] = useState()
 	const [supplierId, setSupplierId] = useState()
 	const [loading, setLoading] = useState()
 
 	const [suppliers, setSuppliers] = useState([])
+	const [goods, setGoods] = useState([])
 
 	// Get Inventories
 	useEffect(() => {
@@ -39,6 +40,8 @@ const edit = (props) => {
 
 		// Fetch Suppliers
 		props.get("suppliers?idAndName=true", setSuppliers)
+		// Fetch Goods
+		props.get("goods?idAndName=true", setGoods)
 	}, [])
 
 	/*
@@ -49,7 +52,7 @@ const edit = (props) => {
 		setLoading(true)
 
 		Axios.put(`/api/inventories/${id}`, {
-			name: name,
+			goodId: goodId,
 			quantity: quantity,
 			supplierId: supplierId,
 		})
@@ -71,16 +74,24 @@ const edit = (props) => {
 			<div className="col-sm-4">
 				<form onSubmit={onSubmit}>
 					<h5 className="ms-1 mb-2">{inventory.name}</h5>
-
-					{/* Name */}
-					<input
-						type="text"
-						defaultValue={inventory.name}
-						placeholder="Name"
-						className="form-control mb-2"
-						onChange={(e) => setName(e.target.value)}
-					/>
-					{/* Name End */}
+					{/* Good */}
+					<label htmlFor="name">Good</label>
+					<select
+						className="form-control text-capitalize mb-2 me-2"
+						onChange={(e) => setGoodId(e.target.value)}
+						required={true}>
+						{[{ id: "", name: "Select Good" }]
+							.concat(goods)
+							.map((good, key) => (
+								<option
+									key={key}
+									value={good.id}
+									selected={good.id == inventory.goodId}>
+									{good.name}
+								</option>
+							))}
+					</select>
+					{/* Good End */}
 
 					{/* Quantity */}
 					<label htmlFor="name">Quantity</label>
