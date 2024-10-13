@@ -47,7 +47,7 @@ const show = (props) => {
 			<div className="col-sm-4">
 				<div className="card shadow mb-2 p-4 text-center">
 					<h4>{project.name}</h4>
-					<h6>{project.type}</h6>
+					<h6 className="text-capitalize">{project.type}</h6>
 					<h6>{project.description}</h6>
 				</div>
 			</div>
