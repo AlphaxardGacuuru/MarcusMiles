@@ -11,8 +11,8 @@ const edit = (props) => {
 
 	const [good, setGood] = useState({})
 
-	const [itemNo, setItemNo] = useState()
 	const [name, setName] = useState()
+	const [notificationQuantity, setNotificationQuantity] = useState()
 	const [loading, setLoading] = useState()
 
 	// Get Goods
@@ -35,8 +35,8 @@ const edit = (props) => {
 		setLoading(true)
 
 		Axios.put(`/api/goods/${id}`, {
-			itemNo: itemNo,
 			name: name,
+			notificationQuantity: notificationQuantity,
 		})
 			.then((res) => {
 				setLoading(false)
@@ -64,6 +64,19 @@ const edit = (props) => {
 						onChange={(e) => setName(e.target.value)}
 					/>
 					{/* Name End */}
+
+					{/* Notification Quantity */}
+					<label htmlFor="notificationQuantity">Notification Quantity</label>
+					<input
+						type="number"
+						name="notificationQuantity"
+						placeholder="Notification Quantity"
+						defaultValue={good.notificationQuantity}
+						className="form-control text-capitalize mb-2 me-2"
+						onChange={(e) => setNotificationQuantity(e.target.value)}
+						required={true}
+					/>
+					{/* Notification Quantity End */}
 
 					<div className="d-flex justify-content-end mb-2">
 						<Btn

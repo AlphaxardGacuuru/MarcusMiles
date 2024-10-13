@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from "react"
 
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 import Btn from "@/components/Core/Btn"
+import DeleteModal from "@/components/Core/DeleteModal"
 
 import DeleteSVG from "@/svgs/DeleteSVG"
 import PlusSVG from "@/svgs/PlusSVG"
 import ViewSVG from "@/svgs/ViewSVG"
-
-import DeleteModal from "@/components/Core/DeleteModal"
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
+import HighPrioritySVG from "@/svgs/HighPrioritySVG"
+import MediumPrioritySVG from "@/svgs/MediumPrioritySVG"
+import LowPrioritySVG from "@/svgs/LowPrioritySVG"
 
 const index = (props) => {
 	const [stages, setStages] = useState([])
@@ -22,7 +24,6 @@ const index = (props) => {
 
 	const [creatingIssue, setCreatingIssue] = useState(true)
 	const [issueId, setIssueId] = useState("")
-	const [issueCode, setIssueCode] = useState("24001")
 	const [issueTitle, setIssueTitle] = useState()
 	const [issueDescription, setIssueDescription] = useState()
 	const [issueAssignedTo, setIssueAssignedTo] = useState()
@@ -50,7 +51,10 @@ const index = (props) => {
 	const closeIssueModalBtn = useRef()
 
 	const openDeleteStageModalBtn = useRef()
+	const openDeleteIssueModalBtn = useRef()
+
 	const closeDeleteStageModalBtn = useRef()
+	const closeDeleteIssueModalBtn = useRef()
 
 	/*
 	 * Create Stage
@@ -123,7 +127,6 @@ const index = (props) => {
 		setLoading(true)
 
 		Axios.post(`api/issues`, {
-			code: issueCode,
 			title: issueTitle,
 			description: issueDescription,
 			assignedTo: issueAssignedTo,
@@ -150,6 +153,54 @@ const index = (props) => {
 	}
 
 	/*
+	 * Update Issue
+	 */
+	const onUpdateIssue = (e) => {
+		e.preventDefault()
+		setLoading(true)
+
+		Axios.put(`api/issues/${issueId}`, {
+			title: issueTitle,
+			description: issueDescription,
+			assignedTo: issueAssignedTo,
+			plannedStartDate: issuePlannedStartDate,
+			plannedEndDate: issuePlannedEndDate,
+			priority: issuePriority,
+			projectId: issueProjectId,
+			stageId: issueStageId,
+		})
+			.then((res) => {
+				setLoading(false)
+				// Fetch Stages
+				props.get("stages", setStages)
+				// Fetch Issues
+				props.get("issues", setIssues)
+				// Close Issue Create Modal
+				closeIssueModalBtn.current.click()
+				props.setMessages([res.data.message])
+			})
+			.catch((err) => {
+				setLoading(false)
+				props.getErrors(err)
+			})
+	}
+
+	/*
+	 * Delete Issue
+	 */
+	const onDeleteIssue = () => {
+		Axios.delete(`api/issues/${issueId}`)
+			.then((res) => {
+				props.setMessages([res.data.message])
+				// Fetch Stages
+				props.get("stages", setStages)
+				// Fetch Issues
+				props.get("issues", setIssues)
+			})
+			.catch((err) => props.getErrros(err))
+	}
+
+	/*
 	 * Reorder Issues
 	 */
 	const onIssueReorder = (idsAndPositions) => {
@@ -167,25 +218,21 @@ const index = (props) => {
 	/*
 	 * Update Issue
 	 */
-	const onUpdateIssue = (id, stageId = "") => {
+	const onUpdateIssueStage = (id, stageId) => {
+		setLoading(true)
+
 		Axios.put(`api/issues/${id}`, {
-			code: issueCode,
-			title: issueTitle,
-			description: issueDescription,
-			assignedTo: issueAssignedTo,
-			plannedStartDate: issuePlannedStartDate,
-			plannedEndDate: issuePlannedEndDate,
-			priority: issuePriority,
-			projectId: issueProjectId,
 			stageId: stageId,
 		})
 			.then((res) => {
 				setLoading(false)
-				props.setMessages([res.data.message])
 				// Fetch Stages
 				props.get("stages", setStages)
 				// Fetch Issues
 				props.get("issues", setIssues)
+				// Close Issue Create Modal
+				closeIssueModalBtn.current.click()
+				props.setMessages([res.data.message])
 			})
 			.catch((err) => {
 				setLoading(false)
@@ -255,7 +302,7 @@ const index = (props) => {
 			let stageId = stages[destinationId].id
 			let issueId = result[destinationId][destination.index].id
 
-			onUpdateIssue(issueId, stageId)
+			onUpdateIssueStage(issueId, stageId)
 
 			setLayout(newState)
 		}
@@ -331,22 +378,24 @@ const index = (props) => {
 								</button>
 
 								<div className="d-flex">
-									{!creatingStage && (<div className="mx-1">
-										{/* Stage Modal Start */}
-										<Btn
-											icon={<DeleteSVG />}
-											text="delete stage"
-											className="me-1"
-											onClick={(e) => {
-												e.preventDefault()
-												// Close Stage Create Modal
-												closeStageModalBtn.current.click()
-												// Open Stage Delete Modal
-												openDeleteStageModalBtn.current.click()
-											}}
-										/>
-										{/* Stage Modal End */}
-									</div>)}
+									{!creatingStage && (
+										<div className="mx-1">
+											{/* Stage Modal Start */}
+											<Btn
+												icon={<DeleteSVG />}
+												text="delete stage"
+												className="me-1"
+												onClick={(e) => {
+													e.preventDefault()
+													// Close Stage Create Modal
+													closeStageModalBtn.current.click()
+													// Open Stage Delete Modal
+													openDeleteStageModalBtn.current.click()
+												}}
+											/>
+											{/* Stage Modal End */}
+										</div>
+									)}
 
 									<Btn
 										text={`${creatingStage ? "create" : "edit"} stage`}
@@ -383,8 +432,8 @@ const index = (props) => {
 								aria-label="Close"></button>
 						</div>
 						<div className="modal-body text-start text-wrap">
-							Are you sure you want to delete the stage {stageName}. All associated
-							Issue tracking will be lost.
+							Are you sure you want to delete the stage {stageName}. All
+							associated Issue tracking will be lost.
 						</div>
 						<div className="modal-footer justify-content-between">
 							<button
@@ -424,14 +473,17 @@ const index = (props) => {
 				tabIndex="-1"
 				aria-labelledby="createModalLabel"
 				aria-hidden="true">
-				<div className="modal-dialog">
-					<form onSubmit={onCreateIssue}>
+				<div className="modal-dialog modal-xl">
+					<form
+						onSubmit={(e) =>
+							creatingIssue ? onCreateIssue(e) : onUpdateIssue(e)
+						}>
 						<div className="modal-content rounded-0">
 							<div className="modal-header">
 								<h1
 									id="createModalLabel"
 									className="modal-title fs-5">
-									Create Issue
+									{`${creatingIssue ? "Create" : "Update"} Issue`}
 								</h1>
 								<button
 									type="button"
@@ -440,22 +492,12 @@ const index = (props) => {
 									aria-label="Close"></button>
 							</div>
 							<div className="modal-body text-start text-wrap">
-								{/* Code Start */}
-								<label htmlFor="">Code</label>
-								<input
-									type="text"
-									placeholder="Project Code"
-									className="form-control mb-2"
-									onChange={(e) => setIssueCode(e.target.value)}
-									disabled={true}
-								/>
-								{/* Code End */}
-
 								{/* Title Start */}
 								<label htmlFor="">Title</label>
 								<input
 									type="text"
 									placeholder="Issue 1"
+									defaultValue={issueTitle}
 									className="form-control mb-2"
 									onChange={(e) => setIssueTitle(e.target.value)}
 									required={true}
@@ -467,6 +509,7 @@ const index = (props) => {
 								<textarea
 									type="text"
 									rows="5"
+									defaultValue={issueDescription}
 									className="form-control mb-2"
 									onChange={(e) => setIssueDescription(e.target.value)}
 									required={true}></textarea>
@@ -489,7 +532,8 @@ const index = (props) => {
 										.map((staff, key) => (
 											<option
 												key={key}
-												value={staff.id}>
+												value={staff.id}
+												selected={issueAssignedTo == staff.id}>
 												{staff.name}
 											</option>
 										))}
@@ -503,7 +547,7 @@ const index = (props) => {
 										<input
 											type="date"
 											className="form-control me-1 mb-2"
-											defaultValue={new Date().toISOString().split("T")[0]}
+											defaultValue={issuePlannedStartDate}
 											onChange={(e) => setIssuePlannedStartDate(e.target.value)}
 											required={true}
 										/>
@@ -517,7 +561,7 @@ const index = (props) => {
 											type="date"
 											placeholder="Issue 1"
 											className="form-control ms-1 mb-2"
-											defaultValue={new Date().toISOString().split("T")[0]}
+											defaultValue={issuePlannedEndDate}
 											onChange={(e) => setIssuePlannedEndDate(e.target.value)}
 											required={true}
 										/>
@@ -529,12 +573,17 @@ const index = (props) => {
 								<label htmlFor="">Priority</label>
 								<select
 									type="text"
-									className="form-control mb-2"
+									className="form-control text-capitalize mb-2"
 									onChange={(e) => setIssuePriority(e.target.value)}
 									required={true}>
-									<option value="low">Low</option>
-									<option value="medium">Medium</option>
-									<option value="high">High</option>
+									{["low", "medium", "high"].map((priority, key) => (
+										<option
+											key={key}
+											value={priority}
+											selected={issuePriority == priority}>
+											{priority}
+										</option>
+									))}
 								</select>
 								{/* Priority End */}
 
@@ -555,7 +604,8 @@ const index = (props) => {
 										.map((project, key) => (
 											<option
 												key={key}
-												value={project.id}>
+												value={project.id}
+												selected={project.id == issueProjectId}>
 												{project.name}
 											</option>
 										))}
@@ -570,16 +620,94 @@ const index = (props) => {
 									data-bs-dismiss="modal">
 									Close
 								</button>
-								<Btn
-									text="create issue"
-									loading={loading}
-								/>
+								<div className="d-flex">
+									{!creatingIssue && (
+										<div className="mx-1">
+											{/* Issue Modal Start */}
+											<Btn
+												icon={<DeleteSVG />}
+												text="delete issue"
+												className="me-1"
+												onClick={(e) => {
+													e.preventDefault()
+													// Close Issue Create Modal
+													closeIssueModalBtn.current.click()
+													// Open Issue Delete Modal
+													openDeleteIssueModalBtn.current.click()
+												}}
+											/>
+											{/* Issue Modal End */}
+										</div>
+									)}
+
+									<Btn
+										text={`${creatingIssue ? "create" : "update"} issue`}
+										loading={loading}
+									/>
+								</div>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
 			{/* Issue Modal End */}
+
+			{/* Delete Issue Modal Start */}
+			{/* Confirm Delete Modal End */}
+			<div
+				className="modal fade"
+				id={`deleteModalIssue`}
+				tabIndex="-1"
+				aria-labelledby="deleteModalLabel"
+				aria-hidden="true">
+				<div className="modal-dialog">
+					<div className="modal-content rounded-0">
+						<div className="modal-header">
+							<h1
+								id="deleteModalLabel"
+								className="modal-title fs-5">
+								Delete Issue
+							</h1>
+							<button
+								type="button"
+								className="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div className="modal-body text-start text-wrap">
+							Are you sure you want to delete the issue {issueTitle}. All
+							associated Issue tracking will be lost.
+						</div>
+						<div className="modal-footer justify-content-between">
+							<button
+								ref={closeDeleteIssueModalBtn}
+								type="button"
+								className="mysonar-btn btn-2"
+								data-bs-dismiss="modal">
+								Close
+							</button>
+							<button
+								type="button"
+								className="btn btn-danger rounded-0"
+								data-bs-dismiss="modal"
+								onClick={onDeleteIssue}>
+								<span className="me-1">{<DeleteSVG />}</span>
+								Delete
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			{/* Confirm Delete Modal End */}
+
+			{/* Button trigger modal */}
+			<button
+				ref={openDeleteIssueModalBtn}
+				className="d-none"
+				data-bs-toggle="modal"
+				data-bs-target={`#deleteModalIssue`}></button>
+			{/* Button trigger modal End */}
+			{/* Delete Issue Modal End */}
 
 			{/* Buttons Start */}
 			<div className="d-flex m-1">
@@ -607,6 +735,18 @@ const index = (props) => {
 						dataBsToggle="modal"
 						dataBsTarget={`#createIssueModal`}
 						className="me-1"
+						onClick={() => {
+							setCreatingIssue(true)
+							setIssueId("")
+							setIssueTitle("")
+							setIssueDescription("")
+							setIssueAssignedTo("")
+							setIssuePlannedStartDate("")
+							setIssuePlannedEndDate("")
+							setIssuePriority("")
+							setIssueProjectId("")
+							setIssueStageId("")
+						}}
 					/>
 				)}
 				{/* Trigger Modal End */}
@@ -672,9 +812,14 @@ const index = (props) => {
 																	: "bg-light"
 															}`}>
 															<div>
-																<div>{issue.code}</div>
-																<div>{issue.title}</div>
-																<div>
+																<div className="fw-normal text-primary">
+																	{issue.code}
+																</div>
+																<div className="text-wrap">{issue.title}</div>
+																<small className="bg-primary-subtle text-muted rounded-pill px-1">
+																	{issue.assignedToName}
+																</small>
+																{/* <div>
 																	<small className="text-primary">
 																		ID: {issue.id}
 																	</small>
@@ -693,18 +838,48 @@ const index = (props) => {
 																			<span className="text-danger">False</span>
 																		)}
 																	</small>
+																</div> */}
+															</div>
+															<div className="d-flex flex-column justify-content-between text-center">
+																<Btn
+																	icon={<ViewSVG />}
+																	dataBsToggle="modal"
+																	dataBsTarget={`#createIssueModal`}
+																	className="me-1"
+																	onClick={() => {
+																		setCreatingIssue(false)
+																		setIssueId(issue.id)
+																		setIssueTitle(issue.title)
+																		setIssueDescription(issue.description)
+																		setIssueAssignedTo(issue.assignedToId)
+																		setIssuePlannedStartDate(
+																			issue.plannedStartDateRaw
+																		)
+																		setIssuePlannedEndDate(
+																			issue.plannedEndDateRaw
+																		)
+																		setIssuePriority(issue.priority)
+																		setIssueProjectId(issue.projectId)
+																		setIssueStageId(issue.stageId)
+																	}}
+																/>
+
+																<div>
+																	{issue.priority == "high" ? (
+																		<span className="text-danger">
+																			<HighPrioritySVG />
+																		</span>
+																	) : issue.priority == "medium" ? (
+																		<span className="text-warning">
+																			<MediumPrioritySVG />
+																		</span>
+																	) : (
+																		<span className="text-success">
+																			<LowPrioritySVG />
+																		</span>
+																	)}
 																</div>
 															</div>
-															<Btn
-																icon={<DeleteSVG />}
-																onClick={() => {
-																	const newState = [...layout]
-																	newState[stageKey].splice(index, 1)
-																	setLayout(
-																		newState.filter((group) => group.length)
-																	)
-																}}
-															/>
 														</div>
 													)}
 												</Draggable>

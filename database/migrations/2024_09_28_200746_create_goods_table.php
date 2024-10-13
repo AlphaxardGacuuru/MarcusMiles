@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('goods', function (Blueprint $table) {
             $table->id();
-			$table->string('item_no');
+			$table->string('code');
 			$table->string('name');
+			$table->integer('notification_quantity')->default(1);
 			$table->unsignedBigInteger('created_by');
             $table->timestamps();
 

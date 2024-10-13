@@ -14,6 +14,7 @@ const create = (props) => {
 	var history = useHistory()
 
 	const [name, setName] = useState()
+	const [notificationQuantity, setNotificationQuantity] = useState()
 	const [loading, setLoading] = useState()
 
 	// Get Goods
@@ -34,6 +35,7 @@ const create = (props) => {
 		setLoading(true)
 		Axios.post("/api/goods", {
 			name: name,
+			notificationQuantity: notificationQuantity,
 		})
 			.then((res) => {
 				setLoading(false)
@@ -65,7 +67,19 @@ const create = (props) => {
 						required={true}
 					/>
 					{/* Name End */}
-					
+
+					{/* Notification Quantity */}
+					<label htmlFor="notificationQuantity">Notification Quantity</label>
+					<input
+						type="number"
+						name="notificationQuantity"
+						placeholder="Notification Quantity"
+						className="form-control text-capitalize mb-2 me-2"
+						onChange={(e) => setNotificationQuantity(e.target.value)}
+						required={true}
+					/>
+					{/* Notification Quantity End */}
+
 					<div className="d-flex justify-content-end mb-2">
 						<Btn
 							text="add good"

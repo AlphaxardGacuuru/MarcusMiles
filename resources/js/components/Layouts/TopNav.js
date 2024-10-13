@@ -38,6 +38,8 @@ const TopNav = (props) => {
 				props.setMessages([res.data.message])
 				// Remove phone from localStorage
 				localStorage.clear()
+				// Redirect to Dashboard
+				router.push(`/admin/dashboard`)
 				// Reload
 				window.location.reload()
 			})
@@ -45,6 +47,8 @@ const TopNav = (props) => {
 				props.getErrors(err)
 				// Remove phone from localStorage
 				localStorage.clear()
+				// Redirect to Dashboard
+				router.push(`/admin/dashboard`)
 				// Reload
 				window.location.reload()
 			})

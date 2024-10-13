@@ -7,7 +7,7 @@ const ChevronRightSVG = () => {
 			width="1em"
 			height="1em"
 			fill="currentColor"
-			className="bi bi-chevron-right"
+			className="mb-1 bi bi-chevron-right"
 			viewBox="0 0 16 16">
 			<path
 				fillRule="evenodd"

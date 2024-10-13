@@ -16,7 +16,7 @@ class GoodResource extends JsonResource
     {
         return [
 			"id" => $this->id,
-			"itemNo" => $this->item_no,
+			"code" => $this->code,
 			"name" => $this->name,
 			"createdBy" => $this->createdBy->name,
 			"updatedAt" => $this->updated_at,

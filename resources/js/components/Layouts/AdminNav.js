@@ -77,13 +77,15 @@ const AdminMenu = (props) => {
 					posts: 0,
 					fans: 0,
 				})
+				// Redirect to Dashboard
+				router.push(`/admin/dashboard`)
+				// Reload
+				window.location.reload()
 			})
 			.catch((err) => {
 				props.getErrors(err)
 				// Remove phone from localStorage
 				localStorage.clear()
-				// Reload
-				window.location.reload()
 				// Set Auth to Guest
 				props.setAuth({
 					name: "Guest",
@@ -93,6 +95,10 @@ const AdminMenu = (props) => {
 					posts: 0,
 					fans: 0,
 				})
+				// Redirect to Dashboard
+				router.push(`/admin/dashboard`)
+				// Reload
+				window.location.reload()
 			})
 	}
 
@@ -336,7 +342,7 @@ const AdminMenu = (props) => {
 				<div className="left-main">
 					<h2>{props.page.name}</h2>
 
-					<div className="d-flex justify-content-start">
+					<div className="d-flex justify-content-start flex-wrap">
 						{props.page.path.map((path, key) => (
 							<div key={key}>
 								{key < props.page.path.length - 1 ? (

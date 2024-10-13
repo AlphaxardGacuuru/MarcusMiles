@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class IssueResource extends JsonResource
@@ -25,6 +26,8 @@ class IssueResource extends JsonResource
             "assignedToName" => $this->assignedTo->name,
             "plannedStartDate" => $this->planned_start_date,
             "plannedEndDate" => $this->planned_end_date,
+            "plannedStartDateRaw" => Carbon::parse($this->planned_start_date)->format("Y-m-d"),
+            "plannedEndDateRaw" => Carbon::parse($this->planned_end_date)->format("Y-m-d"),
             "priority" => $this->priority,
             "projectId" => $this->project_id,
             "totalComments" => $this->total_comments,

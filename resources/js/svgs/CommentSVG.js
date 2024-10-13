@@ -3,7 +3,7 @@ import React from "react"
 const CommentSVG = () => {
 	return (
 		<svg
-			className="bi bi-chat"
+			className="mb-1 bi bi-chat"
 			width="1em"
 			height="1em"
 			viewBox="0 0 16 16"

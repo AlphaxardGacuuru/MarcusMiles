@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\SupplierGoodService;
 use App\Models\SupplierGood;
 use Illuminate\Http\Request;
 
 class SupplierGoodController extends Controller
 {
+    public function __construct(protected SupplierGoodService $service)
+    {
+        //
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return $this->service->index($request);
     }
 
     /**
@@ -25,7 +31,19 @@ class SupplierGoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            "supplierId" => "required|string",
+            "goodId" => "required|string",
+            "price" => "required|string",
+        ]);
+
+        [$saved, $message, $supplierGood] = $this->service->store($request);
+
+        return response([
+            "status" => $saved,
+            "message" => $message,
+            "data" => $supplierGood,
+        ], 200);
     }
 
     /**
@@ -34,9 +52,9 @@ class SupplierGoodController extends Controller
      * @param  \App\Models\SupplierGood  $supplierGood
      * @return \Illuminate\Http\Response
      */
-    public function show(SupplierGood $supplierGood)
+    public function show($id)
     {
-        //
+        return $this->service->show($id);
     }
 
     /**
@@ -46,9 +64,21 @@ class SupplierGoodController extends Controller
      * @param  \App\Models\SupplierGood  $supplierGood
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SupplierGood $supplierGood)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            "supplierId" => "nullable|string",
+            "goodId" => "nullable|string",
+            "price" => "nullable|string",
+        ]);
+
+        [$saved, $message, $supplierGood] = $this->service->update($request, $id);
+
+        return response([
+            "status" => $saved,
+            "message" => $message,
+            "data" => $supplierGood,
+        ], 200);
     }
 
     /**
@@ -57,8 +87,14 @@ class SupplierGoodController extends Controller
      * @param  \App\Models\SupplierGood  $supplierGood
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SupplierGood $supplierGood)
+    public function destroy($id)
     {
-        //
+        [$deleted, $message, $supplierGood] = $this->service->destroy($id);
+
+        return response([
+            "status" => $deleted,
+            "message" => $message,
+            "data" => $supplierGood,
+        ], 200);
     }
 }

@@ -32,7 +32,6 @@ class IssueController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "code" => "required|string",
             "title" => "required|string",
             "description" => "required|string|max:10000",
             "assignedTo" => "required|string",
@@ -72,7 +71,6 @@ class IssueController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            "code" => "nullable|string",
             "title" => "nullable|string",
             "description" => "nullable|string|max:10000",
             "assignedTo" => "nullable|string",

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GoodPrice;
+use App\Models\SupplierGoodPrice;
 use Illuminate\Http\Request;
 
-class GoodPriceController extends Controller
+class SupplierGoodPriceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class GoodPriceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\GoodPrice  $goodPrice
+     * @param  \App\Models\SupplierGoodPrice  $supplierGoodPrice
      * @return \Illuminate\Http\Response
      */
-    public function show(GoodPrice $goodPrice)
+    public function show(SupplierGoodPrice $supplierGoodPrice)
     {
         //
     }
@@ -43,10 +43,10 @@ class GoodPriceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\GoodPrice  $goodPrice
+     * @param  \App\Models\SupplierGoodPrice  $supplierGoodPrice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GoodPrice $goodPrice)
+    public function update(Request $request, SupplierGoodPrice $supplierGoodPrice)
     {
         //
     }
@@ -54,10 +54,10 @@ class GoodPriceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\GoodPrice  $goodPrice
+     * @param  \App\Models\SupplierGoodPrice  $supplierGoodPrice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GoodPrice $goodPrice)
+    public function destroy(SupplierGoodPrice $supplierGoodPrice)
     {
         //
     }

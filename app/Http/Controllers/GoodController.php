@@ -33,6 +33,7 @@ class GoodController extends Controller
     {
         $this->validate($request, [
             "name" => "required|string",
+            "notificationQuantity" => "required|string",
         ]);
 
         [$saved, $message, $good] = $this->service->store($request);
@@ -66,6 +67,7 @@ class GoodController extends Controller
     {
         $this->validate($request, [
             "name" => "nullable|string",
+            "notificationQuantity" => "nullable|string",
         ]);
 
         [$saved, $message, $good] = $this->service->update($request, $id);

@@ -39,9 +39,15 @@ class GoodService extends Service
      */
     public function store($request)
     {
+        $goodNumber = Good::count() + 1;
+        $paddedGoodNumber = str_pad($goodNumber, 3, '0', STR_PAD_LEFT);
+
+		$code = "G-" . $paddedGoodNumber;
+
         $good = new Good;
-        $good->item_no = "G" . rand(0, 10);
+        $good->code = $code;
         $good->name = $request->name;
+        $good->notification_quantity = $request->notificationQuantity;
         $good->created_by = $this->id;
         $saved = $good->save();
 
@@ -61,8 +67,8 @@ class GoodService extends Service
             $good->name = $request->name;
         }
 
-        if ($request->filled("itemNo")) {
-            $good->item_no = $request->itemNo;
+        if ($request->filled("notificationQuantity")) {
+            $good->notification_quantity = $request->notificationQuantity;
         }
 
         $saved = $good->save();

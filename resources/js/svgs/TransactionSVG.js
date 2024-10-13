@@ -7,7 +7,7 @@ const TransactionSVG = () => {
 			width="1em"
 			height="1em"
 			fill="currentColor"
-			className="bi bi-arrow-down-up"
+			className="mb-1 bi bi-arrow-down-up"
 			viewBox="0 0 16 16">
 			<path
 				fillRule="evenodd"

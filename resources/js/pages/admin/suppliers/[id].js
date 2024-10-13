@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom/cjs/react-router-dom.min"
 
-import InventoryList from "@/components/Inventories/InventoryList"
+import SupplierGoodList from "@/components/Suppliers/SupplierGoodsList"
 
 const show = (props) => {
 	var { id } = useParams()
 
 	const [supplier, setSupplier] = useState({})
-	const [inventories, setInventories] = useState([])
+	const [supplierGoods, setSupplierGoods] = useState([])
 
 	const [nameQuery, setNameQuery] = useState("")
 
@@ -17,14 +17,14 @@ const show = (props) => {
 		// Set page
 		props.setPage({ name: "View Supplier", path: ["suppliers", "view"] })
 		props.get(`suppliers/${id}`, setSupplier)
-		props.getPaginated(`inventories?supplierId=${id}`, setInventories)
+		props.getPaginated(`supplier-goods?supplierId=${id}`, setSupplierGoods)
 	}, [id])
 
 	useEffect(() => {
 		props.getPaginated(
-			`inventories?supplierId=${id}&
+			`supplier-goods?supplierId=${id}&
 				name=${nameQuery}`,
-			setInventories
+			setSupplierGoods
 		)
 	}, [nameQuery])
 
@@ -61,19 +61,19 @@ const show = (props) => {
 					</div>
 				</div>
 				{/* Tabs End */}
-				
-				{/* Inventories Tab */}
-				<InventoryList
+
+				{/* SupplierGoods Tab */}
+				<SupplierGoodList
 					{...props}
-					activeTab={activeTab("inventories")}
-					inventories={inventories}
-					setInventories={setInventories}
-					totalInventory={supplier.inventoryCount}
+					supplierGoods={supplierGoods}
+					setSupplierGoods={setSupplierGoods}
+					activeTab={activeTab("goods")}
+					totalSupplierGoodCount={supplier.goodCount}
 					supplierId={id}
 					setSupplier={setSupplier}
 					setNameQuery={setNameQuery}
 				/>
-				{/* Inventories Tab End */}
+				{/* SupplierGoods Tab End */}
 			</div>
 		</div>
 	)

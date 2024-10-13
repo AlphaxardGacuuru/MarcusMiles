@@ -7,7 +7,7 @@ const HeartFilledSVG = () => {
 			width="1em"
 			height="1em"
 			fill="currentColor"
-			className="bi bi-heart-fill"
+			className="mb-1 bi bi-heart-fill"
 			viewBox="0 0 16 16">
 			<path
 				fillRule="evenodd"

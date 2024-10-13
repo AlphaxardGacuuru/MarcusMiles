@@ -22,6 +22,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StageController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\SupplierGoodController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
@@ -56,6 +57,7 @@ Route::apiResources([
 	"work-plan-steps" => WorkPlanStepController::class,
 	"inventories" => InventoryController::class,
 	"suppliers" => SupplierController::class,
+	"supplier-goods" => SupplierGoodController::class,
 	"stages" => StageController::class,
 	"issues" => IssueController::class,
 	"issue-comments" => IssueCommentController::class,

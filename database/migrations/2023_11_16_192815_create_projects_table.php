@@ -20,17 +20,17 @@ return new class extends Migration
             $table->string('type');
             $table->longText('description')->nullable();
             $table->string('location')->nullable();
-            $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('created_by');
             $table->timestamps();
 
-            $table->foreign('created_by')
+            $table->foreign('client_id')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreign('client_id')
+            $table->foreign('created_by')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('cascade')

@@ -1,13 +1,13 @@
-import React from "react";
+import React from "react"
 
 const ArrowUpSVG = () => {
-  return (
+	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			width="1em"
 			height="1em"
 			fill="currentColor"
-			className="bi bi-arrow-up"
+			className="mb-1 bi bi-arrow-up"
 			viewBox="0 0 16 16">
 			<path
 				fillRule="evenodd"
@@ -15,6 +15,6 @@ const ArrowUpSVG = () => {
 			/>
 		</svg>
 	)
-};
+}
 
-export default ArrowUpSVG;
+export default ArrowUpSVG

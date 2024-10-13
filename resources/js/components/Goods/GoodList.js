@@ -96,7 +96,7 @@ const GoodList = (props) => {
 						</tr>
 						<tr>
 							<th>#</th>
-							<th>Item No</th>
+							<th>Code</th>
 							<th>Name</th>
 							<th>Created By</th>
 							<th>Action</th>
@@ -106,7 +106,7 @@ const GoodList = (props) => {
 						{props.goods.data?.map((good, key) => (
 							<tr key={key}>
 								<td>{props.iterator(key, props.goods)}</td>
-								<td>{good.itemNo}</td>
+								<td>{good.code}</td>
 								<td>{good.name}</td>
 								<td>{good.createdBy}</td>
 								<td>

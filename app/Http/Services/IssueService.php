@@ -5,6 +5,7 @@ namespace App\Http\Services;
 use App\Http\Resources\IssueResource;
 use App\Models\Issue;
 use App\Models\IssueStage;
+use App\Models\Project;
 use App\Models\Stage;
 use Illuminate\Support\Facades\DB;
 
@@ -40,8 +41,14 @@ class IssueService extends Service
      */
     public function store($request)
     {
+		$project = Project::find($request->projectId);
+        $issueNumber = Issue::where("project_id", $project->id)->count() + 1;
+        $paddedIssueNumber = str_pad($issueNumber, 3, '0', STR_PAD_LEFT);
+
+		$code = "I-" . $project->code . $paddedIssueNumber;
+
         $issue = new Issue;
-        $issue->code = $request->code;
+        $issue->code = $code;
         $issue->title = $request->title;
         $issue->description = $request->description;
         $issue->assigned_to = $request->assignedTo;
@@ -131,7 +138,7 @@ class IssueService extends Service
 
         $deleted = $issue->delete();
 
-        $message = $issue->name . " deleted successfully";
+        $message = $issue->code . " deleted successfully";
 
         return [$deleted, $message, $issue];
     }
