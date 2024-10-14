@@ -2,7 +2,6 @@ import React, { useState } from "react"
 
 import MyLink from "@/components/Core/MyLink"
 import Img from "@/components/Core/Img"
-import DeleteModal from "@/components/Core/DeleteModal"
 
 import PaginationLinks from "@/components/Core/PaginationLinks"
 
@@ -115,7 +114,7 @@ const ClientList = (props) => {
 								<td>{client.phone}</td>
 								<td>{client.location}</td>
 								<td>
-									<div className="d-flex justify-content-end">
+									<div className="d-flex justify-content-center">
 										<MyLink
 											linkTo={`/erp/clients/${client.id}/view`}
 											className="me-1"

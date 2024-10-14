@@ -87,7 +87,7 @@ const SupplierGoodsList = (props) => {
 								</tbody>
 							</table>
 						</div>
-						<div className="modal-footer justify-content-end">
+						<div className="modal-footer justify-content-center">
 							<button
 								type="button"
 								className="mysonar-btn btn-2"
@@ -160,7 +160,7 @@ const SupplierGoodsList = (props) => {
 							<th>Name</th>
 							<th>Price</th>
 							<th>Created By</th>
-							<th>Action</th>
+							<th className="text-center">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -172,7 +172,7 @@ const SupplierGoodsList = (props) => {
 								<td>{supplierGood.currentPrice}</td>
 								<td>{supplierGood.createdByName}</td>
 								<td>
-									<div className="d-flex justify-content-end">
+									<div className="d-flex justify-content-center">
 										{/* Button trigger modal */}
 										<Btn
 											icon={<HistorySVG />}

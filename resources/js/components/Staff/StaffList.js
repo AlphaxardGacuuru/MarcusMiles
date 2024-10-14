@@ -147,7 +147,7 @@ const StaffList = (props) => {
 								</td>
 								<td>{staff.createdAt}</td>
 								<td>
-									<div className="d-flex justify-content-end">
+									<div className="d-flex justify-content-center">
 										<React.Fragment>
 											<MyLink
 												linkTo={`/staff/${staff.id}/edit`}

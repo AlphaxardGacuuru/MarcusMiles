@@ -39,27 +39,7 @@ const index = (props) => {
 				props.setLocalStorage("dashboard", res.data.data)
 			})
 			.catch(() => props.setErrors(["Failed to fetch Dashboard"]))
-
-		// Fetch Dashboard Properties
-		Axios.get(
-			`api/dashboard/properties/${
-				props.auth.propertyIds?.length ? props.auth.propertyIds : [0]
-			}`
-		)
-			.then((res) => {
-				// Reset Data
-				setDashboardProperties([])
-
-				setDashboardProperties(res.data.data)
-				props.setLocalStorage("dashboardProperties", res.data.data)
-			})
-			.catch(() => props.getErrors(["Failed to fetch Dashboard Properties"]))
-
-		// Fetch Payments
-		props.getPaginated(`payments/by-property-id/${propertyId}`, setPayments)
-		// Fetch Staff
-		props.getPaginated(`staff/by-property-id/${propertyId}`, setStaff)
-	}, [propertyId])
+	}, [])
 
 	/*
 	 * Graph Data

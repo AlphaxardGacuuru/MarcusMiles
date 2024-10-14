@@ -6,7 +6,6 @@ import ScrollToTop from "@/functions/ScrollToTop"
 import LoginPopUp from "@/components/Auth/LoginPopUp"
 import Footer from "@/components/Layouts/Footer"
 import Messages from "@/components/Core/Messages"
-import PaymentMenu from "@/components/Payments/PaymentMenu"
 
 import RouteList from "@/components/Core/RouteList"
 import { random } from "lodash"
@@ -52,13 +51,7 @@ function App() {
 	const [auth, setAuth] = useState(getLocalStorageAuth("auth"))
 	const [headerMenu, setHeaderMenu] = useState()
 	const [adminMenu, setAdminMenu] = useState("left-open")
-	const [properties, setProperties] = useState(getLocalStorage("properties"))
 	const [page, setPage] = useState({ name: "/", path: [] })
-
-	const [showPayMenu, setShowPayMenu] = useState("")
-	const [paymentTitle, setPaymentTitle] = useState()
-	const [paymentDescription, setPaymentDescription] = useState()
-	const [paymentAmount, setPaymentAmount] = useState()
 
 	// Function for fetching data from API
 	const get = (endpoint, setState, storage = null, errors = true) => {
@@ -203,19 +196,9 @@ function App() {
 		setHeaderMenu,
 		adminMenu,
 		setAdminMenu,
-		properties,
-		setProperties,
 		page,
 		setPage,
-		showPayMenu,
-		setShowPayMenu,
-		paymentTitle,
-		setPaymentTitle,
-		paymentDescription,
-		setPaymentDescription,
-		paymentAmount,
-		setPaymentAmount,
-
+		
 		// Date
 		currentDate,
 		currentYear,
@@ -232,7 +215,6 @@ function App() {
 			<RouteList GLOBAL_STATE={GLOBAL_STATE} />
 			<Footer {...GLOBAL_STATE} />
 			<Messages {...GLOBAL_STATE} />
-			<PaymentMenu {...GLOBAL_STATE} />
 
 			{/* Install button */}
 			<button

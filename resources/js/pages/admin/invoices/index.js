@@ -461,8 +461,8 @@ const index = (props) => {
 									</span>
 								</td>
 								<td>
-									<div className="d-flex justify-content-end">
-										<div className="d-flex justify-content-end">
+									<div className="d-flex justify-content-center">
+										<div className="d-flex justify-content-center">
 											<MyLink
 												linkTo={`/invoices/${invoice.id}/show`}
 												icon={<ViewSVG />}

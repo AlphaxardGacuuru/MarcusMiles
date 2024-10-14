@@ -28,9 +28,7 @@ const GoodList = (props) => {
 				props.setGoods({
 					meta: props.goods.meta,
 					links: props.goods.links,
-					data: props.goods.data.filter(
-						(good) => good.id != goodId
-					),
+					data: props.goods.data.filter((good) => good.id != goodId),
 				})
 				// Update Good
 				props.get(`goods`, props.setGoods)
@@ -99,7 +97,7 @@ const GoodList = (props) => {
 							<th>Code</th>
 							<th>Name</th>
 							<th>Created By</th>
-							<th>Action</th>
+							<th className="text-center">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -110,7 +108,7 @@ const GoodList = (props) => {
 								<td>{good.name}</td>
 								<td>{good.createdBy}</td>
 								<td>
-									<div className="d-flex justify-content-end">
+									<div className="d-flex justify-content-center">
 										<React.Fragment>
 											<MyLink
 												linkTo={`/erp/goods/${good.id}/edit`}

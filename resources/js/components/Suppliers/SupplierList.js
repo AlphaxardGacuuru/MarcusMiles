@@ -115,7 +115,7 @@ const SupplierList = (props) => {
 								<td>{supplier.phone}</td>
 								<td>{supplier.location}</td>
 								<td>
-									<div className="d-flex justify-content-end">
+									<div className="d-flex justify-content-center">
 										<MyLink
 											linkTo={`/erp/suppliers/${supplier.id}/view`}
 											className="me-1"

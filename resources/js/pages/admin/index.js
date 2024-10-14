@@ -39,27 +39,7 @@ const index = (props) => {
 				props.setLocalStorage("dashboard", res.data.data)
 			})
 			.catch(() => props.setErrors(["Failed to fetch Dashboard"]))
-
-		// Fetch Dashboard Properties
-		Axios.get(
-			`api/dashboard/properties/${
-				props.auth.propertyIds?.length ? props.auth.propertyIds : [0]
-			}`
-		)
-			.then((res) => {
-				// Reset Data
-				setDashboardProperties([])
-
-				setDashboardProperties(res.data.data)
-				props.setLocalStorage("dashboardProperties", res.data.data)
-			})
-			.catch(() => props.getErrors(["Failed to fetch Dashboard Properties"]))
-
-		// Fetch Payments
-		props.getPaginated(`payments/by-property-id/${propertyId}`, setPayments)
-		// Fetch Staff
-		props.getPaginated(`staff/by-property-id/${propertyId}`, setStaff)
-	}, [propertyId])
+	}, [])
 
 	/*
 	 * Graph Data
@@ -102,36 +82,6 @@ const index = (props) => {
 			backgroundColor: "rgba(220, 53, 69, 1)",
 			borderColor: "rgba(220, 53, 69, 1)",
 			// borderWidth: 1,
-		},
-	]
-
-	var doughnutProperties = [
-		{
-			label: " Units",
-			data: dashboardProperties.units,
-		},
-	]
-
-	var barGraphTenants = [
-		{
-			label: " Tenants this month",
-			data: dashboard.units?.tenantsThisYear?.data,
-			backgroundColor: "rgba(54, 162, 235, 1)",
-			borderColor: "rgba(255, 255, 255, 1)",
-			borderWidth: 2,
-			borderRadius: "0",
-			barThickness: "50",
-			stack: "Stack 0",
-		},
-		{
-			label: " Vacancies this month",
-			data: dashboard.units?.vacanciesThisYear?.data,
-			backgroundColor: "rgba(54, 162, 235, 0.5)",
-			borderColor: "rgba(255, 255, 255, 1)",
-			borderWidth: 2,
-			borderRadius: "0",
-			barThickness: "50",
-			stack: "Stack 0",
 		},
 	]
 
@@ -195,14 +145,6 @@ const index = (props) => {
 			borderRadius: "0",
 			barThickness: "25",
 			stack: "Stack 3",
-		},
-	]
-
-	var doughnutUnits = [
-		{
-			label: " ",
-			data: [dashboard.units?.totalOccupied, dashboard.units?.totalUnoccupied],
-			backgroundColor: ["rgba(54, 162, 235, 1)", "rgba(54, 162, 235, 0.5)"],
 		},
 	]
 

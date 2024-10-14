@@ -110,7 +110,7 @@ const WorkPlanList = (props) => {
 									<td className="text-capitalize">{workPlan.startsAt}</td>
 									<td className="text-capitalize">{workPlan.endsAt}</td>
 									<td>
-										<div className="d-flex justify-content-end">
+										<div className="d-flex justify-content-center">
 											<MyLink
 												linkTo={`/erp/work-plan-step/${workPlan.id}/create`}
 												icon={<PlusSVG />}
@@ -197,7 +197,7 @@ const WorkPlanList = (props) => {
 																				{workPlanStep.endsAt}
 																			</td>
 																			<td className="pt-2">
-																				<div className="d-flex justify-content-end">
+																				<div className="d-flex justify-content-center">
 																					<MyLink
 																						linkTo={`/erp/work-plan-step/${workPlanStep.id}/edit`}
 																						icon={<EditSVG />}

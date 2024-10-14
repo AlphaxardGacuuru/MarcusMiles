@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom/cjs/react-router-dom.min"
 
-import InventoryList from "@/components/Inventories/InventoryList"
+import ProjectList from "@/components/Projects/ProjectList"
 
 const show = (props) => {
 	var { id } = useParams()
 
 	const [client, setClient] = useState({})
-	const [inventories, setInventories] = useState([])
+	const [projects, setProjects] = useState([])
 
 	const [nameQuery, setNameQuery] = useState("")
 
@@ -17,14 +17,14 @@ const show = (props) => {
 		// Set page
 		props.setPage({ name: "View Client", path: ["clients", "view"] })
 		props.get(`clients/${id}`, setClient)
-		props.getPaginated(`inventories?clientId=${id}`, setInventories)
+		props.getPaginated(`projects?clientId=${id}`, setProjects)
 	}, [id])
 
 	useEffect(() => {
 		props.getPaginated(
-			`inventories?clientId=${id}&
+			`projects?clientId=${id}&
 				name=${nameQuery}`,
-			setInventories
+			setProjects
 		)
 	}, [nameQuery])
 
@@ -62,18 +62,18 @@ const show = (props) => {
 				</div>
 				{/* Tabs End */}
 
-				{/* Inventories Tab */}
-				<InventoryList
+				{/* Projects Tab */}
+				<ProjectList
 					{...props}
-					activeTab={activeTab("inventories")}
-					inventories={inventories}
-					setInventories={setInventories}
-					totalInventory={client.inventoryCount}
+					activeTab={activeTab("projects")}
+					projects={projects}
+					setProjects={setProjects}
+					totalProject={client.projectCount}
 					clientId={id}
 					setClient={setClient}
 					setNameQuery={setNameQuery}
 				/>
-				{/* Inventories Tab End */}
+				{/* Projects Tab End */}
 			</div>
 		</div>
 	)

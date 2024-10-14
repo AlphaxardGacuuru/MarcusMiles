@@ -76,7 +76,7 @@ const index = (props) => {
 								<th>Name</th>
 								<th>Description</th>
 								<th>Permissions</th>
-								<th>Action</th>
+								<th className="text-center">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -97,7 +97,7 @@ const index = (props) => {
 										</div>
 									</td>
 									<td>
-										<div className="d-flex justify-content-end">
+										<div className="d-flex justify-content-center">
 											<React.Fragment>
 												<MyLink
 													linkTo={`/roles/${role.id}/show`}

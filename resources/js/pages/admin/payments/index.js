@@ -281,7 +281,7 @@ const index = (props) => {
 								</td>
 								<td>{payment.paidOn}</td>
 								<td>
-									<div className="d-flex justify-content-end">
+									<div className="d-flex justify-content-center">
 										<MyLink
 											linkTo={`/invoices/${payment.invoiceId}/show`}
 											icon={<ViewSVG />}

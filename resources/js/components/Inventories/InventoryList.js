@@ -104,7 +104,7 @@ const InventoryList = (props) => {
 							<th>Quantity</th>
 							<th>Project</th>
 							<th>Supplier</th>
-							<th>Action</th>
+							<th className="text-center">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -117,7 +117,7 @@ const InventoryList = (props) => {
 								<td>{inventory.supplierName}</td>
 								<td>
 									{location.pathname.match("/view") && (
-										<div className="d-flex justify-content-end">
+										<div className="d-flex justify-content-center">
 											<React.Fragment>
 												<MyLink
 													linkTo={`/erp/inventory/${inventory.id}/edit`}
