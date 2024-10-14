@@ -69,7 +69,7 @@ class InventoryService extends Service
 
         $saved = $inventory->save();
 
-        $message = $inventory->name . " updated successfully";
+        $message = $inventory->good->code . " updated successfully";
 
         return [$saved, $message, $inventory];
     }

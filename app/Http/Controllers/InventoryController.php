@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\LowInventoryEvent;
 use App\Http\Services\InventoryService;
 use App\Models\Inventory;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class InventoryController extends Controller
@@ -75,7 +76,9 @@ class InventoryController extends Controller
 
         [$saved, $message, $inventory] = $this->service->update($request, $id);
 
-		// LowInventoryEvent::dispatchIf($inventory->quantity < 2, $inventory);
+		$usersToNotify = User::where("account_type", "staff")->get();
+
+		LowInventoryEvent::dispatchIf($inventory->quantity < 2, $inventory, $usersToNotify);
 
         return response([
             "status" => $saved,

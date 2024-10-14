@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Notifications\LowInventoryNotification;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class LowInventoryListener
 {
@@ -27,9 +25,9 @@ class LowInventoryListener
     public function handle($event)
     {
         $event
-            ->user
-            ->notify(new LowInventoryNotification(
-                $event->inventory,
-			));
+            ->usersToNotify
+            ->each(function ($user) use ($event) {
+                $user->notify(new LowInventoryNotification($event->inventory));
+            });
     }
 }

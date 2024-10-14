@@ -15,15 +15,17 @@ class LowInventoryEvent
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
 	public $inventory;
+	public $usersToNotify;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($inventory)
+    public function __construct($inventory, $usersToNotify)
     {
         $this->inventory = $inventory;
+        $this->usersToNotify = $usersToNotify;
     }
 
     /**

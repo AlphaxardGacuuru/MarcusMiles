@@ -93598,7 +93598,7 @@ var InventoryList = function InventoryList(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
     className: "table table-hover"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, location.pathname.match("/view") && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    colSpan: "4"
+    colSpan: "5"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     className: "text-end"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -95549,9 +95549,9 @@ var WorkPlanList = function WorkPlanList(props) {
       className: "accordion-body p-0"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
       className: "table table-hover table-primary table-borderless mb-0"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
       colSpan: 3
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Starts At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Ends At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, workPlanSteps.filter(function (workPlanStep) {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Starts At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Ends At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, workPlanSteps.filter(function (workPlanStep) {
       return workPlanStep.workPlanId == workPlan.id;
     }).map(function (workPlanStep, workPlanStepKey) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
@@ -97916,28 +97916,20 @@ var edit = function edit(props) {
     setInventory = _useState2[1];
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
     _useState4 = _slicedToArray(_useState3, 2),
-    goodId = _useState4[0],
-    setGoodId = _useState4[1];
+    quantity = _useState4[0],
+    setQuantity = _useState4[1];
   var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
     _useState6 = _slicedToArray(_useState5, 2),
-    quantity = _useState6[0],
-    setQuantity = _useState6[1];
+    supplierId = _useState6[0],
+    setSupplierId = _useState6[1];
   var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
     _useState8 = _slicedToArray(_useState7, 2),
-    supplierId = _useState8[0],
-    setSupplierId = _useState8[1];
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    loading = _useState8[0],
+    setLoading = _useState8[1];
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
     _useState10 = _slicedToArray(_useState9, 2),
-    loading = _useState10[0],
-    setLoading = _useState10[1];
-  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
-    _useState12 = _slicedToArray(_useState11, 2),
-    suppliers = _useState12[0],
-    setSuppliers = _useState12[1];
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
-    _useState14 = _slicedToArray(_useState13, 2),
-    goods = _useState14[0],
-    setGoods = _useState14[1];
+    suppliers = _useState10[0],
+    setSuppliers = _useState10[1];
 
   // Get Inventories
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
@@ -97960,8 +97952,6 @@ var edit = function edit(props) {
 
     // Fetch Suppliers
     props.get("suppliers?idAndName=true", setSuppliers);
-    // Fetch Goods
-    props.get("goods?idAndName=true", setGoods);
   }, []);
 
   /*
@@ -97971,7 +97961,6 @@ var edit = function edit(props) {
     e.preventDefault();
     setLoading(true);
     Axios.put("/api/inventories/".concat(id), {
-      goodId: goodId,
       quantity: quantity,
       supplierId: supplierId
     }).then(function (res) {
@@ -97995,23 +97984,6 @@ var edit = function edit(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "ms-1 mb-2"
   }, inventory.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "name"
-  }, "Good"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    className: "form-control text-capitalize mb-2 me-2",
-    onChange: function onChange(e) {
-      return setGoodId(e.target.value);
-    },
-    required: true
-  }, [{
-    id: "",
-    name: "Select Good"
-  }].concat(goods).map(function (good, key) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-      key: key,
-      value: good.id,
-      selected: good.id == inventory.goodId
-    }, good.name);
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "name"
   }, "Quantity"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "number",

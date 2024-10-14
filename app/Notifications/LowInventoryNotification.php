@@ -11,14 +11,16 @@ class LowInventoryNotification extends Notification
 {
     use Queueable;
 
+	public $inventory;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($inventory)
     {
-        //
+        $this->inventory = $inventory;
     }
 
     /**

@@ -88,7 +88,7 @@ const InventoryList = (props) => {
 					<thead>
 						{location.pathname.match("/view") && (
 							<tr>
-								<th colSpan="4"></th>
+								<th colSpan="5"></th>
 								<th className="text-end">
 									<MyLink
 										linkTo={`/erp/inventory/${props.projectId}/create`}
