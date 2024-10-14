@@ -137,7 +137,7 @@ const SupplierList = (props) => {
 												aria-labelledby="deleteModalLabel"
 												aria-hidden="true">
 												<div className="modal-dialog">
-													<div className="modal-content rounded-0">
+													<div className="modal-content rounded-4">
 														<div className="modal-header">
 															<h1
 																id="deleteModalLabel"
@@ -162,7 +162,7 @@ const SupplierList = (props) => {
 															</button>
 															<button
 																type="button"
-																className="btn btn-danger rounded-0"
+																className="btn btn-danger rounded-4"
 																data-bs-dismiss="modal"
 																onClick={() => onDeleteSupplier(supplier)}>
 																<span className="me-1">{<DeleteSVG />}</span>

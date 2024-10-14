@@ -23,7 +23,7 @@ const PaginationLinks = ({ getPaginated, setState, list }) => {
 							}
 						}}>
 						<a
-							className="page-link rounded-0"
+							className="page-link rounded-4"
 							dangerouslySetInnerHTML={{
 								__html: link.label,
 							}}></a>

@@ -17,8 +17,12 @@ body {
 	-webkit-font-smoothing: antialiased;
 	overflow-x: hidden;
 	max-width: 100%;
-	background-color: #EFEFF6;
+	/* background-color: #EFEFF6; */
+	background-color: rgba(0, 0, 0, 0.05);
 	font-weight: 300;
+	height: 100vh;
+	margin: 0;
+	/* background: linear-gradient(45deg, rgba(255, 255, 255, 1), rgba(0, 0, 0, 0.2)); */
 }
 
 a {
@@ -2717,9 +2721,7 @@ ol {
 	letter-spacing: 1px;
 	line-height: 32px;
 	padding: 0 10px;
-	/* background-color: #ffffff; */
-	/* border-radius: 20px; */
-	border-radius: 0px;
+	border-radius: 5px;
 }
 
 .mysonar-btn:hover,
@@ -3165,6 +3167,7 @@ ol {
 	width: 30%;
 	height: 30%;
 }
+
 /* Overlay End */
 
 /*hide scrollbars*/
@@ -3192,4 +3195,31 @@ div.hidden-scroll {
 	-ms-overflow-style: none;
 	/* Hide scrollbar for Firefox */
 	scrollbar-width: none;
+}
+
+.card {
+	border-radius: 15px;
+	background: rgba(255, 255, 255, 0.1);
+	/* Semi-transparent background */
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	/* Soft shadow */
+	backdrop-filter: blur(10px);
+	/* Glass effect: blurs background */
+	-webkit-backdrop-filter: blur(10px);
+	/* For Safari support */
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	/* Light border */
+	/* color: white; */
+}
+
+.glass {
+	background: rgba(255, 255, 255, 0.1);
+	/* Semi-transparent background */
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	/* Soft shadow */
+	backdrop-filter: blur(10px);
+	/* Glass effect: blurs background */
+	-webkit-backdrop-filter: blur(10px);
+	/* For Safari support */
+	border: 1px solid rgba(255, 255, 255, 0.3);
 }

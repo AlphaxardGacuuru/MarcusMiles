@@ -92632,7 +92632,7 @@ var ClientList = function ClientList(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "modal-dialog"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "modal-content rounded-0"
+      className: "modal-content rounded-4"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "modal-header"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -92653,7 +92653,7 @@ var ClientList = function ClientList(props) {
       "data-bs-dismiss": "modal"
     }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "button",
-      className: "btn btn-danger rounded-0",
+      className: "btn btn-danger rounded-4",
       "data-bs-dismiss": "modal",
       onClick: function onClick() {
         return onDeleteClient(client);
@@ -92689,7 +92689,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom/cjs/react-router-dom.min */ "./node_modules/react-router-dom/cjs/react-router-dom.min.js");
 /* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 
+
+ // Import Bootstrap's Tooltip
 
 var Btn = function Btn(_ref) {
   var btnStyle = _ref.btnStyle,
@@ -92699,15 +92702,25 @@ var Btn = function Btn(_ref) {
     onClick = _ref.onClick,
     loading = _ref.loading,
     dataBsToggle = _ref.dataBsToggle,
-    dataBsTarget = _ref.dataBsTarget;
+    dataBsTarget = _ref.dataBsTarget,
+    tooltipText = _ref.tooltipText;
   var location = Object(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__["useLocation"])();
+
+  // Initialize the tooltip after the component renders
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tooltip"](tooltipTriggerEl);
+    });
+  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     style: btnStyle,
     className: "mysonar-btn btn-2 ".concat(className),
     onClick: onClick,
     disabled: loading,
     "data-bs-toggle": dataBsToggle,
-    "data-bs-target": dataBsTarget
+    "data-bs-target": dataBsTarget,
+    title: tooltipText
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     style: {
       color: "inherit"
@@ -92726,8 +92739,10 @@ var Btn = function Btn(_ref) {
 };
 Btn.defaultProps = {
   loading: false,
-  disabled: false
+  disabled: false,
+  tooltipText: "Tooltip text" // Default tooltip text
 };
+
 /* harmony default export */ __webpack_exports__["default"] = (Btn);
 
 /***/ }),
@@ -92815,7 +92830,7 @@ var DeleteModal = function DeleteModal(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-dialog"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modal-content rounded-0"
+    className: "modal-content rounded-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -92836,7 +92851,7 @@ var DeleteModal = function DeleteModal(_ref) {
     "data-bs-dismiss": "modal"
   }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
-    className: "btn btn-danger rounded-0",
+    className: "btn btn-danger rounded-4",
     "data-bs-dismiss": "modal",
     onClick: function onClick() {
       return onDelete(model.id);
@@ -92899,7 +92914,7 @@ var HeroIcon = function HeroIcon(_ref) {
   var children = _ref.children;
   var location = Object(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__["useLocation"])();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "".concat(location.pathname.match("/admin/") ? "bg-secondary-subtle text-secondary" : location.pathname.match("/instructor/") ? " bg-danger-subtle text-danger" : " bg-success-subtle text-success", " fs-1 py-3 px-4 rounded-circle shadow")
+    className: "text-secondary fs-1 py-3 px-4 rounded-circle shadow glass"
   }, children);
 };
 /* harmony default export */ __webpack_exports__["default"] = (HeroIcon);
@@ -93069,7 +93084,7 @@ var PaginationLinks = function PaginationLinks(_ref) {
         }
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      className: "page-link rounded-0",
+      className: "page-link rounded-4",
       dangerouslySetInnerHTML: {
         __html: link.label
       }
@@ -93854,7 +93869,7 @@ var AdminMenu = function AdminMenu(props) {
     height: "30px",
     alt: "Avatar"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dropdown-menu rounded-0 m-0 p-0 bg-white"
+    className: "dropdown-menu rounded-4 m-0 p-0 bg-white"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/admin/staff/edit/".concat(props.auth.id),
     className: "p-1 px-2 pt-3 dropdown-item"
@@ -94829,7 +94844,7 @@ var StaffList = function StaffList(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "modal-dialog"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "modal-content rounded-0"
+      className: "modal-content rounded-4"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "modal-header"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -94850,7 +94865,7 @@ var StaffList = function StaffList(props) {
       "data-bs-dismiss": "modal"
     }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "button",
-      className: "btn btn-danger rounded-0",
+      className: "btn btn-danger rounded-4",
       "data-bs-dismiss": "modal",
       onClick: function onClick() {
         return onDeleteStaff(staff);
@@ -94956,7 +94971,7 @@ var SupplierGoodsList = function SupplierGoodsList(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-dialog"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modal-content rounded-0"
+    className: "modal-content rounded-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -95178,7 +95193,7 @@ var SupplierList = function SupplierList(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "modal-dialog"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "modal-content rounded-0"
+      className: "modal-content rounded-4"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "modal-header"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -95199,7 +95214,7 @@ var SupplierList = function SupplierList(props) {
       "data-bs-dismiss": "modal"
     }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "button",
-      className: "btn btn-danger rounded-0",
+      className: "btn btn-danger rounded-4",
       "data-bs-dismiss": "modal",
       onClick: function onClick() {
         return onDeleteSupplier(supplier);
@@ -95360,14 +95375,14 @@ var WorkPlanList = function WorkPlanList(props) {
       colSpan: 6,
       className: "p-0"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "accordion rounded-0",
+      className: "accordion rounded-4",
       id: "accordionExample"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "accordion-item rounded-0"
+      className: "accordion-item rounded-4"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
       className: "accordion-header"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "accordion-button rounded-0 ".concat(key != 0 && "collapsed"),
+      className: "accordion-button rounded-4 ".concat(key != 0 && "collapsed"),
       type: "button",
       "data-bs-toggle": "collapse",
       "data-bs-target": "#collapse".concat(key),
@@ -99387,7 +99402,7 @@ var index = function index(props) {
       return creatingStage ? onCreateStage(e) : onUpdateStage(e);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modal-content rounded-0"
+    className: "modal-content rounded-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -99456,7 +99471,7 @@ var index = function index(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-dialog"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modal-content rounded-0"
+    className: "modal-content rounded-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -99478,7 +99493,7 @@ var index = function index(props) {
     "data-bs-dismiss": "modal"
   }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
-    className: "btn btn-danger rounded-0",
+    className: "btn btn-danger rounded-4",
     "data-bs-dismiss": "modal",
     onClick: onDeleteStage
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -99501,7 +99516,7 @@ var index = function index(props) {
       return creatingIssue ? onCreateIssue(e) : onUpdateIssue(e);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modal-content rounded-0"
+    className: "modal-content rounded-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -99644,7 +99659,7 @@ var index = function index(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-dialog"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modal-content rounded-0"
+    className: "modal-content rounded-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -99666,7 +99681,7 @@ var index = function index(props) {
     "data-bs-dismiss": "modal"
   }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
-    className: "btn btn-danger rounded-0",
+    className: "btn btn-danger rounded-4",
     "data-bs-dismiss": "modal",
     onClick: onDeleteIssue
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {

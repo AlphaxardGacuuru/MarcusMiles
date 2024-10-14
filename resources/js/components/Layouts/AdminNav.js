@@ -256,7 +256,7 @@ const AdminMenu = (props) => {
 														/>
 													</span>
 													{/* Avatar End */}
-													<div className="dropdown-menu rounded-0 m-0 p-0 bg-white">
+													<div className="dropdown-menu rounded-4 m-0 p-0 bg-white">
 														<Link
 															to={`/admin/staff/edit/${props.auth.id}`}
 															className="p-1 px-2 pt-3 dropdown-item">

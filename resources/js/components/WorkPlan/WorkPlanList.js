@@ -139,12 +139,12 @@ const WorkPlanList = (props) => {
 										colSpan={6}
 										className="p-0">
 										<div
-											className="accordion rounded-0"
+											className="accordion rounded-4"
 											id="accordionExample">
-											<div className="accordion-item rounded-0">
+											<div className="accordion-item rounded-4">
 												<h2 className="accordion-header">
 													<button
-														className={`accordion-button rounded-0 ${
+														className={`accordion-button rounded-4 ${
 															key != 0 && "collapsed"
 														}`}
 														type="button"

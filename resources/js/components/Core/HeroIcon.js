@@ -6,13 +6,7 @@ const HeroIcon = ({ children }) => {
 
 	return (
 		<div
-			className={`${
-				location.pathname.match("/admin/")
-					? "bg-secondary-subtle text-secondary"
-					: location.pathname.match("/instructor/")
-					? " bg-danger-subtle text-danger"
-					: " bg-success-subtle text-success"
-			} fs-1 py-3 px-4 rounded-circle shadow`}>
+			className={`text-secondary fs-1 py-3 px-4 rounded-circle shadow glass`}>
 			{children}
 		</div>
 	)

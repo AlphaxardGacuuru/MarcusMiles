@@ -51,7 +51,7 @@ const SupplierGoodsList = (props) => {
 				aria-labelledby="priceHistoryModalLabel"
 				aria-hidden="true">
 				<div className="modal-dialog">
-					<div className="modal-content rounded-0">
+					<div className="modal-content rounded-4">
 						<div className="modal-header">
 							<h1
 								id="priceHistoryModalLabel"
