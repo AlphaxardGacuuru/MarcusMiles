@@ -8,6 +8,7 @@ import Btn from "@/components/Core/Btn"
 import MyLink from "@/components/Core/MyLink"
 
 import CloseSVG from "@/svgs/CloseSVG"
+import BackSVG from "@/svgs/BackSVG"
 
 const create = (props) => {
 	var { id } = useParams()
@@ -204,6 +205,7 @@ const create = (props) => {
 					<div className="d-flex justify-content-center mb-5">
 						<MyLink
 							linkTo={`/properties/${id}/show`}
+							icon={<BackSVG />}
 							text="back to supplier"
 						/>
 					</div>

@@ -759,7 +759,8 @@ const index = (props) => {
 						{layout.map((stage, stageKey) => (
 							<div
 								key={stageKey}
-								className="d-flex flex-column bg-secondary-subtle mx-1">
+								className="d-flex flex-column shadow mb-5 mx-1"
+								style={{ border: "2px solid rgba(255, 255, 255, 0.3)" }}>
 								{/* Stage Title Start */}
 								<h6 className="p-2 text-center">
 									{stages[stageKey]?.name}
@@ -806,10 +807,8 @@ const index = (props) => {
 															ref={provided.innerRef}
 															{...provided.draggableProps}
 															{...provided.dragHandleProps}
-															className={`d-flex justify-content-between shadow-sm m-2 p-2 ${
-																snapshot.isDragging
-																	? "bg-secondary-subtle shadow-lg"
-																	: "bg-light"
+															className={`d-flex justify-content-between glass shadow-sm m-2 p-2 ${
+																snapshot.isDragging ? "shadow-lg" : ""
 															}`}>
 															<div>
 																<div className="fw-normal text-primary">

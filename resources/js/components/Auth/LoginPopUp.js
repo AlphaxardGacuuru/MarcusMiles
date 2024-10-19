@@ -71,11 +71,11 @@ const LoginPopUp = (props) => {
 			<div
 				className="background-blur"
 				style={{ visibility: blur ? "visible" : "hidden" }}></div>
-			<div className="bottomMenu">
+			<div className="bottomMenu glass">
 				<div className="d-flex align-items-center justify-content-between">
 					{/* <!-- Logo Area --> */}
 					<div className="logo-area p-2">
-						<a href="#">Login</a>
+						<a href="#" className="text-dark">Login</a>
 					</div>
 					{/* <!-- Close Icon --> */}
 					<div

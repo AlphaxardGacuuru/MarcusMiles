@@ -22,6 +22,7 @@ import IssueSVG from "@/svgs/IssueSVG"
 import SupplierSVG from "@/svgs/SupplierSVG"
 import GoodSVG from "@/svgs/GoodSVG"
 import InventorySVG from "@/svgs/InventorySVG"
+import ServiceProviderSVG from "@/svgs/ServiceProviderSVG"
 
 const AdminNavLinks = (props) => {
 	const location = useLocation()
@@ -61,7 +62,7 @@ const AdminNavLinks = (props) => {
 			<li className="nav-item">
 				<a
 					href="#"
-					className={`nav-link accordion-button my-1 ${active("/admin/erp/")}`}
+					className={`nav-link accordion-button w-75 my-1 ${active("/admin/erp/")}`}
 					data-bs-toggle="collapse"
 					data-bs-target="#collapseERP"
 					aria-expanded="false"
@@ -113,6 +114,18 @@ const AdminNavLinks = (props) => {
 							</Link>
 						</li>
 						{/* Goods End */}
+						{/* Service Providers Start */}
+						<li className="nav-item">
+							<Link
+								to={`/admin/erp/service-providers`}
+								className={`nav-link ${active("/admin/erp/service-providers")}`}>
+								<div className="nav-link-icon">
+									<ServiceProviderSVG />
+								</div>
+								<div className="nav-link-text">Service Providers</div>
+							</Link>
+						</li>
+						{/* Service Providers End */}
 						{/* Projects Start */}
 						<li className="nav-item">
 							<Link

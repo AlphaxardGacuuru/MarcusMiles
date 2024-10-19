@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Http\Resources\InventoryResource;
 use App\Models\Inventory;
+use App\Models\InventoryQuantity;
 
 class InventoryService extends Service
 {
@@ -63,6 +64,14 @@ class InventoryService extends Service
 
         if ($request->filled("quantity")) {
             $inventory->quantity = $request->quantity;
+        }
+
+        if ($request->filled("reduce")) {
+            $inventoryQuantity = new InventoryQuantity;
+            $inventoryQuantity->inventory_id = $inventory->id;
+            $inventoryQuantity->quantity = $request->quantity;
+            $inventoryQuantity->created_by = $this->id;
+            $inventoryQuantity->save();
         }
 
         $inventory->supplier_id = $request->supplierId;

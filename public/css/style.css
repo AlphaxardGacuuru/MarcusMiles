@@ -2030,7 +2030,7 @@ ol {
 /* Left Nav */
 .leftMenu {
 	position: fixed;
-	width: 50px;
+	width: 60px;
 	height: 100%;
 	top: 0;
 	left: 0;
@@ -2136,7 +2136,7 @@ ol {
 
 /* Menu Open CSS */
 .left-open .leftMenu {
-	width: 200px;
+	width: 220px;
 }
 
 .left-open .leftMenu .nav-link-icon {
@@ -2151,7 +2151,7 @@ ol {
 .left-open .left-main {
 	/* transition: margin-left 800ms; */
 	transition-duration: 800ms;
-	margin-left: 200px;
+	margin-left: 220px;
 	padding-right: 10px;
 	padding-left: 10px;
 }
@@ -2245,7 +2245,7 @@ ol {
 	position: fixed;
 	width: 50%;
 	bottom: -5000px;
-	background-color: #000000;
+	/* background-color: #000000; */
 	z-index: 1000001;
 	text-align: center;
 	padding: 10px 10px;
@@ -2263,7 +2263,7 @@ ol {
 }
 
 .bottomMenu .closeIcon {
-	color: #ffffff;
+	color: rgba(0, 0, 0, 1);
 	font-size: 20px;
 	cursor: pointer;
 	-webkit-transition-duration: 750ms;
@@ -2710,33 +2710,35 @@ ol {
 	z-index: 1;
 	/* min-width: 90px; */
 	height: 33px;
-	border: 1px solid;
-	/* border-color: #000000; */
-	border-color: #605F67;
+	/* border: 1px solid; */
+	/* border-color: #605F67; */
 	text-transform: uppercase;
-	/* color: #000000; */
-	color: #605F67;
+	color: rgba(96, 95, 103, 1);
 	font-size: 12px;
 	font-weight: 300;
 	letter-spacing: 1px;
 	line-height: 32px;
 	padding: 0 10px;
 	border-radius: 5px;
+
+	/* background: rgba(255, 255, 255, 0.2); */
+	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px); /* For Safari support */
+	border: 1px solid rgba(96, 95, 103, 0.2);
 }
 
 .mysonar-btn:hover,
 .mysonar-btn:focus {
-	/* background-color: #2f2f2f; */
-	background-color: #605F67;
+	background-color: rgba(96, 95, 103, 0.6);
 	font-size: 12px;
 	color: #ffffff;
 }
 
 .mysonar-btn.btn-2 {
-	/* background-color: #000000; */
-	background-color: #605F67;
+	background-color: rgba(96, 95, 103, 0.6);
 	font-size: 12px;
-	color: #fff;
+	color: rgba(255, 255, 255, 1);
 }
 
 .mysonar-sm {
@@ -3198,7 +3200,7 @@ div.hidden-scroll {
 }
 
 .card {
-	border-radius: 15px;
+	border-radius: 10px;
 	background: rgba(255, 255, 255, 0.1);
 	/* Semi-transparent background */
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -3217,6 +3219,16 @@ div.hidden-scroll {
 	/* Semi-transparent background */
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	/* Soft shadow */
+	backdrop-filter: blur(10px);
+	/* Glass effect: blurs background */
+	-webkit-backdrop-filter: blur(10px);
+	/* For Safari support */
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.form-control {
+	background: rgba(255, 255, 255, 0.1);
+	/* Semi-transparent background */
 	backdrop-filter: blur(10px);
 	/* Glass effect: blurs background */
 	-webkit-backdrop-filter: blur(10px);

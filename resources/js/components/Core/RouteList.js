@@ -18,6 +18,11 @@ import AdminGoods from "@/pages/admin/goods/index"
 import AdminGoodCreate from "@/pages/admin/goods/create"
 import AdminGoodEdit from "@/pages/admin/goods/edit/[id]"
 
+import AdminServiceProviders from "@/pages/admin/service-providers/index"
+import AdminServiceProviderCreate from "@/pages/admin/service-providers/create"
+import AdminServiceProviderView from "@/pages/admin/service-providers/[id]"
+import AdminServiceProviderEdit from "@/pages/admin/service-providers/edit/[id]"
+
 import AdminProjects from "@/pages/admin/projects/index"
 import AdminProjectCreate from "@/pages/admin/projects/create"
 import AdminProjectView from "@/pages/admin/projects/[id]"
@@ -32,6 +37,9 @@ import AdminWorkPlanStepEdit from "@/pages/admin/work-plan-step/edit/[id]"
 import AdminInventory from "@/pages/admin/inventory/index"
 import AdminInventoryCreate from "@/pages/admin/inventory/create"
 import AdminInventoryEdit from "@/pages/admin/inventory/edit/[id]"
+
+import AdminProjectServiceProviderCreate from "@/pages/admin/projects/service-providers/create"
+import AdminProjectServiceProviderEdit from "@/pages/admin/projects/service-providers/edit/[id]"
 
 import AdminSuppliers from "@/pages/admin/suppliers/index"
 import AdminSupplierCreate from "@/pages/admin/suppliers/create"
@@ -111,6 +119,22 @@ const RouteList = ({ GLOBAL_STATE }) => {
 			component: <AdminGoodEdit {...GLOBAL_STATE} />,
 		},
 		{
+			path: "/admin/erp/service-providers",
+			component: <AdminServiceProviders {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/service-providers/create",
+			component: <AdminServiceProviderCreate {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/service-providers/:id/view",
+			component: <AdminServiceProviderView {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/service-providers/:id/edit",
+			component: <AdminServiceProviderEdit {...GLOBAL_STATE} />,
+		},
+		{
 			path: "/admin/erp/projects",
 			component: <AdminProjects {...GLOBAL_STATE} />,
 		},
@@ -153,6 +177,14 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		{
 			path: "/admin/erp/inventory/:id/edit",
 			component: <AdminInventoryEdit {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/projects/service-providers/:id/create",
+			component: <AdminProjectServiceProviderCreate {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/erp/projects/service-providers/:id/edit",
+			component: <AdminProjectServiceProviderEdit {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/erp/suppliers",

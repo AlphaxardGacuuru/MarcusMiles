@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min"
 import InventoryList from "@/components/Inventories/InventoryList"
 import WorkPlanList from "@/components/WorkPlan/WorkPlanList"
 import Overview from "@/components/Projects/Overview"
+import ProjectServiceProviderList from "@/components/ProjectServiceProviders/ProjectServiceProviderList"
 
 const show = (props) => {
 	var { id } = useParams()
@@ -11,6 +12,7 @@ const show = (props) => {
 	const [project, setProject] = useState({})
 	const [workPlans, setWorkPlans] = useState([])
 	const [inventories, setInventories] = useState([])
+	const [projectServiceProviders, setProjectServiceProviders] = useState([])
 
 	const [nameQuery, setNameQuery] = useState("")
 
@@ -22,6 +24,7 @@ const show = (props) => {
 		props.get(`projects/${id}`, setProject)
 		props.getPaginated(`work-plans?projectId=${id}`, setWorkPlans)
 		props.getPaginated(`inventories?projectId=${id}`, setInventories)
+		props.getPaginated(`project-service-providers?projectId=${id}`, setProjectServiceProviders)
 	}, [id])
 
 	useEffect(() => {
@@ -78,6 +81,14 @@ const show = (props) => {
 						onClick={() => setTab("inventories")}>
 						Inventory
 					</div>
+					<div
+						className={`card shadow-sm flex-grow-1 text-center me-1 mb-2 py-2 px-4 ${active(
+							"serviceProviders"
+						)}`}
+						style={{ cursor: "pointer" }}
+						onClick={() => setTab("serviceProviders")}>
+						Service Providers
+					</div>
 				</div>
 				{/* Tabs End */}
 
@@ -117,6 +128,18 @@ const show = (props) => {
 					setNameQuery={setNameQuery}
 				/>
 				{/* Inventories Tab End */}
+
+				{/* Project Service Provider Tab */}
+				<ProjectServiceProviderList
+					{...props}
+					activeTab={activeTab("serviceProviders")}
+					projectServiceProviders={projectServiceProviders}
+					setProjectServiceProviders={setProjectServiceProviders}
+					projectId={id}
+					setProject={setProject}
+					setNameQuery={setNameQuery}
+				/>
+				{/* Project Service Provider Tab End */}
 			</div>
 		</div>
 	)

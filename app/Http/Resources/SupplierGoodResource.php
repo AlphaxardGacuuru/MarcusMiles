@@ -22,13 +22,15 @@ class SupplierGoodResource extends JsonResource
 
         return [
             "id" => $this->id,
+            "goodId" => $this->good->id,
             "goodCode" => $this->good->code,
             "goodName" => $this->good->name,
-            "goodId" => $this->good->id,
+            "goodMarkup" => $this->good->markup,
             "supplierId" => $this->supplier->id,
             "supplierName" => $this->supplier->name,
             "createdByName" => $this->createdBy->name,
             "currentPrice" => number_format($currentPrice),
+            "sellingPrice" => number_format($currentPrice * ($this->good->markup + 100)),
             "prices" => SupplierGoodPriceResource::collection($this->supplierGoodPrices),
         ];
     }

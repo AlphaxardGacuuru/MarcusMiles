@@ -14,6 +14,7 @@ const create = (props) => {
 	var history = useHistory()
 
 	const [name, setName] = useState()
+	const [markup, setMarkup] = useState()
 	const [notificationQuantity, setNotificationQuantity] = useState()
 	const [loading, setLoading] = useState()
 
@@ -35,6 +36,7 @@ const create = (props) => {
 		setLoading(true)
 		Axios.post("/api/goods", {
 			name: name,
+			markup: markup,
 			notificationQuantity: notificationQuantity,
 		})
 			.then((res) => {
@@ -67,6 +69,18 @@ const create = (props) => {
 						required={true}
 					/>
 					{/* Name End */}
+
+					{/* Mark Up */}
+					<label htmlFor="notificationQuantity">Mark Up</label>
+					<input
+						type="number"
+						name="markup"
+						placeholder="Mark Up"
+						className="form-control text-capitalize mb-2 me-2"
+						onChange={(e) => setMarkup(e.target.value)}
+						required={true}
+					/>
+					{/* Mark Up End */}
 
 					{/* Notification Quantity */}
 					<label htmlFor="notificationQuantity">Notification Quantity</label>

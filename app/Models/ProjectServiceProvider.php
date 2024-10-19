@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class ProjectServiceProvider extends Model
 {
     use HasFactory;
 
@@ -49,23 +49,13 @@ class Project extends Model
         return $this->belongsTo(User::class, "created_by");
     }
 
-    public function client()
+    public function project()
     {
-        return $this->belongsTo(User::class, "client_id");
+        return $this->belongsTo(Project::class);
     }
 
-	public function workPlans()
-	{
-		return $this->hasMany(WorkPlan::class);
-	}
-
-	public function inventories()
-	{
-		return $this->hasMany(Inventory::class);
-	}
-
-	public function serviceProviders()
-	{
-		return $this->hasMany(ProjectServiceProvider::class);
-	}
+    public function serviceProvider()
+    {
+        return $this->belongsTo(User::class, "service_provider_id");
+    }
 }

@@ -55,7 +55,6 @@ const Btn = ({
 Btn.defaultProps = {
 	loading: false,
 	disabled: false,
-	tooltipText: "Tooltip text", // Default tooltip text
 }
 
 export default Btn

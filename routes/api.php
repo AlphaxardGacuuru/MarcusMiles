@@ -17,8 +17,10 @@ use App\Http\Controllers\MPESATransactionController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectServiceProviderController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StageController;
 use App\Http\Controllers\SupplierController;
@@ -52,10 +54,12 @@ Route::get('auth', [UserController::class, 'auth']);
 Route::apiResources([
 	"clients" => ClientController::class,
 	"goods" => GoodController::class,
+	"service-providers" => ServiceProviderController::class,
 	"projects" => ProjectController::class,
 	"work-plans" => WorkPlanController::class,
 	"work-plan-steps" => WorkPlanStepController::class,
 	"inventories" => InventoryController::class,
+	"project-service-providers" => ProjectServiceProviderController::class,
 	"suppliers" => SupplierController::class,
 	"supplier-goods" => SupplierGoodController::class,
 	"stages" => StageController::class,

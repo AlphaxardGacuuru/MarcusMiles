@@ -5,6 +5,7 @@ import Btn from "@/components/Core/Btn"
 import MyLink from "@/components/Core/MyLink"
 
 import CloseSVG from "@/svgs/CloseSVG"
+import BackSVG from "@/svgs/BackSVG"
 
 const edit = (props) => {
 	var { id } = useParams()
@@ -203,6 +204,7 @@ const edit = (props) => {
 					<center className="mb-5">
 						<MyLink
 							linkTo={`/erp/suppliers`}
+							icon={<BackSVG />}
 							text="back to suppliers"
 						/>
 					</center>

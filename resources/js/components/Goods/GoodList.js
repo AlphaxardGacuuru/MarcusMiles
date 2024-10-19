@@ -83,7 +83,7 @@ const GoodList = (props) => {
 				<table className="table table-hover">
 					<thead>
 						<tr>
-							<th colSpan="4"></th>
+							<th colSpan="6"></th>
 							<th className="text-end">
 								<MyLink
 									linkTo={`/erp/goods/create`}
@@ -96,6 +96,8 @@ const GoodList = (props) => {
 							<th>#</th>
 							<th>Code</th>
 							<th>Name</th>
+							<th>Mark Up (%)</th>
+							<th>Notification Quantity</th>
 							<th>Created By</th>
 							<th className="text-center">Action</th>
 						</tr>
@@ -106,6 +108,8 @@ const GoodList = (props) => {
 								<td>{props.iterator(key, props.goods)}</td>
 								<td>{good.code}</td>
 								<td>{good.name}</td>
+								<td>{good.markup}</td>
+								<td>{good.notificationQuantity}</td>
 								<td>{good.createdBy}</td>
 								<td>
 									<div className="d-flex justify-content-center">

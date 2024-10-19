@@ -15,9 +15,38 @@ import InventorySVG from "@/svgs/InventorySVG"
 import ViewSVG from "@/svgs/ViewSVG"
 import EditSVG from "@/svgs/EditSVG"
 import PlusSVG from "@/svgs/PlusSVG"
+import ArrowDownSVG from "@/svgs/ArrowDownSVG"
 
 const InventoryList = (props) => {
 	const location = useLocation()
+
+	const [loading, setLoading] = useState()
+
+	/*
+	 * Reduce Quantity
+	 */
+	const reduceQuantity = (inventoryId, quantity) => {
+		setLoading(true)
+
+		let reducedQuantity = quantity - 1
+
+		Axios.put(`/api/inventories/${inventoryId}`, {
+			reduce: true,
+			quantity: reducedQuantity.toString(),
+		})
+			.then((res) => {
+				setLoading(false)
+				// Show messages
+				props.setMessages([res.data.message])
+				// Fetch Inventory
+				props.getPaginated(`inventories?projectId=${props.projectId}`, props.setInventories)
+			})
+			.catch((err) => {
+				setLoading(false)
+				// Get Errors
+				props.getErrors(err)
+			})
+	}
 
 	/*
 	 * Delete Inventory
@@ -88,7 +117,7 @@ const InventoryList = (props) => {
 					<thead>
 						{location.pathname.match("/view") && (
 							<tr>
-								<th colSpan="5"></th>
+								<th colSpan="6"></th>
 								<th className="text-end">
 									<MyLink
 										linkTo={`/erp/inventory/${props.projectId}/create`}
@@ -104,6 +133,7 @@ const InventoryList = (props) => {
 							<th>Quantity</th>
 							<th>Project</th>
 							<th>Supplier</th>
+							<th>Added On</th>
 							<th className="text-center">Action</th>
 						</tr>
 					</thead>
@@ -115,6 +145,7 @@ const InventoryList = (props) => {
 								<td>{inventory.quantity}</td>
 								<td>{inventory.projectName}</td>
 								<td>{inventory.supplierName}</td>
+								<td>{inventory.createdAt}</td>
 								<td>
 									{location.pathname.match("/view") && (
 										<div className="d-flex justify-content-center">
@@ -122,7 +153,16 @@ const InventoryList = (props) => {
 												<MyLink
 													linkTo={`/erp/inventory/${inventory.id}/edit`}
 													icon={<EditSVG />}
-													className="btn-sm"
+													className="btn-sm me-1"
+												/>
+
+												<Btn
+													icon={<ArrowDownSVG />}
+													tooltipText="Consume Item"
+													onClick={() =>
+														reduceQuantity(inventory.id, inventory.quantity)
+													}
+													loading={loading}
 												/>
 
 												<div className="mx-1">

@@ -13,14 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('goods', function (Blueprint $table) {
+        Schema::create('project_service_providers', function (Blueprint $table) {
             $table->id();
-			$table->string('code');
-			$table->string('name');
-			$table->integer('notification_quantity')->default(1);
-			$table->float('markup')->default(0);
-			$table->unsignedBigInteger('created_by');
+            $table->foreignId('project_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->unsignedBigInteger('service_provider_id');
+            $table->unsignedBigInteger('created_by');
             $table->timestamps();
+
+            $table->foreign('service_provider_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->foreign('created_by')
                 ->references('id')
@@ -37,6 +44,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('goods');
+        Schema::dropIfExists('project_service_providers');
     }
 };

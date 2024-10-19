@@ -249,7 +249,7 @@ const ProjectList = (props) => {
 					<thead>
 						{location.pathname.match("/projects") && (
 							<tr>
-								<th colSpan="8"></th>
+								<th colSpan="7"></th>
 								<th className="text-end">
 									<div className="d-flex justify-content-center">
 										<MyLink
@@ -265,7 +265,7 @@ const ProjectList = (props) => {
 							<th>#</th>
 							<th>Name</th>
 							<th>Type</th>
-							<th>Description</th>
+							{/* <th>Description</th> */}
 							<th>Location</th>
 							<th>Client Initials</th>
 							<th>Created By</th>
@@ -277,7 +277,7 @@ const ProjectList = (props) => {
 								<td>{project.code}</td>
 								<td>{project.name}</td>
 								<td className="text-capitalize">{project.type}</td>
-								<td>{project.description}</td>
+								{/* <td>{project.description}</td> */}
 								<td>{project.location}</td>
 								<td>{project.clientInitials}</td>
 								<td>{project.createdBy}</td>

@@ -16,8 +16,11 @@ const Messages = ({ messages, setMessages, errors, setErrors }) => {
 				{messages.map((message, key) => (
 					<div
 						key={key}
-						className="bg-success p-2 mt-2 text-white"
-						style={{ transition: "0.3s" }}>
+						className="glass p-2 mt-2 text-light"
+						style={{
+							backgroundColor: "rgba(143, 234, 133, 0.5)",
+							transition: "0.3s",
+						}}>
 						{message}
 					</div>
 				))}
@@ -25,8 +28,11 @@ const Messages = ({ messages, setMessages, errors, setErrors }) => {
 				{errors.map((error, key) => (
 					<div
 						key={key}
-						className="p-2 mt-2 bg-white"
-						style={{ transition: "0.3s" }}>
+						className="glass p-2 mt-2 text-light"
+						style={{
+							backgroundColor: "rgba(235, 96, 96, 0.5)",
+							transition: "0.3s",
+						}}>
 						{error}
 					</div>
 				))}

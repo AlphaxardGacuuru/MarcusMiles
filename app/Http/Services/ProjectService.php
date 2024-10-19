@@ -151,6 +151,14 @@ class ProjectService extends Service
             $query = $query->whereDate("created_at", "<=", $end);
         }
 
+        $serviceProviderId = $request->serviceProviderId;
+
+        if ($request->filled("serviceProviderId")) {
+            $query = $query->whereHas("serviceProviders", function ($query) use ($serviceProviderId) {
+                $query->where("service_provider_id", $serviceProviderId);
+            });
+        }
+
         return $query;
     }
 }

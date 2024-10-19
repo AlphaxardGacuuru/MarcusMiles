@@ -118,6 +118,11 @@ class User extends Authenticatable
         return $this->hasMany(SupplierGood::class);
     }
 
+    public function projectServiceProviders()
+    {
+        return $this->hasMany(ProjectServiceProvider::class, "service_provider_id");
+    }
+
     /*
      * Custom functions
      */

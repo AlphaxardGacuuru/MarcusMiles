@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class GoodResource extends JsonResource
+class ProjectServiceProviderResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,12 @@ class GoodResource extends JsonResource
     {
         return [
 			"id" => $this->id,
-			"code" => $this->code,
-			"name" => $this->name,
-			"markup" => $this->markup,
-			"notificationQuantity" => $this->notification_quantity,
-			"createdBy" => $this->createdBy->name,
+			"serviceProviderId" => $this->service_provider_id,
+			"serviceProviderAvatar" => $this->serviceProvider->avatar,
+			"serviceProviderName" => $this->serviceProvider->name,
+			"serviceProviderPhone" => $this->serviceProvider->phone,
+			"serviceProviderIdNumber" => $this->serviceProvider->id_number,
+			"projectId" => $this->project_id,
 			"updatedAt" => $this->updated_at,
 			"createdAt" => $this->created_at,
 		];

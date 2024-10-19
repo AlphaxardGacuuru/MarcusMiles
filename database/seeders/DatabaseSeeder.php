@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
 			PropertySeeder::class,
 			ProjectSeeder::class,
+			GoodSeeder::class,
 			StageSeeder::class,
 			IssueSeeder::class,
 			// UnitSeeder::class,

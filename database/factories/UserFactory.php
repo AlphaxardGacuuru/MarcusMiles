@@ -33,6 +33,8 @@ class UserFactory extends Factory
             'avatar' => 'avatars/male-avatar.png',
             'gender' => $gender[rand(0, 1)],
 			'account_type' => 'staff',
+			'kra_pin' => "A" . rand(100000, 999999),
+			'id_number' => rand(10000000, 99999999),
             'created_at' => Carbon::now()->subDay(rand(3, 12)),
         ];
     }

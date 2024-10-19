@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('account_type')->nullable();
             $table->string('location')->nullable();
             $table->string('kra_pin')->nullable();
+            $table->string('id_number')->nullable();
 			$table->softDeletes();
             $table->timestamps();
         });

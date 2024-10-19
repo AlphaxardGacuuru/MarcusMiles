@@ -12,6 +12,7 @@ const edit = (props) => {
 	const [good, setGood] = useState({})
 
 	const [name, setName] = useState()
+	const [markup, setMarkup] = useState()
 	const [notificationQuantity, setNotificationQuantity] = useState()
 	const [loading, setLoading] = useState()
 
@@ -36,6 +37,7 @@ const edit = (props) => {
 
 		Axios.put(`/api/goods/${id}`, {
 			name: name,
+			markup: markup,
 			notificationQuantity: notificationQuantity,
 		})
 			.then((res) => {
@@ -62,8 +64,21 @@ const edit = (props) => {
 						placeholder="Name"
 						className="form-control mb-2"
 						onChange={(e) => setName(e.target.value)}
-					/>
+						/>
 					{/* Name End */}
+
+					{/* Mark Up */}
+					<label htmlFor="notificationQuantity">Mark Up</label>
+					<input
+						type="number"
+						name="markup"
+						defaultValue={good.markup}
+						placeholder="Mark Up"
+						className="form-control text-capitalize mb-2 me-2"
+						onChange={(e) => setMarkup(e.target.value)}
+						required={true}
+					/>
+					{/* Mark Up End */}
 
 					{/* Notification Quantity */}
 					<label htmlFor="notificationQuantity">Notification Quantity</label>

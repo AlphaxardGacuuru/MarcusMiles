@@ -22,6 +22,8 @@ class InventoryResource extends JsonResource
 			"quantity" => $this->quantity,
 			"supplierId" => $this->supplier_id,
 			"supplierName" => $this->supplier?->name,
+			"updatedAt" => $this->updated_at,
+			"createdAt" => $this->created_at,
 		];
     }
 }

@@ -47,6 +47,7 @@ class GoodService extends Service
         $good = new Good;
         $good->code = $code;
         $good->name = $request->name;
+        $good->markup = $request->markup;
         $good->notification_quantity = $request->notificationQuantity;
         $good->created_by = $this->id;
         $saved = $good->save();
@@ -65,6 +66,10 @@ class GoodService extends Service
 
         if ($request->filled("name")) {
             $good->name = $request->name;
+        }
+
+        if ($request->filled("markup")) {
+            $good->markup = $request->markup;
         }
 
         if ($request->filled("notificationQuantity")) {

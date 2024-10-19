@@ -145,7 +145,7 @@ const SupplierGoodsList = (props) => {
 				<table className="table table-hover">
 					<thead>
 						<tr>
-							<th colSpan="5"></th>
+							<th colSpan="6"></th>
 							<th className="text-end">
 								<MyLink
 									linkTo={`/erp/supplier-goods/${props.supplierId}/create`}
@@ -158,7 +158,8 @@ const SupplierGoodsList = (props) => {
 							<th>#</th>
 							<th>Code</th>
 							<th>Name</th>
-							<th>Price</th>
+							<th>Buying Price (KES)</th>
+							<th>Selling Price (KES)</th>
 							<th>Created By</th>
 							<th className="text-center">Action</th>
 						</tr>
@@ -170,6 +171,7 @@ const SupplierGoodsList = (props) => {
 								<td>{supplierGood.goodCode}</td>
 								<td>{supplierGood.goodName}</td>
 								<td>{supplierGood.currentPrice}</td>
+								<td>{supplierGood.sellingPrice}</td>
 								<td>{supplierGood.createdByName}</td>
 								<td>
 									<div className="d-flex justify-content-center">
