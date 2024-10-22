@@ -4,7 +4,10 @@ namespace App\Http\Services;
 
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
+use App\Models\ProjectStage;
+use App\Models\Stage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ProjectService extends Service
 {
@@ -50,7 +53,20 @@ class ProjectService extends Service
         $project->location = $request->location;
         $project->client_id = $request->clientId;
         $project->created_by = $this->id;
-        $saved = $project->save();
+
+        $saved = DB::transaction(function () use ($project) {
+            $project->save();
+
+            $firstStage = Stage::where("type", "project")
+                ->orderBy('position', 'asc')
+                ->first();
+
+            $projectStage = new ProjectStage;
+            $projectStage->stage_id = $firstStage->id;
+            $projectStage->project_id = $project->id;
+            $projectStage->created_by = $this->id;
+            return $projectStage->save();
+        });
 
         $message = $project->name . " created successfully";
 
@@ -78,6 +94,14 @@ class ProjectService extends Service
 
         if ($request->filled("location")) {
             $project->location = $request->location;
+        }
+
+        if ($request->filled("stageId")) {
+            $projectStage = new ProjectStage;
+            $projectStage->stage_id = $request->stageId;
+            $projectStage->project_id = $id;
+            $projectStage->created_by = $this->id;
+            $projectStage->save();
         }
 
         $saved = $project->save();

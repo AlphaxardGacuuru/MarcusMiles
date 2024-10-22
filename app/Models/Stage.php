@@ -58,4 +58,14 @@ class Stage extends Model
     {
         return $this->hasMany(IssueStage::class);
     }
+
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, 'project_stages');
+    }
+
+    public function projectStages()
+    {
+        return $this->hasMany(ProjectStage::class);
+    }
 }

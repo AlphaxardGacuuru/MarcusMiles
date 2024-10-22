@@ -58,10 +58,12 @@ class IssueService extends Service
         $issue->project_id = $request->projectId;
         $issue->created_by = $this->id;
 
-        $saved = DB::transaction(function () use ($issue, $request) {
+        $saved = DB::transaction(function () use ($issue) {
             $issue->save();
 
-			$firstStage = Stage::orderBy('position', 'asc')->first();
+			$firstStage = Stage::where("type", "issue")
+                ->orderBy('position', 'asc')
+                ->first();
 
             $issueStage = new IssueStage;
             $issueStage->stage_id = $firstStage->id;

@@ -94674,22 +94674,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom/cjs/react-router-dom.min */ "./node_modules/react-router-dom/cjs/react-router-dom.min.js");
 /* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_Core_MyLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Core/MyLink */ "./resources/js/components/Core/MyLink.js");
-/* harmony import */ var _components_Core_Btn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/Core/Btn */ "./resources/js/components/Core/Btn.js");
-/* harmony import */ var _components_Core_DeleteModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/Core/DeleteModal */ "./resources/js/components/Core/DeleteModal.js");
-/* harmony import */ var _components_Core_PaginationLinks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/Core/PaginationLinks */ "./resources/js/components/Core/PaginationLinks.js");
-/* harmony import */ var _components_Core_HeroHeading__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/components/Core/HeroHeading */ "./resources/js/components/Core/HeroHeading.js");
-/* harmony import */ var _components_Core_HeroIcon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/components/Core/HeroIcon */ "./resources/js/components/Core/HeroIcon.js");
-/* harmony import */ var _svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/svgs/ViewSVG */ "./resources/js/svgs/ViewSVG.js");
-/* harmony import */ var _svgs_EditSVG__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/svgs/EditSVG */ "./resources/js/svgs/EditSVG.js");
-/* harmony import */ var _svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/svgs/PlusSVG */ "./resources/js/svgs/PlusSVG.js");
-/* harmony import */ var _svgs_ProjectSVG__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/svgs/ProjectSVG */ "./resources/js/svgs/ProjectSVG.js");
+/* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
+/* harmony import */ var _components_Core_MyLink__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/Core/MyLink */ "./resources/js/components/Core/MyLink.js");
+/* harmony import */ var _components_Core_Btn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/Core/Btn */ "./resources/js/components/Core/Btn.js");
+/* harmony import */ var _components_Core_DeleteModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/Core/DeleteModal */ "./resources/js/components/Core/DeleteModal.js");
+/* harmony import */ var _components_Core_PaginationLinks__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/components/Core/PaginationLinks */ "./resources/js/components/Core/PaginationLinks.js");
+/* harmony import */ var _components_Core_HeroHeading__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/components/Core/HeroHeading */ "./resources/js/components/Core/HeroHeading.js");
+/* harmony import */ var _components_Core_HeroIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/components/Core/HeroIcon */ "./resources/js/components/Core/HeroIcon.js");
+/* harmony import */ var _svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/svgs/ViewSVG */ "./resources/js/svgs/ViewSVG.js");
+/* harmony import */ var _svgs_EditSVG__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/svgs/EditSVG */ "./resources/js/svgs/EditSVG.js");
+/* harmony import */ var _svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/svgs/PlusSVG */ "./resources/js/svgs/PlusSVG.js");
+/* harmony import */ var _svgs_ProjectSVG__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @/svgs/ProjectSVG */ "./resources/js/svgs/ProjectSVG.js");
+/* harmony import */ var _svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @/svgs/DeleteSVG */ "./resources/js/svgs/DeleteSVG.js");
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -94709,10 +94718,14 @@ var ProjectList = function ProjectList(props) {
     _useState2 = _slicedToArray(_useState, 2),
     clients = _useState2[0],
     setClients = _useState2[1];
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("overview"),
     _useState4 = _slicedToArray(_useState3, 2),
-    loading = _useState4[0],
-    setLoading = _useState4[1];
+    tab = _useState4[0],
+    setTab = _useState4[1];
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+    _useState6 = _slicedToArray(_useState5, 2),
+    loading = _useState6[0],
+    setLoading = _useState6[1];
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // Fetch Clients
     props.get("clients?idAndName=true", setClients);
@@ -94744,6 +94757,199 @@ var ProjectList = function ProjectList(props) {
       setDeleteIds([]);
     });
   };
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+    _useState8 = _slicedToArray(_useState7, 2),
+    stages = _useState8[0],
+    setStages = _useState8[1];
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+    _useState10 = _slicedToArray(_useState9, 2),
+    projects = _useState10[0],
+    setProjects = _useState10[1];
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+    _useState12 = _slicedToArray(_useState11, 2),
+    staff = _useState12[0],
+    setStaff = _useState12[1];
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+    _useState14 = _slicedToArray(_useState13, 2),
+    creatingStage = _useState14[0],
+    setCreatingStage = _useState14[1];
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState16 = _slicedToArray(_useState15, 2),
+    stageId = _useState16[0],
+    setStageId = _useState16[1];
+  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState18 = _slicedToArray(_useState17, 2),
+    stageName = _useState18[0],
+    setStageName = _useState18[1];
+  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState20 = _slicedToArray(_useState19, 2),
+    stagePosition = _useState20[0],
+    setStagePosition = _useState20[1];
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // Set page
+    props.setPage({
+      name: "Projects",
+      path: ["projects"]
+    });
+    // Fetch Stages
+    props.get("stages?type=project", setStages);
+    // Fetch Projects
+    props.get("projects", setProjects);
+    // Fetch Staff
+    props.get("staff?idAndName=true", setStaff);
+  }, []);
+  var closeStageModalBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  var closeProjectModalBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  var openDeleteStageModalBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  var closeDeleteStageModalBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+
+  /*
+   * Create Stage
+   */
+  var onCreateStage = function onCreateStage(e) {
+    e.preventDefault();
+    setLoading(true);
+    Axios.post("api/stages", {
+      name: stageName,
+      type: "project",
+      position: stagePosition
+    }).then(function (res) {
+      setLoading(false);
+      // Fetch Stages
+      props.get("stages?type=project", setStages);
+      // Close Stage Create Modal
+      closeStageModalBtn.current.click();
+      props.setMessages([res.data.message]);
+    })["catch"](function (err) {
+      setLoading(false);
+      props.getErrors(err);
+    });
+  };
+
+  /*
+   * Update Stage
+   */
+  var onUpdateStage = function onUpdateStage(e) {
+    e.preventDefault();
+    setLoading(true);
+    Axios.put("api/stages/".concat(stageId), {
+      name: stageName,
+      position: stagePosition
+    }).then(function (res) {
+      setLoading(false);
+      // Fetch Stages
+      props.get("stages", setStages);
+      // Close Stage Create Modal
+      closeStageModalBtn.current.click();
+      props.setMessages([res.data.message]);
+    })["catch"](function (err) {
+      setLoading(false);
+      props.getErrors(err);
+    });
+  };
+
+  /*
+   * Delete Stage
+   */
+  var onDeleteStage = function onDeleteStage() {
+    Axios["delete"]("api/stages/".concat(stageId)).then(function (res) {
+      props.setMessages([res.data.message]);
+      // Fetch Stages
+      props.get("stages", setStages);
+    })["catch"](function (err) {
+      return props.getErrros(err);
+    });
+  };
+
+  /*
+   * Update Project
+   */
+  var onUpdateProjectStage = function onUpdateProjectStage(id, stageId) {
+    setLoading(true);
+    Axios.put("api/projects/".concat(id), {
+      stageId: stageId
+    }).then(function (res) {
+      setLoading(false);
+      // Fetch Stages
+      props.get("stages?type=project", setStages);
+      // Fetch Projects
+      props.get("projects", setProjects);
+      // Close Project Create Modal
+      closeProjectModalBtn.current.click();
+      props.setMessages([res.data.message]);
+    })["catch"](function (err) {
+      setLoading(false);
+      props.getErrors(err);
+    });
+  };
+  var reorder = function reorder(list, startIndex, endIndex) {
+    var result = Array.from(list);
+    var _result$splice = result.splice(startIndex, 1),
+      _result$splice2 = _slicedToArray(_result$splice, 1),
+      removed = _result$splice2[0];
+    result.splice(endIndex, 0, removed);
+    return result;
+  };
+
+  /**
+   * Moves an item from one list to another list.
+   */
+  var move = function move(source, destination, droppableSource, droppableDestination) {
+    var sourceClone = Array.from(source);
+    var destClone = Array.from(destination);
+    var _sourceClone$splice = sourceClone.splice(droppableSource.index, 1),
+      _sourceClone$splice2 = _slicedToArray(_sourceClone$splice, 1),
+      removed = _sourceClone$splice2[0];
+    destClone.splice(droppableDestination.index, 0, removed);
+    var result = {};
+    result[droppableSource.droppableId] = sourceClone;
+    result[droppableDestination.droppableId] = destClone;
+    return result;
+  };
+  function onDragEnd(result) {
+    var source = result.source,
+      destination = result.destination;
+
+    // dropped outside the list
+    if (!destination) {
+      return;
+    }
+    var soureId = +source.droppableId;
+    var destinationId = +destination.droppableId;
+
+    // Check if project has changed stages
+    if (soureId === destinationId) {
+      var items = reorder(layout[soureId], source.index, destination.index);
+      var newState = _toConsumableArray(layout);
+      newState[soureId] = items;
+      setLayout(newState);
+    } else {
+      var _result = move(layout[soureId], layout[destinationId], source, destination);
+      var _newState = _toConsumableArray(layout);
+      _newState[soureId] = _result[soureId];
+      _newState[destinationId] = _result[destinationId];
+      var _stageId = stages[destinationId].id;
+      var projectId = _result[destinationId][destination.index].id;
+      onUpdateProjectStage(projectId, _stageId);
+      setLayout(_newState);
+    }
+  }
+  var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+    _useState22 = _slicedToArray(_useState21, 2),
+    layout = _useState22[0],
+    setLayout = _useState22[1];
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var newLayout = stages.map(function (stage) {
+      return stage.projects;
+    });
+    setLayout(newLayout);
+  }, [stages]);
+  var active = function active(activeTab) {
+    return activeTab == tab ? "bg-secondary text-white shadow-sm" : "bg-secondary-subtle";
+  };
+  var activeTab = function activeTab(_activeTab) {
+    return _activeTab == tab ? "d-block" : "d-none";
+  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: props.activeTab
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -94752,10 +94958,10 @@ var ProjectList = function ProjectList(props) {
     className: "d-flex justify-content-between"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-between flex-wrap w-100 align-items-center mx-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_HeroHeading__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_HeroHeading__WEBPACK_IMPORTED_MODULE_7__["default"], {
     heading: "Total",
     data: (_props$projects$meta = props.projects.meta) === null || _props$projects$meta === void 0 ? void 0 : _props$projects$meta.total
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_HeroIcon__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_ProjectSVG__WEBPACK_IMPORTED_MODULE_11__["default"], null))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), location.pathname.match("/projects") && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_HeroIcon__WEBPACK_IMPORTED_MODULE_8__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_ProjectSVG__WEBPACK_IMPORTED_MODULE_12__["default"], null))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), location.pathname.match("/projects") && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card shadow-sm py-2 px-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-end flex-wrap"
@@ -94885,48 +95091,257 @@ var ProjectList = function ProjectList(props) {
       selected: year == props.endYear
     }, year);
   })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "table-responsive mb-5"
+    className: "d-flex justify-content-between flex-wrap w-50 mx-auto mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card shadow-sm flex-grow-1 text-center me-1 mb-2 py-2 px-4 ".concat(active("overview")),
+    style: {
+      cursor: "pointer"
+    },
+    onClick: function onClick() {
+      return setTab("overview");
+    }
+  }, "Overview"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card shadow-sm flex-grow-1 text-center me-1 mb-2 py-2 px-4 ".concat(active("stages")),
+    style: {
+      cursor: "pointer"
+    },
+    onClick: function onClick() {
+      return setTab("stages");
+    }
+  }, "Stages")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "table-responsive mb-5 ".concat(activeTab("overview"))
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
     className: "table table-hover"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, location.pathname.match("/projects") && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    colSpan: "7"
+    colSpan: "8"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     className: "text-end"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_3__["default"], {
     linkTo: "/erp/projects/create",
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_10__["default"], null),
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_11__["default"], null),
     text: "create project"
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Client Initials"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Created By"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Created At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Client Initials"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Stage"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Created By"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Created At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     className: "text-center"
   }, "Action")), (_props$projects$data = props.projects.data) === null || _props$projects$data === void 0 ? void 0 : _props$projects$data.map(function (project, key) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: key
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, project.code), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, project.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       className: "text-capitalize"
-    }, project.type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, project.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, project.clientInitials), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, project.createdBy), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, project.createdAt), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, project.type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, project.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, project.clientInitials), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, project.currentStageName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, project.createdBy), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, project.createdAt), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "d-flex justify-content-center"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_3__["default"], {
       linkTo: "/erp/projects/".concat(project.id, "/view"),
       className: "me-1",
-      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_8__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_9__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_3__["default"], {
       linkTo: "/erp/projects/".concat(project.id, "/edit"),
-      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_EditSVG__WEBPACK_IMPORTED_MODULE_9__["default"], null)
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_EditSVG__WEBPACK_IMPORTED_MODULE_10__["default"], null)
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "mx-1"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_DeleteModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_DeleteModal__WEBPACK_IMPORTED_MODULE_5__["default"], {
       index: "project".concat(key),
       model: project,
       modelName: "Project",
       onDelete: onDeleteProject
     })))));
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_PaginationLinks__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_PaginationLinks__WEBPACK_IMPORTED_MODULE_6__["default"], {
     list: props.projects,
     getPaginated: props.getPaginated,
     setState: props.setProjects
-  })));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "".concat(activeTab("stages"))
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal fade",
+    id: "createStageModal",
+    tabIndex: "-1",
+    "aria-labelledby": "createModalLabel",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-dialog"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: function onSubmit(e) {
+      return creatingStage ? onCreateStage(e) : onUpdateStage(e);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-content rounded-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    id: "createModalLabel",
+    className: "modal-title fs-5"
+  }, creatingStage ? "Create" : "Edit", " Stage"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn-close",
+    "data-bs-dismiss": "modal",
+    "aria-label": "Close"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-body text-start text-wrap"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Stage 1",
+    className: "form-control",
+    defaultValue: stageName,
+    onChange: function onChange(e) {
+      return setStageName(e.target.value);
+    },
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    placeholder: "1",
+    defaultValue: stagePosition,
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setStagePosition(e.target.value);
+    },
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-footer justify-content-between"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    ref: closeStageModalBtn,
+    type: "button",
+    className: "mysonar-btn btn-2",
+    "data-bs-dismiss": "modal"
+  }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex"
+  }, !creatingStage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mx-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_13__["default"], null),
+    text: "delete stage",
+    className: "me-1",
+    onClick: function onClick(e) {
+      e.preventDefault();
+      // Close Stage Create Modal
+      closeStageModalBtn.current.click();
+      // Open Stage Delete Modal
+      openDeleteStageModalBtn.current.click();
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    text: "".concat(creatingStage ? "create" : "edit", " stage"),
+    loading: loading
+  }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal fade",
+    id: "deleteModalStage",
+    tabIndex: "-1",
+    "aria-labelledby": "deleteModalLabel",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-dialog"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-content rounded-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    id: "deleteModalLabel",
+    className: "modal-title fs-5"
+  }, "Delete Stage"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn-close",
+    "data-bs-dismiss": "modal",
+    "aria-label": "Close"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-body text-start text-wrap"
+  }, "Are you sure you want to delete the stage ", stageName, ". All associated Project tracking will be lost."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-footer justify-content-between"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    ref: closeDeleteStageModalBtn,
+    type: "button",
+    className: "mysonar-btn btn-2",
+    "data-bs-dismiss": "modal"
+  }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-danger rounded-4",
+    "data-bs-dismiss": "modal",
+    onClick: onDeleteStage
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "me-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_13__["default"], null)), "Delete"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    ref: openDeleteStageModalBtn,
+    className: "d-none",
+    "data-bs-toggle": "modal",
+    "data-bs-target": "#deleteModalStage"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex m-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_11__["default"], null),
+    text: "create stage",
+    dataBsToggle: "modal",
+    dataBsTarget: "#createStageModal",
+    className: "me-1",
+    onClick: function onClick() {
+      setCreatingStage(true);
+      setStageId("");
+      setStageName("");
+      setStagePosition("");
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "hidden-scroll"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex mt-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_2__["DragDropContext"], {
+    onDragEnd: onDragEnd
+  }, layout.map(function (stage, stageKey) {
+    var _stages$stageKey;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: stageKey,
+      className: "d-flex flex-column shadow mb-5 mx-1",
+      style: {
+        border: "2px solid rgba(255, 255, 255, 0.3)"
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+      className: "p-2 text-center"
+    }, (_stages$stageKey = stages[stageKey]) === null || _stages$stageKey === void 0 ? void 0 : _stages$stageKey.name, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_9__["default"], null),
+      text: "view",
+      dataBsToggle: "modal",
+      dataBsTarget: "#createStageModal",
+      className: "mysonar-sm mt-1 ms-1",
+      onClick: function onClick() {
+        setCreatingStage(false);
+        setStageId(stages[stageKey].id);
+        setStageName(stages[stageKey].name);
+        setStagePosition(stages[stageKey].position);
+      }
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_2__["Droppable"], {
+      key: stageKey,
+      droppableId: "".concat(stageKey)
+    }, function (provided, snapshot) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", _extends({
+        ref: provided.innerRef,
+        className: "".concat(snapshot.isDraggingOver ? "bg-warning-subtle" : ""),
+        style: {
+          width: "250px",
+          minHeight: "200px"
+        }
+      }, provided.droppableProps), stage === null || stage === void 0 ? void 0 : stage.map(function (project, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_2__["Draggable"], {
+          key: project.id,
+          draggableId: project.id.toString(),
+          index: index
+        }, function (provided, snapshot) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", _extends({
+            ref: provided.innerRef
+          }, provided.draggableProps, provided.dragHandleProps, {
+            className: "d-flex justify-content-between glass shadow-sm m-2 p-2 ".concat(snapshot.isDragging ? "shadow-lg" : "")
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "fw-normal text-primary"
+          }, project.code), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "text-wrap"
+          }, project.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "text-capitalize"
+          }, project.type)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+            className: "bg-primary-subtle text-muted rounded-pill px-1"
+          }, project.clientInitials)));
+        });
+      }), provided.placeholder);
+    }));
+  }))))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (ProjectList);
 
@@ -99590,7 +100005,7 @@ var index = function index(props) {
       path: ["issues"]
     });
     // Fetch Stages
-    props.get("stages", setStages);
+    props.get("stages?type=issue", setStages);
     // Fetch Issues
     props.get("issues", setIssues);
     // Fetch Staff
@@ -99613,11 +100028,12 @@ var index = function index(props) {
     setLoading(true);
     Axios.post("api/stages", {
       name: stageName,
+      type: "issue",
       position: stagePosition
     }).then(function (res) {
       setLoading(false);
       // Fetch Stages
-      props.get("stages", setStages);
+      props.get("stages?type=issue", setStages);
       // Close Stage Create Modal
       closeStageModalBtn.current.click();
       props.setMessages([res.data.message]);

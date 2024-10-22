@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class ProjectStage extends Model
 {
     use HasFactory;
 
@@ -49,39 +49,13 @@ class Project extends Model
         return $this->belongsTo(User::class, "created_by");
     }
 
-    public function client()
+    public function project()
     {
-        return $this->belongsTo(User::class, "client_id");
+        return $this->belongsTo(Project::class);
     }
 
-	public function workPlans()
-	{
-		return $this->hasMany(WorkPlan::class);
-	}
-
-	public function inventories()
-	{
-		return $this->hasMany(Inventory::class);
-	}
-
-	public function serviceProviders()
-	{
-		return $this->hasMany(ProjectServiceProvider::class);
-	}
-
-    public function projectStages()
+    public function stage()
     {
-        return $this->hasMany(ProjectStage::class);
-    }
-
-    /*
-     * Custom Functions
-     */
-
-    public function currentStage()
-    {
-        return $this->projectStages()
-            ->orderBy("id", "desc")
-            ->first();
+        return $this->belongsTo(Stage::class);
     }
 }

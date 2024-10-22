@@ -18,17 +18,17 @@ return new class extends Migration
             $table->string('code');
             $table->string('title');
             $table->longText('description');
-            $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('assigned_to');
             $table->timestamp('planned_start_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('planned_end_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('priority')->default('low');
             $table->foreignId('project_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+			->constrained()
+			->onUpdate('cascade')
+			->onDelete('cascade');
             $table->integer('total_comments')->default(0);
 			$table->integer('position')->default(0);
+            $table->unsignedBigInteger('created_by');
             $table->timestamps();
 
             $table->foreign('created_by')

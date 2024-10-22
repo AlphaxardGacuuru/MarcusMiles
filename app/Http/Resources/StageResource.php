@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Http\Resources\IssueResource;
+use App\Http\Resources\ProjectResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class StageResource extends JsonResource
@@ -20,7 +21,8 @@ class StageResource extends JsonResource
             "name" => $this->name,
             "position" => $this->position,
             "test" => $this->test,
-            "issues" => IssueResource::collection($this->uniqueIssues),
+            "issues" => IssueResource::collection($this->uniqueIssues ?? []),
+            "projects" => ProjectResource::collection($this->uniqueProjects ?? []),
             "createdBy" => $this->createdBy->name,
             "updatedAt" => $this->updatedAt,
             "createdAt" => $this->createdAt,

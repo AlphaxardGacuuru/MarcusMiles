@@ -30,8 +30,12 @@ class ProjectResource extends JsonResource
             "client" => $this->client->name,
             "workPlanCount" => $this->workPlans->count(),
             "inventoryCount" => $this->inventories->count(),
-            "updatedAt" => $this->updatedAt,
-            "createdAt" => $this->createdAt,
+            "position" => $this->position,
+            "new" => $this->new,
+            "currentStageId" => $this->currentStage()?->stage_id,
+            "currentStageName" => $this->currentStage()?->stage->name,
+            "updatedAt" => $this->updated_at,
+            "createdAt" => $this->created_at,
         ];
     }
 }

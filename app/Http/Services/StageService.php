@@ -12,8 +12,93 @@ class StageService extends Service
      */
     public function index($request)
     {
-        $stagesQuery = new Stage;
+        $stagesQuery = Stage::where("type", $request->input("type"));
 
+        switch ($request->input("type")) {
+            case "project":
+                $stages = $this->projectStages($stagesQuery);
+                break;
+
+            default:
+                $stages = $this->issueStages($stagesQuery);
+                break;
+        }
+
+        return StageResource::collection($stages);
+    }
+
+    /*
+     * Get One Stage
+     */
+    public function show($id)
+    {
+        $stage = Stage::findOrFail($id);
+
+        return new StageResource($stage);
+    }
+
+    /*
+     * Store Stage
+     */
+    public function store($request)
+    {
+        $stage = new Stage;
+        $stage->name = $request->name;
+        $stage->type = $request->type;
+        $stage->position = $request->position;
+        $stage->created_by = $this->id;
+        $saved = $stage->save();
+
+        $message = $stage->name . " created successfully";
+
+        return [$saved, $message, $stage];
+    }
+
+    /*
+     * Update Stage
+     */
+    public function update($request, $id)
+    {
+        $stage = Stage::find($id);
+
+        if ($request->filled("name")) {
+            $stage->name = $request->name;
+        }
+
+        if ($request->filled("type")) {
+            $stage->type = $request->type;
+        }
+
+        if ($request->filled("position")) {
+            $stage->position = $request->position;
+        }
+
+        $saved = $stage->save();
+
+        $message = $stage->name . " updated successfully";
+
+        return [$saved, $message, $stage];
+    }
+
+    /*
+     * Delete Stage
+     */
+    public function destroy($id)
+    {
+        $stage = Stage::findOrFail($id);
+
+        $deleted = $stage->delete();
+
+        $message = $stage->name . " deleted successfully";
+
+        return [$deleted, $message, $stage];
+    }
+
+    /*
+     * Issue Stages
+     */
+    public function issueStages($stagesQuery)
+    {
         $issueStages = collect([]);
 
         $stages = $stagesQuery
@@ -69,69 +154,72 @@ class StageService extends Service
             return $stage;
         });
 
-        return StageResource::collection($stages);
+        return $stages;
     }
 
     /*
-     * Get One Stage
+     * Project Stages
      */
-    public function show($id)
+    public function projectStages($stagesQuery)
     {
-        $stage = Stage::findOrFail($id);
+        $projectStages = collect([]);
 
-        return new StageResource($stage);
-    }
+        $stages = $stagesQuery
+            ->orderBy("position", "ASC")
+            ->get()
+            ->map(function ($stage) use ($projectStages) {
+                // Fetch the unique projects for each stage
+                $projects = $stage->projectStages()
+                    ->orderBy("id", "asc")
+                    ->get()
+                    ->map(function ($projectStage) use ($projectStages) {
+                        $projectStages->push($projectStage);
 
-    /*
-     * Store Stage
-     */
-    public function store($request)
-    {
-        $stage = new Stage;
-        $stage->name = $request->name;
-        $stage->position = $request->position;
-        $stage->created_by = $this->id;
-        $saved = $stage->save();
+                        return $projectStage->project;
+                    });
 
-        $message = $stage->name . " created successfully";
+                $stage->uniqueProjectss = $projects;
 
-        return [$saved, $message, $stage];
-    }
+                return $stage;
+            });
 
-    /*
-     * Update Stage
-     */
-    public function update($request, $id)
-    {
-        $stage = Stage::find($id);
+        // Get The latest Project Stages
+        $projectStages = $projectStages
+            ->sortByDesc("id")
+            ->values()
+            ->reduce(function ($acc, $projectStage) {
+                // Check if the accumulator already contains the projectStage with the same id
+                if ($acc->doesntContain("project_id", $projectStage->project_id)) {
+                    $acc->push($projectStage);
+                }
+                return $acc;
+            }, collect([]));
 
-        if ($request->filled("name")) {
-            $stage->name = $request->name;
-        }
+			// dd($projectStages);
 
-        if ($request->filled("position")) {
-            $stage->position = $request->position;
-        }
+        // Mark old Project Stages
+        $stages = $stages->map(function ($stage) use ($projectStages) {
+            $uniqueProjects = $stage
+                ->projectStages
+                ->map(function ($projectStage) use ($projectStages) {
+                    // Mark project as new or not based on its presence in projectStages
+                    if ($projectStages->doesntContain("id", $projectStage->id)) {
+                        $projectStage->project->new = false;
+                    } else {
+                        $projectStage->project->new = true;
+                    }
 
-        $saved = $stage->save();
+                    return $projectStage->project;
+                })
+                ->filter(fn($project) => $project->new);
 
-        $message = $stage->name . " updated successfully";
+            $stage->test = $projectStages;
+            $stage->uniqueProjects = $uniqueProjects;
 
-        return [$saved, $message, $stage];
-    }
+            return $stage;
+        });
 
-    /*
-     * Delete Stage
-     */
-    public function destroy($id)
-    {
-        $stage = Stage::findOrFail($id);
-
-        $deleted = $stage->delete();
-
-        $message = $stage->name . " deleted successfully";
-
-        return [$deleted, $message, $stage];
+        return $stages;
     }
 
     /*

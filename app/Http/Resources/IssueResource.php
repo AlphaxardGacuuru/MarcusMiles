@@ -34,6 +34,8 @@ class IssueResource extends JsonResource
             "position" => $this->position,
             "new" => $this->new,
             "currentStageId" => $this->currentStage()->stage_id,
+            "updatedAt" => $this->updated_at,
+            "createdAt" => $this->created_at,
         ];
     }
 }

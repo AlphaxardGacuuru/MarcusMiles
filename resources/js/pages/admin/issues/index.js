@@ -38,7 +38,7 @@ const index = (props) => {
 		// Set page
 		props.setPage({ name: "Issues", path: ["issues"] })
 		// Fetch Stages
-		props.get("stages", setStages)
+		props.get("stages?type=issue", setStages)
 		// Fetch Issues
 		props.get("issues", setIssues)
 		// Fetch Staff
@@ -65,12 +65,13 @@ const index = (props) => {
 
 		Axios.post(`api/stages`, {
 			name: stageName,
+			type: "issue",
 			position: stagePosition,
 		})
 			.then((res) => {
 				setLoading(false)
 				// Fetch Stages
-				props.get("stages", setStages)
+				props.get("stages?type=issue", setStages)
 				// Close Stage Create Modal
 				closeStageModalBtn.current.click()
 				props.setMessages([res.data.message])

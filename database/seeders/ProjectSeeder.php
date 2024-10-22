@@ -16,6 +16,7 @@ class ProjectSeeder extends Seeder
     {
         Project::factory()
             ->count(10)
+			->hasProjectStages()
             ->create();
     }
 }
