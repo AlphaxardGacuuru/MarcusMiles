@@ -94838,7 +94838,7 @@ var ProjectList = function ProjectList(props) {
     }).then(function (res) {
       setLoading(false);
       // Fetch Stages
-      props.get("stages", setStages);
+      props.get("stages?type=project", setStages);
       // Close Stage Create Modal
       closeStageModalBtn.current.click();
       props.setMessages([res.data.message]);
@@ -94855,7 +94855,7 @@ var ProjectList = function ProjectList(props) {
     Axios["delete"]("api/stages/".concat(stageId)).then(function (res) {
       props.setMessages([res.data.message]);
       // Fetch Stages
-      props.get("stages", setStages);
+      props.get("stages?type=project", setStages);
     })["catch"](function (err) {
       return props.getErrros(err);
     });
@@ -100055,7 +100055,7 @@ var index = function index(props) {
     }).then(function (res) {
       setLoading(false);
       // Fetch Stages
-      props.get("stages", setStages);
+      props.get("stages?type=issue", setStages);
       // Close Stage Create Modal
       closeStageModalBtn.current.click();
       props.setMessages([res.data.message]);
@@ -100072,7 +100072,7 @@ var index = function index(props) {
     Axios["delete"]("api/stages/".concat(stageId)).then(function (res) {
       props.setMessages([res.data.message]);
       // Fetch Stages
-      props.get("stages", setStages);
+      props.get("stages?type=issue", setStages);
     })["catch"](function (err) {
       return props.getErrros(err);
     });
@@ -100096,7 +100096,7 @@ var index = function index(props) {
     }).then(function (res) {
       setLoading(false);
       // Fetch Stages
-      props.get("stages", setStages);
+      props.get("stages?type=issue", setStages);
       // Fetch Issues
       props.get("issues", setIssues);
       // Close Issue Create Modal
@@ -100126,7 +100126,7 @@ var index = function index(props) {
     }).then(function (res) {
       setLoading(false);
       // Fetch Stages
-      props.get("stages", setStages);
+      props.get("stages?type=issue", setStages);
       // Fetch Issues
       props.get("issues", setIssues);
       // Close Issue Create Modal
@@ -100145,7 +100145,7 @@ var index = function index(props) {
     Axios["delete"]("api/issues/".concat(issueId)).then(function (res) {
       props.setMessages([res.data.message]);
       // Fetch Stages
-      props.get("stages", setStages);
+      props.get("stages?type=issue", setStages);
       // Fetch Issues
       props.get("issues", setIssues);
     })["catch"](function (err) {
@@ -100162,7 +100162,7 @@ var index = function index(props) {
     }).then(function (res) {
       props.setMessages([res.data.message]);
       // Fetch Stages
-      props.get("stages", setStages);
+      props.get("stages?type=issue", setStages);
     })["catch"](function (err) {
       return props.gerErrors(err);
     });
@@ -100178,7 +100178,7 @@ var index = function index(props) {
     }).then(function (res) {
       setLoading(false);
       // Fetch Stages
-      props.get("stages", setStages);
+      props.get("stages?type=issue", setStages);
       // Fetch Issues
       props.get("issues", setIssues);
       // Close Issue Create Modal

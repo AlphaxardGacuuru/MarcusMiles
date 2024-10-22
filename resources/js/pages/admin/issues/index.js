@@ -96,7 +96,7 @@ const index = (props) => {
 			.then((res) => {
 				setLoading(false)
 				// Fetch Stages
-				props.get("stages", setStages)
+				props.get("stages?type=issue", setStages)
 				// Close Stage Create Modal
 				closeStageModalBtn.current.click()
 				props.setMessages([res.data.message])
@@ -115,7 +115,7 @@ const index = (props) => {
 			.then((res) => {
 				props.setMessages([res.data.message])
 				// Fetch Stages
-				props.get("stages", setStages)
+				props.get("stages?type=issue", setStages)
 			})
 			.catch((err) => props.getErrros(err))
 	}
@@ -140,7 +140,7 @@ const index = (props) => {
 			.then((res) => {
 				setLoading(false)
 				// Fetch Stages
-				props.get("stages", setStages)
+				props.get("stages?type=issue", setStages)
 				// Fetch Issues
 				props.get("issues", setIssues)
 				// Close Issue Create Modal
@@ -173,7 +173,7 @@ const index = (props) => {
 			.then((res) => {
 				setLoading(false)
 				// Fetch Stages
-				props.get("stages", setStages)
+				props.get("stages?type=issue", setStages)
 				// Fetch Issues
 				props.get("issues", setIssues)
 				// Close Issue Create Modal
@@ -194,7 +194,7 @@ const index = (props) => {
 			.then((res) => {
 				props.setMessages([res.data.message])
 				// Fetch Stages
-				props.get("stages", setStages)
+				props.get("stages?type=issue", setStages)
 				// Fetch Issues
 				props.get("issues", setIssues)
 			})
@@ -211,7 +211,7 @@ const index = (props) => {
 			.then((res) => {
 				props.setMessages([res.data.message])
 				// Fetch Stages
-				props.get("stages", setStages)
+				props.get("stages?type=issue", setStages)
 			})
 			.catch((err) => props.gerErrors(err))
 	}
@@ -228,7 +228,7 @@ const index = (props) => {
 			.then((res) => {
 				setLoading(false)
 				// Fetch Stages
-				props.get("stages", setStages)
+				props.get("stages?type=issue", setStages)
 				// Fetch Issues
 				props.get("issues", setIssues)
 				// Close Issue Create Modal

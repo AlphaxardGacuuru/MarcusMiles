@@ -126,7 +126,7 @@ const ProjectList = (props) => {
 			.then((res) => {
 				setLoading(false)
 				// Fetch Stages
-				props.get("stages", setStages)
+				props.get("stages?type=project", setStages)
 				// Close Stage Create Modal
 				closeStageModalBtn.current.click()
 				props.setMessages([res.data.message])
@@ -145,7 +145,7 @@ const ProjectList = (props) => {
 			.then((res) => {
 				props.setMessages([res.data.message])
 				// Fetch Stages
-				props.get("stages", setStages)
+				props.get("stages?type=project", setStages)
 			})
 			.catch((err) => props.getErrros(err))
 	}
