@@ -99884,13 +99884,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
 /* harmony import */ var _components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Core/Btn */ "./resources/js/components/Core/Btn.js");
-/* harmony import */ var _components_Core_DeleteModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/Core/DeleteModal */ "./resources/js/components/Core/DeleteModal.js");
-/* harmony import */ var _svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/svgs/DeleteSVG */ "./resources/js/svgs/DeleteSVG.js");
-/* harmony import */ var _svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/svgs/PlusSVG */ "./resources/js/svgs/PlusSVG.js");
-/* harmony import */ var _svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/svgs/ViewSVG */ "./resources/js/svgs/ViewSVG.js");
-/* harmony import */ var _svgs_HighPrioritySVG__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/svgs/HighPrioritySVG */ "./resources/js/svgs/HighPrioritySVG.js");
-/* harmony import */ var _svgs_MediumPrioritySVG__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/svgs/MediumPrioritySVG */ "./resources/js/svgs/MediumPrioritySVG.js");
-/* harmony import */ var _svgs_LowPrioritySVG__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/svgs/LowPrioritySVG */ "./resources/js/svgs/LowPrioritySVG.js");
+/* harmony import */ var _components_Core_HeroHeading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/Core/HeroHeading */ "./resources/js/components/Core/HeroHeading.js");
+/* harmony import */ var _components_Core_HeroIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/Core/HeroIcon */ "./resources/js/components/Core/HeroIcon.js");
+/* harmony import */ var _svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/svgs/DeleteSVG */ "./resources/js/svgs/DeleteSVG.js");
+/* harmony import */ var _svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/svgs/PlusSVG */ "./resources/js/svgs/PlusSVG.js");
+/* harmony import */ var _svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/svgs/ViewSVG */ "./resources/js/svgs/ViewSVG.js");
+/* harmony import */ var _svgs_HighPrioritySVG__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/svgs/HighPrioritySVG */ "./resources/js/svgs/HighPrioritySVG.js");
+/* harmony import */ var _svgs_MediumPrioritySVG__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/svgs/MediumPrioritySVG */ "./resources/js/svgs/MediumPrioritySVG.js");
+/* harmony import */ var _svgs_LowPrioritySVG__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/svgs/LowPrioritySVG */ "./resources/js/svgs/LowPrioritySVG.js");
+/* harmony import */ var _svgs_IssueSVG__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/svgs/IssueSVG */ "./resources/js/svgs/IssueSVG.js");
+/* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom/cjs/react-router-dom.min */ "./node_modules/react-router-dom/cjs/react-router-dom.min.js");
+/* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_12__);
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -99912,7 +99916,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
 var index = function index(props) {
+  var location = Object(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_12__["useLocation"])();
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
     _useState2 = _slicedToArray(_useState, 2),
     stages = _useState2[0],
@@ -99989,14 +99997,44 @@ var index = function index(props) {
     _useState38 = _slicedToArray(_useState37, 2),
     loading = _useState38[0],
     setLoading = _useState38[1];
+  var _useState39 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState40 = _slicedToArray(_useState39, 2),
+    titleQuery = _useState40[0],
+    setTitleQuery = _useState40[1];
+  var _useState41 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState42 = _slicedToArray(_useState41, 2),
+    priorityQuery = _useState42[0],
+    setPriorityQuery = _useState42[1];
+  var _useState43 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState44 = _slicedToArray(_useState43, 2),
+    projectIdQuery = _useState44[0],
+    setProjectIdQuery = _useState44[1];
+  var _useState45 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState46 = _slicedToArray(_useState45, 2),
+    staffIdQuery = _useState46[0],
+    setStaffIdQuery = _useState46[1];
+  var _useState47 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState48 = _slicedToArray(_useState47, 2),
+    startMonthQuery = _useState48[0],
+    setStartMonthQuery = _useState48[1];
+  var _useState49 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState50 = _slicedToArray(_useState49, 2),
+    endMonthQuery = _useState50[0],
+    setEndMonthQuery = _useState50[1];
+  var _useState51 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState52 = _slicedToArray(_useState51, 2),
+    startYearQuery = _useState52[0],
+    setStartYearQuery = _useState52[1];
+  var _useState53 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState54 = _slicedToArray(_useState53, 2),
+    endYearQuery = _useState54[0],
+    setEndYearQuery = _useState54[1];
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // Set page
     props.setPage({
       name: "Issues",
       path: ["issues"]
     });
-    // Fetch Stages
-    props.get("stages?type=issue", setStages);
     // Fetch Issues
     props.get("issues", setIssues);
     // Fetch Staff
@@ -100004,6 +100042,10 @@ var index = function index(props) {
     // Fetch Projects
     props.get("projects", setProjects);
   }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // Fetch Stages
+    props.get("stages?\n\t\t\ttype=issue&\n\t\t\ttitle=".concat(titleQuery, "&\n\t\t\tpriority=").concat(priorityQuery, "&\n\t\t\tprojectId=").concat(projectIdQuery, "&\n\t\t\tstaffId=").concat(staffIdQuery, "&\n\t\t\tstartMonth=").concat(startMonthQuery, "&\n\t\t\tendMonth=").concat(endMonthQuery, "&\n\t\t\tstartYear=").concat(startYearQuery, "&\n\t\t\tendYear=").concat(endYearQuery), setStages);
+  }, [titleQuery, priorityQuery, projectIdQuery, staffIdQuery, startMonthQuery, endMonthQuery, startYearQuery, endYearQuery]);
   var closeStageModalBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var closeIssueModalBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var openDeleteStageModalBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
@@ -100239,10 +100281,10 @@ var index = function index(props) {
       setLayout(_newState);
     }
   }
-  var _useState39 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
-    _useState40 = _slicedToArray(_useState39, 2),
-    layout = _useState40[0],
-    setLayout = _useState40[1];
+  var _useState55 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+    _useState56 = _slicedToArray(_useState55, 2),
+    layout = _useState56[0],
+    setLayout = _useState56[1];
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var newLayout = [];
     stages.forEach(function (stage) {
@@ -100310,7 +100352,7 @@ var index = function index(props) {
   }, !creatingStage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mx-1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_4__["default"], null),
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_5__["default"], null),
     text: "delete stage",
     className: "me-1",
     onClick: function onClick(e) {
@@ -100359,7 +100401,7 @@ var index = function index(props) {
     onClick: onDeleteStage
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "me-1"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_4__["default"], null)), "Delete"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_5__["default"], null)), "Delete"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     ref: openDeleteStageModalBtn,
     className: "d-none",
     "data-bs-toggle": "modal",
@@ -100498,7 +100540,7 @@ var index = function index(props) {
   }, !creatingIssue && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mx-1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_4__["default"], null),
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_5__["default"], null),
     text: "delete issue",
     className: "me-1",
     onClick: function onClick(e) {
@@ -100547,15 +100589,174 @@ var index = function index(props) {
     onClick: onDeleteIssue
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "me-1"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_4__["default"], null)), "Delete"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_DeleteSVG__WEBPACK_IMPORTED_MODULE_5__["default"], null)), "Delete"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     ref: openDeleteIssueModalBtn,
     className: "d-none",
     "data-bs-toggle": "modal",
     "data-bs-target": "#deleteModalIssue"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card shadow-sm mb-2 p-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-between"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-between flex-wrap w-100 align-items-center mx-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_HeroHeading__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    heading: "Total",
+    data: issues.length
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_HeroIcon__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_IssueSVG__WEBPACK_IMPORTED_MODULE_11__["default"], null))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), location.pathname.match("/issues") && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card shadow-sm py-2 px-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-end flex-wrap"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flex-grow-1 me-2 mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Title / Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Search by Title or Code",
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setTitleQuery(e.target.value);
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flex-grow-1 me-2 mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Priority"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    type: "text",
+    className: "form-control text-capitalize mb-2",
+    onChange: function onChange(e) {
+      return setPriorityQuery(e.target.value);
+    },
+    required: true
+  }, [{
+    id: "",
+    name: "Select Priority"
+  }, {
+    id: "low",
+    name: "Low"
+  }, {
+    id: "medium",
+    name: "Medium"
+  }, {
+    id: "high",
+    name: "High"
+  }].map(function (priority, key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: key,
+      value: priority.id,
+      selected: priorityQuery == priority
+    }, priority.name);
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flex-grow-1 me-2 mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Project"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setProjectIdQuery(e.target.value);
+    }
+  }, [{
+    id: "",
+    name: "Select Project"
+  }].concat(projects).map(function (project, key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: key,
+      value: project.id,
+      selected: key == project
+    }, project.name);
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flex-grow-1 me-2 mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Staff"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setStaffIdQuery(e.target.value);
+    }
+  }, [{
+    id: "",
+    name: "Select Staff"
+  }].concat(staff).map(function (staff, key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: key,
+      value: staff.id,
+      selected: key == staff
+    }, staff.name);
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex flex-grow-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flex-grow-1 me-2 mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Start At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setStartMonthQuery(e.target.value == "0" ? "" : e.target.value);
+    }
+  }, props.months.map(function (month, key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: key,
+      value: key,
+      selected: key == startMonthQuery
+    }, month);
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "me-2 mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "",
+    className: "invisible"
+  }, "Start At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setStartYearQuery(e.target.value);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: ""
+  }, "Select Year"), props.years.map(function (year, key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: key,
+      value: year,
+      selected: year == startYearQuery
+    }, year);
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex flex-grow-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flex-grow-1 me-2 mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "End At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setEndMonthQuery(e.target.value == "0" ? "" : e.target.value);
+    }
+  }, props.months.map(function (month, key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: key,
+      value: key,
+      selected: key == endMonthQuery
+    }, month);
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "me-2 mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "",
+    className: "invisible"
+  }, "End At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setEndYearQuery(e.target.value);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: ""
+  }, "Select Year"), props.years.map(function (year, key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: key,
+      value: year,
+      selected: year == endYearQuery
+    }, year);
+  })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex m-1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_5__["default"], null),
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_6__["default"], null),
     text: "create stage",
     dataBsToggle: "modal",
     dataBsTarget: "#createStageModal",
@@ -100567,7 +100768,7 @@ var index = function index(props) {
       setStagePosition("");
     }
   }), stages.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_5__["default"], null),
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_PlusSVG__WEBPACK_IMPORTED_MODULE_6__["default"], null),
     text: "create issue",
     dataBsToggle: "modal",
     dataBsTarget: "#createIssueModal",
@@ -100601,7 +100802,7 @@ var index = function index(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
       className: "p-2 text-center"
     }, (_stages$stageKey = stages[stageKey]) === null || _stages$stageKey === void 0 ? void 0 : _stages$stageKey.name, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_7__["default"], null),
       text: "view",
       dataBsToggle: "modal",
       dataBsTarget: "#createStageModal",
@@ -100642,7 +100843,7 @@ var index = function index(props) {
           }, issue.assignedToName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "d-flex flex-column justify-content-between text-center"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+            icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_ViewSVG__WEBPACK_IMPORTED_MODULE_7__["default"], null),
             dataBsToggle: "modal",
             dataBsTarget: "#createIssueModal",
             className: "me-1",
@@ -100660,11 +100861,11 @@ var index = function index(props) {
             }
           }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, issue.priority == "high" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             className: "text-danger"
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_HighPrioritySVG__WEBPACK_IMPORTED_MODULE_7__["default"], null)) : issue.priority == "medium" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_HighPrioritySVG__WEBPACK_IMPORTED_MODULE_8__["default"], null)) : issue.priority == "medium" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             className: "text-warning"
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_MediumPrioritySVG__WEBPACK_IMPORTED_MODULE_8__["default"], null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_MediumPrioritySVG__WEBPACK_IMPORTED_MODULE_9__["default"], null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             className: "text-success"
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_LowPrioritySVG__WEBPACK_IMPORTED_MODULE_9__["default"], null)))));
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_LowPrioritySVG__WEBPACK_IMPORTED_MODULE_10__["default"], null)))));
         });
       }), provided.placeholder);
     }));

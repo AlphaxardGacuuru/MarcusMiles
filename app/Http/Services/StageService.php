@@ -20,7 +20,7 @@ class StageService extends Service
                 break;
 
             default:
-                $stages = $this->issueStages($stagesQuery);
+                $stages = $this->issueStages($stagesQuery, $request);
                 break;
         }
 
@@ -97,16 +97,18 @@ class StageService extends Service
     /*
      * Issue Stages
      */
-    public function issueStages($stagesQuery)
+    public function issueStages($stagesQuery, $request)
     {
         $issueStages = collect([]);
 
         $stages = $stagesQuery
             ->orderBy("position", "ASC")
             ->get()
-            ->map(function ($stage) use ($issueStages) {
+            ->map(function ($stage) use ($issueStages, $request) {
                 // Fetch the unique issues for each stage
-                $issues = $stage->issueStages()
+                $issueStageQuery = $this->issueSearch($stage->issueStages(), $request);
+
+                $issues = $issueStageQuery
                     ->orderBy("id", "asc")
                     ->get()
                     ->map(function ($issueStage) use ($issueStages) {
@@ -169,7 +171,7 @@ class StageService extends Service
             ->get()
             ->map(function ($stage) use ($projectStages, $request) {
                 // Fetch the unique projects for each stage
-                $projectStageQuery = $this->search($stage->projectStages(), $request);
+                $projectStageQuery = $this->projectSearch($stage->projectStages(), $request);
 
                 $projects = $projectStageQuery
                     ->orderBy("id", "asc")
@@ -223,9 +225,42 @@ class StageService extends Service
     }
 
     /*
-     * Handle Search
+     * Handle Issue Search
      */
-    public function search($query, $request)
+    public function issueSearch($query, $request)
+    {
+        if ($request->filled("title")) {
+            $query = $query->whereHas("issue", function ($query) use ($request) {
+                $query->where("title", "LIKE", "%" . $request->input("title") . "%")
+                    ->orWhere("code", "LIKE", "%" . $request->input("title") . "%");
+            });
+        }
+
+        if ($request->filled("priority")) {
+            $query = $query->whereHas("issue", function ($query) use ($request) {
+                $query->where("priority", $request->input("priority"));
+            });
+        }
+
+        if ($request->filled("projectId")) {
+            $query = $query->whereHas("issue", function ($query) use ($request) {
+                $query->where("project_id", $request->input("projectId"));
+            });
+        }
+
+        if ($request->filled("staffId")) {
+            $query = $query->whereHas("issue", function ($query) use ($request) {
+                $query->where("assigned_to", $request->input("staffId"));
+            });
+        }
+
+        return $query;
+    }
+
+    /*
+     * Handle Project Search
+     */
+    public function projectSearch($query, $request)
     {
         if ($request->filled("name") || $request->filled("code")) {
             $query = $query->whereHas("project", function ($query) use ($request) {

@@ -2,7 +2,9 @@ import React, { useEffect, useRef, useState } from "react"
 
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 import Btn from "@/components/Core/Btn"
-import DeleteModal from "@/components/Core/DeleteModal"
+
+import HeroHeading from "@/components/Core/HeroHeading"
+import HeroIcon from "@/components/Core/HeroIcon"
 
 import DeleteSVG from "@/svgs/DeleteSVG"
 import PlusSVG from "@/svgs/PlusSVG"
@@ -10,8 +12,12 @@ import ViewSVG from "@/svgs/ViewSVG"
 import HighPrioritySVG from "@/svgs/HighPrioritySVG"
 import MediumPrioritySVG from "@/svgs/MediumPrioritySVG"
 import LowPrioritySVG from "@/svgs/LowPrioritySVG"
+import IssueSVG from "@/svgs/IssueSVG"
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min"
 
 const index = (props) => {
+	const location = useLocation()
+
 	const [stages, setStages] = useState([])
 	const [issues, setIssues] = useState([])
 	const [staff, setStaff] = useState([])
@@ -34,11 +40,18 @@ const index = (props) => {
 	const [issueStageId, setIssueStageId] = useState()
 	const [loading, setLoading] = useState()
 
+	const [titleQuery, setTitleQuery] = useState("")
+	const [priorityQuery, setPriorityQuery] = useState("")
+	const [projectIdQuery, setProjectIdQuery] = useState("")
+	const [staffIdQuery, setStaffIdQuery] = useState("")
+	const [startMonthQuery, setStartMonthQuery] = useState("")
+	const [endMonthQuery, setEndMonthQuery] = useState("")
+	const [startYearQuery, setStartYearQuery] = useState("")
+	const [endYearQuery, setEndYearQuery] = useState("")
+
 	useEffect(() => {
 		// Set page
 		props.setPage({ name: "Issues", path: ["issues"] })
-		// Fetch Stages
-		props.get("stages?type=issue", setStages)
 		// Fetch Issues
 		props.get("issues", setIssues)
 		// Fetch Staff
@@ -46,6 +59,32 @@ const index = (props) => {
 		// Fetch Projects
 		props.get("projects", setProjects)
 	}, [])
+
+	useEffect(() => {
+		// Fetch Stages
+		props.get(
+			`stages?
+			type=issue&
+			title=${titleQuery}&
+			priority=${priorityQuery}&
+			projectId=${projectIdQuery}&
+			staffId=${staffIdQuery}&
+			startMonth=${startMonthQuery}&
+			endMonth=${endMonthQuery}&
+			startYear=${startYearQuery}&
+			endYear=${endYearQuery}`,
+			setStages
+		)
+	}, [
+		titleQuery,
+		priorityQuery,
+		projectIdQuery,
+		staffIdQuery,
+		startMonthQuery,
+		endMonthQuery,
+		startYearQuery,
+		endYearQuery,
+	])
 
 	const closeStageModalBtn = useRef()
 	const closeIssueModalBtn = useRef()
@@ -709,6 +748,202 @@ const index = (props) => {
 				data-bs-target={`#deleteModalIssue`}></button>
 			{/* Button trigger modal End */}
 			{/* Delete Issue Modal End */}
+
+			{/* Data */}
+			<div className="card shadow-sm mb-2 p-2">
+				<div className="d-flex justify-content-between">
+					{/* Total */}
+					<div className="d-flex justify-content-between flex-wrap w-100 align-items-center mx-4">
+						{/* Total */}
+						<HeroHeading
+							heading="Total"
+							data={issues.length}
+						/>
+						<HeroIcon>
+							<IssueSVG />
+						</HeroIcon>
+						{/* Total End */}
+					</div>
+				</div>
+				{/* Total End */}
+			</div>
+			{/* Data End */}
+
+			<br />
+
+			{/* Filters */}
+			{location.pathname.match("/issues") && (
+				<div className="card shadow-sm py-2 px-4">
+					<div className="d-flex justify-content-end flex-wrap">
+						{/* Name */}
+						<div className="flex-grow-1 me-2 mb-2">
+							<label htmlFor="">Title / Code</label>
+							<input
+								type="text"
+								placeholder="Search by Title or Code"
+								className="form-control"
+								onChange={(e) => setTitleQuery(e.target.value)}
+							/>
+						</div>
+						{/* Name End */}
+						{/* Priority */}
+						<div className="flex-grow-1 me-2 mb-2">
+							
+								<label htmlFor="">Priority</label>
+								<select
+									type="text"
+									className="form-control text-capitalize mb-2"
+									onChange={(e) => setPriorityQuery(e.target.value)}
+									required={true}>
+									{[{id: "", name: "Select Priority"}, {id: "low", name: "Low"}, {id: "medium", name: "Medium"}, {id: "high", name: "High"}].map((priority, key) => (
+										<option
+											key={key}
+											value={priority.id}
+											selected={priorityQuery == priority}>
+											{priority.name}
+										</option>
+									))}
+								</select>
+						</div>
+						{/* Priority End */}
+						{/* Project */}
+						<div className="flex-grow-1 me-2 mb-2">
+							<label htmlFor="">Project</label>
+							<select
+								className="form-control"
+								onChange={(e) => setProjectIdQuery(e.target.value)}>
+								{[{ id: "", name: "Select Project" }]
+									.concat(projects)
+									.map((project, key) => (
+										<option
+											key={key}
+											value={project.id}
+											selected={key == project}>
+											{project.name}
+										</option>
+									))}
+							</select>
+						</div>
+						{/* Project End */}
+						{/* Staff */}
+						<div className="flex-grow-1 me-2 mb-2">
+							<label htmlFor="">Staff</label>
+							<select
+								className="form-control"
+								onChange={(e) => setStaffIdQuery(e.target.value)}>
+								{[{ id: "", name: "Select Staff" }]
+									.concat(staff)
+									.map((staff, key) => (
+										<option
+											key={key}
+											value={staff.id}
+											selected={key == staff}>
+											{staff.name}
+										</option>
+									))}
+							</select>
+						</div>
+						{/* Staff End */}
+						{/* Start Date */}
+						<div className="d-flex flex-grow-1">
+							{/* Start Month */}
+							<div className="flex-grow-1 me-2 mb-2">
+								<label htmlFor="">Start At</label>
+								<select
+									className="form-control"
+									onChange={(e) =>
+										setStartMonthQuery(
+											e.target.value == "0" ? "" : e.target.value
+										)
+									}>
+									{props.months.map((month, key) => (
+										<option
+											key={key}
+											value={key}
+											selected={key == startMonthQuery}>
+											{month}
+										</option>
+									))}
+								</select>
+							</div>
+							{/* Start Month End */}
+							{/* Start Year */}
+							<div className="me-2 mb-2">
+								<label
+									htmlFor=""
+									className="invisible">
+									Start At
+								</label>
+								<select
+									className="form-control"
+									onChange={(e) => setStartYearQuery(e.target.value)}>
+									<option value="">Select Year</option>
+									{props.years.map((year, key) => (
+										<option
+											key={key}
+											value={year}
+											selected={year == startYearQuery}>
+											{year}
+										</option>
+									))}
+								</select>
+							</div>
+							{/* Start Year End */}
+						</div>
+						{/* Start Date End */}
+						{/* End Date */}
+						<div className="d-flex flex-grow-1">
+							{/* End Month */}
+							<div className="flex-grow-1 me-2 mb-2">
+								<label htmlFor="">End At</label>
+								<select
+									className="form-control"
+									onChange={(e) =>
+										setEndMonthQuery(
+											e.target.value == "0" ? "" : e.target.value
+										)
+									}>
+									{props.months.map((month, key) => (
+										<option
+											key={key}
+											value={key}
+											selected={key == endMonthQuery}>
+											{month}
+										</option>
+									))}
+								</select>
+							</div>
+							{/* End Month End */}
+							{/* End Year */}
+							<div className="me-2 mb-2">
+								<label
+									htmlFor=""
+									className="invisible">
+									End At
+								</label>
+								<select
+									className="form-control"
+									onChange={(e) => setEndYearQuery(e.target.value)}>
+									<option value="">Select Year</option>
+									{props.years.map((year, key) => (
+										<option
+											key={key}
+											value={year}
+											selected={year == endYearQuery}>
+											{year}
+										</option>
+									))}
+								</select>
+							</div>
+							{/* End Year End */}
+						</div>
+						{/* End Date End */}
+					</div>
+				</div>
+			)}
+			{/* Filters End */}
+
+			<br />
 
 			{/* Buttons Start */}
 			<div className="d-flex m-1">

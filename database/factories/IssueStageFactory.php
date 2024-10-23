@@ -19,7 +19,11 @@ class IssueStageFactory extends Factory
     public function definition()
     {
         return [
-            "stage_id" => Stage::all()->random()->id,
+            "stage_id" => Stage::where("type", "issue")
+                ->orderBy("id", "asc")
+                ->get()
+                ->first()
+                ->id,
             "created_by" => User::where("account_type", "staff")
                 ->get()
                 ->random(),
