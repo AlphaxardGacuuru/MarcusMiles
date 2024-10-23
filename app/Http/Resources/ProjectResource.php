@@ -15,7 +15,7 @@ class ProjectResource extends JsonResource
     public function toArray($request)
     {
         // Split the string by spaces into an array of words and get initials
-        $clientInitials = collect(explode(' ', $this->client->name))
+        $clientInitials = collect(explode(' ', $this->client?->name))
             ->map(fn($word) => substr($word, 0, 1));
 
         return [
