@@ -61,8 +61,6 @@ const ProjectList = (props) => {
 	}
 
 	const [stages, setStages] = useState([])
-	const [projects, setProjects] = useState([])
-	const [staff, setStaff] = useState([])
 
 	const [creatingStage, setCreatingStage] = useState(true)
 	const [stageId, setStageId] = useState("")
@@ -72,13 +70,33 @@ const ProjectList = (props) => {
 	useEffect(() => {
 		// Set page
 		props.setPage({ name: "Projects", path: ["projects"] })
-		// Fetch Stages
-		props.get("stages?type=project", setStages)
-		// Fetch Projects
-		props.get("projects", setProjects)
-		// Fetch Staff
-		props.get("staff?idAndName=true", setStaff)
 	}, [])
+
+	useEffect(() => {
+		// Fetch Stages
+		props.get(
+			`stages?
+			type=project&
+			name=${props.nameQuery}&
+			projectType=${props.typeQuery}&
+			location=${props.locationQuery}&
+			clientId=${props.clientIdQuery}&
+			startMonth=${props.startMonthQuery}&
+			endMonth=${props.endMonthQuery}&
+			startYear=${props.startYearQuery}&
+			endYear=${props.endYearQuery}`,
+			setStages
+		)
+	}, [
+		props.nameQuery,
+		props.typeQuery,
+		props.locationQuery,
+		props.clientIdQuery,
+		props.startMonthQuery,
+		props.endMonthQuery,
+		props.startYearQuery,
+		props.endYearQuery,
+	])
 
 	const closeStageModalBtn = useRef()
 	const closeProjectModalBtn = useRef()
@@ -163,8 +181,6 @@ const ProjectList = (props) => {
 				setLoading(false)
 				// Fetch Stages
 				props.get("stages?type=project", setStages)
-				// Fetch Projects
-				props.get("projects", setProjects)
 				// Close Project Create Modal
 				closeProjectModalBtn.current.click()
 				props.setMessages([res.data.message])
@@ -289,7 +305,7 @@ const ProjectList = (props) => {
 								type="text"
 								placeholder="Search by Name or Code"
 								className="form-control"
-								onChange={(e) => props.setName(e.target.value)}
+								onChange={(e) => props.setNameQuery(e.target.value)}
 							/>
 						</div>
 						{/* Name End */}
@@ -298,15 +314,17 @@ const ProjectList = (props) => {
 							<label htmlFor="">Type</label>
 							<select
 								className="form-control"
-								onChange={(e) => props.setType(e.target.value)}>
-								{props.projectTypes.map((type, key) => (
-									<option
-										key={key}
-										value={type.id}
-										selected={key == props.type}>
-										{type.name}
-									</option>
-								))}
+								onChange={(e) => props.setTypeQuery(e.target.value)}>
+								{[{ id: "", name: "Select Type" }]
+									.concat(props.projectTypes)
+									.map((type, key) => (
+										<option
+											key={key}
+											value={type.id}
+											selected={key == props.type}>
+											{type.name}
+										</option>
+									))}
 							</select>
 						</div>
 						{/* Type End */}
@@ -317,7 +335,7 @@ const ProjectList = (props) => {
 								type="text"
 								placeholder="Search by Location"
 								className="form-control"
-								onChange={(e) => props.setLocation(e.target.value)}
+								onChange={(e) => props.setLocationQuery(e.target.value)}
 							/>
 						</div>
 						{/* Location End */}
@@ -326,7 +344,7 @@ const ProjectList = (props) => {
 							<label htmlFor="">Client</label>
 							<select
 								className="form-control"
-								onChange={(e) => props.setClientId(e.target.value)}>
+								onChange={(e) => props.setClientIdQuery(e.target.value)}>
 								{[{ id: "", name: "Select Client" }]
 									.concat(clients)
 									.map((client, key) => (
@@ -348,7 +366,7 @@ const ProjectList = (props) => {
 								<select
 									className="form-control"
 									onChange={(e) =>
-										props.setStartMonth(
+										props.setStartMonthQuery(
 											e.target.value == "0" ? "" : e.target.value
 										)
 									}>
@@ -372,7 +390,7 @@ const ProjectList = (props) => {
 								</label>
 								<select
 									className="form-control"
-									onChange={(e) => props.setStartYear(e.target.value)}>
+									onChange={(e) => props.setStartYearQuery(e.target.value)}>
 									<option value="">Select Year</option>
 									{props.years.map((year, key) => (
 										<option
@@ -395,7 +413,7 @@ const ProjectList = (props) => {
 								<select
 									className="form-control"
 									onChange={(e) =>
-										props.setEndMonth(
+										props.setEndMonthQuery(
 											e.target.value == "0" ? "" : e.target.value
 										)
 									}>
@@ -419,7 +437,7 @@ const ProjectList = (props) => {
 								</label>
 								<select
 									className="form-control"
-									onChange={(e) => props.setEndYear(e.target.value)}>
+									onChange={(e) => props.setEndYearQuery(e.target.value)}>
 									<option value="">Select Year</option>
 									{props.years.map((year, key) => (
 										<option
@@ -442,24 +460,26 @@ const ProjectList = (props) => {
 			<br />
 
 			{/* Tabs */}
-			<div className="d-flex justify-content-between flex-wrap w-50 mx-auto mb-2">
-				<div
-					className={`card shadow-sm flex-grow-1 text-center me-1 mb-2 py-2 px-4 ${active(
-						"overview"
-					)}`}
-					style={{ cursor: "pointer" }}
-					onClick={() => setTab("overview")}>
-					Overview
+			{location.pathname.match("/projects") && (
+				<div className="d-flex justify-content-between flex-wrap w-50 mx-auto mb-2">
+					<div
+						className={`card shadow-sm flex-grow-1 text-center me-1 mb-2 py-2 px-4 ${active(
+							"overview"
+						)}`}
+						style={{ cursor: "pointer" }}
+						onClick={() => setTab("overview")}>
+						Overview
+					</div>
+					<div
+						className={`card shadow-sm flex-grow-1 text-center me-1 mb-2 py-2 px-4 ${active(
+							"stages"
+						)}`}
+						style={{ cursor: "pointer" }}
+						onClick={() => setTab("stages")}>
+						Stages
+					</div>
 				</div>
-				<div
-					className={`card shadow-sm flex-grow-1 text-center me-1 mb-2 py-2 px-4 ${active(
-						"stages"
-					)}`}
-					style={{ cursor: "pointer" }}
-					onClick={() => setTab("stages")}>
-					Stages
-				</div>
-			</div>
+			)}
 			{/* Tabs End */}
 
 			{/* Table */}

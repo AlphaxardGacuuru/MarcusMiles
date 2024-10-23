@@ -69,6 +69,11 @@ class Project extends Model
 		return $this->hasMany(ProjectServiceProvider::class);
 	}
 
+	public function stages()
+    {
+        return $this->belongsToMany(Stage::class, 'project_stages', 'project_id', 'stage_id');
+    }
+
     public function projectStages()
     {
         return $this->hasMany(ProjectStage::class);

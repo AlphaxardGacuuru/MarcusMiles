@@ -16,7 +16,7 @@ class StageService extends Service
 
         switch ($request->input("type")) {
             case "project":
-                $stages = $this->projectStages($stagesQuery);
+                $stages = $this->projectStages($stagesQuery, $request);
                 break;
 
             default:
@@ -160,16 +160,18 @@ class StageService extends Service
     /*
      * Project Stages
      */
-    public function projectStages($stagesQuery)
+    public function projectStages($stagesQuery, $request)
     {
         $projectStages = collect([]);
 
         $stages = $stagesQuery
             ->orderBy("position", "ASC")
             ->get()
-            ->map(function ($stage) use ($projectStages) {
+            ->map(function ($stage) use ($projectStages, $request) {
                 // Fetch the unique projects for each stage
-                $projects = $stage->projectStages()
+                $projectStageQuery = $this->search($stage->projectStages(), $request);
+
+                $projects = $projectStageQuery
                     ->orderBy("id", "asc")
                     ->get()
                     ->map(function ($projectStage) use ($projectStages) {
@@ -178,7 +180,7 @@ class StageService extends Service
                         return $projectStage->project;
                     });
 
-                $stage->uniqueProjectss = $projects;
+                $stage->uniqueProjects = $projects;
 
                 return $stage;
             });
@@ -194,8 +196,6 @@ class StageService extends Service
                 }
                 return $acc;
             }, collect([]));
-
-			// dd($projectStages);
 
         // Mark old Project Stages
         $stages = $stages->map(function ($stage) use ($projectStages) {
@@ -227,9 +227,29 @@ class StageService extends Service
      */
     public function search($query, $request)
     {
-        if ($request->filled("name")) {
-            $query = $query
-                ->where("name", "LIKE", "%" . $request->name . "%");
+        if ($request->filled("name") || $request->filled("code")) {
+            $query = $query->whereHas("project", function ($query) use ($request) {
+                $query->where("name", "LIKE", "%" . $request->input("name") . "%")
+                    ->orWhere("code", "LIKE", "%" . $request->input("code") . "%");
+            });
+        }
+
+        if ($request->filled("projectType")) {
+            $query = $query->whereHas("project", function ($query) use ($request) {
+                $query->where("type", $request->input("projectType"));
+            });
+        }
+
+        if ($request->filled("location")) {
+            $query = $query->whereHas("project", function ($query) use ($request) {
+                $query->where("location", $request->input("location"));
+            });
+        }
+
+        if ($request->filled("clientId")) {
+            $query = $query->whereHas("project", function ($query) use ($request) {
+                $query->where("client_id", $request->input("clientId"));
+            });
         }
 
         return $query;

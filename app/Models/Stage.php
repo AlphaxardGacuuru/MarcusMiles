@@ -61,7 +61,7 @@ class Stage extends Model
 
     public function projects()
     {
-        return $this->belongsToMany(Project::class, 'project_stages');
+        return $this->belongsToMany(Project::class, 'project_stages', 'stage_id', 'project_id');
     }
 
     public function projectStages()

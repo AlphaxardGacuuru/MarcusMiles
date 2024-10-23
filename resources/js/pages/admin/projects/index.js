@@ -5,14 +5,14 @@ import ProjectList from "@/components/Projects/ProjectList"
 const index = (props) => {
 	const [projects, setProjects] = useState([])
 
-	const [name, setName] = useState("")
-	const [type, setType] = useState("")
-	const [location, setLocation] = useState("")
-	const [clientId, setClientId] = useState("")
-	const [startMonth, setStartMonth] = useState("")
-	const [endMonth, setEndMonth] = useState("")
-	const [startYear, setStartYear] = useState("")
-	const [endYear, setEndYear] = useState("")
+	const [nameQuery, setNameQuery] = useState("")
+	const [typeQuery, setTypeQuery] = useState("")
+	const [locationQuery, setLocationQuery] = useState("")
+	const [clientIdQuery, setClientIdQuery] = useState("")
+	const [startMonthQuery, setStartMonthQuery] = useState("")
+	const [endMonthQuery, setEndMonthQuery] = useState("")
+	const [startYearQuery, setStartYearQuery] = useState("")
+	const [endYearQuery, setEndYearQuery] = useState("")
 
 	useEffect(() => {
 		// Set page
@@ -23,31 +23,48 @@ const index = (props) => {
 		// Fetch Projects
 		props.getPaginated(
 			`projects?
-			name=${name}&
-			type=${type}&
-			location=${location}&
-			clientId=${clientId}&
-			startMonth=${startMonth}&
-			endMonth=${endMonth}&
-			startYear=${startYear}&
-			endYear=${endYear}`,
+			name=${nameQuery}&
+			type=${typeQuery}&
+			location=${locationQuery}&
+			clientId=${clientIdQuery}&
+			startMonth=${startMonthQuery}&
+			endMonth=${endMonthQuery}&
+			startYear=${startYearQuery}&
+			endYear=${endYearQuery}`,
 			setProjects
 		)
-	}, [name, type, location, clientId, startMonth, endMonth, startYear, endYear])
+	}, [
+		nameQuery,
+		typeQuery,
+		locationQuery,
+		clientIdQuery,
+		startMonthQuery,
+		endMonthQuery,
+		startYearQuery,
+		endYearQuery,
+	])
 
 	return (
 		<ProjectList
 			{...props}
 			projects={projects}
 			setProjects={setProjects}
-			setName={setName}
-			setType={setType}
-			setLocation={setLocation}
-			setClientId={setClientId}
-			setStartMonth={setStartMonth}
-			setEndMonth={setEndMonth}
-			setStartYear={setStartYear}
-			setEndYear={setEndYear}
+			nameQuery={nameQuery}
+			typeQuery={typeQuery}
+			locationQuery={locationQuery}
+			clientIdQuery={clientIdQuery}
+			startMonthQuery={startMonthQuery}
+			endMonthQuery={endMonthQuery}
+			startYearQuery={startYearQuery}
+			endYearQuery={endYearQuery}
+			setNameQuery={setNameQuery}
+			setTypeQuery={setTypeQuery}
+			setLocationQuery={setLocationQuery}
+			setClientIdQuery={setClientIdQuery}
+			setStartMonthQuery={setStartMonthQuery}
+			setEndMonthQuery={setEndMonthQuery}
+			setStartYearQuery={setStartYearQuery}
+			setEndYearQuery={setEndYearQuery}
 		/>
 	)
 }

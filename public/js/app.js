@@ -92010,13 +92010,13 @@ function App() {
    *
    * Register service worker */
   if (window.location.href.match(/https/)) {
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function () {
-        navigator.serviceWorker.register("/sw.js");
-        // .then((reg) => console.log('Service worker registered', reg))
-        // .catch((err) => console.log('Service worker not registered', err));
-      });
-    }
+    // if ("serviceWorker" in navigator) {
+    // 	window.addEventListener("load", () => {
+    // 		navigator.serviceWorker.register("/sw.js")
+    // 		// .then((reg) => console.log('Service worker registered', reg))
+    // 		// .catch((err) => console.log('Service worker not registered', err));
+    // 	})
+    // }
   }
 
   /*
@@ -94761,43 +94761,33 @@ var ProjectList = function ProjectList(props) {
     _useState8 = _slicedToArray(_useState7, 2),
     stages = _useState8[0],
     setStages = _useState8[1];
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
     _useState10 = _slicedToArray(_useState9, 2),
-    projects = _useState10[0],
-    setProjects = _useState10[1];
-  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+    creatingStage = _useState10[0],
+    setCreatingStage = _useState10[1];
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
     _useState12 = _slicedToArray(_useState11, 2),
-    staff = _useState12[0],
-    setStaff = _useState12[1];
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+    stageId = _useState12[0],
+    setStageId = _useState12[1];
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
     _useState14 = _slicedToArray(_useState13, 2),
-    creatingStage = _useState14[0],
-    setCreatingStage = _useState14[1];
+    stageName = _useState14[0],
+    setStageName = _useState14[1];
   var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
     _useState16 = _slicedToArray(_useState15, 2),
-    stageId = _useState16[0],
-    setStageId = _useState16[1];
-  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
-    _useState18 = _slicedToArray(_useState17, 2),
-    stageName = _useState18[0],
-    setStageName = _useState18[1];
-  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
-    _useState20 = _slicedToArray(_useState19, 2),
-    stagePosition = _useState20[0],
-    setStagePosition = _useState20[1];
+    stagePosition = _useState16[0],
+    setStagePosition = _useState16[1];
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // Set page
     props.setPage({
       name: "Projects",
       path: ["projects"]
     });
-    // Fetch Stages
-    props.get("stages?type=project", setStages);
-    // Fetch Projects
-    props.get("projects", setProjects);
-    // Fetch Staff
-    props.get("staff?idAndName=true", setStaff);
   }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // Fetch Stages
+    props.get("stages?\n\t\t\ttype=project&\n\t\t\tname=".concat(props.nameQuery, "&\n\t\t\tprojectType=").concat(props.typeQuery, "&\n\t\t\tlocation=").concat(props.locationQuery, "&\n\t\t\tclientId=").concat(props.clientIdQuery, "&\n\t\t\tstartMonth=").concat(props.startMonthQuery, "&\n\t\t\tendMonth=").concat(props.endMonthQuery, "&\n\t\t\tstartYear=").concat(props.startYearQuery, "&\n\t\t\tendYear=").concat(props.endYearQuery), setStages);
+  }, [props.nameQuery, props.typeQuery, props.locationQuery, props.clientIdQuery, props.startMonthQuery, props.endMonthQuery, props.startYearQuery, props.endYearQuery]);
   var closeStageModalBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var closeProjectModalBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var openDeleteStageModalBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
@@ -94872,8 +94862,6 @@ var ProjectList = function ProjectList(props) {
       setLoading(false);
       // Fetch Stages
       props.get("stages?type=project", setStages);
-      // Fetch Projects
-      props.get("projects", setProjects);
       // Close Project Create Modal
       closeProjectModalBtn.current.click();
       props.setMessages([res.data.message]);
@@ -94934,10 +94922,10 @@ var ProjectList = function ProjectList(props) {
       setLayout(_newState);
     }
   }
-  var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
-    _useState22 = _slicedToArray(_useState21, 2),
-    layout = _useState22[0],
-    setLayout = _useState22[1];
+  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+    _useState18 = _slicedToArray(_useState17, 2),
+    layout = _useState18[0],
+    setLayout = _useState18[1];
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var newLayout = stages.map(function (stage) {
       return stage.projects;
@@ -94974,7 +94962,7 @@ var ProjectList = function ProjectList(props) {
     placeholder: "Search by Name or Code",
     className: "form-control",
     onChange: function onChange(e) {
-      return props.setName(e.target.value);
+      return props.setNameQuery(e.target.value);
     }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "flex-grow-1 me-2 mb-2"
@@ -94983,9 +94971,12 @@ var ProjectList = function ProjectList(props) {
   }, "Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     className: "form-control",
     onChange: function onChange(e) {
-      return props.setType(e.target.value);
+      return props.setTypeQuery(e.target.value);
     }
-  }, props.projectTypes.map(function (type, key) {
+  }, [{
+    id: "",
+    name: "Select Type"
+  }].concat(props.projectTypes).map(function (type, key) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       key: key,
       value: type.id,
@@ -95000,7 +94991,7 @@ var ProjectList = function ProjectList(props) {
     placeholder: "Search by Location",
     className: "form-control",
     onChange: function onChange(e) {
-      return props.setLocation(e.target.value);
+      return props.setLocationQuery(e.target.value);
     }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "flex-grow-1 me-2 mb-2"
@@ -95009,7 +95000,7 @@ var ProjectList = function ProjectList(props) {
   }, "Client"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     className: "form-control",
     onChange: function onChange(e) {
-      return props.setClientId(e.target.value);
+      return props.setClientIdQuery(e.target.value);
     }
   }, [{
     id: "",
@@ -95029,7 +95020,7 @@ var ProjectList = function ProjectList(props) {
   }, "Start At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     className: "form-control",
     onChange: function onChange(e) {
-      return props.setStartMonth(e.target.value == "0" ? "" : e.target.value);
+      return props.setStartMonthQuery(e.target.value == "0" ? "" : e.target.value);
     }
   }, props.months.map(function (month, key) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -95045,7 +95036,7 @@ var ProjectList = function ProjectList(props) {
   }, "Start At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     className: "form-control",
     onChange: function onChange(e) {
-      return props.setStartYear(e.target.value);
+      return props.setStartYearQuery(e.target.value);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: ""
@@ -95064,7 +95055,7 @@ var ProjectList = function ProjectList(props) {
   }, "End At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     className: "form-control",
     onChange: function onChange(e) {
-      return props.setEndMonth(e.target.value == "0" ? "" : e.target.value);
+      return props.setEndMonthQuery(e.target.value == "0" ? "" : e.target.value);
     }
   }, props.months.map(function (month, key) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -95080,7 +95071,7 @@ var ProjectList = function ProjectList(props) {
   }, "End At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     className: "form-control",
     onChange: function onChange(e) {
-      return props.setEndYear(e.target.value);
+      return props.setEndYearQuery(e.target.value);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: ""
@@ -95090,7 +95081,7 @@ var ProjectList = function ProjectList(props) {
       value: year,
       selected: year == props.endYear
     }, year);
-  })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), location.pathname.match("/projects") && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-between flex-wrap w-50 mx-auto mb-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card shadow-sm flex-grow-1 text-center me-1 mb-2 py-2 px-4 ".concat(active("overview")),
@@ -101833,36 +101824,36 @@ var index = function index(props) {
     setProjects = _useState2[1];
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
     _useState4 = _slicedToArray(_useState3, 2),
-    name = _useState4[0],
-    setName = _useState4[1];
+    nameQuery = _useState4[0],
+    setNameQuery = _useState4[1];
   var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
     _useState6 = _slicedToArray(_useState5, 2),
-    type = _useState6[0],
-    setType = _useState6[1];
+    typeQuery = _useState6[0],
+    setTypeQuery = _useState6[1];
   var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
     _useState8 = _slicedToArray(_useState7, 2),
-    location = _useState8[0],
-    setLocation = _useState8[1];
+    locationQuery = _useState8[0],
+    setLocationQuery = _useState8[1];
   var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
     _useState10 = _slicedToArray(_useState9, 2),
-    clientId = _useState10[0],
-    setClientId = _useState10[1];
+    clientIdQuery = _useState10[0],
+    setClientIdQuery = _useState10[1];
   var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
     _useState12 = _slicedToArray(_useState11, 2),
-    startMonth = _useState12[0],
-    setStartMonth = _useState12[1];
+    startMonthQuery = _useState12[0],
+    setStartMonthQuery = _useState12[1];
   var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
     _useState14 = _slicedToArray(_useState13, 2),
-    endMonth = _useState14[0],
-    setEndMonth = _useState14[1];
+    endMonthQuery = _useState14[0],
+    setEndMonthQuery = _useState14[1];
   var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
     _useState16 = _slicedToArray(_useState15, 2),
-    startYear = _useState16[0],
-    setStartYear = _useState16[1];
+    startYearQuery = _useState16[0],
+    setStartYearQuery = _useState16[1];
   var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
     _useState18 = _slicedToArray(_useState17, 2),
-    endYear = _useState18[0],
-    setEndYear = _useState18[1];
+    endYearQuery = _useState18[0],
+    setEndYearQuery = _useState18[1];
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // Set page
     props.setPage({
@@ -101872,19 +101863,27 @@ var index = function index(props) {
   }, []);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // Fetch Projects
-    props.getPaginated("projects?\n\t\t\tname=".concat(name, "&\n\t\t\ttype=").concat(type, "&\n\t\t\tlocation=").concat(location, "&\n\t\t\tclientId=").concat(clientId, "&\n\t\t\tstartMonth=").concat(startMonth, "&\n\t\t\tendMonth=").concat(endMonth, "&\n\t\t\tstartYear=").concat(startYear, "&\n\t\t\tendYear=").concat(endYear), setProjects);
-  }, [name, type, location, clientId, startMonth, endMonth, startYear, endYear]);
+    props.getPaginated("projects?\n\t\t\tname=".concat(nameQuery, "&\n\t\t\ttype=").concat(typeQuery, "&\n\t\t\tlocation=").concat(locationQuery, "&\n\t\t\tclientId=").concat(clientIdQuery, "&\n\t\t\tstartMonth=").concat(startMonthQuery, "&\n\t\t\tendMonth=").concat(endMonthQuery, "&\n\t\t\tstartYear=").concat(startYearQuery, "&\n\t\t\tendYear=").concat(endYearQuery), setProjects);
+  }, [nameQuery, typeQuery, locationQuery, clientIdQuery, startMonthQuery, endMonthQuery, startYearQuery, endYearQuery]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Projects_ProjectList__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({}, props, {
     projects: projects,
     setProjects: setProjects,
-    setName: setName,
-    setType: setType,
-    setLocation: setLocation,
-    setClientId: setClientId,
-    setStartMonth: setStartMonth,
-    setEndMonth: setEndMonth,
-    setStartYear: setStartYear,
-    setEndYear: setEndYear
+    nameQuery: nameQuery,
+    typeQuery: typeQuery,
+    locationQuery: locationQuery,
+    clientIdQuery: clientIdQuery,
+    startMonthQuery: startMonthQuery,
+    endMonthQuery: endMonthQuery,
+    startYearQuery: startYearQuery,
+    endYearQuery: endYearQuery,
+    setNameQuery: setNameQuery,
+    setTypeQuery: setTypeQuery,
+    setLocationQuery: setLocationQuery,
+    setClientIdQuery: setClientIdQuery,
+    setStartMonthQuery: setStartMonthQuery,
+    setEndMonthQuery: setEndMonthQuery,
+    setStartYearQuery: setStartYearQuery,
+    setEndYearQuery: setEndYearQuery
   }));
 };
 /* harmony default export */ __webpack_exports__["default"] = (index);
