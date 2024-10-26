@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\IssueCommentLikedEvent;
 use App\Events\LowInventoryEvent;
 use App\Listeners\LowInventoryListener;
+use App\Listeners\IssueCommentLikedListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -20,7 +22,8 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-		LowInventoryEvent::class => [LowInventoryListener::class]
+		LowInventoryEvent::class => [LowInventoryListener::class],
+		IssueCommentLikedEvent::class => [IssueCommentLikedListener::class]
     ];
 
     /**

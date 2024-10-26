@@ -15,7 +15,20 @@ return new class extends Migration
     {
         Schema::create('issue_comments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("issue_id")
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->longText("text");
+            $table->integer("total_likes")->default(0);
+            $table->unsignedBigInteger('created_by');
             $table->timestamps();
+
+            $table->foreign('created_by')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

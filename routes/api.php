@@ -9,6 +9,7 @@ use App\Http\Controllers\GoodController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\IssueCommentController;
+use App\Http\Controllers\IssueCommentLikeController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\IssueStageController;
 use App\Http\Controllers\KopokopoRecipientController;
@@ -65,6 +66,7 @@ Route::apiResources([
 	"stages" => StageController::class,
 	"issues" => IssueController::class,
 	"issue-comments" => IssueCommentController::class,
+	"issue-comment-likes" => IssueCommentLikeController::class,
 	"issue-stages" => IssueStageController::class,
 
     "properties" => PropertyController::class,

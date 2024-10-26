@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\IssueCommentService;
 use App\Models\IssueComment;
 use Illuminate\Http\Request;
 
 class IssueCommentController extends Controller
 {
+    public function __construct(protected IssueCommentService $service)
+    {
+        //
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return $this->service->index($request);
     }
 
     /**
@@ -25,7 +31,18 @@ class IssueCommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            "text" => "required|string|max:10000",
+            "id" => "required|string",
+        ]);
+
+        [$saved, $message, $issueComment] = $this->service->store($request);
+
+        return response([
+            "status" => $saved,
+            "message" => $message,
+            "data" => $issueComment,
+        ], 200);
     }
 
     /**
@@ -34,9 +51,9 @@ class IssueCommentController extends Controller
      * @param  \App\Models\IssueComment  $issueComment
      * @return \Illuminate\Http\Response
      */
-    public function show(IssueComment $issueComment)
+    public function show($id)
     {
-        //
+        return $this->service->show($id);
     }
 
     /**
@@ -46,9 +63,19 @@ class IssueCommentController extends Controller
      * @param  \App\Models\IssueComment  $issueComment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IssueComment $issueComment)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            "text" => "nullable|string|max:10000",
+        ]);
+
+        [$saved, $message, $issueComment] = $this->service->update($request, $id);
+
+        return response([
+            "status" => $saved,
+            "message" => $message,
+            "data" => $issueComment,
+        ], 200);
     }
 
     /**
@@ -57,8 +84,14 @@ class IssueCommentController extends Controller
      * @param  \App\Models\IssueComment  $issueComment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IssueComment $issueComment)
+    public function destroy($id)
     {
-        //
+        [$deleted, $message, $issueComment] = $this->service->destroy($id);
+
+        return response([
+            "status" => $deleted,
+            "message" => $message,
+            "data" => $issueComment,
+        ], 200);
     }
 }

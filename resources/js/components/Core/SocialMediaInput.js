@@ -61,7 +61,6 @@ const SocialMediaInput = (props) => {
 		attachment && formData.append("attachment", attachment)
 		props.id && formData.append("id", props.id)
 		props.to && formData.append("to", props.to)
-		props.week && formData.append("week", props.week)
 		props.editing && formData.append("_method", "PUT")
 
 		// Get csrf cookie from Laravel inorder to send a POST request
@@ -92,7 +91,7 @@ const SocialMediaInput = (props) => {
 	return (
 		<form
 			onSubmit={onSubmit}
-			className="mycontact-form bg-white"
+			className="mycontact-form"
 			autoComplete="off">
 			<center>
 				<div className="d-flex p-1">
@@ -111,7 +110,7 @@ const SocialMediaInput = (props) => {
 					<div className="flex-grow-1">
 						<textarea
 							name="post-text"
-							className="form-control bg-white border-0 m-0 p-2"
+							className="form-control border-0 m-0 p-2"
 							style={{
 								outline: "none",
 								height: "40px",
@@ -127,7 +126,7 @@ const SocialMediaInput = (props) => {
 					{/* Emoji icon */}
 					<div className="pt-2 px-2">
 						<div
-							className={`fs-5 ${showEmojiPicker && "text-secondary"}`}
+							className={`fs-5 text-light ${showEmojiPicker && "text-secondary"}`}
 							style={{ cursor: "pointer" }}
 							onClick={() => {
 								if (!attachment) {
@@ -161,7 +160,7 @@ const SocialMediaInput = (props) => {
 						<Button
 							type="submit"
 							classNameName="btn-outline-dark"
-							text={props.text}
+							text={props.btnText}
 							loading={loading}
 						/>
 					</div>
@@ -220,7 +219,7 @@ const SocialMediaInput = (props) => {
 
 SocialMediaInput.defaultProps = {
 	required: true,
-	text: "send",
+	btnText: "send",
 }
 
 export default SocialMediaInput

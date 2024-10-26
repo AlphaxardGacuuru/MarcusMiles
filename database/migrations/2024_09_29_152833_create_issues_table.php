@@ -26,8 +26,8 @@ return new class extends Migration
 			->constrained()
 			->onUpdate('cascade')
 			->onDelete('cascade');
-            $table->integer('total_comments')->default(0);
 			$table->integer('position')->default(0);
+            $table->integer('total_comments')->default(0);
             $table->unsignedBigInteger('created_by');
             $table->timestamps();
 
