@@ -512,12 +512,12 @@ const index = (props) => {
 
 							{!creatingIssue && (
 								<div
-									className="accordion rounded-2 my-4"
+									className="accordion rounded-0 my-4"
 									id="accordionExample">
-									<div className="accordion-item glass rounded-2">
+									<div className="accordion-item glass rounded-0">
 										<h2 className="accordion-header">
 											<button
-												className="accordion-button collapsed glass rounded-2"
+												className="accordion-button collapsed glass rounded-0"
 												type="button"
 												data-bs-toggle="collapse"
 												data-bs-target="#collapseOne"
