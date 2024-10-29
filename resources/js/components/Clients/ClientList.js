@@ -79,7 +79,7 @@ const ClientList = (props) => {
 				<table className="table table-hover">
 					<thead>
 						<tr>
-							<th colSpan="5"></th>
+							<th colSpan="6"></th>
 							<th className="text-end">
 								<MyLink
 									linkTo={`/erp/clients/create`}
@@ -92,6 +92,7 @@ const ClientList = (props) => {
 							<th>#</th>
 							<th></th>
 							<th>Name</th>
+							<th>Email</th>
 							<th>Phone</th>
 							<th>Location</th>
 							<th className="text-center">Action</th>
@@ -111,6 +112,7 @@ const ClientList = (props) => {
 									/>
 								</td>
 								<td>{client.name}</td>
+								<td>{client.email}</td>
 								<td>{client.phone}</td>
 								<td>{client.location}</td>
 								<td>

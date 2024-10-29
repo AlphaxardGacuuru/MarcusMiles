@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CardTransactionController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\CreditNoteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FilePondController;
@@ -83,6 +84,7 @@ Route::apiResources([
     "users" => UserController::class,
     "staff" => StaffController::class,
     "roles" => RoleController::class,
+    "configurations" => ConfigurationController::class,
     'notifications' => NotificationController::class,
 ]);
 
@@ -108,6 +110,7 @@ Route::prefix('filepond')->group(function () {
     Route::controller(FilePondController::class)->group(function () {
         // User
         Route::post('avatar/{id}', 'updateAvatar');
+        Route::post('national-id/{id}', 'updateNationalID');
 
         // Material
         Route::post("materials", "storeMaterial");

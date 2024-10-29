@@ -52,7 +52,7 @@ class ClientService extends Service
         $client = new User;
         $client->name = $request->name;
         $client->email = $request->email;
-        $client->password = Hash::make($request->email);
+        $client->password = Hash::make($request->phone ?? $request->email);
         $client->phone = $request->phone;
         $client->location = $request->location;
         $client->account_type = "client";

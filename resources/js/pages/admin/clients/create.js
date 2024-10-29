@@ -107,8 +107,8 @@ const create = (props) => {
 
 					<div className="d-flex justify-content-center mb-5">
 						<MyLink
-							linkTo={`/properties/${id}/show`}
-							text="back to client"
+							linkTo={`/erp/clients`}
+							text="back to clients"
 						/>
 					</div>
 					<div className="col-sm-4"></div>

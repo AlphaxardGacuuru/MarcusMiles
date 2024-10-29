@@ -60,6 +60,13 @@ class User extends Authenticatable
         );
     }
 
+    protected function nationalIdFile(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $value ? "/storage/" . $value : ""
+        );
+    }
+
     protected function updatedAt(): Attribute
     {
         return Attribute::make(

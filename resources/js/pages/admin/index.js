@@ -12,6 +12,7 @@ import ProjectSVG from "@/svgs/ProjectSVG"
 import MoneySVG from "@/svgs/MoneySVG"
 import ProductSVG from "@/svgs/ProductSVG"
 import PeopleSVG from "@/svgs/PeopleSVG"
+import { Link } from "react-router-dom/cjs/react-router-dom.min"
 
 const index = (props) => {
 	const [propertyId, setPropertyId] = useState(

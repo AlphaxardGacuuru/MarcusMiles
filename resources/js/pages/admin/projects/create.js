@@ -6,6 +6,7 @@ import MyLink from "@/components/Core/MyLink"
 
 import BackSVG from "@/svgs/BackSVG"
 import CloseSVG from "@/svgs/CloseSVG"
+import PlusSVG from "@/svgs/PlusSVG"
 
 const create = (props) => {
 	var history = useHistory()
@@ -76,7 +77,21 @@ const create = (props) => {
 					{/* Name End */}
 
 					{/* Type */}
-					<label htmlFor="name">Type</label>
+					<div className="d-flex justify-content-between">
+						<label
+							htmlFor=""
+							className="mt-4">
+							Type
+						</label>
+						
+						{/* Add Type Start */}
+						<MyLink
+							linkTo={`/configuration/create`}
+							icon={<PlusSVG />}
+							text="add type"
+						/>
+						{/* Add Type End */}
+					</div>
 					<select
 						name="type"
 						placeholder="Type"
@@ -116,6 +131,22 @@ const create = (props) => {
 					{/* Location End */}
 
 					{/* Client ID Start */}
+					<div className="d-flex justify-content-between">
+						<label
+							htmlFor=""
+							className="mt-4">
+							Client
+						</label>
+
+						{/* Create Client Start */}
+						<MyLink
+							linkTo={`/erp/clients/create`}
+							icon={<PlusSVG />}
+							text="add client"
+							className="my-2"
+						/>
+						{/* Create Client End */}
+					</div>
 					<select
 						className="form-control mb-2"
 						onChange={(e) => setClientId(e.target.value)}

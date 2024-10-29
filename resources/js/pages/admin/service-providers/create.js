@@ -19,12 +19,15 @@ const create = (props) => {
 	const [phone, setPhone] = useState()
 	const [location, setLocation] = useState()
 	const [idNumber, setIdNumber] = useState([])
-	
+
 	const [loading, setLoading] = useState()
 
 	useEffect(() => {
 		// Set page
-		props.setPage({ name: "Add Service Provider", path: ["service-providers", "create"] })
+		props.setPage({
+			name: "Add Service Provider",
+			path: ["service-providers", "create"],
+		})
 	}, [])
 
 	/*
@@ -78,7 +81,6 @@ const create = (props) => {
 						placeholder="johndoe@gmail.com"
 						className="form-control mb-2 me-2"
 						onChange={(e) => setEmail(e.target.value)}
-						required={true}
 					/>
 					{/* Email End */}
 
@@ -112,7 +114,7 @@ const create = (props) => {
 
 					<div className="d-flex justify-content-center mb-5">
 						<MyLink
-							linkTo={`/properties/${id}/show`}
+							linkTo={`/erp/service-providers`}
 							icon={<BackSVG />}
 							text="back to service provider"
 						/>

@@ -41,6 +41,8 @@ const ProjectList = (props) => {
 			.then((res) => {
 				setLoading(false)
 				props.setMessages([res.data.message])
+				// Fetch Stages
+				props.get("stages?type=project", props.setStages)
 				// Remove row
 				props.setProjects({
 					meta: props.projects.meta,
@@ -59,8 +61,6 @@ const ProjectList = (props) => {
 				setDeleteIds([])
 			})
 	}
-
-	const [stages, setStages] = useState([])
 
 	const [creatingStage, setCreatingStage] = useState(true)
 	const [stageId, setStageId] = useState("")
@@ -85,7 +85,7 @@ const ProjectList = (props) => {
 			endMonth=${props.endMonthQuery}&
 			startYear=${props.startYearQuery}&
 			endYear=${props.endYearQuery}`,
-			setStages
+			props.setStages
 		)
 	}, [
 		props.nameQuery,
@@ -119,7 +119,7 @@ const ProjectList = (props) => {
 			.then((res) => {
 				setLoading(false)
 				// Fetch Stages
-				props.get("stages?type=project", setStages)
+				props.get("stages?type=project", props.setStages)
 				// Close Stage Create Modal
 				closeStageModalBtn.current.click()
 				props.setMessages([res.data.message])
@@ -144,7 +144,7 @@ const ProjectList = (props) => {
 			.then((res) => {
 				setLoading(false)
 				// Fetch Stages
-				props.get("stages?type=project", setStages)
+				props.get("stages?type=project", props.setStages)
 				// Close Stage Create Modal
 				closeStageModalBtn.current.click()
 				props.setMessages([res.data.message])
@@ -163,7 +163,7 @@ const ProjectList = (props) => {
 			.then((res) => {
 				props.setMessages([res.data.message])
 				// Fetch Stages
-				props.get("stages?type=project", setStages)
+				props.get("stages?type=project", props.setStages)
 			})
 			.catch((err) => props.getErrros(err))
 	}
@@ -180,7 +180,7 @@ const ProjectList = (props) => {
 			.then((res) => {
 				setLoading(false)
 				// Fetch Stages
-				props.get("stages?type=project", setStages)
+				props.get("stages?type=project", props.setStages)
 				// Close Project Create Modal
 				closeProjectModalBtn.current.click()
 				props.setMessages([res.data.message])
@@ -244,7 +244,7 @@ const ProjectList = (props) => {
 			newState[soureId] = result[soureId]
 			newState[destinationId] = result[destinationId]
 
-			let stageId = stages[destinationId].id
+			let stageId = props.stages[destinationId].id
 			let projectId = result[destinationId][destination.index].id
 
 			onUpdateProjectStage(projectId, stageId)
@@ -256,9 +256,9 @@ const ProjectList = (props) => {
 	const [layout, setLayout] = useState([])
 
 	useEffect(() => {
-		let newLayout = stages.map((stage) => stage.projects)
+		let newLayout = props.stages.map((stage) => stage.projects)
 		setLayout(newLayout)
-	}, [stages])
+	}, [props.stages])
 
 	const active = (activeTab) => {
 		return activeTab == tab
@@ -739,7 +739,7 @@ const ProjectList = (props) => {
 									style={{ border: "2px solid rgba(255, 255, 255, 0.3)" }}>
 									{/* Stage Title Start */}
 									<h6 className="p-2 text-center">
-										{stages[stageKey]?.name}
+										{props.stages[stageKey]?.name}
 
 										<div>
 											{/* Stage Modal Start */}
@@ -751,9 +751,9 @@ const ProjectList = (props) => {
 												className="mysonar-sm mt-1 ms-1"
 												onClick={() => {
 													setCreatingStage(false)
-													setStageId(stages[stageKey].id)
-													setStageName(stages[stageKey].name)
-													setStagePosition(stages[stageKey].position)
+													setStageId(props.stages[stageKey].id)
+													setStageName(props.stages[stageKey].name)
+													setStagePosition(props.stages[stageKey].position)
 												}}
 											/>
 										</div>

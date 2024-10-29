@@ -33,8 +33,8 @@ class ServiceProviderController extends Controller
     {
         $this->validate($request, [
             "name" => "required|string",
-            "email" => "required|string",
-            "phone" => "nullable|string",
+            "email" => "nullable|string",
+            "phone" => "required|string",
             "location" => "nullable|string",
         ]);
 

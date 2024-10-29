@@ -1,4 +1,6 @@
 import ProjectList from "@/components/Projects/ProjectList"
+import ServiceProviderProjectList from "@/components/ServiceProviderProjects/ServiceProviderProjectList"
+import NotFoundSVG from "@/svgs/NotFoundSVG"
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom/cjs/react-router-dom.min"
 
@@ -9,38 +11,27 @@ const show = (props) => {
 	const [projects, setProjects] = useState([])
 
 	const [name, setName] = useState("")
-	const [type, setType] = useState("")
-	const [location, setLocation] = useState("")
-	const [clientId, setClientId] = useState("")
-	const [startMonth, setStartMonth] = useState("")
-	const [endMonth, setEndMonth] = useState("")
-	const [startYear, setStartYear] = useState("")
-	const [endYear, setEndYear] = useState("")
 
-	const [tab, setTab] = useState("goods")
+	const [tab, setTab] = useState("projects")
 
 	useEffect(() => {
 		// Set page
-		props.setPage({ name: "View ServiceProvider", path: ["service-providers", "view"] })
+		props.setPage({
+			name: "View Service Provider",
+			path: ["service-providers", "view"],
+		})
 		props.get(`service-providers/${id}`, setServiceProvider)
 	}, [id])
 
 	useEffect(() => {
 		// Fetch Projects
 		props.getPaginated(
-			`projects?
+			`project-service-providers?
 			serviceProviderId=${id}&
-			name=${name}&
-			type=${type}&
-			location=${location}&
-			clientId=${clientId}&
-			startMonth=${startMonth}&
-			endMonth=${endMonth}&
-			startYear=${startYear}&
-			endYear=${endYear}`,
+			name=${name}`,
 			setProjects
 		)
-	}, [name, type, location, clientId, startMonth, endMonth, startYear, endYear])
+	}, [name])
 
 	const active = (activeTab) => {
 		return activeTab == tab
@@ -60,6 +51,22 @@ const show = (props) => {
 					<h6>{serviceProvider.email}</h6>
 					<h6>{serviceProvider.phone}</h6>
 					<h6>{serviceProvider.location}</h6>
+
+					<hr />
+					<h6 className="mb-2">National ID</h6>
+
+					{serviceProvider.nationalIdFile ? (
+						<iframe
+							src={serviceProvider.nationalIdFile}
+							style={{ width: "100%", height: "30em" }}></iframe>
+					) : (
+						<div>
+							<div className="text-center fs-3 text-muted">
+								<NotFoundSVG />
+							</div>
+							<p className="text-muted">National ID not Found</p>
+						</div>
+					)}
 				</div>
 			</div>
 			<div className="col-sm-8">
@@ -76,19 +83,12 @@ const show = (props) => {
 				</div>
 				{/* Tabs End */}
 
-		<ProjectList
-			{...props}
-			projects={projects}
-			setProjects={setProjects}
-			setName={setName}
-			setType={setType}
-			setLocation={setLocation}
-			setClientId={setClientId}
-			setStartMonth={setStartMonth}
-			setEndMonth={setEndMonth}
-			setStartYear={setStartYear}
-			setEndYear={setEndYear}
-		/>
+				<ServiceProviderProjectList
+					{...props}
+					projects={projects}
+					setProjects={setProjects}
+					setName={setName}
+				/>
 			</div>
 		</div>
 	)

@@ -22,6 +22,7 @@ class ServiceProviderResource extends JsonResource
             "gender" => $this->gender,
             "avatar" => $this->avatar,
             "idNumber" => $this->id_number,
+            "nationalIdFile" => $this->national_id_file,
             "accountType" => $this->account_type,
             "createdAt" => $this->created_at,
 		];

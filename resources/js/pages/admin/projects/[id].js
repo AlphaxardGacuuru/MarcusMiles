@@ -24,7 +24,10 @@ const show = (props) => {
 		props.get(`projects/${id}`, setProject)
 		props.getPaginated(`work-plans?projectId=${id}`, setWorkPlans)
 		props.getPaginated(`inventories?projectId=${id}`, setInventories)
-		props.getPaginated(`project-service-providers?projectId=${id}`, setProjectServiceProviders)
+		props.getPaginated(
+			`project-service-providers?projectId=${id}`,
+			setProjectServiceProviders
+		)
 	}, [id])
 
 	useEffect(() => {
@@ -48,10 +51,21 @@ const show = (props) => {
 	return (
 		<div className="row">
 			<div className="col-sm-4">
-				<div className="card shadow mb-2 p-4 text-center">
-					<h4>{project.name}</h4>
-					<h6 className="text-capitalize">{project.type}</h6>
-					<h6>{project.description}</h6>
+				<div className="card shadow mb-2 p-4">
+					<div className="text-center">
+						<h6 className="fw-semibold">{project.code}</h6>
+						<h5>{project.name}</h5>
+						<h6 className="text-capitalize">{project.type}</h6>
+						<h6>{project.description}</h6>
+					</div>
+					<hr />
+					<div className="text-center">
+						<h6><span className="fw-normal me-1">Location:</span>{project.location}</h6>
+						<h6><span className="fw-normal me-1">Client Initials:</span>{project.clientInitials}</h6>
+						<h6><span className="fw-normal me-1">Current Stage:</span>{project.currentStageName}</h6>
+						<h6><span className="fw-normal me-1">Created By:</span>{project.createdBy}</h6>
+						<h6><span className="fw-normal me-1">Created On:</span>{project.createdAt}</h6>
+					</div>
 				</div>
 			</div>
 			<div className="col-sm-8">

@@ -119,6 +119,10 @@ class ProjectServiceProviderService extends Service
             $query = $query->where("project_id", $request->input("projectId"));
         }
 
+        if ($request->filled("serviceProviderId")) {
+            $query = $query->where("service_provider_id", $request->input("serviceProviderId"));
+        }
+
         return $query;
     }
 }

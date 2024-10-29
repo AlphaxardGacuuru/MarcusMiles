@@ -38,6 +38,34 @@ class FilePondController extends Controller
     }
 
     /*
+     * Handle National ID Upload */
+    public function updateNationalID(Request $request, $id)
+    {
+        $this->validate($request, [
+            'filepond-national-id' => 'required|file',
+        ]);
+
+        $nationalID = $request->file('filepond-national-id')->store('public/national-ids');
+        $nationalID = substr($nationalID, 7);
+
+        $user = User::findOrFail($id);
+
+        // Delete National ID if it exists
+        if ($user->national_id_file) {
+
+            // Get old National ID and delete it
+            $oldNationalID = substr($user->national_id_file, 9);
+
+            Storage::disk("public")->delete($oldNationalID);
+        }
+
+        $user->national_id_file = $nationalID;
+        $user->save();
+
+        return response("Account updated successfully", 200);
+    }
+
+    /*
      * Handle Material Upload */
     public function storeMaterial(Request $request)
     {

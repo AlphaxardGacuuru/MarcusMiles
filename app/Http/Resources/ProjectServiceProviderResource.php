@@ -22,6 +22,12 @@ class ProjectServiceProviderResource extends JsonResource
 			"serviceProviderPhone" => $this->serviceProvider->phone,
 			"serviceProviderIdNumber" => $this->serviceProvider->id_number,
 			"projectId" => $this->project_id,
+			"projectCode" => $this->project->code,
+			"projectName" => $this->project->name,
+			"projectType" => $this->project->type,
+			"projectLocation" => $this->project->location,
+			"projectCreatedBy" => $this->createdBy->name,
+			"projectCreatedAt" => $this->project->createdAt,
 			"updatedAt" => $this->updated_at,
 			"createdAt" => $this->created_at,
 		];

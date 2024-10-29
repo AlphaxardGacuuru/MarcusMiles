@@ -23,6 +23,7 @@ import SupplierSVG from "@/svgs/SupplierSVG"
 import GoodSVG from "@/svgs/GoodSVG"
 import InventorySVG from "@/svgs/InventorySVG"
 import ServiceProviderSVG from "@/svgs/ServiceProviderSVG"
+import SettingsSVG from "@/svgs/SettingsSVG"
 
 const AdminNavLinks = (props) => {
 	const location = useLocation()
@@ -62,7 +63,9 @@ const AdminNavLinks = (props) => {
 			<li className="nav-item">
 				<a
 					href="#"
-					className={`nav-link accordion-button w-75 my-1 ${active("/admin/erp/")}`}
+					className={`nav-link accordion-button w-75 my-1 ${active(
+						"/admin/erp/"
+					)}`}
 					data-bs-toggle="collapse"
 					data-bs-target="#collapseERP"
 					aria-expanded="false"
@@ -118,7 +121,9 @@ const AdminNavLinks = (props) => {
 						<li className="nav-item">
 							<Link
 								to={`/admin/erp/service-providers`}
-								className={`nav-link ${active("/admin/erp/service-providers")}`}>
+								className={`nav-link ${active(
+									"/admin/erp/service-providers"
+								)}`}>
 								<div className="nav-link-icon">
 									<ServiceProviderSVG />
 								</div>
@@ -183,6 +188,18 @@ const AdminNavLinks = (props) => {
 				{/* Collapse End */}
 			</li>
 			{/* ERP Links End */}
+			{/* Configurations Link */}
+			<li className="nav-item">
+				<Link
+					to={`/admin/configurations`}
+					className={`nav-link my-1 ${active("/admin/configurations")}`}>
+					<div className="nav-link-icon">
+						<SettingsSVG />
+					</div>
+					<div className="nav-link-text">Configurations</div>
+				</Link>
+			</li>
+			{/* Configurations Link End */}
 		</React.Fragment>
 	)
 }

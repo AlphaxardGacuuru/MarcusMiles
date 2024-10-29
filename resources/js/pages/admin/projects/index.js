@@ -4,6 +4,7 @@ import ProjectList from "@/components/Projects/ProjectList"
 
 const index = (props) => {
 	const [projects, setProjects] = useState([])
+	const [stages, setStages] = useState([])
 
 	const [nameQuery, setNameQuery] = useState("")
 	const [typeQuery, setTypeQuery] = useState("")
@@ -17,6 +18,8 @@ const index = (props) => {
 	useEffect(() => {
 		// Set page
 		props.setPage({ name: "Projects", path: ["projects"] })
+		// Fetch Stages
+		props.get("stages?type=project", setStages)
 	}, [])
 
 	useEffect(() => {
@@ -49,6 +52,8 @@ const index = (props) => {
 			{...props}
 			projects={projects}
 			setProjects={setProjects}
+			stages={stages}
+			setStages={setStages}
 			nameQuery={nameQuery}
 			typeQuery={typeQuery}
 			locationQuery={locationQuery}
