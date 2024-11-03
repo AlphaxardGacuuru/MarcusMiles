@@ -15,7 +15,7 @@ const edit = (props) => {
 
 	const [project, setProject] = useState({})
 	const [name, setName] = useState()
-	const [type, setType] = useState()
+	const [type, setType] = useState({})
 	const [description, setDescription] = useState()
 	const [location, setLocation] = useState()
 
@@ -83,12 +83,12 @@ const edit = (props) => {
 						onChange={(e) => setType(e.target.value)}
 						required={true}>
 						{[{ id: "", name: "Select Type" }]
-							.concat(props.projectTypes)
-							.map((projectType, key) => (
+							.concat(props.configuration.projectTypes ?? [])
+							?.map((projectType, key) => (
 								<option
 									key={key}
 									value={projectType.id}
-									selected={projectType.id == type.id}>
+									selected={projectType.id == project.type}>
 									{projectType.name}
 								</option>
 							))}

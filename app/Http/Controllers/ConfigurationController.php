@@ -18,9 +18,9 @@ class ConfigurationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        return $this->service->index($request);
+        return $this->service->index();
     }
 
     /**
@@ -68,10 +68,8 @@ class ConfigurationController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            "name" => "nullable|string",
-            "email" => "nullable|string",
-            "phone" => "nullable|string",
-            "location" => "nullable|string",
+            "projectType" => "nullable|array",
+            "projectTypeId" => "nullable|string",
         ]);
 
         [$saved, $message, $configuration] = $this->service->update($request, $id);

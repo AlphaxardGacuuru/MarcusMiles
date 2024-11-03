@@ -83,10 +83,10 @@ const create = (props) => {
 							className="mt-4">
 							Type
 						</label>
-						
+
 						{/* Add Type Start */}
 						<MyLink
-							linkTo={`/configuration/create`}
+							linkTo={`/configurations`}
 							icon={<PlusSVG />}
 							text="add type"
 						/>
@@ -99,8 +99,8 @@ const create = (props) => {
 						onChange={(e) => setType(e.target.value)}
 						required={true}>
 						{[{ id: "", name: "Select Type" }]
-							.concat(props.projectTypes)
-							.map((projectType, key) => (
+							.concat(props.configuration.projectTypes ?? [])
+							?.map((projectType, key) => (
 								<option
 									key={key}
 									value={projectType.id}>

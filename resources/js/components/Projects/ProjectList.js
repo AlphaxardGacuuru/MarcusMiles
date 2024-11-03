@@ -316,8 +316,8 @@ const ProjectList = (props) => {
 								className="form-control"
 								onChange={(e) => props.setTypeQuery(e.target.value)}>
 								{[{ id: "", name: "Select Type" }]
-									.concat(props.projectTypes)
-									.map((type, key) => (
+									.concat(props.configuration.projectTypes ?? [])
+									?.map((type, key) => (
 										<option
 											key={key}
 											value={type.id}
@@ -502,11 +502,11 @@ const ProjectList = (props) => {
 						)}
 						<tr>
 							<th>#</th>
-							<th>Name</th>
-							<th>Type</th>
-							{/* <th>Description</th> */}
 							<th>Location</th>
-							<th>Client Initials</th>
+							<th>Type</th>
+							<th>Client</th>
+							<th>Name</th>
+							{/* <th>Description</th> */}
 							<th>Stage</th>
 							<th>Created By</th>
 							<th>Created At</th>
@@ -515,11 +515,11 @@ const ProjectList = (props) => {
 						{props.projects.data?.map((project, key) => (
 							<tr key={key}>
 								<td>{project.code}</td>
-								<td>{project.name}</td>
-								<td className="text-capitalize">{project.type}</td>
-								{/* <td>{project.description}</td> */}
 								<td>{project.location}</td>
-								<td>{project.clientInitials}</td>
+								<td className="text-capitalize">{project.type}</td>
+								<td>{project.clientName}</td>
+								<td>{project.name}</td>
+								{/* <td>{project.description}</td> */}
 								<td>{project.currentStageName}</td>
 								<td>{project.createdBy}</td>
 								<td>{project.createdAt}</td>

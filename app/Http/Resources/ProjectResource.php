@@ -27,7 +27,7 @@ class ProjectResource extends JsonResource
             "location" => $this->location,
             "createdBy" => $this->createdBy->name,
             "clientInitials" => $clientInitials,
-            "client" => $this->client?->name,
+            "clientName" => $this->client?->name,
             "workPlanCount" => $this->workPlans->count(),
             "inventoryCount" => $this->inventories->count(),
             "position" => $this->position,

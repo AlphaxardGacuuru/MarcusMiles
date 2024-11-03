@@ -53,6 +53,8 @@ function App() {
 	const [adminMenu, setAdminMenu] = useState("left-open")
 	const [page, setPage] = useState({ name: "/", path: [] })
 
+	const [configuration, setConfiguration] = useState({})
+
 	// Function for fetching data from API
 	const get = (endpoint, setState, storage = null, errors = true) => {
 		Axios.get(`/api/${endpoint}`)
@@ -93,13 +95,10 @@ function App() {
 	}
 
 	// Fetch data on page load
-	useEffect(() => get("auth", setAuth, "auth", false), [])
-
-	// Project Types
-	var projectTypes = [
-		{ id: "bungalow", name: "Bungalow" },
-		{ id: "maisonette", name: "Maisonette" },
-	]
+	useEffect(() => {
+		get("auth", setAuth, "auth", false)
+		get("configurations", setConfiguration, "configurations", false)
+}, [])
 
 	/*
 	 * Genereate Month and Year Arrays
@@ -205,7 +204,7 @@ function App() {
 		currentMonth,
 		months,
 		years,
-		projectTypes
+		configuration
 	}
 
 	return (

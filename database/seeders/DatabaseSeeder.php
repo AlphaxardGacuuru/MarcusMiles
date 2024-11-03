@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 			ProjectSeeder::class,
 			GoodSeeder::class,
 			IssueSeeder::class,
-			// UnitSeeder::class,
+			ConfigurationSeeder::class,
             StaffSeeder::class,
 			TenantSeeder::class,
 			RoleSeeder::class,

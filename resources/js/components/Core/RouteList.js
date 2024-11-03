@@ -72,6 +72,8 @@ import AdminRoleIndex from "@/pages/admin/role"
 import AdminRoleCreate from "@/pages/admin/role/create"
 import AdminRoleEdit from "@/pages/admin/role/edit/[id]"
 
+import AdminConfigurations from "@/pages/admin/configurations"
+
 const RouteList = ({ GLOBAL_STATE }) => {
 	const routes = [
 		{
@@ -274,6 +276,10 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		{
 			path: "/admin/roles/:id/edit",
 			component: <AdminRoleEdit {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/configurations",
+			component: <AdminConfigurations {...GLOBAL_STATE} />,
 		},
 	]
 

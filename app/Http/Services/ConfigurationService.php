@@ -4,43 +4,17 @@ namespace App\Http\Services;
 
 use App\Http\Resources\ConfigurationResource;
 use App\Models\Configuration;
-use Illuminate\Support\Facades\Hash;
 
 class ConfigurationService extends Service
 {
     /*
      * Get All Configurations
      */
-    public function index($request)
+    public function index()
     {
-        return Configuration::all();
-    }
+        $configuration = Configuration::all()->first();
 
-    /*
-     * Get One Configuration
-     */
-    public function show($id)
-    {
-        return Configuration::findOrFail($id);
-    }
-
-    /*
-     * Store Configuration
-     */
-    public function store($request)
-    {
-        $configuration = new Configuration;
-        $configuration->name = $request->name;
-        $configuration->email = $request->email;
-        $configuration->password = Hash::make($request->phone ?? $request->email);
-        $configuration->phone = $request->phone;
-        $configuration->location = $request->location;
-        $configuration->account_type = "configuration";
-        $saved = $configuration->save();
-
-        $message = $configuration->name . " created successfully";
-
-        return [$saved, $message, $configuration];
+        return new ConfigurationResource($configuration);
     }
 
     /*
@@ -48,27 +22,40 @@ class ConfigurationService extends Service
      */
     public function update($request, $id)
     {
-        $configuration = Configuration::find($id);
+        $configuration = Configuration::first();
 
-        if ($request->filled("name")) {
-            $configuration->name = $request->name;
+        if ($request->filled("projectType")) {
+            // Ensure that projectType is an associative array with id and name
+            $projectType = [
+                'id' => $request->projectType['id'],
+                'name' => $request->projectType['name'],
+            ];
+
+            if (!$configuration) {
+                $configuration = Configuration::create();
+            } else {
+                $projectTypes = $configuration->project_types ?? [];
+                $projectTypes[] = $projectType;
+                $configuration->project_types = $projectTypes;
+            }
         }
 
-        if ($request->filled("email")) {
-            $configuration->email = $request->email;
-        }
+        if ($request->filled("projectTypeToRemove")) {
+            $projectTypes = $configuration->project_types ?? [];
 
-        if ($request->filled("phone")) {
-            $configuration->phone = $request->phone;
-        }
+            $projectTypeId = $request->projectTypeToRemove;
 
-        if ($request->filled("location")) {
-            $configuration->location = $request->location;
+            $filteredProjectTypes = collect($projectTypes)
+                ->filter(function ($projectType) use ($projectTypeId) {
+                    return $projectType["id"] != $projectTypeId;
+                });
+
+            $configuration->project_types = $filteredProjectTypes;
         }
 
         $saved = $configuration->save();
 
-        $message = $configuration->name . " updated successfully";
+        $message = "Configuration updated successfully";
 
         return [$saved, $message, $configuration];
     }
