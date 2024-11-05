@@ -20,6 +20,8 @@ class WorkPlanResource extends JsonResource
 			"projectId" => $this->project_id,
 			"projectCode" => $this->project->code,
             "name" => $this->name,
+            "deposit" => $this->deposit,
+            "totalCost" => $this->total_cost,
             "startsAt" => $this->starts_at,
             "endsAt" => $this->ends_at,
             "startsAtRaw" => Carbon::parse($this->starts_at)->format("Y-m-d"),

@@ -13,6 +13,8 @@ const create = (props) => {
 	var { id } = useParams()
 
 	const [name, setName] = useState()
+	const [deposit, setDeposit] = useState()
+	const [totalCost, setTotalCost] = useState()
 	const [startsAt, setStartAt] = useState()
 	const [endsAt, setEndsAt] = useState()
 	const [loading, setLoading] = useState()
@@ -36,6 +38,8 @@ const create = (props) => {
 		Axios.post("/api/work-plans", {
 			projectId: id,
 			name: name,
+			deposit: deposit,
+			totalCost: totalCost,
 			startsAt: startsAt,
 			endsAt: endsAt,
 		})
@@ -70,6 +74,28 @@ const create = (props) => {
 						required={true}
 					/>
 					{/* Name */}
+
+					{/* Deposit */}
+					<label htmlFor="">Deposit</label>
+					<input
+						type="number"
+						placeholder="2000"
+						className="form-control mb-2 me-2"
+						onChange={(e) => setDeposit(e.target.value)}
+						required={true}
+					/>
+					{/* Deposit */}
+
+					{/* Total Cost */}
+					<label htmlFor="">Total Cost</label>
+					<input
+						type="number"
+						placeholder="20000"
+						className="form-control mb-2 me-2"
+						onChange={(e) => setTotalCost(e.target.value)}
+						required={true}
+					/>
+					{/* Total Cost */}
 
 					{/* Starts At */}
 					<label htmlFor="">Starts At</label>

@@ -100,7 +100,7 @@ const create = (props) => {
 					{/* Service Provider End */}
 
 					{/* Labour Rate Start */}
-					<label htmlFor="">Labour Rate</label>
+					<label htmlFor="">Labour Rate (per day)</label>
 					<input
 						type="number"
 						placeholder="800"
@@ -111,7 +111,7 @@ const create = (props) => {
 					{/* Labour Rate End */}
 
 					{/* Quantity of Work Start */}
-					<label htmlFor="">Quantity of Work</label>
+					<label htmlFor="">Quantity of Work (per M&sup2;)</label>
 					<input
 						type="number"
 						placeholder="12"

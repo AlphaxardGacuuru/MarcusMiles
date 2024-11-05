@@ -34,6 +34,8 @@ class WorkPlanController extends Controller
         $this->validate($request, [
             "projectId" => "required|string",
             "name" => "required|string",
+            "deposit" => "required|string",
+            "totalCost" => "required|string",
             "startsAt" => "required|date",
             "endsAt" => "required|date",
         ]);
@@ -69,6 +71,8 @@ class WorkPlanController extends Controller
     {
         $this->validate($request, [
             "name" => "nullable|string",
+            "deposit" => "nullable|string",
+            "totalCost" => "nullable|string",
             "startsAt" => "nullable|date",
             "endsAt" => "nullable|date",
         ]);
@@ -97,5 +101,13 @@ class WorkPlanController extends Controller
             "message" => $message,
             "data" => $workPlan,
         ], 200);
+    }
+
+    /*
+     * Chart
+     */
+    public function chart($projectId)
+    {
+        return $this->service->chart($projectId);
     }
 }

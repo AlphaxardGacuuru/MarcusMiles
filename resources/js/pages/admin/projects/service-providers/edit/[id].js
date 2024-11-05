@@ -89,7 +89,8 @@ const edit = (props) => {
 									key={key}
 									value={serviceProvider.id}
 									selected={
-										serviceProvider.id == projectServiceProvider.serviceProviderId
+										serviceProvider.id ==
+										projectServiceProvider.serviceProviderId
 									}>
 									{serviceProvider.name}
 								</option>
@@ -98,7 +99,7 @@ const edit = (props) => {
 					{/* Service Provider End */}
 
 					{/* Labour Rate Start */}
-					<label htmlFor="">Labour Rate</label>
+					<label htmlFor="">Labour Rate (per Day)</label>
 					<input
 						type="number"
 						placeholder="800"
@@ -109,7 +110,7 @@ const edit = (props) => {
 					{/* Labour Rate End */}
 
 					{/* Quantity of Work Start */}
-					<label htmlFor="">Quantity of Work</label>
+					<label htmlFor="">Quantity of Work (per M&sup2;)</label>
 					<input
 						type="number"
 						placeholder="12"

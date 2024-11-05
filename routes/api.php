@@ -95,6 +95,11 @@ Route::get("dashboard/{id}", [DashboardController::class, "index"]);
 Route::get("dashboard/properties/{id}", [DashboardController::class, "properties"]);
 
 /*
+* Work Plan
+*/ 
+Route::get("work-plans/chart/{id}", [WorkPlanController::class, "chart"]);
+
+/*
 * Issues
 */ 
 Route::put("issues/reorder/{id}", [IssueController::class, "reorder"]);

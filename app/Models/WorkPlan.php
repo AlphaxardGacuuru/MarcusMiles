@@ -62,4 +62,9 @@ class WorkPlan extends Model
     {
         return $this->belongsTo(Project::class);
     }
+
+    public function workPlanSteps()
+    {
+        return $this->hasMany(WorkPlanStep::class);
+    }
 }

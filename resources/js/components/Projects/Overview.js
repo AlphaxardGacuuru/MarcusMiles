@@ -7,70 +7,46 @@ const Overview = (props) => {
 	/*
 	 * Colors
 	 */
-	// "rgba(255, 99, 132, 1)", RED
-	// "rgba(255, 159, 64, 1)", ORANGE
-	// "rgba(255, 205, 86, 1)", YELLOW
-	// "rgba(75, 192, 192, 1)", TEAL
-	// "rgba(54, 162, 235, 1)", BLUE
-	// "rgba(153, 102, 255, 1)", PURPLE
-	// "rgba(201, 203, 207, 1)", GREY
-	// "rgba(24, 135, 84, 1)", GREEN
+	let colors = [
+		"rgba(255, 99, 132, 1)", // RED
+		"rgba(255, 159, 64, 1)", // ORANGE
+		"rgba(255, 205, 86, 1)", // YELLOW
+		"rgba(75, 192, 192, 1)", // TEAL
+		"rgba(54, 162, 235, 1)", // BLUE
+		"rgba(153, 102, 255, 1)", // PURPLE
+		"rgba(201, 203, 207, 1)", // GREY
+		"rgba(24, 135, 84, 1)", // GREEN
+	]
+
+	let datasets = props.workPlanChart.data
+		.map((workPlan, key) => {
+			let workPlanSteps = workPlan.work_plan_steps.map((workPlanStep) => ({
+				...workPlanStep,
+				colorKey: key,
+			}))
+
+			return [{ ...workPlan, colorKey: key }, ...workPlanSteps]
+		})
+		.flat()
 
 	const config = {
 		type: "line",
 		data: {
-			labels: [
-				"01-01-2021",
-				"01-02-2021",
-				"01-03-2021",
-				"01-04-2021",
-				"01-05-2021",
-				"01-06-2021",
-			],
-			datasets: [
-				{
-					label: "Item 1",
-					data: [50, 50],
-					backgroundColor: "rgba(220, 53, 69, 1)",
-					borderColor: "rgba(220, 53, 69, 1)",
-					borderWidth: 2,
-				},
-				{
-					label: "Item 2",
-					data: [null, 40, 40],
-					backgroundColor: "rgba(255, 159, 64, 1)",
-					borderColor: "rgba(255, 159, 64, 1)",
-					borderWidth: 2,
-				},
-				{
-					label: "Item 3",
-					data: [null, null, 30, 30],
-					backgroundColor: "rgba(255, 205, 86, 1)",
-					borderColor: "rgba(255, 205, 86, 1)",
-					borderWidth: 2,
-				},
-				{
-					label: "Item 4",
-					data: [null, null, null, 20, 20],
-					backgroundColor: "rgba(75, 192, 192, 1)",
-					borderColor: "rgba(75, 192, 192, 1)",
-					borderWidth: 2,
-				},
-				{
-					label: "Item 5",
-					data: [null, null, null, null, 10, 10],
-					backgroundColor: "rgba(54, 162, 235, 1)",
-					borderColor: "rgba(54, 162, 235, 1)",
-					borderWidth: 2,
-				},
-			],
+			labels: props.workPlanChart.labels,
+			datasets: datasets.map((workPlan) => ({
+				label: workPlan.name,
+				data: workPlan.data,
+				backgroundColor: colors[workPlan.colorKey],
+				borderColor: colors[workPlan.colorKey],
+				borderWidth: 2,
+			})),
 		},
 		options: {
 			responsive: true,
 			scales: {
 				x: {
 					display: true,
-					position: "top",
+					position: "bottom",
 				},
 				y: {
 					display: false,
@@ -88,74 +64,106 @@ const Overview = (props) => {
 		new Chart(ctx.current, config)
 	}, [])
 
+	var totalCosts = props.workPlans.data
+		?.reduce((acc, workPlan) => acc + Number(workPlan.totalCost), 0)
+		.toLocaleString()
+
 	return (
 		<div className={props.activeTab}>
 			<div className="card rounded m-1 me-4 p-2">
-				{/* {props.data && ( */}
-				<div
-					className="p-2"
-					style={{ width: "100%", height: "auto" }}>
-					<canvas ref={ctx}></canvas>
-				</div>
-				{/* )} */}
+				{props.workPlanChart.labels && (
+					<div
+						className="p-2"
+						style={{ width: "100%", height: "auto" }}>
+						<canvas ref={ctx}></canvas>
+					</div>
+				)}
 				<table className="table table-hover table-bordered mt-5">
 					<thead>
 						<tr>
 							<th></th>
-							<th style={{ backgroundColor: "rgba(220, 53, 69, 1)" }}>
-								Milestone 1
-							</th>
-							<th style={{ backgroundColor: "rgba(255, 159, 64, 1)" }}>
-								Milestone 2
-							</th>
-							<th style={{ backgroundColor: "rgba(255, 205, 86, 1)" }}>
-								Milestone 3
-							</th>
-							<th style={{ backgroundColor: "rgba(75, 192, 192, 1)" }}>
-								Milestone 4
-							</th>
-							<th style={{ backgroundColor: "rgba(54, 162, 235, 1)" }}>
-								Milestone 5
-							</th>
+							{props.workPlans.data?.map((workPlan, key) => (
+								<th
+									key={key}
+									style={{ backgroundColor: colors[key] }}>
+									{workPlan.name}
+								</th>
+							))}
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td>Total Cost for Milestone</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>
+								<small>Total Cost for Milestone</small>
+							</td>
+							{props.workPlans.data?.map((workPlan, key) => (
+								<td key={key}>
+									KES {Number(workPlan.totalCost)?.toLocaleString()}
+								</td>
+							))}
+							<td>
+								<small>KES {totalCosts}</small>
+							</td>
 						</tr>
 						<tr>
-							<td>Percentage payment per milestone</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>
+								<small>Percentage payment per milestone</small>
+							</td>
+							{props.workPlans.data?.map((workPlan, key) => (
+								<td key={key}>
+									<div className="d-flex justify-content-between">
+										<div>
+											{(workPlan.deposit / workPlan.totalCost) * 100}%
+										</div>
+										<div>
+											{((workPlan.totalCost - workPlan.deposit) /
+												workPlan.totalCost) *
+												100}
+											%
+										</div>
+									</div>
+								</td>
+							))}
+							<td>
+								<small>100% Retainer Balance</small>
+							</td>
 						</tr>
 						<tr>
-							<td>Payment per milestone</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>
+								<small>Payment per milestone</small>
+							</td>
+							{props.workPlans.data?.map((workPlan, key) => (
+								<td key={key}>
+									<div className="d-flex justify-content-between">
+										<div>KES {Number(workPlan.deposit).toLocaleString()}</div>
+										<div>
+											KES{" "}
+											{Number(
+												workPlan.totalCost - workPlan.deposit
+											).toLocaleString()}
+										</div>
+									</div>
+								</td>
+							))}
+							<td>
+								<small>KES {totalCosts}</small>
+							</td>
 						</tr>
 						<tr>
-							<td>Due Date</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>
+								<small>Due Date</small>
+							</td>
+							{props.workPlans.data?.map((workPlan, key) => (
+								<td key={key}>{workPlan.endsAt}</td>
+							))}
+							<td>
+								<small>
+									{props.workPlans.data?.reduce(
+										(acc, workPlan) => workPlan.endsAt
+									)}
+								</small>
+							</td>
 						</tr>
 					</tbody>
 				</table>

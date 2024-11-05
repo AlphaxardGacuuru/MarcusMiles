@@ -40,6 +40,8 @@ class WorkPlanService extends Service
         $workPlan = new WorkPlan;
         $workPlan->project_id = $request->projectId;
         $workPlan->name = $request->name;
+        $workPlan->deposit = $request->deposit;
+        $workPlan->total_cost = $request->totalCost;
         $workPlan->starts_at = $request->startsAt;
         $workPlan->ends_at = $request->endsAt;
         $workPlan->created_by = $this->id;
@@ -59,6 +61,14 @@ class WorkPlanService extends Service
 
         if ($request->filled("name")) {
             $workPlan->name = $request->name;
+        }
+
+        if ($request->filled("deposit")) {
+            $workPlan->deposit = $request->deposit;
+        }
+
+        if ($request->filled("totalCost")) {
+            $workPlan->total_cost = $request->totalCost;
         }
 
         if ($request->filled("startsAt")) {
@@ -106,5 +116,86 @@ class WorkPlanService extends Service
         }
 
         return $query;
+    }
+
+    /*
+     * Chart
+     */
+    public function chart($projectId)
+    {
+        $workPlans = WorkPlan::where("project_id", $projectId)
+            ->orderBy("id", "asc")
+            ->get();
+
+        $labels = $workPlans->map(function ($workPlan) {
+            $workPlanStepDates = $workPlan->workPlanSteps->map(fn($workPlanStep) => [
+                "startsAt" => $workPlanStep->starts_at,
+                "endsAt" => $workPlanStep->ends_at,
+            ]);
+
+            return [
+                "startsAt" => $workPlan->starts_at,
+                "endsAt" => $workPlan->ends_at,
+                ...$workPlanStepDates,
+            ];
+        })
+            ->flatten()
+            ->unique()
+            ->values();
+
+        $totalWorkPlans = $workPlans->count();
+        $totalWorkPlanSteps = $workPlans
+            ->reduce(function ($acc, $workPlan) {
+                return $acc + $workPlan->workPlanSteps->count();
+            }, 0);
+
+        $total = $totalWorkPlans + $totalWorkPlanSteps;
+
+        $workPlans = $workPlans->map(function ($workPlan) use ($labels, &$total) {
+            // Inject Data into Work Plan
+            $data = $labels->map(function ($label) use ($workPlan, &$total) {
+                if ($label == $workPlan->starts_at || $label == $workPlan->ends_at) {
+                    $index = $total;
+                } else {
+                    $index = null;
+                }
+
+                return $index;
+            });
+
+            $total--;
+
+            // Inject Data into Work Plan Steps
+            $workPlan->workPlanSteps->map(function ($workPlanStep) use ($labels, &$total) {
+                $data = $labels->map(function ($label) use ($workPlanStep, &$total) {
+                    if ($label == $workPlanStep->starts_at || $label == $workPlanStep->ends_at) {
+                        $index = $total;
+                    } else {
+                        $index = null;
+                    }
+
+                    return $index;
+                });
+
+                $total--;
+
+                // Insert data to Work Plan Step
+                $workPlanStep->data = $data;
+            });
+
+            // Insert data to Work Plan
+            $workPlan->data = $data;
+
+            return $workPlan;
+        });
+
+        $data = [
+            "labels" => $labels,
+            "data" => $workPlans,
+        ];
+
+        return [
+            "data" => $data,
+        ];
     }
 }

@@ -10,6 +10,7 @@ const show = (props) => {
 	var { id } = useParams()
 
 	const [project, setProject] = useState({})
+	const [workPlanChart, setWorkPlanChart] = useState({})
 	const [workPlans, setWorkPlans] = useState([])
 	const [inventories, setInventories] = useState([])
 	const [projectServiceProviders, setProjectServiceProviders] = useState([])
@@ -22,6 +23,7 @@ const show = (props) => {
 		// Set page
 		props.setPage({ name: "View Project", path: ["projects", "view"] })
 		props.get(`projects/${id}`, setProject)
+		props.get(`work-plans/chart/${id}`, setWorkPlanChart)
 		props.getPaginated(`work-plans?projectId=${id}`, setWorkPlans)
 		props.getPaginated(`inventories?projectId=${id}`, setInventories)
 		props.getPaginated(
@@ -60,11 +62,26 @@ const show = (props) => {
 					</div>
 					<hr />
 					<div className="text-center">
-						<h6><span className="fw-normal me-1">Location:</span>{project.location}</h6>
-						<h6><span className="fw-normal me-1">Client Initials:</span>{project.clientInitials}</h6>
-						<h6><span className="fw-normal me-1">Current Stage:</span>{project.currentStageName}</h6>
-						<h6><span className="fw-normal me-1">Created By:</span>{project.createdBy}</h6>
-						<h6><span className="fw-normal me-1">Created On:</span>{project.createdAt}</h6>
+						<h6>
+							<span className="fw-normal me-1">Location:</span>
+							{project.location}
+						</h6>
+						<h6>
+							<span className="fw-normal me-1">Client Initials:</span>
+							{project.clientInitials}
+						</h6>
+						<h6>
+							<span className="fw-normal me-1">Current Stage:</span>
+							{project.currentStageName}
+						</h6>
+						<h6>
+							<span className="fw-normal me-1">Created By:</span>
+							{project.createdBy}
+						</h6>
+						<h6>
+							<span className="fw-normal me-1">Created On:</span>
+							{project.createdAt}
+						</h6>
 					</div>
 				</div>
 			</div>
@@ -107,15 +124,18 @@ const show = (props) => {
 				{/* Tabs End */}
 
 				{/* Overview Tab */}
-				<Overview
-					{...props}
-					activeTab={activeTab("overview")}
-					workPlans={workPlans}
-					setWorkPlans={setWorkPlans}
-					totalWorkPlans={project.workPlanCount}
-					projectId={id}
-					setProject={setProject}
-				/>
+				{workPlanChart.labels && (
+					<Overview
+						{...props}
+						activeTab={activeTab("overview")}
+						workPlanChart={workPlanChart}
+						workPlans={workPlans}
+						setWorkPlans={setWorkPlans}
+						totalWorkPlans={project.workPlanCount}
+						projectId={id}
+						setProject={setProject}
+					/>
+				)}
 				{/* Overview Tab End */}
 
 				{/* Work Plans Tab */}
@@ -129,7 +149,6 @@ const show = (props) => {
 					setProject={setProject}
 				/>
 				{/* Work Plans Tab End */}
-
 				{/* Inventories Tab */}
 				<InventoryList
 					{...props}
@@ -142,7 +161,6 @@ const show = (props) => {
 					setNameQuery={setNameQuery}
 				/>
 				{/* Inventories Tab End */}
-
 				{/* Project Service Provider Tab */}
 				<ProjectServiceProviderList
 					{...props}

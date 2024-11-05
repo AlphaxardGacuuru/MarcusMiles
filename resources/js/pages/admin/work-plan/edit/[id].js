@@ -11,6 +11,8 @@ const edit = (props) => {
 	const [workPlan, setWorkPlan] = useState({})
 
 	const [name, setName] = useState()
+	const [deposit, setDeposit] = useState()
+	const [totalCost, setTotalCost] = useState()
 	const [startsAt, setStartAt] = useState()
 	const [endsAt, setEndsAt] = useState()
 	const [loading, setLoading] = useState()
@@ -27,11 +29,7 @@ const edit = (props) => {
 			// Set page
 			props.setPage({
 				name: "Edit Work Plan",
-				path: [
-					"projects",
-					`projects/${res.data.data.projectId}/show`,
-					"edit",
-				],
+				path: ["projects", `projects/${res.data.data.projectId}/show`, "edit"],
 			})
 
 			setWorkPlan(res.data.data)
@@ -47,6 +45,8 @@ const edit = (props) => {
 		setLoading(true)
 		Axios.put(`/api/work-plans/${id}`, {
 			name: name,
+			deposit: deposit,
+			totalCost: totalCost,
 			startsAt: startsAt,
 			endsAt: endsAt,
 		})
@@ -71,6 +71,7 @@ const edit = (props) => {
 				<form
 					onSubmit={onSubmit}
 					className="mb-5">
+					{/* Name */}
 					<label htmlFor="">Name</label>
 					<input
 						type="text"
@@ -79,6 +80,29 @@ const edit = (props) => {
 						className="form-control mb-2 me-2"
 						onChange={(e) => setName(e.target.value)}
 					/>
+					{/* Name */}
+
+					{/* Deposit */}
+					<label htmlFor="">Deposit</label>
+					<input
+						type="number"
+						placeholder="2000"
+						defaultValue={workPlan.deposit}
+						className="form-control mb-2 me-2"
+						onChange={(e) => setDeposit(e.target.value)}
+					/>
+					{/* Deposit */}
+
+					{/* Total Cost */}
+					<label htmlFor="">Total Cost</label>
+					<input
+						type="number"
+						placeholder="20000"
+						defaultValue={workPlan.totalCost}
+						className="form-control mb-2 me-2"
+						onChange={(e) => setTotalCost(e.target.value)}
+					/>
+					{/* Total Cost */}
 
 					{/* Starts At */}
 					<label htmlFor="">Starts At</label>

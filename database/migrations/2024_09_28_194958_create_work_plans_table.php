@@ -21,6 +21,8 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('name');
+            $table->string('deposit')->nullable();
+            $table->string('total_cost')->nullable();
             $table->timestamp('starts_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('ends_at')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->unsignedBigInteger('created_by');
