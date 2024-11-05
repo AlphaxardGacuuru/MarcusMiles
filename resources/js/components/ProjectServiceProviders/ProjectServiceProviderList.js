@@ -85,7 +85,7 @@ const ProjectServiceProviderList = (props) => {
 				<table className="table table-hover">
 					<thead>
 						<tr>
-							<th colSpan="6"></th>
+							<th colSpan="8"></th>
 							<th className="text-end">
 								<MyLink
 									linkTo={`/erp/projects/service-providers/${props.projectId}/create`}
@@ -98,9 +98,11 @@ const ProjectServiceProviderList = (props) => {
 							<th>#</th>
 							<th></th>
 							<th>Name</th>
-							<th>Phone</th>
-							<th>ID Number</th>
-							<th>Added On</th>
+							<th>Total Amount</th>
+							<th>Service</th>
+							<th>Status</th>
+							<th>Start Date</th>
+							<th>End Date</th>
 							<th className="text-center">Action</th>
 						</tr>
 					</thead>
@@ -119,11 +121,19 @@ const ProjectServiceProviderList = (props) => {
 										/>
 									</td>
 									<td>{projectServiceProvider.serviceProviderName}</td>
-									<td>{projectServiceProvider.serviceProviderPhone}</td>
-									<td>{projectServiceProvider.serviceProviderIdNumber}</td>
-									<td>{projectServiceProvider.createdAt}</td>
+									<td>{projectServiceProvider.totalAmount}</td>
+									<td>{projectServiceProvider.service}</td>
+									<td className="text-capitalize">{projectServiceProvider.status}</td>
+									<td>{projectServiceProvider.startDate}</td>
+									<td>{projectServiceProvider.endDate}</td>
 									<td>
 										<div className="d-flex justify-content-center">
+											<MyLink
+												linkTo={`/erp/projects/service-providers/${projectServiceProvider.id}/edit`}
+												icon={<EditSVG />}
+												className="btn-sm"
+											/>
+
 											<div className="mx-1">
 												{/* Confirm Delete Modal End */}
 												<div

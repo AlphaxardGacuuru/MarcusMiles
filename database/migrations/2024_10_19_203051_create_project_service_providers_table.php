@@ -20,6 +20,13 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->unsignedBigInteger('service_provider_id');
+            $table->integer('labour_rate')->nullable();
+            $table->integer('quantity_of_work')->nullable();
+            $table->integer('total_amount')->nullable();
+            $table->string('service')->nullable();
+            $table->string('status')->nullable();
+            $table->timestamp('start_date')->nullable();
+            $table->timestamp('end_date')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->timestamps();
 

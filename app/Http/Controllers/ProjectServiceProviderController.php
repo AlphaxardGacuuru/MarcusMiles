@@ -34,6 +34,13 @@ class ProjectServiceProviderController extends Controller
         $this->validate($request, [
             "projectId" => "required|string",
             "serviceProviderId" => "required|string",
+            "labourRate" => "required|string",
+            "quantityOfWork" => "required|string",
+            "totalAmount" => "required|string",
+            "service" => "required|string",
+            "status" => "required|string",
+            "startDate" => "required|date",
+            "endDate" => "required|date",
         ]);
 
         [$saved, $message, $projectServiceProvider] = $this->service->store($request);
@@ -68,6 +75,13 @@ class ProjectServiceProviderController extends Controller
         $this->validate($request, [
             "projectId" => "nullable|string",
             "serviceProviderId" => "nullable|string",
+            "labourRate" => "nullable|string",
+            "quantityOfWork" => "nullable|string",
+            "totalAmount" => "nullable|string",
+            "service" => "nullable|string",
+            "status" => "nullable|string",
+            "startDate" => "nullable|date",
+            "endDate" => "nullable|date",
         ]);
 
         [$saved, $message, $projectServiceProvider] = $this->service->update($request, $id);

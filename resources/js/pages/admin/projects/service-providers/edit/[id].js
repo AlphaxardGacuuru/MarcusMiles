@@ -10,14 +10,27 @@ import BackSVG from "@/svgs/BackSVG"
 const edit = (props) => {
 	var { id } = useParams()
 
-	const [serviceProvider, setServiceProvider] = useState({})
+	const [projectServiceProvider, setProjectServiceProvider] = useState({})
 
-	const [name, setName] = useState()
-	const [email, setEmail] = useState()
-	const [phone, setPhone] = useState()
-	const [idNumber, setIdNumber] = useState([])
+	const [serviceProviders, setServiceProviders] = useState([])
+
+	const [labourRate, setLabourRate] = useState()
+	const [quantityOfWork, setQuantityOfWork] = useState()
+	const [totalAmount, setTotalAmount] = useState()
+	const [service, setService] = useState()
+	const [status, setStatus] = useState()
+	const [startDate, setStartDate] = useState()
+	const [endDate, setEndDate] = useState()
 
 	const [loading, setLoading] = useState()
+
+	var statuses = [
+		{ id: "began", name: "Began" },
+		{ id: "ongoing", name: "Ongoing" },
+		{ id: "completed", name: "Completed" },
+		{ id: "repairs", name: "Repairs" },
+		{ id: "incomplete", name: "Incomplete" },
+	]
 
 	useEffect(() => {
 		// Set page
@@ -26,7 +39,8 @@ const edit = (props) => {
 			path: ["service-providers", "edit"],
 		})
 		// Fetch ServiceProvider
-		props.get(`service-providers/${id}`, setServiceProvider)
+		props.get(`project-service-providers/${id}`, setProjectServiceProvider)
+		props.get("service-providers", setServiceProviders)
 	}, [])
 
 	/*
@@ -36,11 +50,14 @@ const edit = (props) => {
 		e.preventDefault()
 
 		setLoading(true)
-		Axios.put(`/api/service-providers/${id}`, {
-			name: name,
-			email: email,
-			phone: phone,
-			idNumber: idNumber,
+		Axios.put(`/api/project-service-providers/${id}`, {
+			labourRate: labourRate,
+			quantityOfWork: quantityOfWork,
+			totalAmount: totalAmount,
+			service: service,
+			status: status,
+			startDate: startDate,
+			endDate: endDate,
 		})
 			.then((res) => {
 				setLoading(false)
@@ -55,74 +72,138 @@ const edit = (props) => {
 	}
 
 	return (
-		<div className="row">
-			<div className="col-sm-4"></div>
-			<div className="col-sm-4">
-				<form onSubmit={onSubmit}>
-					{/* Name Start */}
-					<label htmlFor="">Name</label>
-					<input
-						type="text"
-						name="name"
-						placeholder="John Doe"
-						defaultValue={serviceProvider.name}
+		<form onSubmit={onSubmit}>
+			<div className="row">
+				<div className="col-sm-2"></div>
+				<div className="col-sm-4">
+					{/* Service Provider Start */}
+					<label htmlFor="">Service Provider</label>
+					<select
 						className="form-control mb-2 me-2"
-						onChange={(e) => setName(e.target.value)}
-					/>
-					{/* Name End */}
+						onChange={(e) => setProjectServiceProvider(e.target.value)}
+						disabled={true}>
+						{[{ id: "", name: "Select Service Provider" }]
+							.concat(serviceProviders)
+							.map((serviceProvider, key) => (
+								<option
+									key={key}
+									value={serviceProvider.id}
+									selected={
+										serviceProvider.id == projectServiceProvider.serviceProviderId
+									}>
+									{serviceProvider.name}
+								</option>
+							))}
+					</select>
+					{/* Service Provider End */}
 
-					{/* Email Start */}
-					<label htmlFor="">Email</label>
-					<input
-						type="text"
-						placeholder="johndoe@gmail.com"
-						defaultValue={serviceProvider.email}
-						className="form-control mb-2 me-2"
-						onChange={(e) => setEmail(e.target.value)}
-					/>
-					{/* Email End */}
-
-					{/* Phone Start */}
-					<label htmlFor="">Phone</label>
-					<input
-						type="tel"
-						placeholder="0722123456"
-						defaultValue={serviceProvider.phone}
-						className="form-control mb-2 me-2"
-						onChange={(e) => setPhone(e.target.value)}
-					/>
-					{/* Phone End */}
-
-					{/* ID Number Start */}
-					<label htmlFor="">ID Number</label>
+					{/* Labour Rate Start */}
+					<label htmlFor="">Labour Rate</label>
 					<input
 						type="number"
-						placeholder="31531513"
-						defaultValue={serviceProvider.idNumber}
+						placeholder="800"
+						defaultValue={projectServiceProvider.labourRate}
 						className="form-control mb-2 me-2"
-						onChange={(e) => setIdNumber(e.target.value)}
+						onChange={(e) => setLabourRate(e.target.value)}
 					/>
-					{/* ID Number End */}
+					{/* Labour Rate End */}
 
+					{/* Quantity of Work Start */}
+					<label htmlFor="">Quantity of Work</label>
+					<input
+						type="number"
+						placeholder="12"
+						defaultValue={projectServiceProvider.quantityOfWork}
+						className="form-control mb-2 me-2"
+						onChange={(e) => setQuantityOfWork(e.target.value)}
+					/>
+					{/* Quantity of Work End */}
+
+					{/* Total Amount Start */}
+					<label htmlFor="">Total Amount</label>
+					<input
+						type="number"
+						placeholder="800"
+						defaultValue={projectServiceProvider.totalAmount}
+						className="form-control mb-2 me-2"
+						onChange={(e) => setTotalAmount(e.target.value)}
+					/>
+					{/* Total Amount End */}
+				</div>
+				<div className="col-sm-4">
+					{/* Service Start */}
+					<label htmlFor="">Service</label>
+					<input
+						type="text"
+						placeholder="Plumbing"
+						defaultValue={projectServiceProvider.service}
+						className="form-control mb-2 me-2"
+						onChange={(e) => setService(e.target.value)}
+					/>
+					{/* Service End */}
+
+					{/* Status Start */}
+					<label htmlFor="">Status</label>
+					<select
+						className="form-control mb-2 me-2"
+						onChange={(e) => setStatus(e.target.value)}>
+						{[{ id: "", name: "Select Status" }]
+							.concat(statuses)
+							.map((status, key) => (
+								<option
+									key={key}
+									value={status.id}
+									selected={status.id == projectServiceProvider.status}>
+									{status.name}
+								</option>
+							))}
+					</select>
+					{/* Status End */}
+
+					{/* Start Date Start */}
+					<label htmlFor="">Start Date</label>
+					<input
+						type="date"
+						defaultValue={projectServiceProvider.startDateRaw}
+						className="form-control mb-2 me-2"
+						onChange={(e) => setStartDate(e.target.value)}
+					/>
+					{/* Start Date End */}
+
+					{/* End Date Start */}
+					<label htmlFor="">End Date</label>
+					<input
+						type="date"
+						defaultValue={projectServiceProvider.endDateRaw}
+						className="form-control mb-2 me-2"
+						onChange={(e) => setEndDate(e.target.value)}
+					/>
+					{/* End Date End */}
+				</div>
+				<div className="col-sm-2"></div>
+			</div>
+
+			<div className="row">
+				<div className="col-sm-2"></div>
+				<div className="col-sm-8">
 					<div className="d-flex justify-content-end mb-2">
 						<Btn
-							text="update service provider"
+							text="add service provider"
 							loading={loading}
 						/>
 					</div>
 
-					<center className="mb-5">
+					<div className="d-flex justify-content-center mb-5">
 						<MyLink
-							linkTo={`/erp/service-providers`}
+							linkTo={`/erp/projects/${id}/view`}
 							icon={<BackSVG />}
-							text="back to service providers"
+							text="back to service provider"
 						/>
-					</center>
-
-					<div className="col-sm-4"></div>
-				</form>
+					</div>
+				</div>
+				<div className="col-sm-2"></div>
 			</div>
-		</div>
+		</form>
 	)
 }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProjectServiceProviderResource extends JsonResource
@@ -28,6 +29,15 @@ class ProjectServiceProviderResource extends JsonResource
 			"projectLocation" => $this->project->location,
 			"projectCreatedBy" => $this->createdBy->name,
 			"projectCreatedAt" => $this->project->createdAt,
+			"labourRate" => $this->labour_rate,
+			"quantityOfWork" => $this->quantity_of_work,
+			"totalAmount" => $this->total_amount,
+			"service" => $this->service,
+			"status" => $this->status,
+			"startDate" => $this->start_date,
+			"endDate" => $this->end_date,
+            "startDateRaw" => Carbon::parse($this->start_date)->format("Y-m-d"),
+            "endDateRaw" => Carbon::parse($this->end_date)->format("Y-m-d"),
 			"updatedAt" => $this->updated_at,
 			"createdAt" => $this->created_at,
 		];

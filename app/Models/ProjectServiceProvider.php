@@ -26,6 +26,19 @@ class ProjectServiceProvider extends Model
      *
      * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */
+    protected function startDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $value ? Carbon::parse($value)->format('d M Y') : "",
+        );
+    }
+
+    protected function endDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $value ? Carbon::parse($value)->format('d M Y') : "",
+        );
+    }
     protected function updatedAt(): Attribute
     {
         return Attribute::make(

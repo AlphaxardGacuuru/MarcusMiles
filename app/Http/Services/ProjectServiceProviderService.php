@@ -52,10 +52,17 @@ class ProjectServiceProviderService extends Service
         $projectServiceProvider = new ProjectServiceProvider;
         $projectServiceProvider->project_id = $request->projectId;
         $projectServiceProvider->service_provider_id = $request->serviceProviderId;
+        $projectServiceProvider->labour_rate = $request->labourRate;
+        $projectServiceProvider->quantity_of_work = $request->quantityOfWork;
+        $projectServiceProvider->total_amount = $request->totalAmount;
+        $projectServiceProvider->service = $request->service;
+        $projectServiceProvider->status = $request->status;
+        $projectServiceProvider->start_date = $request->startDate;
+        $projectServiceProvider->end_date = $request->endDate;
         $projectServiceProvider->created_by = $this->id;
         $saved = $projectServiceProvider->save();
 
-        $message = $projectServiceProvider->name . " created successfully";
+        $message = $projectServiceProvider->serviceProvider->name . " created successfully";
 
         return [$saved, $message, $projectServiceProvider];
     }
@@ -67,21 +74,33 @@ class ProjectServiceProviderService extends Service
     {
         $projectServiceProvider = ProjectServiceProvider::find($id);
 
-        if ($request->filled("name")) {
-            $projectServiceProvider->name = $request->name;
-        }
-
-        if ($request->filled("email")) {
-            $projectServiceProvider->email = $request->email;
-        }
-
-        if ($request->filled("phone")) {
-            $projectServiceProvider->phone = $request->phone;
-        }
-
-        if ($request->filled("idNumber")) {
-            $projectServiceProvider->id_number = $request->idNumber;
-        }
+		if ($request->filled("labourRate")) {
+			$projectServiceProvider->labour_rate = $request->labourRate;
+		}
+        
+		if ($request->filled("quantityOfWork")) {
+			$projectServiceProvider->quantity_of_work = $request->quantityOfWork;
+		}
+		
+		if ($request->filled("totalAmount")) {
+			$projectServiceProvider->total_amount = $request->totalAmount;
+		}
+        
+		if ($request->filled("service")) {
+			$projectServiceProvider->service = $request->service;
+		}
+		
+		if ($request->filled("status")) {
+			$projectServiceProvider->status = $request->status;
+		}
+        
+		if ($request->filled("startDate")) {
+			$projectServiceProvider->start_date = $request->startDate;
+		}
+        
+		if ($request->filled("endDate")) {
+			$projectServiceProvider->end_date = $request->endDate;
+		}
 
         $saved = $projectServiceProvider->save();
 

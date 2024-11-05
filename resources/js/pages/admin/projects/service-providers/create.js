@@ -17,8 +17,23 @@ const create = (props) => {
 	const [serviceProviders, setServiceProviders] = useState([])
 
 	const [serviceProviderId, setServiceProviderId] = useState()
+	const [labourRate, setLabourRate] = useState()
+	const [quantityOfWork, setQuantityOfWork] = useState()
+	const [totalAmount, setTotalAmount] = useState()
+	const [service, setService] = useState()
+	const [status, setStatus] = useState()
+	const [startDate, setStartDate] = useState()
+	const [endDate, setEndDate] = useState()
 
 	const [loading, setLoading] = useState()
+
+	var statuses = [
+		{ id: "began", name: "Began" },
+		{ id: "ongoing", name: "Ongoing" },
+		{ id: "completed", name: "Completed" },
+		{ id: "repairs", name: "Repairs" },
+		{ id: "incomplete", name: "Incomplete" },
+	]
 
 	useEffect(() => {
 		// Set page
@@ -39,6 +54,13 @@ const create = (props) => {
 		Axios.post("/api/project-service-providers", {
 			projectId: id,
 			serviceProviderId: serviceProviderId,
+			labourRate: labourRate,
+			quantityOfWork: quantityOfWork,
+			totalAmount: totalAmount,
+			service: service,
+			status: status,
+			startDate: startDate,
+			endDate: endDate,
 		})
 			.then((res) => {
 				setLoading(false)
@@ -55,10 +77,10 @@ const create = (props) => {
 	}
 
 	return (
-		<div className="row">
-			<div className="col-sm-4"></div>
-			<div className="col-sm-4">
-				<form onSubmit={onSubmit}>
+		<form onSubmit={onSubmit}>
+			<div className="row">
+				<div className="col-sm-2"></div>
+				<div className="col-sm-4">
 					{/* Service Provider Start */}
 					<label htmlFor="">Service Provider</label>
 					<select
@@ -77,6 +99,95 @@ const create = (props) => {
 					</select>
 					{/* Service Provider End */}
 
+					{/* Labour Rate Start */}
+					<label htmlFor="">Labour Rate</label>
+					<input
+						type="number"
+						placeholder="800"
+						className="form-control mb-2 me-2"
+						onChange={(e) => setLabourRate(e.target.value)}
+						required={true}
+					/>
+					{/* Labour Rate End */}
+
+					{/* Quantity of Work Start */}
+					<label htmlFor="">Quantity of Work</label>
+					<input
+						type="number"
+						placeholder="12"
+						className="form-control mb-2 me-2"
+						onChange={(e) => setQuantityOfWork(e.target.value)}
+						required={true}
+					/>
+					{/* Quantity of Work End */}
+
+					{/* Total Amount Start */}
+					<label htmlFor="">Total Amount</label>
+					<input
+						type="number"
+						placeholder="800"
+						className="form-control mb-2 me-2"
+						onChange={(e) => setTotalAmount(e.target.value)}
+						required={true}
+					/>
+					{/* Total Amount End */}
+				</div>
+				<div className="col-sm-4">
+					{/* Service Start */}
+					<label htmlFor="">Service</label>
+					<input
+						type="text"
+						placeholder="Plumbing"
+						className="form-control mb-2 me-2"
+						onChange={(e) => setService(e.target.value)}
+						required={true}
+					/>
+					{/* Service End */}
+
+					{/* Status Start */}
+					<label htmlFor="">Status</label>
+					<select
+						className="form-control mb-2 me-2"
+						onChange={(e) => setStatus(e.target.value)}
+						required={true}>
+						{[{ id: "", name: "Select Status" }]
+							.concat(statuses)
+							.map((status, key) => (
+								<option
+									key={key}
+									value={status.id}>
+									{status.name}
+								</option>
+							))}
+					</select>
+					{/* Status End */}
+
+					{/* Start Date Start */}
+					<label htmlFor="">Start Date</label>
+					<input
+						type="date"
+						className="form-control mb-2 me-2"
+						onChange={(e) => setStartDate(e.target.value)}
+						required={true}
+					/>
+					{/* Start Date End */}
+
+					{/* End Date Start */}
+					<label htmlFor="">End Date</label>
+					<input
+						type="date"
+						className="form-control mb-2 me-2"
+						onChange={(e) => setEndDate(e.target.value)}
+						required={true}
+					/>
+					{/* End Date End */}
+				</div>
+				<div className="col-sm-2"></div>
+			</div>
+
+			<div className="row">
+				<div className="col-sm-2"></div>
+				<div className="col-sm-8">
 					<div className="d-flex justify-content-end mb-2">
 						<Btn
 							text="add service provider"
@@ -91,10 +202,10 @@ const create = (props) => {
 							text="back to service provider"
 						/>
 					</div>
-					<div className="col-sm-4"></div>
-				</form>
+				</div>
+				<div className="col-sm-2"></div>
 			</div>
-		</div>
+		</form>
 	)
 }
 

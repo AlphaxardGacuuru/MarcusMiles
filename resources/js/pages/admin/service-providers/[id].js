@@ -1,8 +1,11 @@
-import ProjectList from "@/components/Projects/ProjectList"
-import ServiceProviderProjectList from "@/components/ServiceProviderProjects/ServiceProviderProjectList"
-import NotFoundSVG from "@/svgs/NotFoundSVG"
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom/cjs/react-router-dom.min"
+
+import MyLink from "@/components/Core/MyLink"
+import ProjectList from "@/components/Projects/ProjectList"
+import ServiceProviderProjectList from "@/components/ServiceProviderProjects/ServiceProviderProjectList"
+import EditSVG from "@/svgs/EditSVG"
+import NotFoundSVG from "@/svgs/NotFoundSVG"
 
 const show = (props) => {
 	var { id } = useParams()
@@ -67,6 +70,15 @@ const show = (props) => {
 							<p className="text-muted">National ID not Found</p>
 						</div>
 					)}
+
+					{/* Edit Start */}
+					<MyLink
+						linkTo={`/erp/service-providers/${id}/edit`}
+						icon={<EditSVG />}
+						text="edit"
+						className="btn-sm"
+					/>
+					{/* Edit End */}
 				</div>
 			</div>
 			<div className="col-sm-8">
