@@ -114,12 +114,12 @@ const Overview = (props) => {
 								<td key={key}>
 									<div className="d-flex justify-content-between">
 										<div>
-											{(workPlan.deposit / workPlan.totalCost) * 100}%
+											{((workPlan.deposit / workPlan.totalCost) * 100).toFixed(1)}%
 										</div>
 										<div>
-											{((workPlan.totalCost - workPlan.deposit) /
+											{(((workPlan.totalCost - workPlan.deposit) /
 												workPlan.totalCost) *
-												100}
+												100).toFixed(1)}
 											%
 										</div>
 									</div>
@@ -160,7 +160,7 @@ const Overview = (props) => {
 							<td>
 								<small>
 									{props.workPlans.data?.reduce(
-										(acc, workPlan) => workPlan.endsAt
+										(acc, workPlan) => workPlan.endsAt, 0
 									)}
 								</small>
 							</td>

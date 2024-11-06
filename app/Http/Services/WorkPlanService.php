@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Http\Resources\WorkPlanResource;
 use App\Models\WorkPlan;
+use Carbon\Carbon;
 
 class WorkPlanService extends Service
 {
@@ -141,6 +142,7 @@ class WorkPlanService extends Service
         })
             ->flatten()
             ->unique()
+            ->sortBy(fn($date) => Carbon::createFromFormat('d M Y', $date))
             ->values();
 
         $totalWorkPlans = $workPlans->count();
@@ -161,7 +163,22 @@ class WorkPlanService extends Service
                 }
 
                 return $index;
-            });
+            })->reduce(function ($acc, $label) {
+
+                // Check if last value is null and push value
+                if (!is_null($acc->last())) {
+                    if (!is_null($label)) {
+                        $acc->push($label);
+                        $acc->push(null);
+                    } else {
+						$acc->push($acc->last());
+					}
+                } else {
+                    $acc->push($label);
+                }
+
+                return $acc;
+            }, collect());
 
             $total--;
 
