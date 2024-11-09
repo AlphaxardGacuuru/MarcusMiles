@@ -18,7 +18,7 @@ const Messages = ({ messages, setMessages, errors, setErrors }) => {
 						key={key}
 						className="glass p-2 mt-2 text-light"
 						style={{
-							backgroundColor: "rgba(143, 234, 133, 0.5)",
+							backgroundColor: "rgba(143, 234, 133, 1)",
 							transition: "0.3s",
 						}}>
 						{message}
@@ -30,7 +30,7 @@ const Messages = ({ messages, setMessages, errors, setErrors }) => {
 						key={key}
 						className="glass p-2 mt-2 text-light"
 						style={{
-							backgroundColor: "rgba(235, 96, 96, 0.5)",
+							backgroundColor: "rgba(235, 96, 96, 1)",
 							transition: "0.3s",
 						}}>
 						{error}

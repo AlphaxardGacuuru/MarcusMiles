@@ -1,10 +1,11 @@
 import React, { useState } from "react"
-import { useHistory, useLocation } from "react-router-dom"
+import { Link, useHistory, useLocation } from "react-router-dom"
 import CryptoJS from "crypto-js"
 
 import Btn from "@/components/Core/Btn"
 
 import CloseSVG from "@/svgs/CloseSVG"
+import BackSVG from "@/svgs/BackSVG"
 
 const LoginPopUp = (props) => {
 	const history = useHistory()
@@ -75,7 +76,11 @@ const LoginPopUp = (props) => {
 				<div className="d-flex align-items-center justify-content-between">
 					{/* <!-- Logo Area --> */}
 					<div className="logo-area p-2">
-						<a href="#" className="text-dark">Login</a>
+						<a
+							href="#"
+							className="text-dark">
+							Login
+						</a>
 					</div>
 					{/* <!-- Close Icon --> */}
 					<div
@@ -115,11 +120,12 @@ const LoginPopUp = (props) => {
 								/>
 							</form>
 
-							<Btn
-								className="mt-1 w-50"
-								text="back"
-								onClick={() => setPhoneLogin(false)}
-							/>
+							<Link
+								to="/"
+								className="btn mysonar-btn mx-auto mt-1 w-50">
+								<BackSVG />
+								<span className="me-">back to home</span>
+							</Link>
 						</div>
 					</center>
 				</div>

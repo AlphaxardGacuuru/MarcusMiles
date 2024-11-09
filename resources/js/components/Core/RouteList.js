@@ -3,6 +3,7 @@ import { Route } from "react-router-dom"
 
 import Header from "@/components/Layouts/Header"
 import Index from "@/pages/index"
+import ClientRegister from "@/pages/clients/register"
 
 import AdminNav from "@/components/Layouts/AdminNav"
 
@@ -79,6 +80,10 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		{
 			path: "/",
 			component: <Index {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/clients/register",
+			component: <ClientRegister {...GLOBAL_STATE} />,
 		},
 	]
 

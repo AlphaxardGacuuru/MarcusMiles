@@ -38,18 +38,33 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'device_name' => 'required|string|max:255',
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'phone' => $request->email,
+            'location' => $request->email,
+            'email' => $request->email,
         ]);
 
         event(new Registered($user));
 
-        Auth::login($user);
+        // Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        // return redirect(RouteServiceProvider::HOME);
+
+        $token = $user
+            ->createToken($request->device_name)
+            ->plainTextToken;
+
+        return response([
+            "message" => "Logged in",
+            "data" => $token,
+        ], 200);
     }
 }

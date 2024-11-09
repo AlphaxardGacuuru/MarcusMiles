@@ -2,6 +2,7 @@ import React, { useState } from "react"
 
 import MyLink from "@/components/Core/MyLink"
 import Img from "@/components/Core/Img"
+import Btn from "@/components/Core/Btn"
 
 import PaginationLinks from "@/components/Core/PaginationLinks"
 
@@ -13,6 +14,8 @@ import ViewSVG from "@/svgs/ViewSVG"
 import EditSVG from "@/svgs/EditSVG"
 import PlusSVG from "@/svgs/PlusSVG"
 import DeleteSVG from "@/svgs/DeleteSVG"
+import ShareSVG from "@/svgs/ShareSVG"
+import InviteSVG from "@/svgs/InviteSVG"
 
 const ClientList = (props) => {
 	/*
@@ -30,6 +33,19 @@ const ClientList = (props) => {
 				})
 			})
 			.catch((err) => props.getErrors(err))
+	}
+
+	// Web Share API for share button
+	// Share must be triggered by "user activation"
+	const onShare = () => {
+		// Define share data
+		const shareData = {
+			title: "Invite Client",
+			text: `Log in to Marcus Miles\n`,
+			url: `https://admin.marcusmiles.co.ke/#/clients/register`,
+		}
+		// Check if data is shareble
+		navigator.canShare(shareData) && navigator.share(shareData)
 	}
 
 	return (
@@ -79,7 +95,14 @@ const ClientList = (props) => {
 				<table className="table table-hover">
 					<thead>
 						<tr>
-							<th colSpan="6"></th>
+							<th colSpan="5"></th>
+							<th className="text-end">
+								<Btn
+									icon={<InviteSVG />}
+									text="invite client"
+									onClick={onShare}
+								/>
+							</th>
 							<th className="text-end">
 								<MyLink
 									linkTo={`/erp/clients/create`}

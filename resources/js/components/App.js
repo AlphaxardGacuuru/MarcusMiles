@@ -45,8 +45,8 @@ function App() {
 	const url = process.env.MIX_FRONTEND_URL
 
 	// Declare states
-	const [messages, setMessages] = useState([])
-	const [errors, setErrors] = useState([])
+	const [messages, setMessages] = useState(["Message"])
+	const [errors, setErrors] = useState(["Error"])
 	const [login, setLogin] = useState()
 	const [auth, setAuth] = useState(getLocalStorageAuth("auth"))
 	const [headerMenu, setHeaderMenu] = useState()

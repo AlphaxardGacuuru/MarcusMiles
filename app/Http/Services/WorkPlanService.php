@@ -171,14 +171,16 @@ class WorkPlanService extends Service
                         $acc->push($label);
                         $acc->push(null);
                     } else {
-						$acc->push($acc->last());
-					}
+                        $acc->push($acc->last());
+                    }
                 } else {
                     $acc->push($label);
                 }
 
                 return $acc;
             }, collect());
+
+            $data->pop();
 
             $total--;
 
@@ -192,7 +194,24 @@ class WorkPlanService extends Service
                     }
 
                     return $index;
-                });
+                })->reduce(function ($acc, $label) {
+
+                    // Check if last value is null and push value
+                    if (!is_null($acc->last())) {
+                        if (!is_null($label)) {
+                            $acc->push($label);
+                            $acc->push(null);
+                        } else {
+                            $acc->push($acc->last());
+                        }
+                    } else {
+                        $acc->push($label);
+                    }
+
+                    return $acc;
+                }, collect());
+
+                $data->pop();
 
                 $total--;
 

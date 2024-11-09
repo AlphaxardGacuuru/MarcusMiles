@@ -68,6 +68,7 @@ const show = (props) => {
 					activeTab={activeTab("projects")}
 					projects={projects}
 					setProjects={setProjects}
+					stages={[]}
 					totalProject={client.projectCount}
 					clientId={id}
 					setClient={setClient}

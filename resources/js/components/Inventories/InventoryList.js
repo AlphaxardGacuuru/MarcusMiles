@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min"
 
 import MyLink from "@/components/Core/MyLink"
@@ -22,6 +22,8 @@ const InventoryList = (props) => {
 
 	const [loading, setLoading] = useState()
 
+	const closeConsumeInventoryModalBtn = useRef()
+
 	/*
 	 * Reduce Quantity
 	 */
@@ -39,7 +41,12 @@ const InventoryList = (props) => {
 				// Show messages
 				props.setMessages([res.data.message])
 				// Fetch Inventory
-				props.getPaginated(`inventories?projectId=${props.projectId}`, props.setInventories)
+				props.getPaginated(
+					`inventories?projectId=${props.projectId}`,
+					props.setInventories
+				)
+				// Close Modal
+				closeConsumeInventoryModalBtn.current.click()
 			})
 			.catch((err) => {
 				setLoading(false)
@@ -151,19 +158,75 @@ const InventoryList = (props) => {
 										<div className="d-flex justify-content-center">
 											<React.Fragment>
 												<MyLink
+													linkTo={`/erp/clients/${inventory.id}/view`}
+													className="me-1"
+													icon={<ViewSVG />}
+												/>
+
+												<MyLink
 													linkTo={`/erp/inventory/${inventory.id}/edit`}
 													icon={<EditSVG />}
 													className="btn-sm me-1"
 												/>
 
+												{/* Consume Inventory Modal Start */}
+												{/* Consume Inventory Modal End */}
+												<div
+													className="modal fade"
+													id={`consumeModalStage`}
+													tabIndex="-1"
+													aria-labelledby="consumeModalLabel"
+													aria-hidden="true">
+													<div className="modal-dialog">
+														<div className="modal-content rounded-4 glass">
+															<div className="modal-header">
+																<h1
+																	id="consumeModalLabel"
+																	className="modal-title fs-5 text-light">
+																	Consume Item
+																</h1>
+																<button
+																	type="button"
+																	className="btn-close"
+																	data-bs-dismiss="modal"
+																	aria-label="Close"></button>
+															</div>
+															<div className="modal-body text-start text-wrap">
+																Are you sure you want to consume{" "}
+																{inventory.goodName}.
+															</div>
+															<div className="modal-footer justify-content-between">
+																<button
+																	ref={closeConsumeInventoryModalBtn}
+																	type="button"
+																	className="mysonar-btn btn-2"
+																	data-bs-dismiss="modal">
+																	Close
+																</button>
+
+																<Btn
+																	icon={<ArrowDownSVG />}
+																	text="Consume"
+																	onClick={() =>
+																		reduceQuantity(
+																			inventory.id,
+																			inventory.quantity
+																		)
+																	}
+																/>
+															</div>
+														</div>
+													</div>
+												</div>
+												{/* Consume Inventory Modal End */}
+
 												<Btn
 													icon={<ArrowDownSVG />}
+													dataBsToggle="modal"
+													dataBsTarget={`#consumeModalStage`}
 													tooltipText="Consume Item"
-													onClick={() =>
-														reduceQuantity(inventory.id, inventory.quantity)
-													}
-													loading={loading}
 												/>
+												{/* Consume Inventory Modal End */}
 
 												<div className="mx-1">
 													<DeleteModal
