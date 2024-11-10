@@ -58,4 +58,9 @@ class Inventory extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function deliveryNoteInventory()
+    {
+        return $this->hasMany(DeliveryNoteInventory::class);
+    }
 }

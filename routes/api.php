@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\CreditNoteController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeliveryNoteController;
 use App\Http\Controllers\FilePondController;
 use App\Http\Controllers\GoodController;
 use App\Http\Controllers\InventoryController;
@@ -69,6 +70,7 @@ Route::apiResources([
 	"issue-comments" => IssueCommentController::class,
 	"issue-comment-likes" => IssueCommentLikeController::class,
 	"issue-stages" => IssueStageController::class,
+	"delivery-notes" => DeliveryNoteController::class,
 
     "properties" => PropertyController::class,
     "units" => UnitController::class,

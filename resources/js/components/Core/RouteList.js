@@ -52,6 +52,10 @@ import AdminSupplierGoodEdit from "@/pages/admin/supplier-goods/edit/[id]"
 
 import AdminIssues from "@/pages/admin/issues/index"
 
+import AdminDeliveryNotes from "@/pages/admin/delivery-notes/index"
+import AdminDeliveryNoteView from "@/pages/admin/delivery-notes/[id]"
+import AdminDeliveryNoteEdit from "@/pages/admin/delivery-notes/edit/[id]"
+
 import AdminInvoices from "@/pages/admin/invoices/index"
 import AdminInvoiceCreate from "@/pages/admin/invoices/create"
 import AdminInvoiceView from "@/pages/admin/invoices/[id]"
@@ -220,6 +224,18 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		{
 			path: "/admin/erp/issues",
 			component: <AdminIssues {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/delivery-notes",
+			component: <AdminDeliveryNotes {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/delivery-notes/:id/view",
+			component: <AdminDeliveryNoteView {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/delivery-notes/:id/edit",
+			component: <AdminDeliveryNoteEdit {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/invoices",

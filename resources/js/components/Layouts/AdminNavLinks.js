@@ -24,6 +24,7 @@ import GoodSVG from "@/svgs/GoodSVG"
 import InventorySVG from "@/svgs/InventorySVG"
 import ServiceProviderSVG from "@/svgs/ServiceProviderSVG"
 import SettingsSVG from "@/svgs/SettingsSVG"
+import DocumentsSVG from "@/svgs/DocumentsSVG"
 
 const AdminNavLinks = (props) => {
 	const location = useLocation()
@@ -188,6 +189,45 @@ const AdminNavLinks = (props) => {
 				{/* Collapse End */}
 			</li>
 			{/* ERP Links End */}
+			{/* Documents Links */}
+			<li className="nav-item">
+				<a
+					href="#"
+					className={`nav-link accordion-button w-75 my-1 ${active(
+						"/admin/documents/"
+					)}`}
+					data-bs-toggle="collapse"
+					data-bs-target="#collapseDocuments"
+					aria-expanded="false"
+					aria-controls="collapseDocuments">
+					<div className="nav-link-icon">
+						<DocumentsSVG />
+					</div>
+					<div className="nav-link-text">Documents</div>
+				</a>
+
+				{/* Collapse */}
+				<div
+					className={!location.pathname.match("/documents/") ? "collapse" : ""}
+					id="collapseDocuments">
+					<ol className="ms-4">
+						{/* Delivery Notes Start */}
+						<li className="nav-item">
+							<Link
+								to={`/admin/documents/delivery-notes`}
+								className={`nav-link ${active("/admin/documents/delivery-notes")}`}>
+								<div className="nav-link-icon">
+									<PersonSVG />
+								</div>
+								<div className="nav-link-text">Delivery Notes</div>
+							</Link>
+						</li>
+						{/* Delivery Notes End */}
+					</ol>
+				</div>
+				{/* Collapse End */}
+			</li>
+			{/* Documents Links End */}
 			{/* Configurations Link */}
 			<li className="nav-item">
 				<Link

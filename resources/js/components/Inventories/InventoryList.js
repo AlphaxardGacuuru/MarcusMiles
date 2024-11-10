@@ -1,5 +1,8 @@
 import React, { useRef, useState } from "react"
-import { useLocation } from "react-router-dom/cjs/react-router-dom.min"
+import {
+	useHistory,
+	useLocation,
+} from "react-router-dom/cjs/react-router-dom.min"
 
 import MyLink from "@/components/Core/MyLink"
 import Btn from "@/components/Core/Btn"
@@ -19,7 +22,9 @@ import ArrowDownSVG from "@/svgs/ArrowDownSVG"
 
 const InventoryList = (props) => {
 	const location = useLocation()
+	const history = useHistory()
 
+	const [inventoryIds, setInventoryIds] = useState([])
 	const [loading, setLoading] = useState()
 
 	const closeConsumeInventoryModalBtn = useRef()
@@ -51,6 +56,48 @@ const InventoryList = (props) => {
 			.catch((err) => {
 				setLoading(false)
 				// Get Errors
+				props.getErrors(err)
+			})
+	}
+
+	/*
+	 * Handle InventoryId checkboxes
+	 */
+	const handleSetInventoryIds = (inventoryId) => {
+		var exists = inventoryIds.includes(inventoryId)
+
+		var newInventoryIds = exists
+			? inventoryIds.filter((item) => item != inventoryId)
+			: [...inventoryIds, inventoryId]
+
+		setInventoryIds(newInventoryIds)
+	}
+
+	/*
+	 * Handle Create Delivery Notes
+	 */
+	const createDeliveryNotes = () => {
+		setLoading(true)
+
+		Axios.post("api/delivery-notes", {
+			inventoryIds: inventoryIds,
+		})
+			.then((res) => {
+				setLoading(false)
+				props.setMessages([res.data.message])
+				// Clear Checkboxes
+				setInventoryIds([])
+				// Redirect to Delivery Notes
+				setTimeout(
+					() =>
+						history.push(
+							`/admin/documents/delivery-notes/${res.data.data.id}/view`
+						),
+					500
+				)
+			})
+			.catch((err) => {
+				setLoading(false)
 				props.getErrors(err)
 			})
 	}
@@ -124,7 +171,17 @@ const InventoryList = (props) => {
 					<thead>
 						{location.pathname.match("/view") && (
 							<tr>
-								<th colSpan="6"></th>
+								<th colSpan="5"></th>
+								<th
+									colSpan="2"
+									className="text-end">
+									<Btn
+										icon={<PlusSVG />}
+										text="generate delivery note"
+										onClick={createDeliveryNotes}
+										loading={loading}
+									/>
+								</th>
 								<th className="text-end">
 									<MyLink
 										linkTo={`/erp/inventory/${props.projectId}/create`}
@@ -135,6 +192,24 @@ const InventoryList = (props) => {
 							</tr>
 						)}
 						<tr>
+							<th>
+								<input
+									type="checkbox"
+									checked={
+										inventoryIds.length == props.inventories.data?.length &&
+										inventoryIds.length != 0
+									}
+									onClick={() =>
+										setInventoryIds(
+											inventoryIds.length == props.inventories.data.length
+												? []
+												: props.inventories.data.map(
+														(inventory) => inventory.id
+												  )
+										)
+									}
+								/>
+							</th>
 							<th>#</th>
 							<th>Name</th>
 							<th>Quantity</th>
@@ -147,6 +222,17 @@ const InventoryList = (props) => {
 					<tbody>
 						{props.inventories.data?.map((inventory, key) => (
 							<tr key={key}>
+								<td>
+									<input
+										type="checkbox"
+										checked={
+											inventoryIds.includes(inventory.id) ||
+											inventory.inDeliveryNote
+										}
+										onClick={() => handleSetInventoryIds(inventory.id)}
+										disabled={inventory.inDeliveryNote}
+									/>
+								</td>
 								<td>{props.iterator(key, props.inventories)}</td>
 								<td>{inventory.goodName}</td>
 								<td>{inventory.quantity}</td>
@@ -157,12 +243,6 @@ const InventoryList = (props) => {
 									{location.pathname.match("/view") && (
 										<div className="d-flex justify-content-center">
 											<React.Fragment>
-												<MyLink
-													linkTo={`/erp/clients/${inventory.id}/view`}
-													className="me-1"
-													icon={<ViewSVG />}
-												/>
-
 												<MyLink
 													linkTo={`/erp/inventory/${inventory.id}/edit`}
 													icon={<EditSVG />}
