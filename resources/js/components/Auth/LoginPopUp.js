@@ -17,7 +17,7 @@ const LoginPopUp = (props) => {
 
 	// Encrypt Token
 	const encryptedToken = (token) => {
-		const secretKey = "BlackPropertyAuthorizationToken"
+		const secretKey = "MarcusMilesAuthorizationToken"
 		// Encrypt
 		return CryptoJS.AES.encrypt(token, secretKey).toString()
 	}
