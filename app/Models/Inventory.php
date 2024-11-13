@@ -17,6 +17,7 @@ class Inventory extends Model
      * @var array<string, string>
      */
     protected $casts = [
+        'unit' => 'array',
         'updated_at' => 'datetime:d M Y',
         'created_at' => 'datetime:d M Y',
     ];
@@ -43,6 +44,11 @@ class Inventory extends Model
     /*
      * Relationships
      */
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, "created_by");
+    }
 
     public function project()
     {

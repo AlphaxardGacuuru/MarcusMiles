@@ -24,6 +24,7 @@ class ConfigurationService extends Service
     {
         $configuration = Configuration::first();
 
+		// Project Type
         if ($request->filled("projectType")) {
             // Ensure that projectType is an associative array with id and name
             $projectType = [
@@ -51,6 +52,36 @@ class ConfigurationService extends Service
                 });
 
             $configuration->project_types = $filteredProjectTypes;
+        }
+
+		// Unit Type
+        if ($request->filled("unitType")) {
+            // Ensure that unitType is an associative array with id and name
+            $unitType = [
+                'id' => $request->unitType['id'],
+                'name' => $request->unitType['name'],
+            ];
+
+            if (!$configuration) {
+                $configuration = Configuration::create();
+            } else {
+                $unitTypes = $configuration->unit_types ?? [];
+                $unitTypes[] = $unitType;
+                $configuration->unit_types = $unitTypes;
+            }
+        }
+
+        if ($request->filled("unitTypeToRemove")) {
+            $unitTypes = $configuration->unit_types ?? [];
+
+            $unitTypeId = $request->unitTypeToRemove;
+
+            $filteredUnitTypes = collect($unitTypes)
+                ->filter(function ($unitType) use ($unitTypeId) {
+                    return $unitType["id"] != $unitTypeId;
+                });
+
+            $configuration->unit_types = $filteredUnitTypes;
         }
 
         $saved = $configuration->save();

@@ -21,6 +21,10 @@ class DeliveryNoteResource extends JsonResource
 			"projectCode" => $this->project->code,
 			"projectName" => $this->project->name,
 			"inventories" => InventoryResource::collection($this->inventories),
+			"createdById" => $this->createdBy->id,
+			"createdByName" => $this->createdBy->name,
+			"receivedById" => $this->receivedBy?->id,
+			"receivedByName" => $this->receivedBy?->name,
 			"updatedAt" => $this->updatedAt,
 			"createdAt" => $this->createdAt,
 		];

@@ -23,7 +23,8 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate("cascade")
                 ->onDelete("cascade");
-            $table->integer('quantity');
+            $table->jsonb('unit')->nullable();
+            $table->integer('quantity')->nullable();
             $table->unsignedBigInteger('supplier_id')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->timestamps();

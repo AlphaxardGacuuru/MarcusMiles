@@ -98,24 +98,8 @@ class DeliveryNoteService extends Service
             $deliveryNote->name = $request->name;
         }
 
-        if ($request->filled("type")) {
-            $deliveryNote->type = $request->type;
-        }
-
-        if ($request->filled("description")) {
-            $deliveryNote->description = $request->description;
-        }
-
-        if ($request->filled("location")) {
-            $deliveryNote->location = $request->location;
-        }
-
-        if ($request->filled("stageId")) {
-            $deliveryNoteStage = new DeliveryNoteStage;
-            $deliveryNoteStage->stage_id = $request->stageId;
-            $deliveryNoteStage->deliveryNote_id = $id;
-            $deliveryNoteStage->created_by = $this->id;
-            $deliveryNoteStage->save();
+        if ($request->filled("receivedBy")) {
+            $deliveryNote->received_by = $request->receivedBy;
         }
 
         $saved = $deliveryNote->save();

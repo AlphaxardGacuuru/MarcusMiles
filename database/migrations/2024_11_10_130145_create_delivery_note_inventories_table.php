@@ -32,7 +32,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->unique("delivery_note_id", "inventory_id");
+            $table->unique(["delivery_note_id", "inventory_id"]);
         });
     }
 

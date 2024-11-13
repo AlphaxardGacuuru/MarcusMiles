@@ -44,6 +44,16 @@ class DeliveryNote extends Model
      * Relationships
      */
 
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, "created_by");
+    }
+
+    public function receivedBy()
+    {
+        return $this->belongsTo(User::class, "received_by");
+    }
+
     public function project()
     {
         return $this->belongsTo(Project::class);

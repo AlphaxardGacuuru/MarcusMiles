@@ -17,6 +17,7 @@ class ConfigurationResource extends JsonResource
         return [
 			"id" => $this->id,
 			"projectTypes" => $this->project_types,
+			"unitTypes" => $this->unit_types,
 		];
     }
 }

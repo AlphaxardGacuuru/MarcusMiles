@@ -41,6 +41,7 @@ class InventoryService extends Service
         $inventory = new Inventory;
         $inventory->project_id = $request->projectId;
         $inventory->good_id = $request->goodId;
+        $inventory->unit = $request->unit;
         $inventory->quantity = $request->quantity;
         $inventory->supplier_id = $request->supplierId;
         $inventory->created_by = $this->id;
@@ -64,6 +65,10 @@ class InventoryService extends Service
 
         if ($request->filled("quantity")) {
             $inventory->quantity = $request->quantity;
+        }
+
+        if ($request->filled("unit")) {
+            $inventory->unit = $request->unit;
         }
 
         if ($request->filled("reduce")) {

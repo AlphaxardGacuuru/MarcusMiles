@@ -21,9 +21,16 @@ return new class extends Migration
                 ->onUpdate("cascade")
                 ->onDelete("cascade");
             $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('received_by')->nullable();
             $table->timestamps();
 
             $table->foreign('created_by')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('received_by')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('cascade')

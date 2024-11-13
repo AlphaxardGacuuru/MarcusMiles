@@ -10,9 +10,8 @@ import CloseSVG from "@/svgs/CloseSVG"
 const index = (props) => {
 	var { id } = useParams()
 
-	const [configuration, setConfiguration] = useState({})
-
 	const [projectType, setProjectType] = useState("")
+	const [unitType, setUnitType] = useState("")
 	const [loading, setLoading] = useState()
 
 	// Get Configuration
@@ -22,9 +21,6 @@ const index = (props) => {
 			name: "Configurations",
 			path: ["configurations"],
 		})
-
-		// Fetch Configuration
-		props.get(`configurations`, setConfiguration)
 	}, [])
 
 	/*
@@ -39,7 +35,28 @@ const index = (props) => {
 				// Show messages
 				props.setMessages([res.data.message])
 				// Fetch Configuration
-				props.get(`configurations`, setConfiguration)
+				props.get(`configurations`, props.setConfiguration)
+			})
+			.catch((err) => {
+				setLoading(false)
+				// Get Errors
+				props.getErrors(err)
+			})
+	}
+
+	/*
+	 * Remove Unit Type
+	 */
+	const removeUnitType = (unitTypeId) => {
+		Axios.put(`/api/configurations/1`, {
+			unitTypeToRemove: unitTypeId,
+		})
+			.then((res) => {
+				setLoading(false)
+				// Show messages
+				props.setMessages([res.data.message])
+				// Fetch Configuration
+				props.get(`configurations`, props.setConfiguration)
 			})
 			.catch((err) => {
 				setLoading(false)
@@ -57,13 +74,14 @@ const index = (props) => {
 
 		Axios.put(`/api/configurations/1`, {
 			projectType: { id: projectType.toLowerCase(), name: projectType },
+			unitType: { id: unitType.toLowerCase(), name: unitType },
 		})
 			.then((res) => {
 				setLoading(false)
 				// Show messages
 				props.setMessages([res.data.message])
 				// Fetch Configuration
-				props.get(`configurations`, setConfiguration)
+				props.get(`configurations`, props.setConfiguration)
 			})
 			.catch((err) => {
 				setLoading(false)
@@ -88,7 +106,7 @@ const index = (props) => {
 						/>
 					</div>
 
-					{configuration.projectTypes?.map((projectType, key) => (
+					{props.configuration.projectTypes?.map((projectType, key) => (
 						<div
 							className="d-flex"
 							key={key}>
@@ -111,6 +129,41 @@ const index = (props) => {
 						</div>
 					))}
 					{/* Project Types End */}
+
+					{/* Unit Types Start */}
+					<label htmlFor="">Unit Types</label>
+					<div className="d-flex">
+						<input
+							name="unitType"
+							placeholder="M&sup2; etc"
+							className="form-control mb-3 me-2"
+							onChange={(e) => setUnitType(e.target.value)}
+						/>
+					</div>
+
+					{props.configuration.unitTypes?.map((unitType, key) => (
+						<div
+							className="d-flex"
+							key={key}>
+							<input
+								name="unitType"
+								placeholder="M&sup2; etc"
+								defaultValue={unitType.name}
+								className="form-control mb-3 me-2"
+								onChange={(e) => setUnitType(e.target.value)}
+								disabled={true}
+							/>
+							{/* Close Icon */}
+							<span
+								className="text-primary"
+								style={{ cursor: "pointer" }}
+								onClick={() => removeUnitType(unitType.id)}>
+								<CloseSVG />
+							</span>
+							{/* Close Icon End */}
+						</div>
+					))}
+					{/* Unit Types End */}
 
 					<div className="d-flex justify-content-end mb-2">
 						<Btn

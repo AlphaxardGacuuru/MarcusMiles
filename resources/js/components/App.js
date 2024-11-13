@@ -197,14 +197,15 @@ function App() {
 		setAdminMenu,
 		page,
 		setPage,
-		
+
 		// Date
 		currentDate,
 		currentYear,
 		currentMonth,
 		months,
 		years,
-		configuration
+		configuration,
+		setConfiguration
 	}
 
 	return (

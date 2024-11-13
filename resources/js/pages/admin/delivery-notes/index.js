@@ -225,9 +225,9 @@ const index = (props) => {
 								<td>{deliveryNote.code}</td>
 								<td>{deliveryNote.projectCode}</td>
 								<td>{deliveryNote.projectName}</td>
-								<td>{deliveryNote.deliveredBy}</td>
+								<td>{deliveryNote.inventories?.at(0)?.supplierName}</td>
 								<td>{deliveryNote.recievedBy}</td>
-								<td>{deliveryNote.approvedBy}</td>
+								<td>{deliveryNote.createdByName}</td>
 								<td>{deliveryNote.createdAt}</td>
 								<td>
 									<div className="d-flex justify-content-center">
@@ -238,7 +238,7 @@ const index = (props) => {
 										/>
 
 										<MyLink
-											linkTo={`/delivery-notes/${deliveryNote.id}/edit`}
+											linkTo={`/documents/delivery-notes/${deliveryNote.id}/edit`}
 											icon={<EditSVG />}
 										/>
 

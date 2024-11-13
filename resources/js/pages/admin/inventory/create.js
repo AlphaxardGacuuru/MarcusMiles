@@ -15,6 +15,7 @@ const create = (props) => {
 	var { id } = useParams()
 
 	const [goodId, setGoodId] = useState()
+	const [unit, setUnit] = useState({})
 	const [quantity, setQuantity] = useState()
 	const [supplierId, setSupplierId] = useState()
 	const [loading, setLoading] = useState()
@@ -45,6 +46,7 @@ const create = (props) => {
 		Axios.post("/api/inventories", {
 			projectId: id,
 			goodId: goodId,
+			unit: unit,
 			quantity: quantity,
 			supplierId: supplierId,
 		})
@@ -85,6 +87,36 @@ const create = (props) => {
 							))}
 					</select>
 					{/* Good End */}
+
+					{/* Unit */}
+					<label htmlFor="name">Unit</label>
+					<div className="d-flex justify-content-between">
+						<input
+							type="number"
+							name="unit"
+							placeholder="1"
+							className="form-control text-capitalize mb-2 me-2"
+							onChange={(e) =>
+								setUnit({ value: e.target.value, unit: unit.unit })
+							}
+						/>
+						<select
+							className="form-control text-capitalize mb-2 me-2"
+							onChange={(e) =>
+								setUnit({ value: unit.value, unit: e.target.value })
+							}>
+							{[{ id: "", name: "Select Unit" }]
+								.concat(props.configuration.unitTypes ?? [])
+								.map((unitOption, key) => (
+									<option
+										key={key}
+										value={unitOption.id}>
+										{unitOption.name}
+									</option>
+								))}
+						</select>
+					</div>
+					{/* Unit End */}
 
 					{/* Quantity */}
 					<label htmlFor="name">Quantity</label>

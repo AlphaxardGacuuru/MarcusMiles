@@ -21,8 +21,14 @@ class ConfigurationFactory extends Factory
             ["id" => "maisonette", "name" => "Maisonette"],
         ];
 
+        $unitTypes = [
+            ["id" => "M&sup2;", "name" => "M & sup2;", ],
+            ["id" => "SqM & sup2;", "name" => "SqM & sup2;", ],
+        ];
+
         return [
             "project_types" => $projectTypes,
+            "unit_types" => $unitTypes,
         ];
     }
 }

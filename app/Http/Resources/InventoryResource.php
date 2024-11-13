@@ -20,10 +20,13 @@ class InventoryResource extends JsonResource
 			"projectName" => $this->project->name,
 			"goodCode" => $this->good->code,
 			"goodName" => $this->good->name,
+			"unit" => $this->unit,
 			"quantity" => $this->quantity,
 			"supplierId" => $this->supplier_id,
 			"supplierName" => $this->supplier?->name,
 			"inDeliveryNote" => $this->deliveryNoteInventory()->exists(),
+			"createdById" => $this->createdBy->id,
+			"createdByName" => $this->createdBy->name,
 			"updatedAt" => $this->updated_at,
 			"createdAt" => $this->created_at,
 		];

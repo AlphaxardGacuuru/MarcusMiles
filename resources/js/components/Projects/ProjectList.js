@@ -73,20 +73,22 @@ const ProjectList = (props) => {
 	}, [])
 
 	useEffect(() => {
-		// Fetch Stages
-		props.get(
-			`stages?
-			type=project&
-			name=${props.nameQuery}&
-			projectType=${props.typeQuery}&
-			location=${props.locationQuery}&
-			clientId=${props.clientIdQuery}&
-			startMonth=${props.startMonthQuery}&
-			endMonth=${props.endMonthQuery}&
-			startYear=${props.startYearQuery}&
-			endYear=${props.endYearQuery}`,
-			props.setStages
-		)
+		if (location.pathname.match("/projects")) {
+			// Fetch Stages
+			props.get(
+				`stages?
+				type=project&
+				name=${props.nameQuery}&
+				projectType=${props.typeQuery}&
+				location=${props.locationQuery}&
+				clientId=${props.clientIdQuery}&
+				startMonth=${props.startMonthQuery}&
+				endMonth=${props.endMonthQuery}&
+				startYear=${props.startYearQuery}&
+				endYear=${props.endYearQuery}`,
+				props.setStages
+			)
+		}
 	}, [
 		props.nameQuery,
 		props.typeQuery,

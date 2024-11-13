@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min"
 
 import MyLink from "@/components/Core/MyLink"
 import Btn from "@/components/Core/Btn"
+import Img from "@/components/Core/Img"
 
 import PlusSVG from "@/svgs/PlusSVG"
 import PrintSVG from "@/svgs/PrintSVG"
@@ -14,7 +15,7 @@ const form = (props) => {
 
 	useEffect(() => {
 		// Set page
-		props.setPage({ name: "View Invoice", path: ["projects", "delivery note"] })
+		props.setPage({ name: "View Invoice", path: ["delivery-notes", "view"] })
 		props.get(`delivery-notes/${id}`, setDeliveryNote)
 	}, [])
 
@@ -23,13 +24,12 @@ const form = (props) => {
 	 */
 	const printInvoice = () => {
 		var contentToPrint = document.getElementById("contentToPrint").innerHTML
-		var originalBody = document.body.innerHTML
 
 		document.body.innerHTML = contentToPrint
-
+		// Print
 		window.print()
-
-		document.body.innerHTML = originalBody
+		// Reload
+		window.location.reload()
 	}
 
 	return (
@@ -51,7 +51,14 @@ const form = (props) => {
 				<div className="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div className="card bg-white p-5">
 						<div className="border-0 d-flex justify-content-between">
-							<h2 className="text-dark mb-1">Marcus Miles</h2>
+							<div
+								className=""
+								style={{ width: "5em" }}>
+								<Img
+									src="/storage/img/favicon.png"
+									style={{ width: "100%", height: "auto" }}
+								/>
+							</div>
 
 							<div>
 								<h2 className="mb-0">DELIVERY NOTE</h2>
@@ -93,12 +100,12 @@ const form = (props) => {
 									<tbody>
 										{deliveryNote.inventories?.map((inventory, key) => (
 											<tr key={key}>
-												<td>{inventory.goodCode}</td>
+												<td>{key + 1}</td>
 												<td></td>
-												<td>{inventory.description}</td>
+												<td>{inventory.goodName}</td>
 												<td></td>
 												<td>{inventory.quantity}</td>
-												<td></td>
+												<td>{inventory.createdByName}</td>
 											</tr>
 										))}
 									</tbody>
@@ -107,10 +114,16 @@ const form = (props) => {
 						</div>
 						<div className="card-footer d-flex justify-content-start bg-white border-0">
 							<div className="text-start">
-								<h6 className="text-dark mb-1">Delivered By</h6>
-								<h6 className="text-dark mb-1">Received By (Clerk of Works)</h6>
 								<h6 className="text-dark mb-1">
-									Approved By (Construction Manager)
+									Delivered By: {deliveryNote.inventories?.at(0)?.supplierName}
+								</h6>
+								<h6 className="text-dark mb-1">
+									Received By: {deliveryNote.receivedByName}{" "}
+									<small className="text-muted">(Clerk of Works)</small>
+								</h6>
+								<h6 className="text-dark mb-1">
+									Approved By: {deliveryNote.createdByName}{" "}
+									<small className="text-muted">(Construction Manager)</small>
 								</h6>
 							</div>
 						</div>

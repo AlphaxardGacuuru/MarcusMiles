@@ -18,6 +18,7 @@ class Configuration extends Model
      */
     protected $casts = [
         "project_types" => "array",
+        "unit_types" => "array",
         'updated_at' => 'datetime:d M Y',
         'created_at' => 'datetime:d M Y',
     ];

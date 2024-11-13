@@ -12,21 +12,23 @@ import BackSVG from "@/svgs/BackSVG"
 const edit = (props) => {
 	var { id } = useParams()
 
-	const [creditNote, setCreditNote] = useState({})
+	const [deliveryNote, setDeliveryNote] = useState({})
+	const [staff, setStaff] = useState([])
 
-	const [description, setDescription] = useState()
-	const [amount, setAmount] = useState()
+	const [staffId, setStaffId] = useState()
 	const [loading, setLoading] = useState()
 
 	useEffect(() => {
 		// Set page
 		props.setPage({
-			name: "Edit Credit Note",
-			path: ["credit-notes", "edit"],
+			name: "Edit Delivery Note",
+			path: ["delivery-notes", "edit"],
 		})
 
-		// Fetch Credit Note
-		props.get(`/credit-notes/${id}`, setCreditNote)
+		// Fetch Delivery Note
+		props.get(`/delivery-notes/${id}`, setDeliveryNote)
+		// Fetch Staff Note
+		props.get(`/staff`, setStaff)
 	}, [])
 
 	/*
@@ -36,17 +38,15 @@ const edit = (props) => {
 		e.preventDefault()
 
 		setLoading(true)
-		Axios.put(`/api/credit-notes/${id}`, {
-			invoiceId: id,
-			description: description,
-			amount: amount,
+		Axios.put(`/api/delivery-notes/${id}`, {
+			receivedBy: staffId,
 		})
 			.then((res) => {
 				setLoading(false)
 				// Show messages
 				props.setMessages([res.data.message])
-				// Fetch Credit Note
-				props.get(`/credit-notes/${id}`, setCreditNote)
+				// Fetch Delivery Note
+				props.get(`/delivery-notes/${id}`, setDeliveryNote)
 			})
 			.catch((err) => {
 				setLoading(false)
@@ -60,41 +60,36 @@ const edit = (props) => {
 			<div className="col-sm-4"></div>
 			<div className="col-sm-4">
 				<form onSubmit={onSubmit}>
-					{/* Amount */}
-					<label htmlFor="">Amount</label>
-					<input
-						type="number"
-						placeholder="20000"
-						defaultValue={creditNote.amount?.replace(/,/g, "")}
+					{/* Received By */}
+					<label htmlFor="">Received By</label>
+					<select
 						className="form-control mb-2"
-						onChange={(e) => setAmount(e.target.value)}
-						required={true}
-					/>
-					{/* Amount End */}
-
-					{/* Description */}
-					<label htmlFor="">Description</label>
-					<textarea
-						className="form-control mb-2"
-						placeholder="For Damages"
-						defaultValue={creditNote.description}
-						rows="5"
-						onChange={(e) => setDescription(e.target.value)}
-						required={true}></textarea>
-					{/* Description End */}
+						onChange={(e) => setStaffId(e.target.value)}>
+						{[{ id: "", name: "Select Receiver" }]
+							.concat(staff)
+							.map((staff, key) => (
+								<option
+									key={key}
+									value={staff.id}
+									selected={staff.id == deliveryNote.receivedById}>
+									{staff.name}
+								</option>
+							))}
+					</select>
+					{/* Received By End */}
 
 					<div className="d-flex justify-content-end mb-2">
 						<Btn
-							text="update credit note"
+							text="update delivery note"
 							loading={loading}
 						/>
 					</div>
 
 					<div className="d-flex justify-content-center mb-5">
 						<MyLink
-							linkTo={`/credit-notes`}
+							linkTo={`/documents/delivery-notes`}
 							icon={<BackSVG />}
-							text="back to credit notes"
+							text="back to delivery notes"
 						/>
 					</div>
 					<div className="col-sm-4"></div>

@@ -91,7 +91,7 @@ const InventoryList = (props) => {
 				setTimeout(
 					() =>
 						history.push(
-							`/admin/documents/delivery-notes/${res.data.data.id}/view`
+							`/admin/documents/delivery-notes/${res.data.data.id}/edit`
 						),
 					500
 				)
@@ -173,14 +173,14 @@ const InventoryList = (props) => {
 							<tr>
 								<th colSpan="5"></th>
 								<th
-									colSpan="2"
+									colSpan="3"
 									className="text-end">
-									<Btn
+									{inventoryIds.length > 0 && (<Btn
 										icon={<PlusSVG />}
 										text="generate delivery note"
 										onClick={createDeliveryNotes}
 										loading={loading}
-									/>
+									/>)}
 								</th>
 								<th className="text-end">
 									<MyLink
@@ -212,6 +212,7 @@ const InventoryList = (props) => {
 							</th>
 							<th>#</th>
 							<th>Name</th>
+							<th>Unit</th>
 							<th>Quantity</th>
 							<th>Project</th>
 							<th>Supplier</th>
@@ -235,6 +236,7 @@ const InventoryList = (props) => {
 								</td>
 								<td>{props.iterator(key, props.inventories)}</td>
 								<td>{inventory.goodName}</td>
+								<td>{inventory.unit.value} {inventory.unit.unit}</td>
 								<td>{inventory.quantity}</td>
 								<td>{inventory.projectName}</td>
 								<td>{inventory.supplierName}</td>
