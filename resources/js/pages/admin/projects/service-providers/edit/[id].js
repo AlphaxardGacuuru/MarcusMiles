@@ -189,14 +189,14 @@ const edit = (props) => {
 				<div className="col-sm-8">
 					<div className="d-flex justify-content-end mb-2">
 						<Btn
-							text="add service provider"
+							text="update service provider"
 							loading={loading}
 						/>
 					</div>
 
 					<div className="d-flex justify-content-center mb-5">
 						<MyLink
-							linkTo={`/erp/projects/${id}/view`}
+							linkTo={`/erp/projects/${projectServiceProvider.projectId}/view`}
 							icon={<BackSVG />}
 							text="back to service provider"
 						/>

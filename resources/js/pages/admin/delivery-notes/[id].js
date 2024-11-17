@@ -15,14 +15,14 @@ const form = (props) => {
 
 	useEffect(() => {
 		// Set page
-		props.setPage({ name: "View Invoice", path: ["delivery-notes", "view"] })
+		props.setPage({ name: "View Delivery Note", path: ["delivery-notes", "view"] })
 		props.get(`delivery-notes/${id}`, setDeliveryNote)
 	}, [])
 
 	/*
-	 * Print Invoice
+	 * Print Delivery Note
 	 */
-	const printInvoice = () => {
+	const printDeliveryNote = () => {
 		var contentToPrint = document.getElementById("contentToPrint").innerHTML
 
 		document.body.innerHTML = contentToPrint
@@ -40,7 +40,7 @@ const form = (props) => {
 					className="me-5"
 					icon={<PrintSVG />}
 					text="print"
-					onClick={printInvoice}
+					onClick={printDeliveryNote}
 				/>
 			</div>
 			{/*Create Link End*/}

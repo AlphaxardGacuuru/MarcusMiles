@@ -97,27 +97,32 @@ const create = (props) => {
 					/>
 					{/* Total Cost */}
 
-					{/* Starts At */}
-					<label htmlFor="">Starts At</label>
-					<input
-						type="date"
-						placeholder="A1"
-						className="form-control mb-2 me-2"
-						onChange={(e) => setStartAt(e.target.value)}
-						required={true}
-					/>
-					{/* Starts At */}
-
-					{/* Ends At */}
-					<label htmlFor="">Ends At</label>
-					<input
-						type="date"
-						placeholder="A1"
-						className="form-control mb-2 me-2"
-						onChange={(e) => setEndsAt(e.target.value)}
-						required={true}
-					/>
-					{/* Ends At */}
+					<div className="d-flex justify-content-between mb-2">
+						<div>
+							{/* Starts At */}
+							<label htmlFor="">Starts At</label>
+							<input
+								type="date"
+								placeholder="A1"
+								className="form-control mb-2 me-2"
+								onChange={(e) => setStartAt(e.target.value)}
+								required={true}
+							/>
+							{/* Starts At */}
+						</div>
+						<div>
+							{/* Ends At */}
+							<label htmlFor="">Ends At</label>
+							<input
+								type="date"
+								placeholder="A1"
+								className="form-control mb-2 me-2"
+								onChange={(e) => setEndsAt(e.target.value)}
+								required={true}
+							/>
+							{/* Ends At */}
+						</div>
+					</div>
 
 					<div className="d-flex justify-content-end mb-2">
 						<Btn

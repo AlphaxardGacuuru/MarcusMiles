@@ -4,7 +4,6 @@ namespace App\Http\Services;
 
 use App\Http\Resources\ProjectServiceProviderResource;
 use App\Models\ProjectServiceProvider;
-use App\Models\User;
 
 class ProjectServiceProviderService extends Service
 {
@@ -14,9 +13,15 @@ class ProjectServiceProviderService extends Service
     public function index($request)
     {
         if ($request->filled("idAndName")) {
-            $projectServiceProviders = ProjectServiceProvider::select("id", "name")
-                ->where("account_type", "service provider")
-                ->orderBy("id", "DESC")
+            $projectServiceProviders = ProjectServiceProvider::join('projects', 'project_service_providers.project_id', '=', 'projects.id')
+                ->join('users', 'project_service_providers.service_provider_id', '=', 'users.id')
+                ->select(
+                    'project_service_providers.id',
+                    'users.name as serviceProviderName',
+                    'projects.name as projectName',
+					'project_id as projectId'
+                )
+                ->orderBy('project_service_providers.id', 'DESC')
                 ->get();
 
             return response([
@@ -74,33 +79,33 @@ class ProjectServiceProviderService extends Service
     {
         $projectServiceProvider = ProjectServiceProvider::find($id);
 
-		if ($request->filled("labourRate")) {
-			$projectServiceProvider->labour_rate = $request->labourRate;
-		}
-        
-		if ($request->filled("quantityOfWork")) {
-			$projectServiceProvider->quantity_of_work = $request->quantityOfWork;
-		}
-		
-		if ($request->filled("totalAmount")) {
-			$projectServiceProvider->total_amount = $request->totalAmount;
-		}
-        
-		if ($request->filled("service")) {
-			$projectServiceProvider->service = $request->service;
-		}
-		
-		if ($request->filled("status")) {
-			$projectServiceProvider->status = $request->status;
-		}
-        
-		if ($request->filled("startDate")) {
-			$projectServiceProvider->start_date = $request->startDate;
-		}
-        
-		if ($request->filled("endDate")) {
-			$projectServiceProvider->end_date = $request->endDate;
-		}
+        if ($request->filled("labourRate")) {
+            $projectServiceProvider->labour_rate = $request->labourRate;
+        }
+
+        if ($request->filled("quantityOfWork")) {
+            $projectServiceProvider->quantity_of_work = $request->quantityOfWork;
+        }
+
+        if ($request->filled("totalAmount")) {
+            $projectServiceProvider->total_amount = $request->totalAmount;
+        }
+
+        if ($request->filled("service")) {
+            $projectServiceProvider->service = $request->service;
+        }
+
+        if ($request->filled("status")) {
+            $projectServiceProvider->status = $request->status;
+        }
+
+        if ($request->filled("startDate")) {
+            $projectServiceProvider->start_date = $request->startDate;
+        }
+
+        if ($request->filled("endDate")) {
+            $projectServiceProvider->end_date = $request->endDate;
+        }
 
         $saved = $projectServiceProvider->save();
 

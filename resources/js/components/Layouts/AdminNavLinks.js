@@ -25,6 +25,7 @@ import InventorySVG from "@/svgs/InventorySVG"
 import ServiceProviderSVG from "@/svgs/ServiceProviderSVG"
 import SettingsSVG from "@/svgs/SettingsSVG"
 import DocumentsSVG from "@/svgs/DocumentsSVG"
+import PaperSVG from "@/svgs/PaperSVG"
 
 const AdminNavLinks = (props) => {
 	const location = useLocation()
@@ -215,14 +216,30 @@ const AdminNavLinks = (props) => {
 						<li className="nav-item">
 							<Link
 								to={`/admin/documents/delivery-notes`}
-								className={`nav-link ${active("/admin/documents/delivery-notes")}`}>
+								className={`nav-link ${active(
+									"/admin/documents/delivery-notes"
+								)}`}>
 								<div className="nav-link-icon">
-									<PersonSVG />
+									<PaperSVG />
 								</div>
 								<div className="nav-link-text">Delivery Notes</div>
 							</Link>
 						</li>
 						{/* Delivery Notes End */}
+						{/* Wage Sheets Start */}
+						<li className="nav-item">
+							<Link
+								to={`/admin/documents/wage-sheets`}
+								className={`nav-link ${active(
+									"/admin/documents/wage-sheets"
+								)}`}>
+								<div className="nav-link-icon">
+									<PaperSVG />
+								</div>
+								<div className="nav-link-text">Wage Sheets</div>
+							</Link>
+						</li>
+						{/* Wage Sheets End */}
 					</ol>
 				</div>
 				{/* Collapse End */}

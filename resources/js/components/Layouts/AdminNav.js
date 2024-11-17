@@ -143,7 +143,7 @@ const AdminMenu = (props) => {
 										{/* <!-- Logo Area  --> */}
 										<div className="logo-area mb-2">
 											<Link
-												to="/admin"
+												to="/admin/dashboard"
 												className="text-white">
 												<Img
 													src="/storage/img/logo.svg"

@@ -56,6 +56,11 @@ import AdminDeliveryNotes from "@/pages/admin/delivery-notes/index"
 import AdminDeliveryNoteView from "@/pages/admin/delivery-notes/[id]"
 import AdminDeliveryNoteEdit from "@/pages/admin/delivery-notes/edit/[id]"
 
+import AdminWageSheets from "@/pages/admin/wage-sheets/index"
+import AdminWageSheetCreate from "@/pages/admin/wage-sheets/create"
+import AdminWageSheetView from "@/pages/admin/wage-sheets/[id]"
+import AdminWageSheetEdit from "@/pages/admin/wage-sheets/edit/[id]"
+
 import AdminInvoices from "@/pages/admin/invoices/index"
 import AdminInvoiceCreate from "@/pages/admin/invoices/create"
 import AdminInvoiceView from "@/pages/admin/invoices/[id]"
@@ -236,6 +241,22 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		{
 			path: "/admin/documents/delivery-notes/:id/edit",
 			component: <AdminDeliveryNoteEdit {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/wage-sheets",
+			component: <AdminWageSheets {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/wage-sheets/create",
+			component: <AdminWageSheetCreate {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/wage-sheets/:id/view",
+			component: <AdminWageSheetView {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/wage-sheets/:id/edit",
+			component: <AdminWageSheetEdit {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/invoices",

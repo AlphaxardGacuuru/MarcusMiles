@@ -17,6 +17,8 @@ class WorkPlan extends Model
      * @var array<string, string>
      */
     protected $casts = [
+        'starts_at' => 'datetime:d M Y',
+        'ends_at' => 'datetime:d M Y',
         'updated_at' => 'datetime:d M Y',
         'created_at' => 'datetime:d M Y',
     ];

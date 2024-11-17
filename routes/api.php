@@ -31,6 +31,7 @@ use App\Http\Controllers\SupplierGoodController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WageSheetController;
 use App\Http\Controllers\WaterReadingController;
 use App\Http\Controllers\WorkPlanController;
 use App\Http\Controllers\WorkPlanStepController;
@@ -71,6 +72,7 @@ Route::apiResources([
 	"issue-comment-likes" => IssueCommentLikeController::class,
 	"issue-stages" => IssueStageController::class,
 	"delivery-notes" => DeliveryNoteController::class,
+	"wage-sheets" => WageSheetController::class,
 
     "properties" => PropertyController::class,
     "units" => UnitController::class,
