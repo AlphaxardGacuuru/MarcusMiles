@@ -77,22 +77,46 @@ const form = (props) => {
 									<h5 className="mb-1"></h5>
 								</div>
 								<div className="text-end">
-									<h5 className="text-muted">Form No: {wageSheet.code}</h5>
-									<h5 className="text-muted">
-										Project No: {wageSheet.projectCode}
+									<h5>
+										Form No:{" "}
+										<span className="text-dark fw-normal">
+											{wageSheet.code}
+										</span>
 									</h5>
-									<h5 className="text-muted">
-										Issue Date: {wageSheet.createdAt}
+									<h5>
+										Project No:{" "}
+										<span className="text-dark fw-normal">
+											{wageSheet.projectCode}
+										</span>
 									</h5>
-									<h5 className="text-muted">
-										Week: {wageSheet.startsAt} - {wageSheet.endsAt}
+									<h5>
+										Issue Date:{" "}
+										<span className="text-dark fw-normal">
+											{wageSheet.createdAt}
+										</span>
+									</h5>
+									<h5>
+										Week:{" "}
+										<span className="text-dark fw-normal">
+											{wageSheet.startsAt} - {wageSheet.endsAt}
+										</span>
 									</h5>
 								</div>
 							</div>
 
 							<hr />
-							<h5 className="mb-1">Project: {wageSheet.projectName}</h5>
-							<h5>Client: {wageSheet.clientName}</h5>
+							<h5 className="mb-1">
+								Project:{" "}
+								<span className="text-dark fw-normal">
+									{wageSheet.projectName}
+								</span>
+							</h5>
+							<h5>
+								Client:{" "}
+								<span className="text-dark fw-normal">
+									{wageSheet.clientName}
+								</span>
+							</h5>
 							<hr />
 
 							<div className="table-responsive-sm">
@@ -183,7 +207,10 @@ const form = (props) => {
 						<div className="card-footer d-flex justify-content-between bg-white border-0">
 							<div className="text-start">
 								<h6 className="text-dark mb-1">
-									TOTAL LABOR FORCE: {wageSheet.totalLabourForce}
+									TOTAL LABOR FORCE:{" "}
+									<span className="text-dark fw-normal">
+										{wageSheet.totalLabourForce}
+									</span>
 								</h6>
 								<h6 className="text-dark mb-1">SUSPENDED LABOR:</h6>
 								<h6 className="text-dark mb-1">TERMINATED LABOR:</h6>
@@ -192,12 +219,17 @@ const form = (props) => {
 							</div>
 							<div className="text-start">
 								<h6 className="text-dark mb-1">
-									TOTAL WAGES: KES {totalWages}
+									TOTAL WAGES: KES{" "}
+									<span className="text-dark fw-normal">{totalWages}</span>
 								</h6>
 								<h6 className="text-dark mb-1">VALUE OF DAMAGED WORK:</h6>
-								<h6 className="text-dark mb-1">WAGES PAID: KES {totalWages}</h6>
 								<h6 className="text-dark mb-1">
-									TOTAL AMOUNT PAID: KES {totalWages}
+									WAGES PAID: KES{" "}
+									<span className="text-dark fw-normal">{totalWages}</span>
+								</h6>
+								<h6 className="text-dark mb-1">
+									TOTAL AMOUNT PAID: KES{" "}
+									<span className="text-dark fw-normal">{totalWages}</span>
 								</h6>
 							</div>
 						</div>
@@ -209,13 +241,24 @@ const form = (props) => {
 						<div className="card-footer d-flex justify-content-between bg-white border-0">
 							<div className="text-start">
 								<h6 className="text-dark mb-1">
-									Prepared by: {wageSheet.createdByName}
+									Prepared by:{" "}
+									<span className="text-dark fw-normal">
+										{wageSheet.createdByName}
+									</span>
 								</h6>
-								<h6 className="text-dark mb-1">Paid by: {wageSheet.paidByName}</h6>
+								<h6 className="text-dark mb-1">
+									Paid by:{" "}
+									<span className="text-dark fw-normal">
+										{wageSheet.paidByName}
+									</span>
+								</h6>
 							</div>
 							<div className="text-start">
 								<h6 className="text-dark mb-1">
-									Approved by: {wageSheet.approvedByName}
+									Approved by:{" "}
+									<span className="text-dark fw-normal">
+										{wageSheet.approvedByName}
+									</span>
 								</h6>
 							</div>
 						</div>

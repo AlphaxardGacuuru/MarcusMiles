@@ -15,7 +15,10 @@ const form = (props) => {
 
 	useEffect(() => {
 		// Set page
-		props.setPage({ name: "View Delivery Note", path: ["delivery-notes", "view"] })
+		props.setPage({
+			name: "View Delivery Note",
+			path: ["delivery-notes", "view"],
+		})
 		props.get(`delivery-notes/${id}`, setDeliveryNote)
 	}, [])
 
@@ -71,18 +74,34 @@ const form = (props) => {
 									<h5 className="mb-1"></h5>
 								</div>
 								<div className="text-end">
-									<h5 className="text-muted">Form No: {deliveryNote.code}</h5>
-									<h5 className="text-muted">
-										Project No: {deliveryNote.projectCode}
+									<h5>
+										Form No:{" "}
+										<span className="text-dark fw-normal">
+											{deliveryNote.code}
+										</span>
 									</h5>
-									<h5 className="text-muted">
-										Issue Date: {deliveryNote.createdAt}
+									<h5>
+										Project No:{" "}
+										<span className="text-dark fw-normal">
+											{deliveryNote.projectCode}
+										</span>
+									</h5>
+									<h5>
+										Issue Date:{" "}
+										<span className="text-dark fw-normal">
+											{deliveryNote.createdAt}
+										</span>
 									</h5>
 								</div>
 							</div>
 
 							<hr />
-							<h5>Project: {deliveryNote.projectName}</h5>
+							<h5>
+								Project:{" "}
+								<span className="text-dark fw-normal">
+									{deliveryNote.projectName}
+								</span>
+							</h5>
 							<hr />
 
 							<div className="table-responsive-sm">
@@ -115,14 +134,23 @@ const form = (props) => {
 						<div className="card-footer d-flex justify-content-start bg-white border-0">
 							<div className="text-start">
 								<h6 className="text-dark mb-1">
-									Delivered By: {deliveryNote.inventories?.at(0)?.supplierName}
+									Delivered By:{" "}
+									<span className="text-dark fw-normal">
+										{deliveryNote.inventories?.at(0)?.supplierName}
+									</span>
 								</h6>
 								<h6 className="text-dark mb-1">
-									Received By: {deliveryNote.receivedByName}{" "}
+									Received By:{" "}
+									<span className="text-dark fw-normal">
+										{deliveryNote.receivedByName}
+									</span>{" "}
 									<small className="text-muted">(Clerk of Works)</small>
 								</h6>
 								<h6 className="text-dark mb-1">
-									Approved By: {deliveryNote.createdByName}{" "}
+									Approved By:{" "}
+									<span className="text-dark fw-normal">
+										{deliveryNote.createdByName}
+									</span>{" "}
 									<small className="text-muted">(Construction Manager)</small>
 								</h6>
 							</div>
