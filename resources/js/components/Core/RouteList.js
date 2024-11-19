@@ -61,6 +61,11 @@ import AdminWageSheetCreate from "@/pages/admin/wage-sheets/create"
 import AdminWageSheetView from "@/pages/admin/wage-sheets/[id]"
 import AdminWageSheetEdit from "@/pages/admin/wage-sheets/edit/[id]"
 
+import AdminStatusReports from "@/pages/admin/status-reports/index"
+import AdminStatusReportCreate from "@/pages/admin/status-reports/create"
+import AdminStatusReportView from "@/pages/admin/status-reports/[id]"
+import AdminStatusReportEdit from "@/pages/admin/status-reports/edit/[id]"
+
 import AdminInvoices from "@/pages/admin/invoices/index"
 import AdminInvoiceCreate from "@/pages/admin/invoices/create"
 import AdminInvoiceView from "@/pages/admin/invoices/[id]"
@@ -257,6 +262,22 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		{
 			path: "/admin/documents/wage-sheets/:id/edit",
 			component: <AdminWageSheetEdit {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/status-reports",
+			component: <AdminStatusReports {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/status-reports/create",
+			component: <AdminStatusReportCreate {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/status-reports/:id/view",
+			component: <AdminStatusReportView {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/status-reports/:id/edit",
+			component: <AdminStatusReportEdit {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/invoices",

@@ -50,7 +50,7 @@ const create = (props) => {
 			setProjectServiceProviders
 		)
 		// Fetch Staff
-		props.get("staff", setStaff)
+		props.get("staff?idAndName=true", setStaff)
 	}, [])
 
 	/*

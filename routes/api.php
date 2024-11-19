@@ -26,6 +26,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StageController;
+use App\Http\Controllers\StatusReportController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SupplierGoodController;
 use App\Http\Controllers\TenantController;
@@ -73,6 +74,7 @@ Route::apiResources([
 	"issue-stages" => IssueStageController::class,
 	"delivery-notes" => DeliveryNoteController::class,
 	"wage-sheets" => WageSheetController::class,
+	"status-reports" => StatusReportController::class,
 
     "properties" => PropertyController::class,
     "units" => UnitController::class,
