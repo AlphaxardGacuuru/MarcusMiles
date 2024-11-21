@@ -129,7 +129,7 @@ const edit = (props) => {
 
 					<div className="d-flex justify-content-center mb-5">
 						<MyLink
-							linkTo={`/documents/practical-completion-certificate`}
+							linkTo={`/documents/practical-completion-certificates`}
 							icon={<BackSVG />}
 							text="back to practical completion certificates"
 						/>

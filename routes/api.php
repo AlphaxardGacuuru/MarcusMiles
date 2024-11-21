@@ -25,6 +25,7 @@ use App\Http\Controllers\ProjectServiceProviderController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceProviderController;
+use App\Http\Controllers\SiteVisitReportController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StageController;
 use App\Http\Controllers\StatusReportController;
@@ -77,6 +78,7 @@ Route::apiResources([
 	"wage-sheets" => WageSheetController::class,
 	"status-reports" => StatusReportController::class,
 	"practical-completion-certificates" => PracticalCompletionCertificateController::class,
+	"site-visit-reports" => SiteVisitReportController::class,
 
     "properties" => PropertyController::class,
     "units" => UnitController::class,
