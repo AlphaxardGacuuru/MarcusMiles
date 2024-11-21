@@ -66,6 +66,11 @@ import AdminStatusReportCreate from "@/pages/admin/status-reports/create"
 import AdminStatusReportView from "@/pages/admin/status-reports/[id]"
 import AdminStatusReportEdit from "@/pages/admin/status-reports/edit/[id]"
 
+import AdminPracticalCompletionCertificates from "@/pages/admin/practical-completion-certificates/index"
+import AdminPracticalCompletionCertificateCreate from "@/pages/admin/practical-completion-certificates/create"
+import AdminPracticalCompletionCertificateView from "@/pages/admin/practical-completion-certificates/[id]"
+import AdminPracticalCompletionCertificateEdit from "@/pages/admin/practical-completion-certificates/edit/[id]"
+
 import AdminInvoices from "@/pages/admin/invoices/index"
 import AdminInvoiceCreate from "@/pages/admin/invoices/create"
 import AdminInvoiceView from "@/pages/admin/invoices/[id]"
@@ -278,6 +283,22 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		{
 			path: "/admin/documents/status-reports/:id/edit",
 			component: <AdminStatusReportEdit {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/practical-completion-certificates",
+			component: <AdminPracticalCompletionCertificates {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/practical-completion-certificates/create",
+			component: <AdminPracticalCompletionCertificateCreate {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/practical-completion-certificates/:id/view",
+			component: <AdminPracticalCompletionCertificateView {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/practical-completion-certificates/:id/edit",
+			component: <AdminPracticalCompletionCertificateEdit {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/invoices",

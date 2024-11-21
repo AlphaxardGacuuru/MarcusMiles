@@ -163,6 +163,7 @@ return array(
     'App\\Models\\KopokopoTransfer' => $baseDir . '/app/Models/KopokopoTransfer.php',
     'App\\Models\\MPESATransaction' => $baseDir . '/app/Models/MPESATransaction.php',
     'App\\Models\\Payment' => $baseDir . '/app/Models/Payment.php',
+    'App\\Models\\PracticalCompletionCertificate' => $baseDir . '/app/Models/PracticalCompletionCertificate.php',
     'App\\Models\\Project' => $baseDir . '/app/Models/Project.php',
     'App\\Models\\ProjectServiceProvider' => $baseDir . '/app/Models/ProjectServiceProvider.php',
     'App\\Models\\ProjectStage' => $baseDir . '/app/Models/ProjectStage.php',

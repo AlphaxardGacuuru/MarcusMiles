@@ -19,6 +19,7 @@ use App\Http\Controllers\KopokopoTransferController;
 use App\Http\Controllers\MPESATransactionController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PracticalCompletionCertificateController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectServiceProviderController;
 use App\Http\Controllers\PropertyController;
@@ -75,6 +76,7 @@ Route::apiResources([
 	"delivery-notes" => DeliveryNoteController::class,
 	"wage-sheets" => WageSheetController::class,
 	"status-reports" => StatusReportController::class,
+	"practical-completion-certificates" => PracticalCompletionCertificateController::class,
 
     "properties" => PropertyController::class,
     "units" => UnitController::class,

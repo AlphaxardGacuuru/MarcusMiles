@@ -837,6 +837,7 @@ class ComposerStaticInit26a76e23346db587f8b13bb985b28a0f
         'App\\Models\\KopokopoTransfer' => __DIR__ . '/../..' . '/app/Models/KopokopoTransfer.php',
         'App\\Models\\MPESATransaction' => __DIR__ . '/../..' . '/app/Models/MPESATransaction.php',
         'App\\Models\\Payment' => __DIR__ . '/../..' . '/app/Models/Payment.php',
+        'App\\Models\\PracticalCompletionCertificate' => __DIR__ . '/../..' . '/app/Models/PracticalCompletionCertificate.php',
         'App\\Models\\Project' => __DIR__ . '/../..' . '/app/Models/Project.php',
         'App\\Models\\ProjectServiceProvider' => __DIR__ . '/../..' . '/app/Models/ProjectServiceProvider.php',
         'App\\Models\\ProjectStage' => __DIR__ . '/../..' . '/app/Models/ProjectStage.php',
