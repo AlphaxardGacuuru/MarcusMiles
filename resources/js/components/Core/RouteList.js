@@ -76,6 +76,11 @@ import AdminSiteVisitReportCreate from "@/pages/admin/site-visit-reports/create"
 import AdminSiteVisitReportView from "@/pages/admin/site-visit-reports/[id]"
 import AdminSiteVisitReportEdit from "@/pages/admin/site-visit-reports/edit/[id]"
 
+import AdminRequisitions from "@/pages/admin/requisitions/index"
+import AdminRequisitionCreate from "@/pages/admin/requisitions/create"
+import AdminRequisitionView from "@/pages/admin/requisitions/[id]"
+import AdminRequisitionEdit from "@/pages/admin/requisitions/edit/[id]"
+
 import AdminInvoices from "@/pages/admin/invoices/index"
 import AdminInvoiceCreate from "@/pages/admin/invoices/create"
 import AdminInvoiceView from "@/pages/admin/invoices/[id]"
@@ -313,9 +318,7 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		},
 		{
 			path: "/admin/documents/site-visit-reports/create",
-			component: (
-				<AdminSiteVisitReportCreate {...GLOBAL_STATE} />
-			),
+			component: <AdminSiteVisitReportCreate {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/documents/site-visit-reports/:id/view",
@@ -324,6 +327,22 @@ const RouteList = ({ GLOBAL_STATE }) => {
 		{
 			path: "/admin/documents/site-visit-reports/:id/edit",
 			component: <AdminSiteVisitReportEdit {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/requisitions",
+			component: <AdminRequisitions {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/requisitions/create",
+			component: <AdminRequisitionCreate {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/requisitions/:id/view",
+			component: <AdminRequisitionView {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/documents/requisitions/:id/edit",
+			component: <AdminRequisitionEdit {...GLOBAL_STATE} />,
 		},
 		{
 			path: "/admin/invoices",

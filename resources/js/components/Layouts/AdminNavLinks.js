@@ -280,12 +280,24 @@ const AdminNavLinks = (props) => {
 								<div className="nav-link-icon">
 									<PaperSVG />
 								</div>
-								<div className="nav-link-text">
-									Site Visit Reports
-								</div>
+								<div className="nav-link-text">Site Visit Reports</div>
 							</Link>
 						</li>
 						{/* Site Visit Reports End */}
+						{/* Requisitions Start */}
+						<li className="nav-item">
+							<Link
+								to={`/admin/documents/requisitions`}
+								className={`nav-link ${active(
+									"/admin/documents/requisitions"
+								)}`}>
+								<div className="nav-link-icon">
+									<PaperSVG />
+								</div>
+								<div className="nav-link-text">Requisitions</div>
+							</Link>
+						</li>
+						{/* Requisitions End */}
 					</ol>
 				</div>
 				{/* Collapse End */}

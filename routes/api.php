@@ -23,6 +23,7 @@ use App\Http\Controllers\PracticalCompletionCertificateController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectServiceProviderController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\RequisitionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\SiteVisitReportController;
@@ -79,6 +80,7 @@ Route::apiResources([
 	"status-reports" => StatusReportController::class,
 	"practical-completion-certificates" => PracticalCompletionCertificateController::class,
 	"site-visit-reports" => SiteVisitReportController::class,
+	"requisitions" => RequisitionController::class,
 
     "properties" => PropertyController::class,
     "units" => UnitController::class,

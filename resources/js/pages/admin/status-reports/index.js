@@ -209,7 +209,7 @@ const index = (props) => {
 				<table className="table table-hover">
 					<thead>
 						<tr>
-							<th colSpan="10"></th>
+							<th colSpan="6"></th>
 							<th className="text-end">
 								<div className="d-flex justify-content-end">
 									<MyLink
@@ -225,10 +225,6 @@ const index = (props) => {
 							<th>Form No</th>
 							<th>Project No</th>
 							<th>Project</th>
-							<th>Total Labour Force</th>
-							<th>Total Wages</th>
-							<th>From</th>
-							<th>To</th>
 							<th>Approved By</th>
 							<th>Issue Date</th>
 							<th className="text-center">Action</th>
@@ -239,16 +235,6 @@ const index = (props) => {
 								<td>{statusReport.code}</td>
 								<td>{statusReport.projectCode}</td>
 								<td>{statusReport.projectName}</td>
-								<td>{statusReport.totalLabourForce}</td>
-								<td>
-									{statusReport.statusReportServiceProviders?.reduce(
-										(acc, statusReportServiceProvider) =>
-											acc + statusReportServiceProvider.total,
-										0
-									)}
-								</td>
-								<td>{statusReport.startsAt}</td>
-								<td>{statusReport.endsAt}</td>
 								<td>{statusReport.approvedByName}</td>
 								<td>{statusReport.createdAt}</td>
 								<td>
