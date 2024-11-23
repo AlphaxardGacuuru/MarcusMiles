@@ -346,8 +346,8 @@ ol {
 	margin-bottom: 20px;
 }
 
-.intro-newslatter input[type=text],
-.intro-newslatter input[type=email] {
+.intro-newslatter input[type="text"],
+.intro-newslatter input[type="email"] {
 	height: 53px;
 	width: 36.4%;
 	padding: 0 30px;
@@ -428,8 +428,8 @@ ol {
 	padding: 44px 38px;
 }
 
-.course-search-form input[type=text],
-.course-search-form input[type=email] {
+.course-search-form input[type="text"],
+.course-search-form input[type="email"] {
 	height: 56px;
 	width: 36.6%;
 	padding: 0 30px;
@@ -440,8 +440,8 @@ ol {
 	background: #edf4f6;
 }
 
-.course-search-form input[type=text]:focus,
-.course-search-form input[type=email]:focus {
+.course-search-form input[type="text"]:focus,
+.course-search-form input[type="email"]:focus {
 	border-bottom: 2px solid #d82a4e;
 }
 
@@ -484,8 +484,8 @@ ol {
 	padding: 0;
 }
 
-.search-section.ss-other-page .course-search-form input[type=text]:focus,
-.search-section.ss-other-page .course-search-form input[type=email]:focus {
+.search-section.ss-other-page .course-search-form input[type="text"]:focus,
+.search-section.ss-other-page .course-search-form input[type="email"]:focus {
 	border-bottom: none;
 }
 
@@ -663,12 +663,12 @@ ol {
 	padding: 60px;
 }
 
-.signup-form input[type=text],
-.signup-form input[type=email],
-.signup-form input[type=password],
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"],
 .signup-form textarea,
-.contact-form input[type=text],
-.contact-form input[type=email],
+.contact-form input[type="text"],
+.contact-form input[type="email"],
 .contact-form textarea {
 	height: 57px;
 	width: 100%;
@@ -681,17 +681,17 @@ ol {
 	background: #edf4f6;
 }
 
-.signup-form input[type=text]:focus,
-.signup-form input[type=email]:focus,
+.signup-form input[type="text"]:focus,
+.signup-form input[type="email"]:focus,
 .signup-form textarea:focus,
-.contact-form input[type=text]:focus,
-.contact-form input[type=email]:focus,
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
 .contact-form textarea:focus {
 	border-bottom: 2px solid #d82a4e;
 }
 
-.signup-form input[type=file],
-.contact-form input[type=file] {
+.signup-form input[type="file"],
+.contact-form input[type="file"] {
 	display: none;
 }
 
@@ -794,7 +794,7 @@ ol {
 	padding-right: 38px;
 }
 
-.footer-newslatter input[type=email] {
+.footer-newslatter input[type="email"] {
 	height: 57px;
 	width: 100%;
 	padding: 0 30px;
@@ -1472,8 +1472,8 @@ ol {
 		min-width: 160px;
 	}
 
-	.course-search-form input[type=text],
-	.course-search-form input[type=email] {
+	.course-search-form input[type="text"],
+	.course-search-form input[type="email"] {
 		width: 34.6%;
 	}
 
@@ -1521,8 +1521,8 @@ ol {
 		font-size: 43px;
 	}
 
-	.intro-newslatter input[type=text],
-	.intro-newslatter input[type=email] {
+	.intro-newslatter input[type="text"],
+	.intro-newslatter input[type="email"] {
 		width: 33%;
 	}
 
@@ -1538,14 +1538,14 @@ ol {
 		text-align: center;
 	}
 
-	.course-search-form input[type=text],
-	.course-search-form input[type=email] {
+	.course-search-form input[type="text"],
+	.course-search-form input[type="email"] {
 		width: 48.1%;
 		margin-bottom: 20px;
 	}
 
-	.course-search-form input[type=text].last-m,
-	.course-search-form input[type=email].last-m {
+	.course-search-form input[type="text"].last-m,
+	.course-search-form input[type="email"].last-m {
 		margin-right: 0;
 	}
 
@@ -1553,8 +1553,8 @@ ol {
 		padding: 60px 30px 30px;
 	}
 
-	.search-section.ss-other-page .course-search-form input[type=text],
-	.search-section.ss-other-page .course-search-form input[type=email] {
+	.search-section.ss-other-page .course-search-form input[type="text"],
+	.search-section.ss-other-page .course-search-form input[type="email"] {
 		width: 48.5%;
 	}
 
@@ -1653,14 +1653,14 @@ ol {
 		text-align: center;
 	}
 
-	.intro-newslatter input[type=text],
-	.intro-newslatter input[type=email] {
+	.intro-newslatter input[type="text"],
+	.intro-newslatter input[type="email"] {
 		margin-bottom: 20px;
 		width: 47.6%;
 	}
 
-	.intro-newslatter input[type=text].last-s,
-	.intro-newslatter input[type=email].last-s {
+	.intro-newslatter input[type="text"].last-s,
+	.intro-newslatter input[type="email"].last-s {
 		margin-right: 0;
 	}
 
@@ -1668,8 +1668,8 @@ ol {
 		padding: 40px 30px 30px;
 	}
 
-	.course-search-form input[type=text],
-	.course-search-form input[type=email] {
+	.course-search-form input[type="text"],
+	.course-search-form input[type="email"] {
 		width: 100%;
 		margin-bottom: 20px;
 		margin-right: 0;
@@ -1726,8 +1726,8 @@ ol {
 		padding-bottom: 100px;
 	}
 
-	.intro-newslatter input[type=text],
-	.intro-newslatter input[type=email] {
+	.intro-newslatter input[type="text"],
+	.intro-newslatter input[type="email"] {
 		margin-bottom: 20px;
 		width: 100%;
 		margin-right: 0;
@@ -1825,7 +1825,7 @@ ol {
 	border: none;
 	outline: none;
 	cursor: pointer;
-	background-color: #FFFFFF;
+	background-color: #ffffff;
 	border-radius: 50%;
 	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
 	color: #000000;
@@ -1973,12 +1973,12 @@ ol {
 	min-width: 200px;
 	display: block;
 	font-size: 24px;
-	min-width: 200px
+	min-width: 200px;
 }
 
 @media only screen and (max-width: 767px) {
 	.main-logo {
-		min-width: 120px
+		min-width: 120px;
 	}
 }
 
@@ -2100,7 +2100,7 @@ ol {
 }
 
 .leftMenu .nav-link {
-	color: #FFF;
+	color: #fff;
 	font-size: 15px;
 	position: relative;
 	z-index: 1;
@@ -2155,7 +2155,6 @@ ol {
 	padding-right: 10px;
 	padding-left: 10px;
 }
-
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 	.leftMenu {
@@ -2375,7 +2374,6 @@ ol {
 
 /* Bottom slide Nav End */
 
-
 /*Hide elements on small screens*/
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.hidden {
@@ -2465,7 +2463,7 @@ ol {
 	right: 30px;
 	top: 60px;
 	z-index: 9;
-	color: #FFF;
+	color: #fff;
 	font-size: 20px;
 	cursor: pointer;
 	-webkit-transition-duration: 750ms;
@@ -2515,11 +2513,11 @@ ol {
 
 .mainMenu a {
 	font-weight: 300;
-	color: #FFF;
+	color: #fff;
 }
 
 .mainMenu .nav-link {
-	color: #FFF;
+	color: #fff;
 	font-size: 18px;
 	position: relative;
 	z-index: 1;
@@ -2609,7 +2607,7 @@ ol {
 }
 
 .bg-primary {
-	background-color: #007BFF !important;
+	background-color: #007bff !important;
 	/* background-color: rgba(0, 123, 255, 1) !important; */
 }
 
@@ -2618,15 +2616,15 @@ ol {
 }
 
 .bg-outline-primary {
-	border-color: #007BFF !important;
+	border-color: #007bff !important;
 }
 
 .border-primary {
-	border-color: #007BFF !important;
+	border-color: #007bff !important;
 }
 
 .text-primary {
-	color: #007BFF !important;
+	color: #007bff !important;
 }
 
 .bg-secondary {
@@ -2698,7 +2696,7 @@ ol {
 	border-color: #000000;
 	right: -6px;
 	bottom: -6px;
-	content: '';
+	content: "";
 	z-index: -100;
 }
 
@@ -2984,7 +2982,7 @@ ol {
 	left: 0;
 	top: 0;
 	background-color: #ffffff;
-	content: '';
+	content: "";
 }
 
 .sonar-testimonials-area .testimonial-content {
@@ -3079,18 +3077,18 @@ ol {
 	animation-name: placeHolderShimmer;
 	animation-timing-function: linear;
 	background: #f6f7f8;
-	background: linear-gradient(to right, #FFFFFF 8%, #DDD 38%, #FFFFFF 54%);
+	background: linear-gradient(to right, #ffffff 8%, #ddd 38%, #ffffff 54%);
 	background-size: 1000px 640px;
 	position: relative;
 }
 
 @keyframes placeHolderShimmer {
 	0% {
-		background-position: -468px 0
+		background-position: -468px 0;
 	}
 
 	100% {
-		background-position: 468px 0
+		background-position: 468px 0;
 	}
 }
 
@@ -3239,3 +3237,25 @@ div.hidden-scroll {
 	/* For Safari support */
 	border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+/* Background Logo for Document Start */
+.centered-grey-background {
+	min-height: 500px;
+}
+
+.centered-grey-background::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 25%;
+	width: 50%;
+	height: 50%;
+	background-image: url("/storage/img/favicon.png"); /* Replace with your image path */
+	background-size: cover; /* Ensures the image covers the entire div */
+	background-position: center; /* Centers the image */
+	background-repeat: no-repeat; /* Ensures no repetition of the image */
+	opacity: 0.1; /* 50% opacity */
+	z-index: -1; /* Place behind content */
+}
+/* Background Logo for Document End */
