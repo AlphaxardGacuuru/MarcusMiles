@@ -59,17 +59,26 @@ const form = (props) => {
 				<div className="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div className="card bg-white p-5">
 						<div className="border-0 d-flex justify-content-between">
-							<div
-								className=""
-								style={{ width: "5em" }}>
-								<Img
-									src="/storage/img/favicon.png"
-									style={{ width: "100%", height: "auto" }}
-								/>
+							<div style={{ width: "7em" }}>
+								<div
+									className="mx-auto"
+									style={{ width: "5em" }}>
+									<Img
+										src="/storage/img/favicon.png"
+										style={{ width: "100%", height: "auto" }}
+									/>
+								</div>
+								<h6
+									className="text-center"
+									style={{ fontSize: "10px" }}>
+									RESEARCH. DESIGN & ENG. AUDIT PROJECT MANAGEMENT
+								</h6>
 							</div>
 
 							<div className="w-75">
-								<h2 className="text-end mb-0">PRACTICAL / SECTIONAL COMPLETION CERTIFICATE</h2>
+								<h2 className="text-end mb-0">
+									PRACTICAL / SECTIONAL COMPLETION CERTIFICATE
+								</h2>
 								<div className="p-2 text-center text-capitalize"></div>
 							</div>
 						</div>
@@ -101,6 +110,7 @@ const form = (props) => {
 							</div>
 
 							<hr />
+
 							<h5 className="mb-1">
 								Employer:{" "}
 								<span className="text-dark fw-normal">
@@ -138,8 +148,12 @@ const form = (props) => {
 						</p>
 
 						<hr />
-						<div className="my-5 py-5"></div>
-						<div className="my-5 py-5"></div>
+						
+						<div className="centered-grey-background">
+							<div className="my-5 py-5"></div>
+							<div className="my-5 py-5"></div>
+						</div>
+
 						<hr />
 
 						{/* Footer Start */}

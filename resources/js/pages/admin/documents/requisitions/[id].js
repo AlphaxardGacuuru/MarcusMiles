@@ -172,7 +172,7 @@ const form = (props) => {
 						</div>
 						{/* First Footer End */}
 
-						{/* Footer Start */}
+						{/* Second Footer Start */}
 						<div className="card-footer d-flex justify-content-between border-0">
 							<div className="text-start">
 								<h6 className="mb-1">
@@ -195,7 +195,7 @@ const form = (props) => {
 								</h6>
 							</div>
 						</div>
-						{/* Footer End */}
+						{/* Second Footer End */}
 					</div>
 				</div>
 			</div>
